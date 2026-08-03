@@ -37,6 +37,7 @@
       pkgs.wl-clipboard
       pkgs.satty
       pkgs.libnotify
+      pkgs.pear-desktop
     ];
   };
 }
