@@ -1,0 +1,7 @@
+keys:
+  - &rebiz age1ekr6apc0tp9h0xfjetfsgutrhmwpzkz23uty9v8v4mnvt9dgcczqudr73w
+creation_rules:
+  - path_regex: secrets/.*\.yaml$
+    key_groups:
+      - age:
+          - *rebiz
