@@ -20,7 +20,7 @@ in {
       brave
       udiskie
       sounds
-      vesktop
+      discord
       theme
       mime
     ];
