@@ -1,6 +1,9 @@
 _: {
   flake.modules.nixos.display = {pkgs, ...}: {
-    programs.niri.enable = true;
+    programs.niri = {
+      enable = true;
+      package = pkgs.niri-stable;
+    };
 
     systemd.user.services.niri-flake-polkit.enable = false;
 
