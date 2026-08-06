@@ -49,8 +49,26 @@ _: {
 
         debug.honor-xdg-activation-with-invalid-serial = true;
 
+        includes = [
+          "${config.xdg.configHome}/niri/noctalia.kdl"
+        ];
+
+        blur = {
+          passes = 3;
+          offset = 3.0;
+          noise = 0.02;
+          saturation = 1.0;
+        };
+
+        recent-windows = {
+          highlight = {
+            active-color = "#9ecfd1";
+            urgent-color = "#ffb4ab";
+          };
+        };
+
         layout = {
-          gaps = 8;
+          gaps = 4;
           background-color = "transparent";
           default-column-width = {proportion = 0.5;};
           preset-column-widths = [
@@ -151,6 +169,13 @@ _: {
             matches = [{namespace = "^notifications$";}];
             block-out-from = "screencast";
           }
+          {
+            matches = [{namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$";}];
+            background-effect = {
+              blur = false;
+              xray = false;
+            };
+          }
         ];
 
         window-rules = [
@@ -175,15 +200,11 @@ _: {
             };
           }
           {
-            matches = [
-              {app-id = "^org\\.keepassxc\\.KeePassXC$";}
-              {app-id = "^1password$";}
-              {app-id = "^com\\.bitwarden\\.desktop$";}
-              {app-id = "^org\\.telegram\\.desktop$";}
-              {app-id = "^vencord$";}
-              {app-id = "^Signal$";}
-            ];
-            block-out-from = "screen-capture";
+            matches = [{is-floating = true;}];
+            background-effect = {
+              blur = true;
+              xray = false;
+            };
           }
           {
             geometry-corner-radius = {
@@ -264,7 +285,6 @@ _: {
               }
             ];
             open-floating = true;
-            block-out-from = "screen-capture";
           }
           {
             matches = [
@@ -471,41 +491,6 @@ _: {
           };
         };
       };
-    };
-
-    xdg.configFile.niri-config = lib.mkForce {
-      target = "niri/config.kdl";
-      text =
-        config.programs.niri.finalConfig
-        + ''
-
-          blur {
-              passes 3
-              offset 3.0
-              noise 0.02
-              saturation 1.0
-          }
-
-          window-rule {
-              match is-floating=true
-
-              background-effect {
-                  blur true
-                  xray false
-              }
-          }
-
-          layer-rule {
-              match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
-
-              background-effect {
-                  blur false
-                  xray false
-              }
-          }
-
-          include "${config.xdg.configHome}/niri/noctalia.kdl"
-        '';
     };
   };
 }

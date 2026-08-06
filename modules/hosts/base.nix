@@ -29,6 +29,7 @@
       desktop
       gaming
       tools
+      nano
 
       brave-policy
 

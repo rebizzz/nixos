@@ -5,7 +5,6 @@ _: let
   doc = "org.gnome.Evince.desktop";
   archive = "org.gnome.FileRoller.desktop";
   files = "org.gnome.Nautilus.desktop";
-  text = "nvim.desktop";
 in {
   flake.modules.homeManager.mime = _: {
     xdg = {
@@ -69,7 +68,6 @@ in {
           "audio/mp4" = av;
           "audio/x-m4a" = av;
           "audio/opus" = av;
-          "text/plain" = text;
         };
       };
     };

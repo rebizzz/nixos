@@ -16,7 +16,7 @@ in {
       foot
       fish
       git
-      lazyvim
+      nano
       brave
       udiskie
       sounds

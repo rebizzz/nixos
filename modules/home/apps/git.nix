@@ -7,7 +7,7 @@ _: {
         user.email = "1296550727652610189+rebizzz@users.noreply.github.com";
         pull.rebase = true;
         init.defaultBranch = "main";
-        core.editor = "nvim";
+        core.editor = "nano";
         diff.colorMoved = "zebra";
       };
     };

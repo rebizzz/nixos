@@ -12,7 +12,7 @@ My personal NixOS setup for laptop. Uses a `tmpfs` root partition (wiped on ever
 - **Greeter:** Noctalia Greeter
 - **Browser:** Brave Origin (debloated, locked-down policies)
 - **Terminal:** Foot + Fish shell (`zoxide`, `eza`, `bat`, `ripgrep`)
-- **Editor:** Neovim via [lazyvim-nix](https://github.com/pfassina/lazyvim-nix)
+- **Editor:** Nano (configured via Home Manager with syntax highlighting)
 - **Secrets:** [sops-nix](https://github.com/Mic92/sops-nix) with `age` keys
 
 ## Directory Structure
