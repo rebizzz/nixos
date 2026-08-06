@@ -17,7 +17,7 @@ in {
     users.users.rebiz = {
       isNormalUser = true;
       hashedPasswordFile = config.sops.secrets.user_password.path;
-      extraGroups = ["wheel" "networkmanager" "video" "audio" "input" "docker" "libvirtd"];
+      extraGroups = ["wheel" "networkmanager" "video" "audio" "input" "libvirtd"];
       shell = pkgs.fish;
     };
 

@@ -8,13 +8,14 @@
   in {
     systemd.services.lock-before-sleep = {
       description = "Lock the session before suspend/hibernate";
-      before = ["sleep.target"];
-      wantedBy = ["sleep.target"];
+      before = ["sleep.target" "suspend.target" "hibernate.target" "hybrid-sleep.target"];
+      wantedBy = ["sleep.target" "suspend.target" "hibernate.target" "hybrid-sleep.target"];
       serviceConfig = {
         Type = "oneshot";
         User = user.name;
         Environment = "XDG_RUNTIME_DIR=/run/user/${toString user.uid}";
         ExecStart = "${inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/noctalia msg session lock";
+        TimeoutStartSec = "10s";
       };
     };
   };

@@ -20,7 +20,6 @@ _: {
           "/var/lib/NetworkManager"
           "/var/lib/iwd"
           "/var/lib/AccountsService"
-          "/var/lib/docker"
           "/var/log/journal"
           {
             directory = "/var/lib/chrony";

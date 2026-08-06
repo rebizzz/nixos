@@ -10,19 +10,7 @@ _: {
       nftables.enable = true;
 
       firewall = {
-        allowedUDPPorts = [137 138]; # samba-client
-        allowedTCPPortRanges = [
-          {
-            from = 1025;
-            to = 65535;
-          }
-        ];
-        allowedUDPPortRanges = [
-          {
-            from = 1025;
-            to = 65535;
-          }
-        ];
+        enable = true;
         extraInputRules = "ip6 daddr fe80::/64 udp dport 546 accept"; # dhcpv6-client
       };
     };

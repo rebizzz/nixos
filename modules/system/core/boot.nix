@@ -45,6 +45,11 @@ _: {
         "rd.udev.log_level=3"
         "udev.log_level=0"
         "rd.systemd.show_status=auto"
+
+        "init_on_alloc=1"
+        "init_on_free=1"
+        "page_alloc.shuffle=1"
+        "randomize_kstack_offset=on"
       ];
       consoleLogLevel = 3;
       supportedFilesystems = ["ntfs" "udf"];
@@ -61,10 +66,23 @@ _: {
 
         "kernel.nmi_watchdog" = 0;
 
+        "kernel.kptr_restrict" = 2;
+        "kernel.dmesg_restrict" = 1;
+        "kernel.unprivileged_bpf_disabled" = 1;
+        "kernel.yama.ptrace_scope" = 1;
+        "fs.protected_fifos" = 2;
+        "fs.protected_regular" = 2;
+
         "net.core.default_qdisc" = "fq";
         "net.ipv4.tcp_congestion_control" = "bbr";
         "net.ipv4.tcp_fastopen" = 3;
         "net.ipv4.tcp_mtu_probing" = 1;
+        "net.ipv4.conf.all.rp_filter" = 1;
+        "net.ipv4.conf.default.rp_filter" = 1;
+        "net.ipv4.conf.all.accept_redirects" = 0;
+        "net.ipv4.conf.default.accept_redirects" = 0;
+        "net.ipv4.tcp_syncookies" = 1;
+        "net.ipv4.tcp_rfc1337" = 1;
       };
 
       blacklistedKernelModules = blockedModules;
