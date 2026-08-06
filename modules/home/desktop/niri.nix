@@ -50,7 +50,10 @@ _: {
         debug.honor-xdg-activation-with-invalid-serial = true;
 
         includes = [
-          "${config.xdg.configHome}/niri/noctalia.kdl"
+          {
+            path = "${config.xdg.configHome}/niri/noctalia.kdl";
+            optional = true;
+          }
         ];
 
         blur = {
