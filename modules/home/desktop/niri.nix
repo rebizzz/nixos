@@ -28,7 +28,10 @@ _: {
             accel-profile = "flat";
             accel-speed = 0.3;
           };
-          focus-follows-mouse.enable = true;
+          focus-follows-mouse = {
+            enable = true;
+            max-scroll-amount = "0%";
+          };
           warp-mouse-to-focus.enable = true;
           workspace-auto-back-and-forth = true;
         };
@@ -157,20 +160,21 @@ _: {
           {
             matches = [{is-window-cast-target = true;}];
             focus-ring = {
-              active.color = "#f38ba8";
-              inactive.color = "#f38ba8";
+              active.color = "#ff0000";
+              inactive.color = "#cc0000";
               width = 4;
             };
             border = {
-              active.color = "#f38ba8";
-              inactive.color = "#f38ba8";
+              active.color = "#ff0000";
+              inactive.color = "#cc0000";
+              width = 4;
             };
             shadow = {
-              color = "#f38ba8a0";
+              color = "#ff0000a0";
             };
             tab-indicator = {
-              active.color = "#f38ba8";
-              inactive.color = "#f38ba8";
+              active.color = "#ff0000";
+              inactive.color = "#cc0000";
             };
           }
           {
@@ -301,7 +305,7 @@ _: {
             allow-inhibiting = false;
           };
           "Super+Shift+Q".action.spawn = ["noctalia" "msg" "panel-toggle" "session"];
-          "Super+Shift+Escape".action.show-hotkey-overlay = {};
+          "Super+Shift+Slash".action.show-hotkey-overlay = {};
           "Super+Escape".action.toggle-keyboard-shortcuts-inhibit = {};
           "Super+Shift+P".action.spawn = ["noctalia" "msg" "dpms-off"];
           "Ctrl+Alt+Delete".action.quit = {};
