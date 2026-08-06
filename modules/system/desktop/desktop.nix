@@ -5,7 +5,7 @@
     ...
   }: {
     programs = {
-      niri.package = pkgs.niri-unstable;
+      niri.package = pkgs.niri-stable;
 
       nh = {
         enable = true;
