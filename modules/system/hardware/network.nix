@@ -7,8 +7,6 @@ _: {
         wifi.macAddress = "random";
       };
 
-      wireless.iwd.enable = true;
-
       nftables.enable = true;
 
       firewall = {
