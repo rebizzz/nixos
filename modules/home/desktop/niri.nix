@@ -28,10 +28,7 @@ _: {
             accel-profile = "flat";
             accel-speed = 0.3;
           };
-          focus-follows-mouse = {
-            enable = true;
-            max-scroll-amount = "0%";
-          };
+          focus-follows-mouse.enable = true;
           warp-mouse-to-focus.enable = true;
           workspace-auto-back-and-forth = true;
         };
