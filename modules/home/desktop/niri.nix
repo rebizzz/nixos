@@ -157,21 +157,21 @@ _: {
           {
             matches = [{is-window-cast-target = true;}];
             focus-ring = {
-              active.color = "#ff0000";
-              inactive.color = "#cc0000";
+              active.color = "#f38ba8";
+              inactive.color = "#f38ba8";
               width = 4;
             };
             border = {
-              active.color = "#ff0000";
-              inactive.color = "#cc0000";
+              active.color = "#f38ba8";
+              inactive.color = "#f38ba8";
               width = 4;
             };
             shadow = {
-              color = "#ff0000a0";
+              color = "#f38ba8a0";
             };
             tab-indicator = {
-              active.color = "#ff0000";
-              inactive.color = "#cc0000";
+              active.color = "#f38ba8";
+              inactive.color = "#f38ba8";
             };
           }
           {
