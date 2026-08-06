@@ -46,6 +46,10 @@ _: {
       memoryMax = 8 * 1024 * 1024 * 1024;
       priority = 100;
     };
-    systemd.oomd.enable = true;
+    systemd = {
+      oomd = {
+        enable = true;
+      };
+    };
   };
 }

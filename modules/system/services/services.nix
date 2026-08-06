@@ -1,10 +1,16 @@
 _: {
   flake.modules.nixos.services = {pkgs, ...}: {
-    systemd.oomd.enableUserSlices = true;
+    systemd = {
+      oomd = {
+        enableUserSlices = true;
+      };
+    };
 
     services = {
       gvfs.enable = true;
-      dbus.implementation = "broker";
+      dbus = {
+        implementation = "broker";
+      };
 
       smartd = {
         enable = true;
