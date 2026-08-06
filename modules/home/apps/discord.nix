@@ -41,6 +41,7 @@
           clickableRoles.enable = true;
           clipsEnhancements.enable = true;
           clipUpload.enable = true;
+          clearUrls.enable = true;
           collapsibleUi.enable = true;
           copyFileContents.enable = true;
           copyStatusUrls.enable = true;
@@ -55,6 +56,7 @@
           iLoveSpam.enable = true;
           imageFilename.enable = true;
           imageZoom.enable = true;
+          implicitRelationships.enable = true;
           iRememberYou.enable = true;
           limitlessScreenshare.enable = true;
           memberCount.enable = true;
