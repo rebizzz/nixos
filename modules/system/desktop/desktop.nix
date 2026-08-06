@@ -1,11 +1,11 @@
-{
+{inputs, ...}: {
   flake.modules.nixos.desktop = {
     pkgs,
     config,
     ...
   }: {
     programs = {
-      niri.package = pkgs.niri-stable;
+      niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable;
 
       nh = {
         enable = true;

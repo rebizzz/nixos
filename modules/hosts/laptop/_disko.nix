@@ -4,7 +4,7 @@
   ...
 }: let
   diskCfg = config.host.disk;
-  btrfsOpts = ["compress=zstd:2" "noatime"];
+  btrfsOpts = ["compress=zstd:1" "noatime" "discard=async"];
   subvol = mountpoint: {
     inherit mountpoint;
     mountOptions = btrfsOpts;

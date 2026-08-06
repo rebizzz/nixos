@@ -33,7 +33,7 @@ _: {
           editor = false;
         };
         efi.canTouchEfiVariables = true;
-        timeout = 3;
+        timeout = 0;
       };
 
       kernelPackages = pkgs.linuxPackages_latest;

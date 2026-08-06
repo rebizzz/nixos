@@ -8,7 +8,7 @@ _: {
           term = "xterm-256color";
           font = "JetBrainsMono Nerd Font Mono:size=13";
           pad = "8x8";
-          selection-target = "clipboard";
+          selection-target = "primary";
         };
         colors-dark = {
           alpha = "0.85";
