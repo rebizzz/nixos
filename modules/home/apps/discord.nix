@@ -67,6 +67,7 @@
           onePingPerDm.enable = true;
           permissionsViewer.enable = true;
           platformIndicators.enable = true;
+          readAllNotificationsButton.enable = true;
           relationshipNotifier.enable = true;
           serverInfo.enable = true;
           showAllMessageButtons.enable = true;
