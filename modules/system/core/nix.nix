@@ -10,8 +10,13 @@
       enable = false;
       doc.enable = false;
       nixos.enable = false;
-      man.enable = false;
+      man = {
+        enable = false;
+        cache.enable = false;
+      };
+      info.enable = false;
     };
+    environment.defaultPackages = [];
 
     nix = {
       channel.enable = false;
@@ -25,7 +30,7 @@
         cores = 0;
 
         keep-outputs = false;
-        keep-derivations = true;
+        keep-derivations = false;
 
         builders-use-substitutes = true;
         download-buffer-size = 268435456;

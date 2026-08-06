@@ -40,6 +40,12 @@ in {
       };
     };
 
+    manual = {
+      html.enable = false;
+      json.enable = false;
+      manpages.enable = false;
+    };
+
     programs.nix-index = {
       enable = true;
       enableFishIntegration = true;
