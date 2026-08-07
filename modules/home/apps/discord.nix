@@ -64,7 +64,6 @@
           limitlessScreenshare.enable = true;
           memberCount.enable = true;
           messageClickActions.enable = true;
-          messageLogger.enable = true;
           messageLoggerEnhanced.enable = true;
           mutualGroupDms.enable = true;
           noNitroUpsell.enable = true;
