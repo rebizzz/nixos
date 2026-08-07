@@ -72,7 +72,7 @@ _: {
           pure_black_dark = true; # AMOLED / Pure Black Mode
           templates = {
             enable_builtin_templates = true;
-            builtin_ids = ["foot" "gtk4" "niri"];
+            builtin_ids = ["ghostty" "gtk3" "gtk4" "niri"];
           };
         };
 

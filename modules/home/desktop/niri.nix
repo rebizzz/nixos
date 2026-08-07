@@ -17,20 +17,32 @@ _: {
           keyboard = {
             xkb.layout = "us";
             numlock = false;
+            repeat-delay = 300;
+            repeat-rate = 40;
           };
           touchpad = {
             tap = true;
             natural-scroll = true;
             accel-speed = 0.2;
             accel-profile = "adaptive";
+            dwt = true;
+            dwtp = true;
+            click-method = "clickfinger";
+            tap-button-map = "left-right-middle";
+            drag = true;
+            drag-lock = false;
+            scroll-method = "two-finger";
+            disabled-on-external-mouse = true;
           };
           mouse = {
             accel-profile = "flat";
             accel-speed = 0.3;
+            middle-emulation = false;
           };
           focus-follows-mouse.enable = true;
           warp-mouse-to-focus.enable = true;
           workspace-auto-back-and-forth = true;
+          power-key-handling.enable = false;
         };
 
         cursor = {
@@ -40,7 +52,12 @@ _: {
           hide-after-inactive-ms = 30000;
         };
 
-        hotkey-overlay.skip-at-startup = true;
+        hotkey-overlay = {
+          skip-at-startup = true;
+          hide-not-bound = true;
+        };
+
+        workspaces.satty = {};
 
         xwayland-satellite = {
           enable = true;
@@ -64,9 +81,19 @@ _: {
         };
 
         recent-windows = {
+          enable = true;
+          open-delay-ms = 150;
+          debounce-ms = 300;
           highlight = {
             active-color = "#9ecfd1";
             urgent-color = "#ffb4ab";
+            padding = 6;
+            corner-radius = 8;
+          };
+          binds = {
+            "Alt+Tab".action.next-window = {};
+            "Alt+Shift+Tab".action.previous-window = {};
+            "Alt+Grave".action.next-window = {filter = "app-id";};
           };
         };
 
@@ -75,10 +102,27 @@ _: {
           background-color = "transparent";
           default-column-width = {proportion = 0.5;};
           preset-column-widths = [
+            {proportion = 0.2;}
+            {proportion = 0.25;}
             {proportion = 0.33333;}
             {proportion = 0.5;}
             {proportion = 0.66667;}
+            {proportion = 0.75;}
+            {proportion = 1.0;}
           ];
+          preset-window-heights = [
+            {proportion = 0.2;}
+            {proportion = 0.25;}
+            {proportion = 0.33333;}
+            {proportion = 0.5;}
+            {proportion = 0.66667;}
+            {proportion = 0.75;}
+            {proportion = 1.0;}
+          ];
+          insert-hint = {
+            enable = true;
+            display.color = "#9ecfd180";
+          };
           focus-ring.width = 2;
           shadow = {
             enable = true;
@@ -210,6 +254,13 @@ _: {
             };
           }
           {
+            matches = [{app-id = "^com\\.mitchellh\\.ghostty$";}];
+            background-effect = {
+              blur = true;
+              xray = false;
+            };
+          }
+          {
             geometry-corner-radius = {
               top-left = 12.0;
               top-right = 12.0;
@@ -306,24 +357,33 @@ _: {
 
         switch-events.lid-close.action.spawn = ["noctalia" "msg" "session" "lock"];
 
-        gestures.hot-corners.enable = true;
+        gestures = {
+          hot-corners.enable = true;
+          dnd-edge-view-scroll = {
+            trigger-width = 30;
+            delay-ms = 100;
+            max-speed = 1500;
+          };
+          dnd-edge-workspace-switch = {
+            trigger-height = 50;
+            delay-ms = 100;
+            max-speed = 1500;
+          };
+        };
 
         outputs = lib.genAttrs ["eDP-1" "HDMI-A-1" "DP-1" "DP-2"] (_: {
           variable-refresh-rate = true;
         });
 
-        binds = {
-          "Super+Return".action.spawn = "foot";
+        binds = lib.mapAttrs (_: bind: bind // {allow-inhibiting = false;}) {
+          "Super+Return".action.spawn = "ghostty";
           "Super+D".action.spawn = ["noctalia" "msg" "panel-toggle" "launcher"];
           "Super+B".action.spawn = ["brave-origin" "--new-window"];
           "Super+E".action.spawn = "nautilus";
           "XF86Calculator".action.spawn = "gnome-calculator";
 
           "Super+Q".action.close-window = {};
-          "Super+Alt+L" = {
-            action.spawn = ["noctalia" "msg" "session" "lock"];
-            allow-inhibiting = false;
-          };
+          "Super+Alt+L".action.spawn = ["noctalia" "msg" "session" "lock"];
           "Super+Shift+Q".action.spawn = ["noctalia" "msg" "panel-toggle" "session"];
           "Super+Shift+Slash".action.show-hotkey-overlay = {};
           "Super+Escape".action.toggle-keyboard-shortcuts-inhibit = {};
@@ -341,7 +401,6 @@ _: {
           "Super+9".action.focus-workspace = 9;
           "Super+Tab".action.focus-workspace-previous = {};
           "Alt+Tab".action.focus-window-previous = {};
-          "Alt+Shift+Tab".action.toggle-overview = {};
           "Super+O" = {
             action.toggle-overview = {};
             repeat = false;
@@ -351,6 +410,10 @@ _: {
           "Super+L".action.focus-column-right = {};
           "Super+J".action.focus-window-down = {};
           "Super+K".action.focus-window-up = {};
+          "Super+Home".action.focus-column-first = {};
+          "Super+End".action.focus-column-last = {};
+          "Super+Shift+Home".action.move-column-to-first = {};
+          "Super+Shift+End".action.move-column-to-last = {};
 
           "Super+Shift+Left".action.focus-monitor-left = {};
           "Super+Shift+Right".action.focus-monitor-right = {};
@@ -361,6 +424,10 @@ _: {
           "Super+Shift+L".action.move-column-right = {};
           "Super+Shift+J".action.move-window-down = {};
           "Super+Shift+K".action.move-window-up = {};
+          "Super+Ctrl+Shift+H".action.swap-window-left = {};
+          "Super+Ctrl+Shift+L".action.swap-window-right = {};
+          "Super+Ctrl+Shift+J".action.move-workspace-down = {};
+          "Super+Ctrl+Shift+K".action.move-workspace-up = {};
 
           "Super+Ctrl+1".action.move-column-to-workspace = 1;
           "Super+Ctrl+2".action.move-column-to-workspace = 2;
@@ -394,6 +461,15 @@ _: {
           "Super+Shift+Equal".action.set-window-height = "+10%";
           "Super+BracketLeft".action.consume-or-expel-window-left = {};
           "Super+BracketRight".action.consume-or-expel-window-right = {};
+
+          "Super+R".action.switch-preset-column-width = {};
+          "Super+Shift+R".action.switch-preset-window-height = {};
+          "Super+Ctrl+R".action.reset-window-height = {};
+          "Super+Comma".action.consume-window-into-column = {};
+          "Super+Period".action.expel-window-from-column = {};
+          "Super+Shift+T".action.switch-focus-between-floating-and-tiling = {};
+          "Super+Ctrl+M".action.maximize-window-to-edges = {};
+          "Super+Ctrl+O".action.toggle-window-rule-opacity = {};
 
           "Super+Alt+C".action.set-dynamic-cast-window = {};
           "Super+Alt+M".action.set-dynamic-cast-monitor = {};
