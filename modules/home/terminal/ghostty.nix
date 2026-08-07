@@ -25,7 +25,7 @@ _: {
         resize-overlay = "never";
 
         background-opacity = 0.85;
-        background-blur = true;
+        background-blur = false;
 
         copy-on-select = true;
 

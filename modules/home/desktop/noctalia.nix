@@ -13,7 +13,11 @@ _: {
 
       settings = {
         plugins = {
-          enabled = ["noctalia/screen_recorder"];
+          enabled = [
+            "noctalia/screen_recorder"
+            "aristides/udiskie"
+            "yuuto/calculator"
+          ];
           auto_update = true; # Global auto-update for git plugin sources
           source = [
             {
@@ -187,6 +191,7 @@ _: {
             "tray"
             "notifications"
             "clipboard"
+            "udiskie"
             "network"
             "bluetooth"
             "volume"
@@ -218,12 +223,30 @@ _: {
           screen_recorder = {
             type = "noctalia/screen_recorder:recorder";
           };
+          udiskie = {
+            type = "aristides/udiskie:status";
+            hide_when_empty = true;
+            show_count = true;
+          };
         };
 
-        plugin_settings."noctalia/screen_recorder" = {
-          filename_pattern = "recording_%Y%m%d_%H%M%S";
-          copy_to_clipboard = true;
-          directory = screencastsDir;
+        plugin_settings = {
+          "noctalia/screen_recorder" = {
+            filename_pattern = "recording_%Y%m%d_%H%M%S";
+            copy_to_clipboard = true;
+            directory = screencastsDir;
+          };
+
+          "aristides/udiskie" = {
+            enable_notifications = true;
+            auto_open_filemanager = false;
+            file_manager_cmd = "nautilus";
+          };
+
+          "yuuto/calculator" = {
+            precision = 8;
+            angle_unit = "deg";
+          };
         };
       };
     };

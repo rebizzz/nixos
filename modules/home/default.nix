@@ -18,7 +18,6 @@ in {
       git
       nano
       brave
-      udiskie
       sounds
       discord
       theme
@@ -29,7 +28,11 @@ in {
       username = "rebiz";
       homeDirectory = homeDir;
       stateVersion = "26.11";
-      packages = [pkgs.gpu-screen-recorder];
+      packages = [
+        pkgs.gpu-screen-recorder
+        # udiskie-info/-mount/-umount, shelled out to by the noctalia udiskie plugin
+        pkgs.udiskie
+      ];
       file = {
         ".face".source = ../../assets/avatar.jpeg;
         ".face.icon".source = ../../assets/avatar.jpeg;

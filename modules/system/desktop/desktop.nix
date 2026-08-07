@@ -31,7 +31,6 @@
       pkgs.loupe
 
       pkgs.evince
-      pkgs.gnome-calculator
       pkgs.xdg-utils
       pkgs.dex
       pkgs.wl-clipboard

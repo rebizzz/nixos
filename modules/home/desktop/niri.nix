@@ -254,13 +254,6 @@ _: {
             };
           }
           {
-            matches = [{app-id = "^com\\.mitchellh\\.ghostty$";}];
-            background-effect = {
-              blur = true;
-              xray = false;
-            };
-          }
-          {
             geometry-corner-radius = {
               top-left = 12.0;
               top-right = 12.0;
@@ -268,13 +261,7 @@ _: {
               bottom-right = 12.0;
             };
             clip-to-geometry = true;
-          }
-          {
-            matches = [
-              {app-id = "^org\\.gnome\\.Calculator$";}
-              {app-id = "^gnome-calculator$";}
-            ];
-            open-floating = true;
+            draw-border-with-background = false;
           }
           {
             matches = [
@@ -380,7 +367,7 @@ _: {
           "Super+D".action.spawn = ["noctalia" "msg" "panel-toggle" "launcher"];
           "Super+B".action.spawn = ["brave-origin" "--new-window"];
           "Super+E".action.spawn = "nautilus";
-          "XF86Calculator".action.spawn = "gnome-calculator";
+          "XF86Calculator".action.spawn = ["noctalia" "msg" "panel-toggle" "yuuto/calculator:panel"];
 
           "Super+Q".action.close-window = {};
           "Super+Alt+L".action.spawn = ["noctalia" "msg" "session" "lock"];
