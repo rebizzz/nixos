@@ -8,10 +8,12 @@
         branch = "canary";
         equicord.enable = true;
         krisp.enable = true;
+        openASAR.enable = true;
       };
 
       config = {
         useQuickCss = true;
+        disableMinSize = true;
         themeLinks = [
           "https://raw.githubusercontent.com/LuckFire/amoled-cord/343808e7d5297223e43868b3955da4cbbd01ceef/clients/amoled-cord.theme.css"
         ];
@@ -46,6 +48,7 @@
           copyFileContents.enable = true;
           copyStatusUrls.enable = true;
           copyUserMention.enable = true;
+          crashHandler.enable = true;
           downloadAllAttachments.enable = true;
           expressionCloner.enable = true;
           fakeNitro.enable = true;
@@ -65,6 +68,8 @@
           messageLoggerEnhanced.enable = true;
           mutualGroupDms.enable = true;
           noNitroUpsell.enable = true;
+          normalizeMessageLinks.enable = true;
+          noTrack.enable = true;
           noTypingAnimation.enable = true;
           onePingPerDm.enable = true;
           permissionsViewer.enable = true;
