@@ -57,8 +57,6 @@ _: {
           hide-not-bound = true;
         };
 
-        workspaces.satty = {};
-
         xwayland-satellite = {
           enable = true;
           path = lib.getExe pkgs.xwayland-satellite;
@@ -269,7 +267,6 @@ _: {
               {app-id = "^satty$";}
             ];
             open-floating = true;
-            open-on-workspace = "satty";
           }
           {
             matches = [
