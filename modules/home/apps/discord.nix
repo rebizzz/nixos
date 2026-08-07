@@ -29,7 +29,11 @@
           alwaysTrust.enable = true;
           anonymiseFileNames.enable = true;
           autoZipper.enable = true;
-          betterActivities.enable = true;
+          betterActivities = {
+            enable = true;
+            renderGifs = false;
+            memberList = false;
+          };
           betterBanReasons.enable = true;
           betterForwards.enable = true;
           betterInvites.enable = true;
@@ -62,9 +66,18 @@
           implicitRelationships.enable = true;
           iRememberYou.enable = true;
           limitlessScreenshare.enable = true;
-          memberCount.enable = true;
+          memberCount = {
+            enable = true;
+            voiceActivity = false;
+          };
           messageClickActions.enable = true;
-          messageLoggerEnhanced.enable = true;
+          messageLoggerEnhanced = {
+            enable = true;
+            ignoreBots = true;
+            ignoreMutedGuilds = true;
+            ignoreMutedCategories = true;
+            ignoreMutedChannels = true;
+          };
           mutualGroupDms.enable = true;
           noNitroUpsell.enable = true;
           normalizeMessageLinks.enable = true;
@@ -72,7 +85,11 @@
           noTypingAnimation.enable = true;
           onePingPerDm.enable = true;
           permissionsViewer.enable = true;
-          platformIndicators.enable = true;
+          platformIndicators = {
+            enable = true;
+            list = false;
+            messages = false;
+          };
           readAllNotificationsButton.enable = true;
           relationshipNotifier.enable = true;
           serverInfo.enable = true;
@@ -88,7 +105,11 @@
           typingTweaks.enable = true;
           universalMention.enable = true;
           unlockedAvatarZoom.enable = true;
-          userVoiceShow.enable = true;
+          userVoiceShow = {
+            enable = true;
+            showInMemberList = false;
+            showInMessages = true;
+          };
           validReply.enable = true;
           validUser.enable = true;
           vcPanelSettings.enable = true;
