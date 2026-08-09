@@ -21,6 +21,7 @@ _: {
           "/var/lib/iwd"
           "/var/lib/AccountsService"
           "/var/log/journal"
+          "/var/lib/docker"
           {
             directory = "/var/lib/chrony";
             user = "chrony";
