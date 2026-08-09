@@ -139,6 +139,8 @@ _: {
             place-within-column = false;
             hide-when-single-tab = true;
           };
+
+          empty-workspace-above-first = true;
         };
 
         overview = {
