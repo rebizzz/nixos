@@ -30,7 +30,7 @@
 
       pkgs.loupe
 
-      pkgs.evince
+      pkgs.papers
       pkgs.xdg-utils
       pkgs.dex
       pkgs.wl-clipboard

@@ -2,7 +2,7 @@ _: let
   web = "brave-browser.desktop";
   image = "org.gnome.Loupe.desktop";
   av = "mpv.desktop";
-  doc = "org.gnome.Evince.desktop";
+  doc = "org.gnome.Papers.desktop";
   archive = "org.gnome.FileRoller.desktop";
   files = "org.gnome.Nautilus.desktop";
 in {
