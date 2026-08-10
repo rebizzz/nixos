@@ -58,8 +58,6 @@ in {
         DefaultNotificationsSetting = 2;
         DefaultGeolocationSetting = 2;
 
-        SpellcheckServiceEnabled = false;
-
         ExtensionSettings = {
           "${darkReader}" = {
             toolbar_pin = "force_pinned";
