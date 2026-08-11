@@ -5,7 +5,7 @@
     programs.nixcord = {
       enable = true;
       discord = {
-        branch = "canary";
+        branches = [ "canary" ];
         equicord.enable = true;
         krisp.enable = true;
         openASAR.enable = true;
