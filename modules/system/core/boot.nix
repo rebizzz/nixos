@@ -61,6 +61,7 @@ _: {
       kernel.sysctl = {
         "vm.swappiness" = 60;
         "vm.page-cluster" = 0;
+        "vm.max_map_count" = 1048576;
         "vm.watermark_boost_factor" = 0;
         "vm.watermark_scale_factor" = 125;
 
