@@ -24,8 +24,8 @@ _: {
         enable = true;
         settings = {
           charger = {
-            governor = "performance";
-            energy_performance_preference = "performance";
+            governor = "powersave";
+            energy_performance_preference = "balance_performance";
             turbo = "auto";
           };
           battery = {
