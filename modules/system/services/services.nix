@@ -1,11 +1,5 @@
 _: {
   flake.modules.nixos.services = {pkgs, ...}: {
-    systemd = {
-      oomd = {
-        enableUserSlices = true;
-      };
-    };
-
     services = {
       gvfs.enable = true;
       dbus = {

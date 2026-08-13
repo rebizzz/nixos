@@ -2,6 +2,12 @@ _: {
   flake.modules.nixos.power = {pkgs, ...}: {
     services = {
       thermald.enable = true;
+      earlyoom = {
+        enable = true;
+        freeMemThreshold = 5;
+        freeSwapThreshold = 10;
+        enableNotifications = true;
+      };
       scx = {
         enable = true;
         scheduler = "scx_lavd";
@@ -45,12 +51,6 @@ _: {
       memoryPercent = 100;
       memoryMax = 8 * 1024 * 1024 * 1024;
       priority = 100;
-    };
-
-    systemd = {
-      oomd = {
-        enable = true;
-      };
     };
   };
 }
