@@ -1,10 +1,33 @@
 _: {
-  flake.modules.nixos.network = _: {
+  flake.modules.nixos.network = {config, ...}: {
     networking = {
       networkmanager = {
         enable = true;
         wifi.backend = "iwd";
         wifi.macAddress = "random";
+
+        ensureProfiles = {
+          environmentFiles = [config.sops.templates."network-manager.env".path];
+          profiles.ReBiz = {
+            connection = {
+              id = "ReBiz";
+              type = "wifi";
+            };
+            wifi = {
+              mode = "infrastructure";
+              ssid = "ReBiz";
+            };
+            wifi-security = {
+              key-mgmt = "wpa-psk";
+              psk = "$WIFI_PSK";
+            };
+            ipv4.method = "auto";
+            ipv6 = {
+              addr-gen-mode = "stable-privacy";
+              method = "auto";
+            };
+          };
+        };
       };
 
       nftables.enable = true;
