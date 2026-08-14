@@ -14,6 +14,8 @@ in {
 
     programs.fish.enable = true;
 
+    users.mutableUsers = false;
+
     users.users.rebiz = {
       isNormalUser = true;
       hashedPasswordFile = config.sops.secrets.user_password.path;
@@ -30,13 +32,13 @@ in {
     ];
 
     system.activationScripts.accountsServiceUser.text = ''
-            mkdir -p /var/lib/AccountsService/users
-            cat > ${accountsServiceUserPath} << 'EOF'
+      mkdir -p /var/lib/AccountsService/users
+      cat > ${accountsServiceUserPath} << 'EOF'
       [User]
       Icon=${accountsServiceIcon}
       SystemAccount=false
       EOF
-            chmod 0600 ${accountsServiceUserPath}
+      chmod 0600 ${accountsServiceUserPath}
     '';
   };
 }

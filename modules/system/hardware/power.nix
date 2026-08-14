@@ -2,20 +2,14 @@ _: {
   flake.modules.nixos.power = {pkgs, ...}: {
     services = {
       thermald.enable = true;
-      earlyoom = {
+      scx-loader = {
         enable = true;
-        freeMemThreshold = 5;
-        freeSwapThreshold = 10;
-        enableNotifications = true;
-      };
-      scx = {
-        enable = true;
-        scheduler = "scx_lavd";
+        config.default_sched = "scx_lavd";
       };
       ananicy = {
-        enable = true;
+        enable = false;
         package = pkgs.ananicy-cpp;
-        rulesProvider = pkgs.ananicy-cpp;
+        rulesProvider = pkgs.ananicy-rules-cachyos;
         settings = {
           cgroup_load = false;
           apply_cgroup = false;
@@ -51,6 +45,11 @@ _: {
       memoryPercent = 100;
       memoryMax = 8 * 1024 * 1024 * 1024;
       priority = 100;
+    };
+
+    systemd.oomd = {
+      enable = true;
+      enableUserSlices = true;
     };
   };
 }

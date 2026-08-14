@@ -36,7 +36,8 @@ _: {
         timeout = 3;
       };
 
-      kernelPackages = pkgs.linuxPackages_latest;
+      kernelPackages = pkgs.linuxPackages_cachyos;
+      kernelModules = ["ntsync"];
       kernelParams = [
         "quiet"
         "splash"
@@ -50,6 +51,8 @@ _: {
         "init_on_free=1"
         "page_alloc.shuffle=1"
         "randomize_kstack_offset=on"
+
+        "rcutree.enable_rcu_lazy=1"
       ];
       consoleLogLevel = 3;
       supportedFilesystems = ["ntfs" "udf"];
@@ -59,11 +62,13 @@ _: {
       initrd.verbose = false;
 
       kernel.sysctl = {
-        "vm.swappiness" = 60;
+        "vm.swappiness" = 150;
         "vm.page-cluster" = 0;
         "vm.max_map_count" = 1048576;
         "vm.watermark_boost_factor" = 0;
         "vm.watermark_scale_factor" = 125;
+        "vm.dirty_bytes" = 268435456;
+        "vm.dirty_background_bytes" = 67108864;
 
         "kernel.nmi_watchdog" = 0;
 
