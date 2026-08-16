@@ -20,7 +20,7 @@ _: {
 
       fish = {
         enable = true;
-        shellAliases = {
+        shellAbbrs = {
           ls = "eza";
           cat = "bat";
           grep = "rg";

@@ -10,10 +10,7 @@
       enable = false;
       doc.enable = false;
       nixos.enable = false;
-      man = {
-        enable = false;
-        cache.enable = false;
-      };
+      man.enable = false;
       info.enable = false;
     };
     environment.defaultPackages = [];
@@ -25,6 +22,7 @@
 
       settings = {
         experimental-features = ["nix-command" "flakes"];
+        auto-optimise-store = true;
 
         max-jobs = "auto";
         cores = 0;
@@ -56,12 +54,6 @@
       };
 
       optimise.automatic = true;
-
-      gc = {
-        automatic = true;
-        dates = "daily";
-        options = "--delete-older-than 2d";
-      };
     };
   };
 }

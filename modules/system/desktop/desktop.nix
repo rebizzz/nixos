@@ -9,7 +9,12 @@
 
       nh = {
         enable = true;
-        flake = "${config.users.users.rebiz.home}/opt/nixos-config";
+        clean = {
+          enable = true;
+          extraArgs = "--keep-since 4d --keep 3";
+          dates = "daily";
+        };
+        flake = "${config.users.users.${config.myConfig.user.name}.home}/opt/nixos-config";
       };
 
       dconf.enable = true;

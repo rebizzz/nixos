@@ -1,6 +1,6 @@
 {inputs, ...}: {
-  flake.modules.nixos.base = {
-    imports = with inputs.self.modules.nixos; [
+  flake.modules.nixos.base = {config, ...}: {
+    imports = [
       inputs.disko.nixosModules.disko
       inputs.preservation.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
@@ -8,48 +8,19 @@
       inputs.chaotic.nixosModules.default
       {nixpkgs.overlays = [inputs.niri.overlays.niri];}
       inputs.niri.nixosModules.niri
+    ] ++ (builtins.attrValues (builtins.removeAttrs inputs.self.modules.nixos ["base"]));
 
-      boot
-      nix
-      user
-      secrets
+    system.stateVersion = "26.11";
 
-      audio
-      display
-      gpu
-      network
-      power
-
-      hibernate
-      lock-before-sleep
-      noctalia-greeter
-      services
-      virtualisation
-
-      fonts
-      desktop
-      gaming
-      tools
-      nano
-
-      brave-policy
-
-      persistence
-
-      {
-        system.stateVersion = "26.11";
-
-        home-manager = {
-          extraSpecialArgs = {inherit inputs;};
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          users.rebiz = inputs.self.modules.homeManager.default;
-          backupFileExtension = "bak";
-          sharedModules = [
-            inputs.noctalia.homeModules.default
-          ];
-        };
-      }
-    ];
+    home-manager = {
+      extraSpecialArgs = {inherit inputs;};
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      users.${config.myConfig.user.name} = inputs.self.modules.homeManager.default;
+      backupFileExtension = "bak";
+      sharedModules = [
+        inputs.noctalia.homeModules.default
+      ];
+    };
   };
 }
