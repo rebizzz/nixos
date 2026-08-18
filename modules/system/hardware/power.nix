@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.power = {pkgs, ...}: {
+  flake.modules.nixos.power = {pkgs, lib, ...}: {
     services = {
       thermald.enable = true;
       scx-loader = {
@@ -13,6 +13,7 @@ _: {
         settings = {
           cgroup_load = false;
           apply_cgroup = false;
+          cgroup_realtime_workaround = lib.mkForce false;
         };
       };
       logind.settings.Login = {
