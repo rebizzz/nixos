@@ -36,7 +36,7 @@ _: {
         timeout = 3;
       };
 
-      kernelPackages = pkgs.linuxPackages_cachyos;
+      kernelPackages = pkgs.linuxPackages_latest;
       kernelModules = ["ntsync"];
       kernelParams = [
         "quiet"

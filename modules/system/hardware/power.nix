@@ -2,9 +2,9 @@ _: {
   flake.modules.nixos.power = {pkgs, lib, ...}: {
     services = {
       thermald.enable = true;
-      scx-loader = {
+      scx = {
         enable = true;
-        config.default_sched = "scx_lavd";
+        scheduler = "scx_lavd";
       };
       ananicy = {
         enable = true;

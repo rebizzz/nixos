@@ -5,7 +5,6 @@
       inputs.preservation.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
       inputs.sops-nix.nixosModules.sops
-      inputs.chaotic.nixosModules.default
       {nixpkgs.overlays = [inputs.niri.overlays.niri];}
       inputs.niri.nixosModules.niri
     ] ++ (builtins.attrValues (builtins.removeAttrs inputs.self.modules.nixos ["base"]));
