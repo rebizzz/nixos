@@ -46,6 +46,7 @@ _: {
         storage = "persistent";
         extraConfig = ''
           SystemMaxFiles=5
+          SystemMaxUse=50M
         '';
       };
 

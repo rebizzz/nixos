@@ -24,10 +24,6 @@ _: {
       };
     };
 
-    services.journald.extraConfig = ''
-      SystemMaxUse=50M
-    '';
-
     systemd.settings.Manager = {
       DefaultTimeoutStartSec = "15s";
       DefaultLimitNOFILE = "2048:2097152";
