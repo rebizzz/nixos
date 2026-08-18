@@ -45,7 +45,7 @@ _: {
           DNS = "45.90.28.0#NixOS-d4e7df.dns.nextdns.io 2a07:a8c0::#NixOS-d4e7df.dns.nextdns.io 45.90.30.0#NixOS-d4e7df.dns.nextdns.io 2a07:a8c1::#NixOS-d4e7df.dns.nextdns.io";
           DNSSEC = "yes";
           Domains = "~.";
-          DNSOverTLS = "yes";
+          DNSOverTLS = "opportunistic";
         };
       };
 
