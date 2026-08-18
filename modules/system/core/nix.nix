@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{inputs, lib, ...}: {
   flake.modules.nixos.nix = _: {
     nixpkgs.config.allowUnfree = true;
     programs = {
@@ -34,20 +34,22 @@
         download-buffer-size = 268435456;
         connect-timeout = 5;
 
-        substituters = [
+        substituters = lib.mkForce [
           "https://cache.nixos.org"
           "https://nix-community.cachix.org"
-          "https://noctalia.cachix.org"
+          "https://nyx-cache.chaotic.cx/"
           "https://niri-epireyn.cachix.org"
+          "https://noctalia.cachix.org"
         ];
 
         trusted-users = ["root" "@wheel"];
 
-        trusted-public-keys = [
+        trusted-public-keys = lib.mkForce [
           "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+          "nyx-cache.chaotic.cx:dJxTrgMC3V3cFfyIiBQDQorG6k1LsqurH/srpMSq7qk="
           "niri-epireyn.cachix.org-1:tlVyFN7CtsDT+ZcLPS+ekFWeT1X6X4OqvWqbBMyIzFA="
+          "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
         ];
 
         fallback = true;

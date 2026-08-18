@@ -26,7 +26,7 @@
     };
 
     services.flatpak.enable = true;
-
+    services.tailscale.enable = true;
     environment.systemPackages = [
       pkgs.nautilus
       pkgs.ffmpegthumbnailer
@@ -34,7 +34,6 @@
       pkgs.gnome-disk-utility
 
       pkgs.loupe
-
       pkgs.papers
       pkgs.xdg-utils
       pkgs.dex

@@ -7,7 +7,7 @@ _: {
         config.default_sched = "scx_lavd";
       };
       ananicy = {
-        enable = false;
+        enable = true;
         package = pkgs.ananicy-cpp;
         rulesProvider = pkgs.ananicy-rules-cachyos;
         settings = {
