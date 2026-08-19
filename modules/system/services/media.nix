@@ -1,5 +1,4 @@
 _: {
-  # optional, opt-in per host: http://nixos-server.local:8096
   flake.modules.nixos.media = {pkgs, ...}: {
     services.jellyfin = {
       enable = true;

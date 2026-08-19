@@ -18,7 +18,7 @@ _: {
             "aristides/udiskie"
             "yuuto/calculator"
           ];
-          auto_update = true; # Global auto-update for git plugin sources
+          auto_update = true;
           source = [
             {
               name = "official";
@@ -73,7 +73,7 @@ _: {
         theme = {
           mode = "dark";
           source = "wallpaper";
-          pure_black_dark = true; # AMOLED / Pure Black Mode
+          pure_black_dark = true;
           templates = {
             enable_builtin_templates = true;
             builtin_ids = ["ghostty" "gtk3" "gtk4" "niri"];

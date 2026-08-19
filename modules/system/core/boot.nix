@@ -8,7 +8,6 @@ _: {
       "esp4"
       "esp6"
       "rxrpc"
-      # exotic network protocols
       "dccp"
       "sctp"
       "rds"
@@ -17,7 +16,6 @@ _: {
       "netrom"
       "rose"
       "atm"
-      # legacy filesystems
       "cramfs"
       "freevxfs"
       "jffs2"

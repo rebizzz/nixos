@@ -1,9 +1,6 @@
-# Copy this directory to add a new host; also regenerate _hardware.nix's
-# boot.initrd.availableKernelModules from nixos-generate-config on the target.
 _: {
   hostName = "nixos-server";
 
-  # head -c4 /dev/urandom | od -A none -t x4
   hostId = "8425e349";
 
   timeZone = "Asia/Kolkata";

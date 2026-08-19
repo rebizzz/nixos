@@ -5,7 +5,7 @@
     programs.nixcord = {
       enable = true;
       discord = {
-        branches = [ "canary" ];
+        branches = ["canary"];
         equicord.enable = true;
         krisp.enable = true;
         openASAR.enable = true;
@@ -22,7 +22,6 @@
         ];
 
         plugins = {
-          # UI / QoL
           accountPanelServerProfile.enable = true;
           advancedPermissions.enable = true;
           alwaysExpandProfiles.enable = true;
