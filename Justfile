@@ -26,6 +26,22 @@ lint: deadnix statix
 update:
     nix flake update
 
+# Update a single flake input, e.g. just upp nixpkgs
+upp input:
+    nix flake update {{input}}
+
+# Pin nixpkgs to a specific commit for ad hoc testing
+override-pkgs hash:
+    nix flake update nixpkgs --override-input nixpkgs github:NixOS/nixpkgs/{{hash}}
+
+# Verify the nix store for corrupted entries
+verify-store:
+    nix store verify --all
+
+# Repair specific corrupted store paths
+repair-store *paths:
+    nix store repair {{paths}}
+
 # --- Laptop ---
 
 # Build and switch the laptop
@@ -35,6 +51,10 @@ switch:
 # Build without switching, sanity check
 build:
     sudo nixos-rebuild build --flake .#laptop
+
+# Set as next-boot generation without switching now
+boot:
+    sudo nixos-rebuild boot --flake .#laptop
 
 # --- Server (colmena) ---
 
@@ -52,3 +72,12 @@ server-apply:
 gc:
     sudo nix-collect-garbage --delete-older-than 7d
     nix-collect-garbage --delete-older-than 7d
+
+# List failed systemd units, useful on nixos-server
+list-failed:
+    systemctl list-units --all --state=failed
+
+# Remove all reflog entries and prune unreachable git objects
+ggc:
+    git reflog expire --expire-unreachable=now --all
+    git gc --prune=now
