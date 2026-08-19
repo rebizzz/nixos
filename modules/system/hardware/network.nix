@@ -38,11 +38,26 @@ _: {
       };
     };
 
+    sops.templates."resolved-nextdns.conf" = {
+      content = let
+        id = config.sops.placeholder.nextdns_profile_id;
+        label = "NixOS-${id}";
+      in ''
+        [Resolve]
+        DNS=45.90.28.0#${label}.dns.nextdns.io 2a07:a8c0::#${label}.dns.nextdns.io 45.90.30.0#${label}.dns.nextdns.io 2a07:a8c1::#${label}.dns.nextdns.io
+      '';
+      mode = "0444";
+    };
+
+    systemd.tmpfiles.rules = [
+      "d /etc/systemd/resolved.conf.d 0755 root root -"
+      "L+ /etc/systemd/resolved.conf.d/nextdns.conf - - - - ${config.sops.templates."resolved-nextdns.conf".path}"
+    ];
+
     services = {
       resolved = {
         enable = true;
         settings.Resolve = {
-          DNS = "45.90.28.0#NixOS-d4e7df.dns.nextdns.io 2a07:a8c0::#NixOS-d4e7df.dns.nextdns.io 45.90.30.0#NixOS-d4e7df.dns.nextdns.io 2a07:a8c1::#NixOS-d4e7df.dns.nextdns.io";
           DNSSEC = "yes";
           Domains = "~.";
           DNSOverTLS = "opportunistic";

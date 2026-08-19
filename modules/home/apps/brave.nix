@@ -22,7 +22,18 @@ in {
     };
   };
 
-  flake.modules.nixos.brave-policy = _: {
+  flake.modules.nixos.brave-policy = {config, ...}: {
+    sops.templates."brave-dns-policy.json" = {
+      content = builtins.toJSON {
+        DnsOverHttpsTemplates = "https://dns.nextdns.io/${config.sops.placeholder.nextdns_profile_id}/Brave";
+      };
+      mode = "0444";
+    };
+
+    systemd.tmpfiles.rules = [
+      "L+ /etc/brave/policies/managed/nextdns.json - - - - ${config.sops.templates."brave-dns-policy.json".path}"
+    ];
+
     programs.chromium = {
       enable = true;
       defaultSearchProviderEnabled = true;
@@ -32,7 +43,6 @@ in {
         PasswordManagerEnabled = false;
         BrowserSignin = 0;
         DnsOverHttpsMode = "secure";
-        DnsOverHttpsTemplates = "https://dns.nextdns.io/d4e7df/Brave";
         SyncDisabled = true;
         EnableMediaRouter = false;
         AudioCaptureAllowed = true;
