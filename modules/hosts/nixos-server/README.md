@@ -1,8 +1,10 @@
 # nixos-server
 
 Headless home server, codenamed "Fern" (see [../README.md](../README.md#naming-conventions)).
-Persistent Btrfs root, ZFS mirror for media/backup, Docker, Cockpit, Tailscale, weekly
-self-upgrade. Administered remotely via colmena, no keyboard attached.
+Btrfs root, wiped every reboot like `laptop`, just not via tmpfs: the `@` subvolume gets rolled
+back to a blank snapshot in initrd (`rollback-root` service in `_hardware.nix`) instead. ZFS
+mirror for media/backup, Docker, Cockpit, Tailscale, weekly self-upgrade. Administered remotely
+via colmena, no keyboard attached.
 
 Disk layout is declarative via [disko](./_disko.nix): Btrfs system disk (`/dev/sda`) plus a ZFS
 mirror across `/dev/sdb` and `/dev/sdc`.
