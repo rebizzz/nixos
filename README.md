@@ -104,23 +104,14 @@ Fallback without colmena:
 nixos-rebuild switch --flake .#nixos-server --target-host rebiz@nixos-server.local --use-remote-sudo
 ```
 
-For a from-scratch install, see [modules/hosts/README.md](modules/hosts/README.md).
+For a from-scratch install, see [modules/hosts/README.md](modules/hosts/README.md). For how
+secrets are shared between both hosts, see [secrets/README.md](secrets/README.md).
 
-## Development Shell
+## Development
 
-[direnv][direnv] is enabled on both hosts, with an `.envrc` at the repo root. Approve it once:
-
-```bash
-direnv allow
-```
-
-After that, `cd`-ing into the repo loads `colmena`, `sops`, `age`, and `just` automatically.
-Without direnv, `nix develop` does the same thing manually.
-
-## Common Commands
-
-The `Justfile` wraps the commands above plus formatting and linting, run `just --list` to see
-everything:
+[direnv][direnv] is enabled on both hosts. Approve it once with `direnv allow`, and from then on
+`cd`-ing into the repo loads `colmena`, `sops`, `age`, and `just` automatically, no `nix develop`
+needed. The `Justfile` wraps formatting, linting, and the deploy commands above:
 
 ```bash
 just fmt      # alejandra
@@ -129,19 +120,16 @@ just update   # nix flake update
 just gc       # garbage collect old generations, system and user
 ```
 
-## Secrets Management
+Run `just --list` to see every recipe.
 
-See [secrets/README.md](secrets/README.md) for how sops-nix and age are set up and shared between
-both hosts.
+---
 
 ## References
 
 - [mightyiam/dendritic][dendritic]
 - [NixOS & Flakes Book](https://nixos-and-flakes.thiscute.world/)
 
-## License
-
-[MIT](LICENSE)
+[MIT licensed](LICENSE).
 
 [Niri]: https://github.com/YaLTeR/niri
 [Noctalia]: https://github.com/noctalia-dev/noctalia
