@@ -13,6 +13,7 @@ _: {
         wifi = {
           powersave = false;
           backend = "wpa_supplicant";
+          macAddress = "stable";
         };
         ensureProfiles = {
           environmentFiles = [config.sops.templates."network-manager.env".path];
