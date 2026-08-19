@@ -14,7 +14,11 @@
         Type = "oneshot";
         User = user.name;
         Environment = "XDG_RUNTIME_DIR=/run/user/${toString user.uid}";
-        ExecStart = "${inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/noctalia msg session lock";
+        # caelestia's lock IPC target -- verify with `caelestia shell lock lock`
+        # after switching; this is inferred from the shell's documented IPC
+        # surface (`caelestia shell <target> <function>`), not directly
+        # confirmed against a running instance.
+        ExecStart = "${inputs.caelestia-cli.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/caelestia shell lock lock";
         TimeoutStartSec = "10s";
       };
     };

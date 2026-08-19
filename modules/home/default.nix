@@ -11,8 +11,8 @@ in {
   flake.modules.homeManager.default = {pkgs, ...}: {
     imports = with inputs.self.modules.homeManager; [
       inputs.nix-index-database.homeModules.nix-index
-      niri
-      noctalia
+      hyprland
+      caelestia
       ghostty
       fish
       git
@@ -30,8 +30,6 @@ in {
       stateVersion = "26.11";
       packages = [
         pkgs.gpu-screen-recorder
-        # udiskie-info/-mount/-umount, shelled out to by the noctalia udiskie plugin
-        pkgs.udiskie
       ];
       file = {
         ".face".source = ../../assets/avatar.jpeg;

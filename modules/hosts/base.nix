@@ -5,8 +5,6 @@
       inputs.preservation.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
       inputs.sops-nix.nixosModules.sops
-      {nixpkgs.overlays = [inputs.niri.overlays.niri];}
-      inputs.niri.nixosModules.niri
     ] ++ (builtins.attrValues (builtins.removeAttrs inputs.self.modules.nixos ["base"]));
 
     system.stateVersion = "26.11";
@@ -18,7 +16,7 @@
       users.${config.myConfig.user.name} = inputs.self.modules.homeManager.default;
       backupFileExtension = "bak";
       sharedModules = [
-        inputs.noctalia.homeModules.default
+        inputs.caelestia-shell.homeManagerModules.default
       ];
     };
   };

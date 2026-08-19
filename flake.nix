@@ -1,5 +1,5 @@
 {
-  description = "NixOS - Niri + Noctalia (dendritic)";
+  description = "NixOS - Hyprland + Caelestia (dendritic)";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -30,9 +30,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri.url = "github:epireyn/niri-flake";
-    noctalia.url = "github:noctalia-dev/noctalia/cachix";
-    noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
+    hyprland.url = "github:hyprwm/Hyprland";
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.caelestia-cli.follows = "caelestia-cli";
+    };
+    caelestia-cli = {
+      url = "github:caelestia-dots/cli";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
