@@ -9,8 +9,8 @@ This flake doesn't duplicate the disk layout, it imports the real
 [`_hardware.nix`](../modules/hosts/laptop/_hardware.nix) directly from the main flake, so there's
 one source of truth and no drift between "what I tested" and "what actually deploys."
 
-> [!WARNING]
-> Don't run this against a disk you care about. The disko step below is destructive.
+> :red_circle: **IMPORTANT**: **Don't run this against a disk you care about.** The disko step
+> below is destructive.
 
 ## Steps
 

@@ -24,10 +24,10 @@ steadiest travelers:
 Both hosts share one flake, one module tree, and one secrets file. See
 [modules/hosts](modules/hosts/README.md) for details of each host.
 
-> [!WARNING]
-> Don't deploy this flake directly on your own machine, it will not succeed. It contains my
-> hardware configuration (disk layout, LUKS device paths, `hostId`s) and its secrets are encrypted
-> to my personal `age` key. Use it as a reference for your own config, not a drop-in install.
+> :red_circle: **IMPORTANT**: **Don't deploy this flake directly on your own machine, it will not
+> succeed.** It contains my hardware configuration (disk layout, LUKS device paths, `hostId`s) and
+> its secrets are encrypted to my personal `age` key. Use it as a reference for your own config,
+> not a drop-in install.
 
 ## Components
 

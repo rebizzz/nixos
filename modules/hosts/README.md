@@ -22,10 +22,11 @@ explicitly by path instead.
 
 ## Naming Conventions
 
-`laptop` goes by "Frieren" and `nixos-server` by "Fern" around here, after the two leads of
-*Frieren: Beyond Journey's End*, the elf who takes the long view and the apprentice who does the
-steady day to day work. Purely a README nicety, `networking.hostName` stays `nixos` and
-`nixos-server`, so remote reachability over mDNS doesn't depend on it.
+Codenamed after *Frieren: Beyond Journey's End*, purely a README nicety, `networking.hostName`
+stays `nixos` and `nixos-server`, so remote reachability over mDNS doesn't depend on it:
+
+- **`laptop`**: "Frieren", the one who takes the long view.
+- **`nixos-server`**: "Fern", the one who does the steady day to day work.
 
 ## How Module Wiring Differs Per Host
 
