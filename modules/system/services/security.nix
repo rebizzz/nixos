@@ -78,8 +78,8 @@ _: {
       "vm.watermark_boost_factor" = 0;
       "vm.watermark_scale_factor" = 125;
 
-      "vm.dirty_background_bytes" = 67108864; # 64 MiB
-      "vm.dirty_bytes" = 268435456; # 256 MiB
+      "vm.dirty_background_bytes" = 67108864;
+      "vm.dirty_bytes" = 268435456;
       "vm.dirty_writeback_centisecs" = 1500;
       "vm.dirty_expire_centisecs" = 1500;
 

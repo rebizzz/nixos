@@ -4,8 +4,6 @@
 default:
     @just --list
 
-# --- Nix ---
-
 # Format all nix files
 fmt:
     nix run nixpkgs#alejandra -- .
@@ -42,10 +40,6 @@ verify-store:
 repair-store *paths:
     nix store repair {{paths}}
 
-# --- Laptop ---
-# nh is only enabled on laptop (desktop module), it wraps nixos-rebuild with a
-# generation diff and knows the flake path via programs.nh.flake.
-
 # Build and switch the laptop
 switch:
     nh os switch
@@ -58,8 +52,6 @@ build:
 boot:
     nh os boot
 
-# --- Server (colmena) ---
-
 # Build the server config without deploying
 server-build:
     colmena build --on nixos-server
@@ -67,8 +59,6 @@ server-build:
 # Build and deploy to the server over SSH
 server-apply:
     colmena apply --on nixos-server
-
-# --- Housekeeping ---
 
 # Garbage collect old generations, system and user
 gc:
