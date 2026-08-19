@@ -6,10 +6,10 @@ plus its own hardware/disk layout.
 
 ## Current Host Inventory
 
-| Host           | Platform | Hardware                                 | Role                  | Status    |
-| -------------- | -------- | ----------------------------------------- | ---------------------- | --------- |
-| `laptop`       | NixOS    | Intel laptop, NVMe (LUKS + LVM + Btrfs)   | Daily-driver desktop   | ✅ Active |
-| `nixos-server` | NixOS    | Intel box, Btrfs SSD + 2x HDD ZFS mirror  | Headless home server   | ✅ Active |
+| Host                                  | Platform | Hardware                                 | Role                  | Status    |
+| -------------------------------------- | -------- | ----------------------------------------- | ---------------------- | --------- |
+| [`laptop`](laptop/README.md)           | NixOS    | Intel laptop, NVMe (LUKS + LVM + Btrfs)   | Daily-driver desktop   | ✅ Active |
+| [`nixos-server`](nixos-server/README.md) | NixOS    | Intel box, Btrfs SSD + 2x HDD ZFS mirror  | Headless home server   | ✅ Active |
 
 - **`laptop`**: `tmpfs` root wiped on every reboot, Niri + Noctalia desktop, home-manager.
 - **`nixos-server`**: persistent Btrfs root, ZFS mirror for media/backup/storage, Docker, Cockpit,

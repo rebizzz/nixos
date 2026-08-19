@@ -64,3 +64,16 @@ can change one without touching the other. Passwords are not stored in plaintext
    sudo cp /tmp/keys.txt /persistent/etc/sops/age/keys.txt
    sudo chmod 600 /persistent/etc/sops/age/keys.txt
    ```
+
+## Troubleshooting
+
+**`sops: error while loading directory: no age key found`**: `SOPS_AGE_KEY_FILE` isn't set, or
+points at the wrong path. Export it in the current shell before running `sops`, it's not read from
+`.sops.yaml`.
+
+**A rebuild fails to decrypt a secret after adding a new host's key**: you edited `.sops.yaml` but
+forgot to run `sops updatekeys secrets/secrets.yaml`, the data key is still wrapped only for the
+old recipient set.
+
+**Locked out because `keys.txt` is gone**: without it or `nixos-server`'s SSH host key, the secrets
+in `secrets.yaml` are unrecoverable. This is why the backup copy on a USB drive matters.
