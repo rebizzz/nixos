@@ -18,10 +18,6 @@ _: {
         name = "MoreWaita";
         package = pkgs.morewaita-icon-theme;
       };
-      cursorTheme = {
-        name = "Bibata-Modern-Classic";
-        package = pkgs.bibata-cursors;
-      };
       font = {
         name = "Inter";
         size = 11;

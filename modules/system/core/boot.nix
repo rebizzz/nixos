@@ -39,7 +39,6 @@ _: {
       kernelParams = [
         "quiet"
         "splash"
-        "loglevel=3"
 
         "rd.udev.log_level=3"
         "udev.log_level=0"
@@ -67,8 +66,6 @@ _: {
         "vm.watermark_scale_factor" = 125;
         "vm.dirty_bytes" = 268435456;
         "vm.dirty_background_bytes" = 67108864;
-
-        "kernel.nmi_watchdog" = 0;
 
         "kernel.kptr_restrict" = 2;
         "kernel.dmesg_restrict" = 1;

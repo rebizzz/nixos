@@ -9,6 +9,8 @@ _: {
         init.defaultBranch = "main";
         core.editor = "nano";
         diff.colorMoved = "zebra";
+        push.autoSetupRemote = true;
+        rerere.enabled = true;
       };
     };
   };

@@ -13,7 +13,6 @@ _: {
       enableSystemSlice = true;
     };
 
-    services.thermald.enable = true;
     powerManagement.cpuFreqGovernor = "ondemand";
 
     systemd.settings.Manager = {

@@ -1,5 +1,9 @@
 _: {
-  flake.modules.nixos.power = {pkgs, lib, ...}: {
+  flake.modules.nixos.power = {
+    pkgs,
+    lib,
+    ...
+  }: {
     services = {
       thermald.enable = true;
       scx = {

@@ -27,7 +27,6 @@ _: {
         };
         interactiveShellInit = ''
           set -g fish_greeting ""
-          fastfetch -c examples/13.jsonc
         '';
       };
     };

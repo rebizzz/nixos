@@ -1,5 +1,11 @@
 _: {
-  flake.modules.nixos.cachyos-tuning = {lib, ...}: {
+  flake.modules.nixos.cachyos-tuning = {
+    lib,
+    config,
+    ...
+  }: let
+    diskDevice = lib.removePrefix "/dev/" config.host.disk.device;
+  in {
     boot = {
       blacklistedKernelModules = [
         "iTCO_wdt"
@@ -20,7 +26,7 @@ _: {
           defrag = "defer+madvise";
           khugepaged.max_ptes_none = 409;
         };
-        block.nvme0n1.queue.scheduler = "kyber";
+        block.${diskDevice}.queue.scheduler = "kyber";
       };
     };
 

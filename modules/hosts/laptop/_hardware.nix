@@ -28,6 +28,7 @@ in {
       "i915.enable_guc=3"
       "i915.enable_psr=2"
       "i915.enable_psr2_sel_fetch=1"
+      "i915.enable_fbc=1"
       "i915.fastboot=1"
     ];
     blacklistedKernelModules = [
