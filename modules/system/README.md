@@ -23,11 +23,11 @@ for `nixos-server`, because the underlying config genuinely differs per host cla
 into one module would mean fighting over the same options, e.g. `laptop`'s `auto-cpufreq` battery
 profiles vs `nixos-server`'s static `ondemand` governor:
 
-| Concern     | `laptop`                          | `nixos-server`                    |
-| ----------- | ---------------------------------- | ----------------------------------- |
-| Power       | `power` (hardware/power.nix)       | `power-server` (hardware/power-server.nix) |
-| Services    | `services` (services/services.nix) | `services-server` (services/services-server.nix) |
-| Persistence | `persistence` (desktop/persistence.nix) | `persistence-server` (services/persistence-server.nix) |
+| Concern     | `laptop`                                | `nixos-server`                                     |
+| ----------- | ---------------------------------------- | ---------------------------------------------------- |
+| Power       | `power` (hardware/power.nix)             | `power-server` (hardware/power-server.nix)           |
+| Services    | `services` (services/services.nix)       | `services-server` (services/services-server.nix)     |
+| Persistence | `persistence` (desktop/persistence.nix)  | `persistence-server` (services/persistence-server.nix) |
 
 Everything else in `core/` (`nix`, `secrets`, `user`) is genuinely shared and pulled into both
 hosts via `../hosts/base.nix`. Everything in `desktop/` and most of `hardware/` only makes sense on
