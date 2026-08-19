@@ -13,16 +13,10 @@
   <em>"Since I have unlimited time, I thought I could get to know you slowly."</em>, Frieren
 </p>
 
-This repository is home to the nix code that builds my systems, codenamed after Frieren's two
-steadiest travelers:
-
-1. **`laptop`** ("Frieren"): NixOS desktop, [Niri][Niri] + [Noctalia][Noctalia] on a `tmpfs` root
-   wiped every reboot. Always around, rebuilt from scratch each time and none the worse for it.
-2. **`nixos-server`** ("Fern"): headless home server, ZFS mirror, Docker, Jellyfin, self-upgrades
-   weekly. Does the unglamorous work quietly in the background.
-
-Both hosts share one flake, one module tree, and one secrets file. See
-[modules/hosts](modules/hosts/README.md) for details of each host.
+One flake, two machines, codenamed after Frieren's two steadiest travelers. `laptop` ("Frieren")
+is a NixOS desktop with [Niri][Niri] + [Noctalia][Noctalia] on a `tmpfs` root wiped every reboot.
+`nixos-server` ("Fern") is a headless home server with a ZFS mirror, Docker, and Jellyfin, that
+self-upgrades weekly. See [modules/hosts](modules/hosts/README.md) for details of each host.
 
 > :red_circle: **IMPORTANT**: **Don't deploy this flake directly on your own machine, it will not
 > succeed.** It contains my hardware configuration (disk layout, LUKS device paths, `hostId`s) and
@@ -31,7 +25,7 @@ Both hosts share one flake, one module tree, and one secrets file. See
 
 ## Components
 
-| |  |
+| Category | Choice |
 | --- | --- |
 | **Window Manager** | [Niri][Niri] |
 | **Shell / Bar** | [Noctalia][Noctalia] |
