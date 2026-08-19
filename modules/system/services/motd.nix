@@ -158,6 +158,9 @@ _: {
     '';
   in {
     environment.interactiveShellInit = "${motdScript}";
-    programs.fish.interactiveShellInit = "${motdScript}";
+    programs.fish.interactiveShellInit = ''
+      set -g fish_greeting ""
+      ${motdScript}
+    '';
   };
 }
