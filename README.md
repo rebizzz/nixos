@@ -25,7 +25,7 @@ Both hosts share one flake, one module tree, and one secrets file. See
 - **Storage:** Btrfs + LUKS + LVM (`laptop`), Btrfs system disk + ZFS mirror data pool (`nixos-server`)
 - **Containers / Media:** Docker, Jellyfin (opt-in), Cockpit, Tailscale, `nixos-server` only
 - **Secrets:** [sops-nix](https://github.com/Mic92/sops-nix) with `age` keys
-- **Remote deploy:** [deploy-rs](https://github.com/serokell/deploy-rs), for pushing to `nixos-server`
+- **Remote deploy:** [colmena](https://github.com/nix-community/colmena), for pushing to `nixos-server`
 - **Modules:** dendritic pattern via `flake-parts` + `import-tree`. Every file declares its own
   module and gets picked up automatically.
 
@@ -75,19 +75,20 @@ so these are deliberately excluded from that auto-discovery and wired in explici
 `nixos-server` is administered remotely, there's no keyboard on it.
 
 ```bash
-nix develop   # brings deploy-rs, sops, age into PATH
+nix develop   # brings colmena, sops, age into PATH
 
-# check syntax + deploy-rs schema first
-nix flake check
+# build without deploying, good for a quick sanity check
+colmena build --on nixos-server
 
-# deploy over SSH (auto-rollback if the new generation doesn't check in)
-deploy .#nixos-server
+# build and deploy over SSH
+colmena apply --on nixos-server
 ```
 
-`flake.deploy.nodes.nixos-server` (in `modules/hosts/nixos-server/default.nix`) targets
-`rebiz@nixos-server.local` as `root`, with `magicRollback` and `autoRollback` enabled.
+The `nixos-server` colmena node (in `modules/hosts/nixos-server/default.nix`) connects as
+`rebiz@nixos-server.local` and escalates via passwordless `sudo`. It's tagged `server`, so
+`colmena apply --on @server` works too, useful once there's more than one server host.
 
-Fallback without deploy-rs:
+Fallback without colmena:
 
 ```bash
 nixos-rebuild switch --flake .#nixos-server --target-host rebiz@nixos-server.local --use-remote-sudo

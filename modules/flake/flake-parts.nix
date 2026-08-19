@@ -1,4 +1,6 @@
 {inputs, ...}: {
+  systems = ["x86_64-linux"];
+
   imports = [inputs.flake-parts.flakeModules.modules];
 
   perSystem = {
@@ -6,11 +8,9 @@
     system,
     ...
   }: {
-    checks = inputs.deploy-rs.lib.${system}.deployChecks (inputs.self.deploy or {});
-
     devShells.default = pkgs.mkShell {
       packages = [
-        inputs.deploy-rs.packages.${system}.default
+        inputs.colmena.packages.${system}.colmena
         pkgs.sops
         pkgs.age
         pkgs.nixos-anywhere
