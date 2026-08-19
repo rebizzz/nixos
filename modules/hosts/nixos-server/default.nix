@@ -60,16 +60,22 @@ in {
       inherit modules;
     };
 
-    colmena.meta.nodeSpecialArgs.${hostVars.hostName} = {inherit hostVars;};
-
-    colmena.${hostVars.hostName} = {
-      deployment = {
-        targetHost = "${hostVars.hostName}.local";
-        targetUser = "rebiz";
-        tags = ["server"];
-        sshOptions = ["-o" "StrictHostKeyChecking=accept-new"];
+    colmena = {
+      meta = {
+        nixpkgs = import inputs.nixpkgs {system = "x86_64-linux";};
+        specialArgs = {inherit inputs;};
+        nodeSpecialArgs.${hostVars.hostName} = {inherit hostVars;};
       };
-      imports = modules;
+
+      ${hostVars.hostName} = {
+        deployment = {
+          targetHost = "${hostVars.hostName}.local";
+          targetUser = "rebiz";
+          tags = ["server"];
+          sshOptions = ["-o" "StrictHostKeyChecking=accept-new"];
+        };
+        imports = modules;
+      };
     };
   };
 }

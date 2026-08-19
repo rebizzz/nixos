@@ -44,6 +44,7 @@
           "https://nix-community.cachix.org"
           "https://niri-epireyn.cachix.org"
           "https://noctalia.cachix.org"
+          "https://colmena.cachix.org"
         ];
 
         trusted-users = ["root" "@wheel"];
@@ -53,6 +54,7 @@
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
           "niri-epireyn.cachix.org-1:tlVyFN7CtsDT+ZcLPS+ekFWeT1X6X4OqvWqbBMyIzFA="
           "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+          "colmena.cachix.org-1:7BzpDnjjH8ki2CT3f6GdOk7QAzPOl+1t3LvTLXqYcSg="
         ];
 
         fallback = true;
