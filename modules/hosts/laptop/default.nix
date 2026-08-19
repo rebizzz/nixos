@@ -6,6 +6,7 @@
         inputs.self.modules.nixos.base
         inputs.self.modules.nixos.audio
         inputs.self.modules.nixos.boot
+        inputs.self.modules.nixos.brave-policy
         inputs.self.modules.nixos.cachyos-tuning
         inputs.self.modules.nixos.desktop
         inputs.self.modules.nixos.display
