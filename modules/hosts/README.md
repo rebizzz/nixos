@@ -20,6 +20,13 @@ Files prefixed with `_` (`_host.nix`, `_disko.nix`, `_hardware.nix`) are plain d
 not flake-parts modules. `import-tree` skips them, so each host's `default.nix` imports them
 explicitly by path instead.
 
+## Naming Conventions
+
+`laptop` goes by "Frieren" and `nixos-server` by "Fern" around here, after the two leads of
+*Frieren: Beyond Journey's End*, the elf who takes the long view and the apprentice who does the
+steady day to day work. Purely a README nicety, `networking.hostName` stays `nixos` and
+`nixos-server`, so remote reachability over mDNS doesn't depend on it.
+
 ## How Module Wiring Differs Per Host
 
 Both hosts import `inputs.self.modules.nixos.base` (defined in `../base.nix`), which only carries

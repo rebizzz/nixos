@@ -52,10 +52,11 @@ Both hosts share one flake, one module tree, and one secrets file. See
 ├── Justfile     # just --list for build/lint/deploy shortcuts
 ├── assets/      # Wallpapers and avatar image
 ├── secrets/     # sops-nix encrypted secrets, shared by both hosts
-└── modules/
-    ├── hosts/   # One directory per machine, see modules/hosts/README.md
-    ├── system/  # System modules (boot, hardware, services), see modules/system/README.md
-    └── home/    # Home-Manager modules (apps, shell, theming), laptop only
+└── modules/     # see modules/README.md
+    ├── flake/   # flake-parts wiring: devShell, colmena hive
+    ├── hosts/   # One directory per machine
+    ├── system/  # NixOS modules (boot, hardware, services)
+    └── home/    # Home Manager modules, laptop only
 ```
 
 Files prefixed with `_` (e.g. `_host.nix`, `_disko.nix`, `_hardware.nix`) are plain data/host
@@ -141,10 +142,6 @@ both hosts.
 
 ## References
 
-Structure, module layout, and docs are modeled after [ryan4yin/nix-config][ryan4yin], the closest
-thing to a reference implementation of the dendritic pattern at this scale.
-
-- [ryan4yin/nix-config][ryan4yin]
 - [mightyiam/dendritic][dendritic]
 - [NixOS & Flakes Book](https://nixos-and-flakes.thiscute.world/)
 
@@ -164,5 +161,4 @@ thing to a reference implementation of the dendritic pattern at this scale.
 [flake-parts]: https://flake.parts/
 [import-tree]: https://github.com/vic/import-tree
 [direnv]: https://direnv.net/
-[ryan4yin]: https://github.com/ryan4yin/nix-config
 [dendritic]: https://github.com/mightyiam/dendritic
