@@ -20,10 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    colmena = {
-      url = "github:nix-community/colmena";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    colmena.url = "github:nix-community/colmena";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
