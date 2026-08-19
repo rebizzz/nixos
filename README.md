@@ -70,18 +70,22 @@ so these are deliberately excluded from that auto-discovery and wired in explici
    sudo reboot
    ```
 
+Day to day, `sudo nixos-rebuild switch --flake .#laptop` or `just switch` both work.
+
 ## Deploying to the Server
 
 `nixos-server` is administered remotely, there's no keyboard on it.
 
 ```bash
-nix develop   # brings colmena, sops, age into PATH
+nix develop   # brings colmena, sops, age, just into PATH
 
 # build without deploying, good for a quick sanity check
 colmena build --on nixos-server
+just server-build   # same thing
 
 # build and deploy over SSH
 colmena apply --on nixos-server
+just server-apply   # same thing
 ```
 
 The `nixos-server` colmena node (in `modules/hosts/nixos-server/default.nix`) connects as
@@ -95,6 +99,18 @@ nixos-rebuild switch --flake .#nixos-server --target-host rebiz@nixos-server.loc
 ```
 
 For a from-scratch install, see [modules/hosts/README.md](modules/hosts/README.md).
+
+## Common Commands
+
+A `Justfile` wraps the commands above plus formatting and linting. Run `just --list` to see
+everything, or `just` with no args does the same.
+
+```bash
+just fmt      # alejandra
+just lint     # deadnix + statix + nix flake check
+just update   # nix flake update
+just gc       # garbage collect old generations, system and user
+```
 
 ## Secrets Management
 

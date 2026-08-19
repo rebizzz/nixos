@@ -9,7 +9,6 @@
 
       nh = {
         enable = true;
-        clean.enable = false; # nix.gc.automatic already handles this
         flake = "${config.users.users.${config.myConfig.user.name}.home}/opt/nixos-config";
       };
 

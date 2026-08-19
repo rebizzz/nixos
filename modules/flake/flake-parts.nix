@@ -14,6 +14,7 @@
         pkgs.sops
         pkgs.age
         pkgs.nixos-anywhere
+        pkgs.just
       ];
     };
   };
