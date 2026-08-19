@@ -1,0 +1,2 @@
+# ignore flake.lock here, always float to latest nixos-unstable at install time
+flake.lock
