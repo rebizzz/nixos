@@ -23,18 +23,21 @@ explicitly by path instead.
 ## How Module Wiring Differs Per Host
 
 Both hosts import `inputs.self.modules.nixos.base` (defined in `../base.nix`), which only carries
-what's genuinely common: disko/preservation/sops-nix, and the shared `nix`/`secrets`/`user`
-modules. Everything else is host-class-specific and wired explicitly:
+what's genuinely common: disko/preservation/sops-nix, direnv, and the shared `nix`/`secrets`/`user`
+modules. Everything else is host-class-specific and listed explicitly in each host's `default.nix`:
 
-- `laptop/default.nix` pulls in home-manager, niri, and every other self-registered
-  `flake.modules.nixos.*` module except the ones reserved for `nixos-server` (see the
-  `excludedModules` list at the top of that file). New desktop modules get auto-picked-up the
-  moment you add the file, dendritic-style.
-- `nixos-server/default.nix` lists its modules explicitly (`autoupgrade`, `zfs`, `containers`,
-  `motd`, `networking`, `security`, `persistence-server`, `power-server`, `services-server`, plus
-  the opt-in `media` for Jellyfin). GUI/desktop modules would either be meaningless or fail to
-  evaluate on a headless box, since several need `hostVars`, a specialArg only `nixos-server`
-  receives.
+- `laptop/default.nix` lists every desktop module by name (`audio`, `boot`, `desktop`, `gpu`,
+  `services`, and so on), plus home-manager and niri.
+- `nixos-server/default.nix` lists its own set (`autoupgrade`, `zfs`, `containers`, `motd`,
+  `networking`, `security`, `persistence-server`, `power-server`, `services-server`, plus the
+  opt-in `media` for Jellyfin). GUI/desktop modules would either be meaningless or fail to evaluate
+  on a headless box, since several read `hostVars`, a specialArg only `nixos-server` receives.
+
+Neither host auto-picks-up new modules. A new `.nix` file under `modules/system/` registers itself
+(dendritic pattern, see [../system/README.md](../system/README.md)), but a host only gets it once
+you add it to that host's `modules` list by name. This is more typing than an exclude list, but it
+means you can diff a host's `default.nix` and see exactly what's on it, no separate exclusion list
+to keep in sync.
 
 This split exists because a handful of module names are legitimately different per host class:
 `power` vs `power-server`, `services` vs `services-server`, `persistence` vs `persistence-server`.

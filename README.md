@@ -27,7 +27,8 @@ Both hosts share one flake, one module tree, and one secrets file. See
 - **Secrets:** [sops-nix](https://github.com/Mic92/sops-nix) with `age` keys
 - **Remote deploy:** [colmena](https://github.com/nix-community/colmena), for pushing to `nixos-server`
 - **Modules:** dendritic pattern via `flake-parts` + `import-tree`. Every file declares its own
-  module and gets picked up automatically.
+  module, but each host lists which ones it actually uses (see
+  [modules/hosts](modules/hosts/README.md)).
 
 ## Directory Structure
 
@@ -111,6 +112,10 @@ just lint     # deadnix + statix + nix flake check
 just update   # nix flake update
 just gc       # garbage collect old generations, system and user
 ```
+
+`direnv` is enabled on both hosts, and there's an `.envrc` at the repo root, so `cd`-ing in drops
+you straight into the dev shell (colmena, sops, age, just) without typing `nix develop`. First
+time in the repo, run `direnv allow` once.
 
 ## Secrets Management
 

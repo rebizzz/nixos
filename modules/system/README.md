@@ -39,6 +39,6 @@ See [../hosts/README.md](../hosts/README.md) for how each host picks which modul
 ## Adding a Module
 
 Drop a new `.nix` file anywhere under here with `flake.modules.nixos.<name> = { ... }: { ... };`
-and it's picked up automatically. If it's desktop-only, `laptop` will pull it in without any
-further wiring (see the `excludedModules` list in `../hosts/laptop/default.nix`). If it's
-server-only, add it to the explicit module list in `../hosts/nixos-server/default.nix`.
+and it registers itself, no imports list to touch in this directory. It's not live on any host
+until you add `inputs.self.modules.nixos.<name>` to that host's `modules` list in
+`../hosts/laptop/default.nix` and/or `../hosts/nixos-server/default.nix`, whichever needs it.
