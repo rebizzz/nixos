@@ -14,6 +14,10 @@
     inputs.self.modules.nixos.services-server
     # Jellyfin is opt-in: uncomment to enable media serving on this host.
     # inputs.self.modules.nixos.media
+    # Media/arr stack (nixarr: Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr,
+    # Transmission, Recyclarr) is opt-in: uncomment to enable, then add
+    # indexers in Prowlarr (ports 8096/8989/7878/9696/9091).
+    # inputs.self.modules.nixos.nixarr
     ./_disko.nix
     ./_hardware.nix
     ({
