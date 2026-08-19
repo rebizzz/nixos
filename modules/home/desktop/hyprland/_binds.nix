@@ -85,8 +85,9 @@ in {
       {_args = ["SUPER + E" (dsp "exec_cmd(\"${fileExplorer}\")")];}
       {_args = ["CTRL + ALT + V" (dsp "exec_cmd(\"${audioSettings}\")")];}
 
-      # Utilities
-      {_args = ["Print" (dsp "exec_cmd(\"caelestia screenshot\")") {locked = true;}];}
+      # Utilities. Print goes through satty, not caelestia's own screenshot
+      # command (which hardcodes swappy).
+      {_args = ["Print" (dsp "exec_cmd(\"grim - | satty --filename - --copy-command wl-copy --early-exit --output-filename $HOME/Pictures/Screenshots/Screenshot_$(date +%Y-%m-%d_%H-%M-%S).png\")")];}
       {_args = ["SUPER + SHIFT + S" (dsp "global(\"caelestia:screenshotFreeze\")")];}
       {_args = ["SUPER + SHIFT + ALT + S" (dsp "global(\"caelestia:screenshot\")")];}
       {_args = ["CTRL + ALT + R" (dsp "exec_cmd(\"caelestia record\")")];}

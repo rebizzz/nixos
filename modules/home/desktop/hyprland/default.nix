@@ -6,6 +6,7 @@ _: {
       ./_binds.nix
       ./_extra.nix
       ./_exec.nix
+      ./_scheme.nix
     ];
 
     home.packages = with pkgs; [
@@ -13,6 +14,7 @@ _: {
       cliphist
       trash-cli
       gammastep
+      grim
     ];
 
     wayland.windowManager.hyprland = {

@@ -30,10 +30,14 @@ this repo's import-tree auto-discovery (same convention as `_disko.nix`).
   caelestia's own defaults (foot/firefox/thunar/codium).
 - Cursor theme is `Bibata-Modern-Classic` (matches the old niri setup)
   instead of caelestia's `sweet-cursors`.
-- Colour scheme is a static snapshot of caelestia's defaults. The real
-  caelestia dots regenerate this live from your wallpaper; that mechanism
-  is Lua-runtime-specific and isn't wired up here, so Hyprland's
-  border/group colours stay fixed until hand-edited in `_lib.nix`.
+- Colour scheme is wallpaper-reactive: `_scheme.nix` seeds
+  `~/.config/hypr/scheme/default.lua` and bootstraps `current.lua` from it
+  once, then leaves `current.lua` alone so `caelestia wallpaper`/
+  `caelestia scheme set` can freely rewrite it. Border/group/misc colours
+  in `_extra.nix` `require()` that file live.
+- Screenshots (Print) pipe `grim | satty` directly, same as the old
+  noctalia config, instead of caelestia's own screenshot command (which
+  hardcodes swappy).
 - Workspace groups (a second set of 10 workspaces via Ctrl+Super) dropped
   entirely, by request. Workspace switching is single-tier now.
 - Bumped `Super+Alt+F12` test-notification bind, not useful outside dev.
@@ -123,7 +127,7 @@ this repo's import-tree auto-discovery (same convention as `_disko.nix`).
 
 | Bind | Action |
 |---|---|
-| Print | Screenshot |
+| Print | Screenshot (satty: Ctrl+C copy, Ctrl+S save) |
 | Super+Shift+S | Screenshot (freeze) |
 | Super+Shift+Alt+S | Screenshot (region) |
 | Ctrl+Alt+R | Record |

@@ -5,6 +5,43 @@ in {
   # Real Lua logic for the 3 features that can't be plain Nix: resize,
   # PiP, and the special-workspace launcher. See README.md.
   wayland.windowManager.hyprland.extraConfig = ''
+    -- live colour scheme, rewritten by caelestia-cli, see _scheme.nix
+    local scheme = require("scheme.current")
+
+    hl.config({
+        general = {
+            col = {
+                active_border = "rgba(" .. scheme.primary .. "e6)",
+                inactive_border = "rgba(" .. scheme.outline .. "11)",
+            },
+        },
+        decoration = {
+            shadow = {
+                color = "rgba(" .. scheme.inversePrimary .. "10)",
+            },
+        },
+        group = {
+            col = {
+                border_active = "rgba(" .. scheme.primary .. "e6)",
+                border_inactive = "rgba(" .. scheme.outline .. "11)",
+                border_locked_active = "rgba(" .. scheme.primary .. "e6)",
+                border_locked_inactive = "rgba(" .. scheme.outline .. "11)",
+            },
+            groupbar = {
+                text_color = "rgb(" .. scheme.onPrimary .. ")",
+                col = {
+                    active = "rgba(" .. scheme.primary .. "d4)",
+                    inactive = "rgba(" .. scheme.outline .. "d4)",
+                    locked_active = "rgba(" .. scheme.primary .. "d4)",
+                    locked_inactive = "rgba(" .. scheme.secondary .. "d4)",
+                },
+            },
+        },
+        misc = {
+            background_color = "rgb(" .. scheme.surfaceContainer .. ")",
+        },
+    })
+
     -- json.lua (c) 2020 rxi, MIT. https://github.com/rxi/json.lua
     -- needed by load_toggle_config() below to read cli.json
     local json = {}

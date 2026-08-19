@@ -11,9 +11,9 @@ My personal NixOS setup for laptop. Uses a `tmpfs` root partition (wiped on ever
 
 - **OS:** NixOS (unstable)
 - **Kernel:** CachyOS kernel (BORE scheduler) via [chaotic-nyx](https://github.com/chaotic-cx/nyx)
-- **WM:** [Niri](https://github.com/YaLTeR/niri) (scrollable tiling Wayland compositor)
-- **Bar / Shell:** [Noctalia](https://github.com/noctalia-dev/noctalia)
-- **Greeter:** Noctalia Greeter
+- **WM:** [Hyprland](https://github.com/hyprwm/Hyprland) (tiling Wayland compositor)
+- **Bar / Shell:** [caelestia-shell](https://github.com/caelestia-dots/shell)
+- **Greeter:** [ly](https://github.com/fairyglade/ly)
 - **Browser:** Brave Origin (debloated, locked-down policies)
 - **Terminal:** Ghostty + Fish shell (`zoxide`, `eza`, `bat`, `ripgrep`)
 - **Editor:** Nano (configured via Home Manager with syntax highlighting)

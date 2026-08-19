@@ -15,19 +15,6 @@ in rec {
   cursorSize = "24";
   sleepGestureCmd = "systemctl suspend-then-hibernate";
 
-  # Static snapshot of caelestia's default colour scheme, not wallpaper-reactive
-  scheme = {
-    primary = "c2c1ff";
-    onPrimary = "2a2a60";
-    outline = "918f9a";
-    secondary = "c6c4e0";
-    surfaceContainer = "201f23";
-    inversePrimary = "595992";
-  };
-
-  activeBorder = "rgba(${scheme.primary}e6)";
-  inactiveBorder = "rgba(${scheme.outline}11)";
-
   directions = ["left" "right" "up" "down"];
 
   # tag every window matching field=pattern, definition applied separately

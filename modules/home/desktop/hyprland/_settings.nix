@@ -1,6 +1,6 @@
 {lib, ...}: let
   vars = import ./_lib.nix {inherit lib;};
-  inherit (vars) scheme activeBorder inactiveBorder lua cursorTheme cursorSize sleepGestureCmd;
+  inherit (vars) lua cursorTheme cursorSize sleepGestureCmd;
 in {
   wayland.windowManager.hyprland.settings = {
     monitor = {
@@ -18,8 +18,7 @@ in {
         gaps_in = 5;
         gaps_out = 10;
         border_size = 1;
-        col.active_border = activeBorder;
-        col.inactive_border = inactiveBorder;
+        # border colours: see _extra.nix, they come from the live scheme
       };
 
       dwindle = {
@@ -70,7 +69,7 @@ in {
           enabled = true;
           range = 15;
           render_power = 4;
-          color = "rgba(${scheme.inversePrimary}10)";
+          # colour: see _extra.nix
         };
       };
 
@@ -85,31 +84,17 @@ in {
         workspace_swipe_create_new = true;
       };
 
-      group = {
-        col = {
-          border_active = activeBorder;
-          border_inactive = inactiveBorder;
-          border_locked_active = activeBorder;
-          border_locked_inactive = inactiveBorder;
-        };
-        groupbar = {
-          font_family = "JetBrains Mono NF";
-          font_size = 15;
-          gradients = true;
-          gradient_round_only_edges = false;
-          gradient_rounding = 5;
-          height = 25;
-          indicator_height = 0;
-          gaps_in = 3;
-          gaps_out = 3;
-          text_color = "rgb(${scheme.onPrimary})";
-          col = {
-            active = "rgba(${scheme.primary}d4)";
-            inactive = "rgba(${scheme.outline}d4)";
-            locked_active = "rgba(${scheme.primary}d4)";
-            locked_inactive = "rgba(${scheme.secondary}d4)";
-          };
-        };
+      # group border/text/bar colours: see _extra.nix
+      group.groupbar = {
+        font_family = "JetBrains Mono NF";
+        font_size = 15;
+        gradients = true;
+        gradient_round_only_edges = false;
+        gradient_rounding = 5;
+        height = 25;
+        indicator_height = 0;
+        gaps_in = 3;
+        gaps_out = 3;
       };
 
       misc = {
@@ -124,7 +109,7 @@ in {
         session_lock_xray = true;
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
-        background_color = "rgb(${scheme.surfaceContainer})";
+        # background_color: see _extra.nix
       };
 
       debug.error_position = 1;
