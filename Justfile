@@ -43,18 +43,20 @@ repair-store *paths:
     nix store repair {{paths}}
 
 # --- Laptop ---
+# nh is only enabled on laptop (desktop module), it wraps nixos-rebuild with a
+# generation diff and knows the flake path via programs.nh.flake.
 
 # Build and switch the laptop
 switch:
-    sudo nixos-rebuild switch --flake .#laptop
+    nh os switch
 
 # Build without switching, sanity check
 build:
-    sudo nixos-rebuild build --flake .#laptop
+    nh os build
 
 # Set as next-boot generation without switching now
 boot:
-    sudo nixos-rebuild boot --flake .#laptop
+    nh os boot
 
 # --- Server (colmena) ---
 

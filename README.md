@@ -89,7 +89,8 @@ why that's explicit rather than automatic.
    sudo reboot
    ```
 
-Day to day: `sudo nixos-rebuild switch --flake .#laptop`, or `just switch`.
+Day to day: `just switch` (wraps `nh os switch`, shows a generation diff), or plain
+`sudo nixos-rebuild switch --flake .#laptop` if `nh` isn't available yet.
 
 ## Deploying to the Server
 
