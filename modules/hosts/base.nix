@@ -1,25 +1,16 @@
 {inputs, ...}: {
-  flake.modules.nixos.base = {config, ...}: {
+  flake.modules.nixos.base = {pkgs, ...}: {
     imports = [
       inputs.disko.nixosModules.disko
       inputs.preservation.nixosModules.default
-      inputs.home-manager.nixosModules.home-manager
       inputs.sops-nix.nixosModules.sops
-      {nixpkgs.overlays = [inputs.niri.overlays.niri];}
-      inputs.niri.nixosModules.niri
-    ] ++ (builtins.attrValues (builtins.removeAttrs inputs.self.modules.nixos ["base"]));
+      inputs.self.modules.nixos.nix
+      inputs.self.modules.nixos.secrets
+      inputs.self.modules.nixos.user
+    ];
 
-    system.stateVersion = "26.11";
+    systemd.enableEmergencyMode = false;
 
-    home-manager = {
-      extraSpecialArgs = {inherit inputs;};
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      users.${config.myConfig.user.name} = inputs.self.modules.homeManager.default;
-      backupFileExtension = "bak";
-      sharedModules = [
-        inputs.noctalia.homeModules.default
-      ];
-    };
+    environment.systemPackages = [pkgs.btop];
   };
 }

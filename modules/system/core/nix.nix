@@ -1,4 +1,8 @@
-{inputs, lib, ...}: {
+{
+  inputs,
+  lib,
+  ...
+}: {
   flake.modules.nixos.nix = _: {
     nixpkgs.config.allowUnfree = true;
     programs = {
@@ -23,6 +27,7 @@
       settings = {
         experimental-features = ["nix-command" "flakes"];
         auto-optimise-store = true;
+        warn-dirty = false;
 
         max-jobs = "auto";
         cores = 0;
@@ -51,9 +56,21 @@
         ];
 
         fallback = true;
+
+        min-free = 1073741824;
+        max-free = 3221225472;
       };
 
       optimise.automatic = true;
+
+      gc = {
+        automatic = true;
+        dates = "daily";
+        options = "--delete-older-than 2d";
+      };
+
+      daemonCPUSchedPolicy = "idle";
+      daemonIOSchedClass = "idle";
     };
   };
 }

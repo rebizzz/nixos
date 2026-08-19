@@ -31,13 +31,21 @@ in {
 
       programs.fish.enable = true;
 
-      users.mutableUsers = false;
+      users = {
+        mutableUsers = false;
 
-      users.users.${userName} = {
-        isNormalUser = true;
-        hashedPasswordFile = config.sops.secrets.user_password.path;
-        extraGroups = ["wheel" "networkmanager" "video" "audio" "input" "docker"];
-        shell = pkgs.fish;
+        users.${userName} = {
+          isNormalUser = true;
+          extraGroups = ["wheel" "networkmanager" "video" "audio" "input" "docker" "storage" "render"];
+          shell = pkgs.fish;
+          openssh.authorizedKeys.keys = [
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID9CvwTALuQuiHJlkXTs2U5SKMhiu/lag3jQsbBIyHCl guardiansofspartax@gmail.com"
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINVKdJ2d/APmJOYmjZtggs39BmS1sF96wJnwoEc0ErQQ guardiansofspartax@gmail.com"
+          ];
+        };
+
+        # locked out, not just passwordless: use sudo via the wheel group instead
+        users.root.hashedPassword = "!";
       };
 
       security.sudo-rs = {

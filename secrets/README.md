@@ -1,14 +1,21 @@
 # Secrets Management (sops-nix)
 
-Secrets in this repo are encrypted using `sops-nix` and `age`. Since the root filesystem is erased on reboot, the decryption key is stored on the persistent drive.
+Secrets in this repo are encrypted using `sops-nix` and `age`, and shared between both hosts.
+`secrets/secrets.yaml` is a single file, decryptable by any recipient listed in `.sops.yaml`.
 
 Key location: `/persistent/etc/sops/age/keys.txt`
+
+`nixos-server` additionally decrypts via its own SSH host key (`age.sshKeyPaths` in
+`modules/system/core/secrets.nix`), so it doesn't need a separate `keys.txt` copied onto it before
+first boot. Its `ssh_host_ed25519_key` (persisted at `/persistent/etc/ssh/`) doubles as its sops
+identity.
 
 > Back up `/persistent/etc/sops/age/keys.txt` to an external USB drive. Losing this key makes encrypted secrets unrecoverable.
 
 ## Changing User Password
 
-Passwords are not stored in plaintext. To update your login password:
+Each host has its own password secret, `user_password_laptop` and `user_password_server`, so you
+can change one without touching the other. Passwords are not stored in plaintext:
 
 1. Generate a SHA-512 hash:
    ```bash
@@ -20,11 +27,16 @@ Passwords are not stored in plaintext. To update your login password:
    cd ~/opt/nixos-config
    sops secrets/secrets.yaml
    ```
-3. Replace the `user_password` value with the new hash.
+3. Replace `user_password_laptop` and/or `user_password_server` with the new hash.
 4. Rebuild the system:
    ```bash
    sudo nixos-rebuild switch --flake .#laptop
+   # or, for the server:
+   deploy .#nixos-server
    ```
+
+`root` has no password on either host (`hashedPassword = "!"` in
+`modules/system/core/user.nix`). Use `sudo` via the `wheel` group instead.
 
 ## Editing Secrets
 
