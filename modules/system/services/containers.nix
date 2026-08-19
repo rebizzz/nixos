@@ -1,16 +1,15 @@
-_: {
+{inputs, ...}: {
   flake.modules.nixos.containers = {pkgs, ...}: {
-    virtualisation.docker = {
+    imports = [inputs.self.modules.nixos.podman-base];
+
+    virtualisation.podman.autoPrune = {
       enable = true;
-      autoPrune = {
-        enable = true;
-        dates = "weekly";
-        flags = ["-a"];
-      };
+      dates = "weekly";
+      flags = ["-a"];
     };
 
-    environment.systemPackages = with pkgs; [
-      docker-compose
+    environment.systemPackages = [
+      pkgs.podman-compose
     ];
   };
 }

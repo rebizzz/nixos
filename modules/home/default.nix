@@ -13,7 +13,7 @@ in {
       inputs.nix-index-database.homeModules.nix-index
       niri
       noctalia
-      ghostty
+      foot
       fish
       git
       nano

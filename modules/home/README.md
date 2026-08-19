@@ -11,7 +11,7 @@ home/
 ├── default.nix   # aggregates everything below into one module
 ├── apps/         # per-application configs (brave, discord, git, nano)
 ├── desktop/      # niri, noctalia, mime associations, gtk/qt theme
-├── terminal/     # fish, ghostty
+├── terminal/     # fish, foot
 └── services/     # user-level services (sound effects)
 ```
 

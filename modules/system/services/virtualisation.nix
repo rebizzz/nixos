@@ -1,10 +1,5 @@
-_: {
-  flake.modules.nixos.virtualisation = _: {
-    virtualisation = {
-      docker = {
-        enable = true;
-        enableOnBoot = false;
-      };
-    };
+{inputs, ...}: {
+  flake.modules.nixos.virtualisation = {
+    imports = [inputs.self.modules.nixos.podman-base];
   };
 }

@@ -30,10 +30,6 @@ _: {
           }
           "/var/lib/bluetooth"
 
-          {
-            directory = "/var/lib/docker";
-            mode = "0710";
-          }
           "/var/lib/cockpit"
           "/etc/cockpit"
           "/var/lib/smartmontools"

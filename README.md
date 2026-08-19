@@ -15,7 +15,7 @@
 
 One flake, two machines, codenamed after Frieren's two steadiest travelers. `laptop` ("Frieren")
 is a NixOS desktop with [Niri][Niri] + [Noctalia][Noctalia] on a `tmpfs` root wiped every reboot.
-`nixos-server` ("Fern") is a headless home server with a ZFS mirror, Docker, and Jellyfin, that
+`nixos-server` ("Fern") is a headless home server with a ZFS mirror, Podman, and Jellyfin, that
 self-upgrades weekly. See [modules/hosts](modules/hosts/README.md) for details of each host.
 
 > :red_circle: **IMPORTANT**: **Don't deploy this flake directly on your own machine, it will not
@@ -30,12 +30,12 @@ self-upgrades weekly. See [modules/hosts](modules/hosts/README.md) for details o
 | **Window Manager** | [Niri][Niri] |
 | **Shell / Bar** | [Noctalia][Noctalia] |
 | **Display Manager** | [noctalia-greeter][noctalia-greeter] |
-| **Terminal** | [Ghostty][Ghostty] + [Fish][Fish] (`zoxide`, `eza`, `bat`, `ripgrep`) |
+| **Terminal** | [foot][foot] + [Fish][Fish] (`zoxide`, `eza`, `bat`, `ripgrep`) |
 | **Browser** | Brave Origin, debloated and locked down via policy |
 | **Filesystem** | Btrfs + LUKS + LVM (`laptop`), Btrfs system disk + ZFS mirror (`nixos-server`) |
 | **Secrets** | [sops-nix][sops-nix] + `age` |
 | **Remote Deploy** | [colmena][colmena], for pushing to `nixos-server` |
-| **Containers / Media** | Docker, [Jellyfin][Jellyfin] (opt-in), Cockpit, [Tailscale][Tailscale] |
+| **Containers / Media** | Podman, [Jellyfin][Jellyfin] (opt-in), Cockpit, [Tailscale][Tailscale] |
 | **Modules** | dendritic pattern via [flake-parts][flake-parts] + [import-tree][import-tree] |
 
 ## Directory Structure
@@ -134,7 +134,7 @@ Run `just --list` to see every recipe.
 [Niri]: https://github.com/YaLTeR/niri
 [Noctalia]: https://github.com/noctalia-dev/noctalia
 [noctalia-greeter]: https://github.com/noctalia-dev/noctalia-greeter
-[Ghostty]: https://github.com/ghostty-org/ghostty
+[foot]: https://codeberg.org/dnkl/foot
 [Fish]: https://fishshell.com/
 [sops-nix]: https://github.com/Mic92/sops-nix
 [colmena]: https://github.com/nix-community/colmena

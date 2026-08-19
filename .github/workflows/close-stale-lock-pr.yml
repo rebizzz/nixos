@@ -1,0 +1,25 @@
+name: Close stale flake-lock PR
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - flake.lock
+
+permissions:
+  pull-requests: write
+
+jobs:
+  close-stale-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          pr=$(gh pr list --head update_flake_lock_action --state open --json number --jq '.[0].number')
+          if [ -n "$pr" ]; then
+            gh pr close "$pr" --delete-branch \
+              --comment "Superseded by a manual \`flake.lock\` update pushed to main."
+          fi

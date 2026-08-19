@@ -36,7 +36,7 @@ in {
 
         users.${userName} = {
           isNormalUser = true;
-          extraGroups = ["wheel" "networkmanager" "video" "audio" "input" "docker" "storage" "render"];
+          extraGroups = ["wheel" "networkmanager" "video" "audio" "input" "storage" "render"];
           shell = pkgs.fish;
           openssh.authorizedKeys.keys = [
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID9CvwTALuQuiHJlkXTs2U5SKMhiu/lag3jQsbBIyHCl guardiansofspartax@gmail.com"

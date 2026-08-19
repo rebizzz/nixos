@@ -254,6 +254,18 @@ _: {
             };
           }
           {
+            matches = [{app-id = "^org\\.gnome\\.Loupe$";}];
+            popups = {
+              geometry-corner-radius = {
+                top-left = 15.0;
+                top-right = 15.0;
+                bottom-left = 15.0;
+                bottom-right = 15.0;
+              };
+              background-effect.blur = true;
+            };
+          }
+          {
             geometry-corner-radius = {
               top-left = 12.0;
               top-right = 12.0;
@@ -362,7 +374,7 @@ _: {
         });
 
         binds = lib.mapAttrs (_: bind: bind // {allow-inhibiting = false;}) {
-          "Super+Return".action.spawn = "ghostty";
+          "Super+Return".action.spawn = "foot";
           "Super+D".action.spawn = ["noctalia" "msg" "panel-toggle" "launcher"];
           "Super+B".action.spawn = ["brave-origin" "--new-window"];
           "Super+E".action.spawn = "nautilus";

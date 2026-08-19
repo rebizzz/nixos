@@ -76,7 +76,7 @@ _: {
           pure_black_dark = true;
           templates = {
             enable_builtin_templates = true;
-            builtin_ids = ["ghostty" "gtk3" "gtk4" "niri"];
+            builtin_ids = ["foot" "gtk3" "gtk4" "niri"];
             enable_community_templates = true;
             community_ids = ["fastfetch" "bat"];
           };
