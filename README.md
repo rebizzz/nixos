@@ -34,7 +34,7 @@ self-upgrades weekly. See [modules/hosts](modules/hosts/README.md) for details o
 | **Browser** | Brave Origin, debloated and locked down via policy |
 | **Filesystem** | Btrfs + LUKS + LVM (`laptop`), Btrfs system disk + ZFS mirror (`nixos-server`) |
 | **Secrets** | [sops-nix][sops-nix] + `age` |
-| **Remote Deploy** | [colmena][colmena], for pushing to `nixos-server` |
+| **Remote Deploy** | [deploy-rs][deploy-rs], for pushing to `nixos-server` |
 | **Containers / Media** | Podman, [Jellyfin][Jellyfin] (opt-in), Cockpit, [Tailscale][Tailscale] |
 | **Modules** | dendritic pattern via [flake-parts][flake-parts] + [import-tree][import-tree] |
 
@@ -47,7 +47,7 @@ self-upgrades weekly. See [modules/hosts](modules/hosts/README.md) for details o
 ├── assets/      # Wallpapers and avatar image
 ├── secrets/     # sops-nix encrypted secrets, shared by both hosts
 └── modules/     # see modules/README.md
-    ├── flake/   # flake-parts wiring: devShell, colmena hive
+    ├── flake/   # flake-parts wiring: devShell
     ├── hosts/   # One directory per machine
     ├── system/  # NixOS modules (boot, hardware, services)
     └── home/    # Home Manager modules, laptop only
@@ -90,15 +90,14 @@ Day to day: `just switch`.
 `nixos-server` is administered remotely, there's no keyboard on it.
 
 ```bash
-colmena build --on nixos-server   # build only, good for a quick sanity check
-colmena apply --on nixos-server   # build and deploy over SSH
+nix build .#nixosConfigurations.nixos-server.config.system.build.toplevel   # build only, good for a quick sanity check
+deploy .#nixos-server   # build and deploy over SSH
 ```
 
-The `nixos-server` colmena node (in `modules/hosts/nixos-server/default.nix`) connects as
-`rebiz@nixos-server.local` and escalates via passwordless `sudo`. It's tagged `server`, so
-`colmena apply --on @server` also works, useful once there's more than one server host.
+The `nixos-server` deploy-rs node (in `modules/hosts/nixos-server/default.nix`) connects as
+`rebiz@nixos-server.local` and escalates via passwordless `sudo`.
 
-Fallback without colmena:
+Fallback without deploy-rs:
 
 ```bash
 nixos-rebuild switch --flake .#nixos-server --target-host rebiz@nixos-server.local --use-remote-sudo
@@ -110,7 +109,7 @@ secrets are shared between both hosts, see [secrets/README.md](secrets/README.md
 ## Development
 
 [direnv][direnv] is enabled on both hosts. Approve it once with `direnv allow`, and from then on
-`cd`-ing into the repo loads `colmena`, `sops`, `age`, and `just` automatically, no `nix develop`
+`cd`-ing into the repo loads `deploy-rs`, `sops`, `age`, and `just` automatically, no `nix develop`
 needed. The `Justfile` wraps formatting, linting, and the deploy commands above:
 
 ```bash
@@ -137,7 +136,7 @@ Run `just --list` to see every recipe.
 [foot]: https://codeberg.org/dnkl/foot
 [Fish]: https://fishshell.com/
 [sops-nix]: https://github.com/Mic92/sops-nix
-[colmena]: https://github.com/nix-community/colmena
+[deploy-rs]: https://github.com/serokell/deploy-rs
 [Jellyfin]: https://jellyfin.org/
 [Tailscale]: https://tailscale.com/
 [flake-parts]: https://flake.parts/

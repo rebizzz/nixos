@@ -15,7 +15,7 @@ plus its own hardware/disk layout.
 - **`nixos-server`**: Btrfs root, also wiped every reboot (rolled back to a blank snapshot in
   initrd, see `_hardware.nix`'s `rollback-root` service, not tmpfs since it's a real disk). ZFS
   mirror for media/backup/storage, Docker, Cockpit, Tailscale, weekly self-upgrade. Administered
-  remotely, see the repo root README for how `colmena` is used.
+  remotely, see the repo root README for how `deploy-rs` is used.
 
 Files prefixed with `_` (`_host.nix`, `_disko.nix`, `_hardware.nix`) are plain data/host modules,
 not flake-parts modules. `import-tree` skips them, so each host's `default.nix` imports them

@@ -4,7 +4,7 @@ Headless home server, codenamed "Fern" (see [../README.md](../README.md#naming-c
 Btrfs root, wiped every reboot like `laptop`, just not via tmpfs: the `@` subvolume gets rolled
 back to a blank snapshot in initrd (`rollback-root` service in `_hardware.nix`) instead. ZFS
 mirror for media/backup, Docker, Cockpit, Tailscale, weekly self-upgrade. Administered remotely
-via colmena, no keyboard attached.
+via deploy-rs, no keyboard attached.
 
 Disk layout is declarative via [disko](./_disko.nix): Btrfs system disk (`/dev/sda`) plus a ZFS
 mirror across `/dev/sdb` and `/dev/sdc`.
@@ -15,5 +15,5 @@ Related:
 - [_disko.nix](./_disko.nix)
 - [_hardware.nix](./_hardware.nix)
 
-Deploy: `colmena apply --on nixos-server`, or `just server-apply`. See the repo root
+Deploy: `deploy .#nixos-server`, or `just server-apply`. See the repo root
 [README](../../../README.md) for the from-scratch nixos-anywhere flow.

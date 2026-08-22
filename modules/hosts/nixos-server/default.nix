@@ -1,6 +1,24 @@
 {inputs, ...}: let
   hostVars = import ./_host.nix {};
 
+  system = "x86_64-linux";
+  pkgs = import inputs.nixpkgs {inherit system;};
+  # Use the nixpkgs binary cache for deploy-rs instead of building it from
+  # the flake: keep the flake's lib (activate.nixos etc.), but take the CLI
+  # derivation embedded in the activation script from nixpkgs.
+  deployPkgs = import inputs.nixpkgs {
+    inherit system;
+    overlays = [
+      inputs.deploy-rs.overlays.default
+      (self: super: {
+        deploy-rs = {
+          inherit (pkgs) deploy-rs;
+          lib = super.deploy-rs.lib;
+        };
+      })
+    ];
+  };
+
   modules = [
     inputs.self.modules.nixos.base
     inputs.self.modules.nixos.autoupgrade
@@ -65,21 +83,13 @@ in {
       inherit modules;
     };
 
-    colmena = {
-      meta = {
-        nixpkgs = import inputs.nixpkgs {system = "x86_64-linux";};
-        specialArgs = {inherit inputs;};
-        nodeSpecialArgs.${hostVars.hostName} = {inherit hostVars;};
-      };
-
-      ${hostVars.hostName} = {
-        deployment = {
-          targetHost = "${hostVars.hostName}.local";
-          targetUser = "rebiz";
-          tags = ["server"];
-          sshOptions = ["-o" "StrictHostKeyChecking=accept-new"];
-        };
-        imports = modules;
+    deploy.nodes.${hostVars.hostName} = {
+      hostname = "${hostVars.hostName}.local";
+      sshUser = "rebiz";
+      sshOpts = ["-o" "StrictHostKeyChecking=accept-new"];
+      profiles.system = {
+        user = "root";
+        path = deployPkgs.deploy-rs.lib.activate.nixos inputs.self.nixosConfigurations.${hostVars.hostName};
       };
     };
   };

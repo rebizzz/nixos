@@ -32,7 +32,7 @@ can change one without touching the other. Passwords are not stored in plaintext
    ```bash
    sudo nixos-rebuild switch --flake .#laptop
    # or, for the server:
-   colmena apply --on nixos-server
+   deploy .#nixos-server
    ```
 
 `root` has no password on either host (`hashedPassword = "!"` in
