@@ -3,6 +3,7 @@ _: {
     networking = {
       networkmanager = {
         enable = true;
+        dns = "systemd-resolved";
         wifi.backend = "iwd";
         wifi.macAddress = "random";
 
@@ -44,7 +45,11 @@ _: {
         label = "NixOS-${id}";
       in ''
         [Resolve]
-        DNS=45.90.28.0#${label}.dns.nextdns.io 2a07:a8c0::#${label}.dns.nextdns.io 45.90.30.0#${label}.dns.nextdns.io 2a07:a8c1::#${label}.dns.nextdns.io
+        DNS=45.90.28.0#${label}.dns.nextdns.io
+        DNS=2a07:a8c0::#${label}.dns.nextdns.io
+        DNS=45.90.30.0#${label}.dns.nextdns.io
+        DNS=2a07:a8c1::#${label}.dns.nextdns.io
+        DNSOverTLS=yes
       '';
       mode = "0444";
     };
@@ -60,7 +65,7 @@ _: {
         settings.Resolve = {
           DNSSEC = "yes";
           Domains = "~.";
-          DNSOverTLS = "opportunistic";
+          DNSOverTLS = "yes";
         };
       };
 

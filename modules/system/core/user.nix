@@ -18,7 +18,7 @@ in {
         description = "Primary username for the system";
       };
       home = lib.mkOption {
-        type = lib.types.path;
+        type = lib.types.str;
         default = "/home/rebiz";
         description = "Primary user home directory";
       };
@@ -36,6 +36,7 @@ in {
 
         users.${userName} = {
           isNormalUser = true;
+          home = config.myConfig.user.home;
           extraGroups = ["wheel" "networkmanager" "video" "audio" "input" "storage" "render"];
           shell = pkgs.fish;
           openssh.authorizedKeys.keys = [

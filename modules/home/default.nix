@@ -1,14 +1,19 @@
-{inputs, ...}: let
-  homeDir = "/home/rebiz";
-  bookmarks = ''
-    file://${homeDir}/Documents Documents
-    file://${homeDir}/Downloads Downloads
-    file://${homeDir}/Music Music
-    file://${homeDir}/Pictures Pictures
-    file://${homeDir}/Videos Videos
-  '';
-in {
-  flake.modules.homeManager.default = {pkgs, ...}: {
+{inputs, ...}: {
+  flake.modules.homeManager.default = {
+    pkgs,
+    config,
+    osConfig,
+    ...
+  }: let
+    homeDir = config.home.homeDirectory;
+    bookmarks = ''
+      file://${homeDir}/Documents Documents
+      file://${homeDir}/Downloads Downloads
+      file://${homeDir}/Music Music
+      file://${homeDir}/Pictures Pictures
+      file://${homeDir}/Videos Videos
+    '';
+  in {
     imports = with inputs.self.modules.homeManager; [
       inputs.nix-index-database.homeModules.nix-index
       niri
@@ -25,8 +30,8 @@ in {
     ];
 
     home = {
-      username = "rebiz";
-      homeDirectory = homeDir;
+      username = osConfig.myConfig.user.name;
+      homeDirectory = osConfig.myConfig.user.home;
       stateVersion = "26.11";
       packages = [
         pkgs.gpu-screen-recorder

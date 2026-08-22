@@ -5,6 +5,7 @@
 }: {
   flake.modules.nixos.nix = _: {
     nixpkgs.config.allowUnfree = true;
+    environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
     programs = {
       command-not-found.enable = false;
       nix-ld.enable = true;

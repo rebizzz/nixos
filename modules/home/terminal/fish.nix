@@ -1,7 +1,5 @@
 _: {
   flake.modules.homeManager.fish = _: {
-    home.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
-
     programs = {
       ripgrep.enable = true;
 

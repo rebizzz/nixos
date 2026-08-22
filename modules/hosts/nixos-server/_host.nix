@@ -1,5 +1,6 @@
 _: {
   hostName = "nixos-server";
+  sshUser = "rebiz";
 
   hostId = "8425e349";
 

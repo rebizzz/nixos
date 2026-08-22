@@ -54,7 +54,7 @@
 
       system.stateVersion = "26.05";
 
-      users.users.rebiz.hashedPasswordFile = config.sops.secrets.user_password_server.path;
+      users.users.${config.myConfig.user.name}.hashedPasswordFile = config.sops.secrets.user_password_server.path;
 
       security.sudo-rs.wheelNeedsPassword = false;
       security.sudo-rs.execWheelOnly = true;
@@ -85,7 +85,7 @@ in {
 
     deploy.nodes.${hostVars.hostName} = {
       hostname = "${hostVars.hostName}.local";
-      sshUser = "rebiz";
+      sshUser = hostVars.sshUser;
       sshOpts = ["-o" "StrictHostKeyChecking=accept-new"];
       profiles.system = {
         user = "root";

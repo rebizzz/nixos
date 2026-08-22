@@ -4,7 +4,7 @@
     config,
     ...
   }: let
-    user = config.users.users.rebiz;
+    user = config.users.users.${config.myConfig.user.name};
   in {
     systemd.services.lock-before-sleep = {
       description = "Lock the session before suspend/hibernate";

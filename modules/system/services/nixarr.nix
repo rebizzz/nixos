@@ -7,7 +7,7 @@
 
       mediaDir = "/mnt/data/media";
       stateDir = "/mnt/data/storage/.state/nixarr";
-      mediaUsers = ["rebiz"];
+      mediaUsers = [config.myConfig.user.name];
 
       jellyfin = {
         enable = true;

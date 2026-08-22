@@ -8,6 +8,7 @@
         inputs.self.modules.nixos.boot
         inputs.self.modules.nixos.brave-policy
         inputs.self.modules.nixos.cachyos-tuning
+        inputs.self.modules.nixos.containers
         inputs.self.modules.nixos.desktop
         inputs.self.modules.nixos.display
         inputs.self.modules.nixos.fonts
@@ -37,13 +38,13 @@
 
           system.stateVersion = "26.11";
 
-          users.users.rebiz.hashedPasswordFile = config.sops.secrets.user_password_laptop.path;
+          users.users.${config.myConfig.user.name}.hashedPasswordFile = config.sops.secrets.user_password_laptop.path;
 
           home-manager = {
             extraSpecialArgs = {inherit inputs;};
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.rebiz = inputs.self.modules.homeManager.default;
+            users.${config.myConfig.user.name} = inputs.self.modules.homeManager.default;
             backupFileExtension = "bak";
             sharedModules = [
               inputs.noctalia.homeModules.default
