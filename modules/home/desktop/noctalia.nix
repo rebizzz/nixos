@@ -18,7 +18,7 @@ _: {
             "aristides/udiskie"
             "yuuto/calculator"
           ];
-          auto_update = true;
+          auto_update = "all";
           source = [
             {
               name = "official";
