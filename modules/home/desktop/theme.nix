@@ -30,7 +30,7 @@ _: {
       color-scheme = "prefer-dark";
       font-name = "Inter 11";
       document-font-name = "Inter 11";
-      monospace-font-name = "Iosevka Nerd Font Mono 11";
+      monospace-font-name = "FiraCode Nerd Font Mono 11";
     };
   };
 }

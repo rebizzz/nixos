@@ -10,7 +10,7 @@ _: {
       enable = true;
 
       font = {
-        name = "Iosevka Nerd Font";
+        name = "FiraCode Nerd Font";
         size = 15;
       };
 
