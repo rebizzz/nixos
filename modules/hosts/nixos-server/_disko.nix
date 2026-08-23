@@ -55,29 +55,30 @@ in {
                   type = "btrfs";
                   extraArgs = ["-f"];
                   subvolumes = {
+                    "@blank" = {};
                     "@" = {
                       mountpoint = "/";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["compress=zstd:1" "noatime" "discard=async"];
                     };
                     "@home" = {
                       mountpoint = "/home";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["compress=zstd:1" "noatime" "discard=async"];
                     };
                     "@nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["compress=zstd:1" "noatime" "discard=async"];
                     };
                     "@persistent" = {
                       mountpoint = "/persistent";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["compress=zstd:1" "noatime" "discard=async"];
                     };
                     "@tmp" = {
                       mountpoint = "/tmp";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["compress=zstd:1" "noatime" "discard=async"];
                     };
                     "@log" = {
                       mountpoint = "/var/log";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["compress=zstd:1" "noatime" "discard=async"];
                     };
                   };
                 };
