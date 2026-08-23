@@ -18,7 +18,7 @@
       inputs.nix-index-database.homeModules.nix-index
       niri
       noctalia
-      foot
+      kitty
       fish
       git
       nano
@@ -53,6 +53,7 @@
       json.enable = false;
       manpages.enable = false;
     };
+    news.display = "show";
 
     programs = {
       nix-index = {

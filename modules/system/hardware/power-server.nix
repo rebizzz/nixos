@@ -10,10 +10,10 @@ _: {
     systemd.oomd = {
       enable = true;
       enableUserSlices = true;
-      enableSystemSlice = true;
+      enableSystemSlice = false;
     };
 
-    powerManagement.cpuFreqGovernor = "ondemand";
+    powerManagement.cpuFreqGovernor = "powersave";
 
     systemd.settings.Manager = {
       RuntimeWatchdogSec = "30s";

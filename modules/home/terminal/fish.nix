@@ -13,15 +13,14 @@ _: {
       zoxide = {
         enable = true;
         enableFishIntegration = true;
-        options = ["--cmd cd"];
+        options = ["--cmd" "cd"];
       };
 
       fish = {
         enable = true;
         shellAbbrs = {
           ls = "eza";
-          cat = "bat";
-          grep = "rg";
+          cat = "bat --paging=never";
         };
         interactiveShellInit = ''
           set -g fish_greeting ""

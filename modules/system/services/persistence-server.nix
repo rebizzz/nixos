@@ -33,6 +33,8 @@ _: {
           "/var/lib/cockpit"
           "/etc/cockpit"
           "/var/lib/smartmontools"
+          "/var/lib/containers"
+          "/var/lib/fail2ban"
         ];
         files = [
           {
@@ -40,7 +42,10 @@ _: {
             inInitrd = true;
           }
           "/etc/adjtime"
-          "/etc/zfs/zpool.cache"
+          {
+            file = "/etc/zfs/zpool.cache";
+            inInitrd = true;
+          }
         ];
       };
     };

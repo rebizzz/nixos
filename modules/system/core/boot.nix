@@ -35,7 +35,7 @@ _: {
       };
 
       kernelPackages = pkgs.linuxPackages_latest;
-      kernelModules = ["ntsync"];
+      kernelModules = ["ntsync" "tcp_bbr"];
       kernelParams = [
         "quiet"
         "splash"
@@ -45,7 +45,6 @@ _: {
         "rd.systemd.show_status=auto"
 
         "init_on_alloc=1"
-        "init_on_free=1"
         "page_alloc.shuffle=1"
         "randomize_kstack_offset=on"
 
@@ -88,7 +87,7 @@ _: {
 
       blacklistedKernelModules = blockedModules;
       extraModprobeConfig = ''
-        options snd_hda_intel power_save=1
+        options snd_hda_intel power_save=1 power_save_controller=Y
         ${lib.concatMapStringsSep "\n" (m: "install ${m} ${pkgs.coreutils}/bin/false") blockedModules}
       '';
 

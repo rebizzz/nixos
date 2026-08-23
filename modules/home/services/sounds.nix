@@ -17,15 +17,37 @@ _: {
     udevadm = "${pkgs.systemd}/bin/udevadm";
     upower = "${pkgs.upower}/bin/upower";
     udevMonitor = pkgs.writeShellScript "udev-sound-monitor" ''
-      ${udevadm} monitor --udev --subsystem-match=usb | while read -r line; do
+      ${udevadm} monitor --udev --subsystem-match=usb --property | while read -r line; do
         case "$line" in
-          *"add"*)    ${notifyPlayer} -i device-added   ;;
-          *"remove"*) ${notifyPlayer} -i device-removed ;;
+          "ACTION=add"*)
+            while read -r prop; do
+              [ -z "$prop" ] && break
+              if [ "$prop" = "DEVTYPE=usb_device" ]; then
+                ${notifyPlayer} -i device-added
+                break
+              fi
+            done
+            ;;
+          "ACTION=remove"*)
+            while read -r prop; do
+              [ -z "$prop" ] && break
+              if [ "$prop" = "DEVTYPE=usb_device" ]; then
+                ${notifyPlayer} -i device-removed
+                break
+              fi
+            done
+            ;;
         esac
       done
     '';
     upowerMonitor = pkgs.writeShellScript "upower-sound-monitor" ''
-      prev_online=""
+      devices=$(${upower} -e)
+      ac=$(echo "$devices" | grep -iE "line_power|ac_adapter|mains" | head -1)
+      if [ -n "$ac" ]; then
+        prev_online=$(${upower} -i "$ac" | awk '/online:/ {print $2}')
+      else
+        prev_online=""
+      fi
       low_warned=""
 
       ${upower} --monitor | while read -r _; do
@@ -59,7 +81,6 @@ _: {
   in {
     home.packages = with pkgs; [
       sound-theme-freedesktop
-      libcanberra-gtk3
     ];
 
     gtk.gtk3.extraConfig = {

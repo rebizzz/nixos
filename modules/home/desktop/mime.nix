@@ -15,8 +15,8 @@ in {
       };
       mime.enable = true;
       desktopEntries.nano-text-editor = {
-        name = "Nano (Foot)";
-        exec = "foot nano %f";
+        name = "Nano (Kitty)";
+        exec = "kitty nano %f";
         terminal = false;
         type = "Application";
         mimeType = ["text/plain" "text/markdown" "application/json"];

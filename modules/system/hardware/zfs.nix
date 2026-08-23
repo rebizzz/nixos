@@ -9,7 +9,7 @@ _: {
       zfs = {
         autoScrub = {
           enable = true;
-          interval = "Sun, 02:00";
+          interval = "Sun *-*-01..07 02:00:00";
           pools = ["data"];
         };
         trim.enable = false; # mechanical HDDs, not SSDs

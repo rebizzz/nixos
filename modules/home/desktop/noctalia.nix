@@ -43,6 +43,7 @@ _: {
           avatar_path = "${homeDir}/.face";
           launch_apps_as_systemd_services = true;
           niri_overview_type_to_launch_enabled = true;
+          font_family = "Inter";
           panel = {
             transparency_mode = "soft";
             control_center_placement = "floating";
@@ -76,7 +77,7 @@ _: {
           pure_black_dark = true;
           templates = {
             enable_builtin_templates = true;
-            builtin_ids = ["foot" "gtk3" "gtk4" "niri"];
+            builtin_ids = ["kitty" "gtk3" "gtk4" "niri"];
             enable_community_templates = true;
             community_ids = ["fastfetch" "bat"];
           };
@@ -257,6 +258,7 @@ _: {
       ".config/wallpaper.jpg".source = wallpaperAsset;
       "Pictures/Wallpapers/default.jpg".source = wallpaperAsset;
       "Pictures/Screenshots/.keep".text = "";
+      "Videos/Screencasts/.keep".text = "";
     };
   };
 }

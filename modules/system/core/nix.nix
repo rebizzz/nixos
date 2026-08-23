@@ -13,7 +13,6 @@
 
     documentation = {
       enable = false;
-      doc.enable = false;
       nixos.enable = false;
       man.enable = false;
       info.enable = false;
@@ -62,7 +61,10 @@
         max-free = 3221225472;
       };
 
-      optimise.automatic = true;
+      optimise = {
+        automatic = true;
+        dates = ["daily"];
+      };
 
       gc = {
         automatic = true;
@@ -70,8 +72,9 @@
         options = "--delete-older-than 2d";
       };
 
-      daemonCPUSchedPolicy = "idle";
-      daemonIOSchedClass = "idle";
+      daemonCPUSchedPolicy = "batch";
+      daemonIOSchedClass = "best-effort";
+      daemonIOSchedPriority = 7;
     };
   };
 }

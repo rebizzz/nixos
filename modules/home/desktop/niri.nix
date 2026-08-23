@@ -72,9 +72,9 @@ _: {
         ];
 
         blur = {
-          passes = 3;
-          offset = 3.0;
-          noise = 0.02;
+          passes = 2;
+          offset = 2.5;
+          noise = 0.0;
           saturation = 1.0;
         };
 
@@ -187,10 +187,9 @@ _: {
             stiffness = 923;
             epsilon = 0.001;
           };
-          window-open.kind.spring = {
-            damping-ratio = 0.80;
-            stiffness = 623;
-            epsilon = 0.0001;
+          window-open.kind.easing = {
+            duration-ms = 80;
+            curve = "ease-out-quad";
           };
           window-close.kind.easing = {
             duration-ms = 200;
@@ -213,7 +212,7 @@ _: {
             place-within-backdrop = true;
           }
           {
-            matches = [{namespace = "^notifications$";}];
+            matches = [{namespace = "^(notifications|noctalia-notification.*)$";}];
             block-out-from = "screencast";
           }
           {
@@ -247,7 +246,9 @@ _: {
             };
           }
           {
-            matches = [{is-floating = true;}];
+            matches = [
+              {app-id = "^kitty$";}
+            ];
             background-effect = {
               blur = true;
               xray = false;
@@ -255,14 +256,11 @@ _: {
           }
           {
             matches = [{app-id = "^org\\.gnome\\.Loupe$";}];
-            popups = {
-              geometry-corner-radius = {
-                top-left = 15.0;
-                top-right = 15.0;
-                bottom-left = 15.0;
-                bottom-right = 15.0;
-              };
-              background-effect.blur = true;
+            geometry-corner-radius = {
+              top-left = 15.0;
+              top-right = 15.0;
+              bottom-left = 15.0;
+              bottom-right = 15.0;
             };
           }
           {
@@ -331,10 +329,7 @@ _: {
           }
           {
             matches = [
-              {
-                app-id = "^com\\.bitwarden\\.desktop$";
-                title = ".*Bitwarden.*";
-              }
+              {app-id = "(?i)bitwarden.*";}
             ];
             open-floating = true;
           }
@@ -374,7 +369,7 @@ _: {
         });
 
         binds = lib.mapAttrs (_: bind: bind // {allow-inhibiting = false;}) {
-          "Super+Return".action.spawn = "foot";
+          "Super+Return".action.spawn = "kitty";
           "Super+D".action.spawn = ["noctalia" "msg" "panel-toggle" "launcher"];
           "Super+B".action.spawn = ["brave-origin" "--new-window"];
           "Super+E".action.spawn = "nautilus";
@@ -398,7 +393,6 @@ _: {
           "Super+8".action.focus-workspace = 8;
           "Super+9".action.focus-workspace = 9;
           "Super+Tab".action.focus-workspace-previous = {};
-          "Alt+Tab".action.focus-window-previous = {};
           "Super+O" = {
             action.toggle-overview = {};
             repeat = false;
