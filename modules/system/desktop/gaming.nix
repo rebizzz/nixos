@@ -7,6 +7,8 @@
       };
     };
 
+    services.udev.packages = [pkgs.game-devices-udev-rules];
+
     environment.systemPackages = with pkgs; [
       lutris
       protonplus

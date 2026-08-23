@@ -45,13 +45,11 @@ _: {
         label = "NixOS-${id}";
       in ''
         [Resolve]
-        DNS=45.90.28.0#${label}.dns.nextdns.io
-        DNS=2a07:a8c0::#${label}.dns.nextdns.io
-        DNS=45.90.30.0#${label}.dns.nextdns.io
-        DNS=2a07:a8c1::#${label}.dns.nextdns.io
-        DNSOverTLS=yes
+        DNS=45.90.28.0#${label}.dns.nextdns.io 2a07:a8c0::#${label}.dns.nextdns.io 45.90.30.0#${label}.dns.nextdns.io 2a07:a8c1::#${label}.dns.nextdns.io
+        Domains=~.
       '';
       mode = "0444";
+      restartUnits = ["systemd-resolved.service"];
     };
 
     systemd.tmpfiles.rules = [
@@ -63,9 +61,9 @@ _: {
       resolved = {
         enable = true;
         settings.Resolve = {
-          DNSSEC = "yes";
+          DNSSEC = "allow-downgrade";
           Domains = "~.";
-          DNSOverTLS = "yes";
+          DNSOverTLS = "opportunistic";
         };
       };
 

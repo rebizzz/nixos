@@ -58,27 +58,27 @@ in {
                     "@blank" = {};
                     "@" = {
                       mountpoint = "/";
-                      mountOptions = ["compress=zstd:1" "noatime" "discard=async"];
+                      mountOptions = ["compress=zstd:3" "noatime" "discard=async"];
                     };
                     "@home" = {
                       mountpoint = "/home";
-                      mountOptions = ["compress=zstd:1" "noatime" "discard=async"];
+                      mountOptions = ["compress=zstd:3" "noatime" "discard=async"];
                     };
                     "@nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["compress=zstd:1" "noatime" "discard=async"];
+                      mountOptions = ["compress=zstd:3" "noatime" "discard=async"];
                     };
                     "@persistent" = {
                       mountpoint = "/persistent";
-                      mountOptions = ["compress=zstd:1" "noatime" "discard=async"];
+                      mountOptions = ["compress=zstd:3" "noatime" "discard=async"];
                     };
                     "@tmp" = {
                       mountpoint = "/tmp";
-                      mountOptions = ["compress=zstd:1" "noatime" "discard=async"];
+                      mountOptions = ["compress=zstd:3" "noatime" "discard=async"];
                     };
                     "@log" = {
                       mountpoint = "/var/log";
-                      mountOptions = ["compress=zstd:1" "noatime" "discard=async"];
+                      mountOptions = ["compress=zstd:3" "noatime" "discard=async"];
                     };
                   };
                 };

@@ -44,10 +44,6 @@ _: {
         "udev.log_level=0"
         "rd.systemd.show_status=auto"
 
-        "init_on_alloc=1"
-        "page_alloc.shuffle=1"
-        "randomize_kstack_offset=on"
-
         "rcutree.enable_rcu_lazy=1"
       ];
       consoleLogLevel = 3;
@@ -63,8 +59,9 @@ _: {
         "vm.max_map_count" = 1048576;
         "vm.watermark_boost_factor" = 0;
         "vm.watermark_scale_factor" = 125;
-        "vm.dirty_bytes" = 268435456;
-        "vm.dirty_background_bytes" = 67108864;
+        "vm.dirty_ratio" = 10;
+        "vm.dirty_background_ratio" = 5;
+        "vm.dirty_expire_centisecs" = 1500;
 
         "kernel.kptr_restrict" = 2;
         "kernel.dmesg_restrict" = 1;

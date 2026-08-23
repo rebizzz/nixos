@@ -6,10 +6,6 @@ _: {
   }: {
     services = {
       thermald.enable = true;
-      scx = {
-        enable = true;
-        scheduler = "scx_lavd";
-      };
       ananicy = {
         enable = true;
         package = pkgs.ananicy-cpp;
