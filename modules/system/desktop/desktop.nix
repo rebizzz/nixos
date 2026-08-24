@@ -5,7 +5,10 @@
     ...
   }: {
     programs = {
-      niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable;
+      niri = {
+        enable = true;
+        package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable;
+      };
 
       nh = {
         enable = true;
@@ -22,6 +25,8 @@
 
     services.flatpak.enable = true;
     services.tailscale.enable = true;
+
+    systemd.user.services.niri-flake-polkit.enable = false;
     environment.systemPackages = [
       pkgs.nautilus
       pkgs.ffmpegthumbnailer

@@ -57,10 +57,7 @@ _: {
           hide-not-bound = true;
         };
 
-        xwayland-satellite = {
-          enable = true;
-          path = lib.getExe pkgs.xwayland-satellite;
-        };
+        xwayland-satellite.enable = true;
 
         debug.honor-xdg-activation-with-invalid-serial = true;
 
@@ -139,8 +136,8 @@ _: {
             place-within-column = false;
             hide-when-single-tab = true;
           };
-
-          empty-workspace-above-first = true;
+### MIGHT CHNAGE THIS SOMEDAY
+          #empty-workspace-above-first = true;
         };
 
         overview = {
