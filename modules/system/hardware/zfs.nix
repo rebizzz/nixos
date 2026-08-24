@@ -12,7 +12,7 @@ _: {
           interval = "Sun *-*-01..07 02:00:00";
           pools = ["data"];
         };
-        trim.enable = false; # mechanical HDDs, not SSDs
+        trim.enable = false;
         zed.settings = {
           ZED_NOTIFY_DATA = true;
           ZED_NOTIFY_VERBOSE = false;
@@ -22,7 +22,7 @@ _: {
 
       btrfs.autoScrub = {
         enable = true;
-        interval = "*-*-15 03:00:00"; # staggered from the ZFS scrub
+        interval = "*-*-15 03:00:00";
         fileSystems = ["/"];
       };
 

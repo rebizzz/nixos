@@ -1,11 +1,5 @@
 _: {
-  flake.modules.homeManager.kitty = {
-    config,
-    lib,
-    ...
-  }: let
-    themeFile = "${config.xdg.configHome}/kitty/themes/noctalia.conf";
-  in {
+  flake.modules.homeManager.kitty = {...}: {
     programs.kitty = {
       enable = true;
 
@@ -32,15 +26,5 @@ _: {
         include themes/noctalia.conf
       '';
     };
-
-    home.activation.kittyNoctaliaTheme = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
-            if [ ! -e "${themeFile}" ]; then
-              run mkdir -p $VERBOSE_ARG "$(dirname "${themeFile}")"
-              run tee "${themeFile}" >/dev/null <<'FALLBACK'
-      background #0e1415
-      foreground #dde4e3
-      FALLBACK
-            fi
-    '';
   };
 }
