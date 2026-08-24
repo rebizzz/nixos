@@ -11,12 +11,17 @@ _: {
       xdgOpenUsePortal = true;
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-gnome
       ];
-      config.common = {
-        default = ["gnome"];
-        "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
-        "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
+      config = {
+        common = {
+          default = ["gtk"];
+        };
+        umbriel = {
+          default = ["umbriel" "gtk"];
+          "org.freedesktop.impl.portal.ScreenCast" = ["umbriel"];
+          "org.freedesktop.impl.portal.Screenshot" = ["umbriel"];
+          "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
+        };
       };
     };
 

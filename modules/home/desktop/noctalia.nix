@@ -9,7 +9,6 @@ _: {
     screenshotsDir = "${homeDir}/Pictures/Screenshots";
     wallpapersDir = "${homeDir}/Pictures/Wallpapers";
     screencastsDir = "${homeDir}/Videos/Screencasts";
-    wallpaperPath = "${homeDir}/.config/wallpaper.jpg";
     wallpaperAsset = ../../../assets/wallpaper.jpg;
   in {
     programs.noctalia = {
@@ -20,6 +19,7 @@ _: {
       settings = {
         plugins = {
           enabled = [
+            "noctalia/privacy-indicator"
             "noctalia/screen_recorder"
             "aristides/udiskie"
             "yuuto/calculator"
@@ -42,8 +42,10 @@ _: {
         shell = {
           polkit_agent = true;
           greeter_sync.auto_sync = true;
-          telemetry_enabled = false;
+          telemetry_enabled = true;
           screen_time_enabled = true;
+          settings_show_advanced = true;
+          password_style = "random";
           clipboard_history_max_entries = 200;
           clipboard_auto_paste = "ctrl_v";
           avatar_path = "${homeDir}/.face";
@@ -62,6 +64,7 @@ _: {
           launcher = {
             app_grid = true;
             auto_paste = "ctrl_v";
+            compact = true;
           };
 
           screenshot = {
@@ -76,10 +79,21 @@ _: {
           };
         };
 
+        battery = {
+          warning_threshold = 15;
+        };
+
+        notification = {
+          history_retention_hours = 5;
+        };
+
         theme = {
           mode = "dark";
           source = "wallpaper";
           pure_black_dark = true;
+          builtin = "Kanagawa";
+          community_palette = "Oxocarbon";
+          wallpaper_scheme = "m3-content";
           templates = {
             enable_builtin_templates = true;
             builtin_ids = ["kitty" "gtk3" "gtk4" "umbriel"];
@@ -92,7 +106,9 @@ _: {
           enabled = true;
           transition_on_startup = true;
           directory = wallpapersDir;
-          default.path = wallpaperPath;
+          default.path = "${wallpapersDir}/default.jpg";
+          last.path = "${wallpapersDir}/default.jpg";
+          monitors."eDP-1".path = "${wallpapersDir}/default.jpg";
         };
 
         backdrop = {
@@ -142,11 +158,6 @@ _: {
         };
 
         location.auto_locate = true;
-
-        hot_corners = {
-          enabled = true;
-          top_left.action = "launcher";
-        };
 
         shell.session.actions = [
           {
@@ -199,15 +210,53 @@ _: {
             "tray"
             "notifications"
             "clipboard"
-            "udiskie"
-            "network"
-            "bluetooth"
-            "volume"
-            "brightness"
+            "group:g4"
+            "group:g1"
+            "group:g2"
             "battery"
-            "screen_recorder"
-            "control-center"
-            "session"
+            "group:g3"
+          ];
+          capsule_group = [
+            {
+              id = "g1";
+              enabled = true;
+              accordion = false;
+              accordion_direction = "end";
+              fill = "surface_variant";
+              opacity = 1.0;
+              padding = 6.0;
+              members = ["bluetooth" "screen_recorder" "udiskie"];
+            }
+            {
+              id = "g2";
+              enabled = true;
+              accordion = true;
+              accordion_direction = "end";
+              fill = "surface_variant";
+              opacity = 1.0;
+              padding = 6.0;
+              members = ["volume" "spacer_1" "brightness"];
+            }
+            {
+              id = "g3";
+              enabled = true;
+              accordion = true;
+              accordion_direction = "start";
+              fill = "surface_variant";
+              opacity = 1.0;
+              padding = 6.0;
+              members = ["session" "control-center" "spacer_2"];
+            }
+            {
+              id = "g4";
+              enabled = true;
+              accordion = true;
+              accordion_direction = "end";
+              fill = "surface_variant";
+              opacity = 1.0;
+              padding = 6.0;
+              members = ["network" "spacer_3" "network_tx" "spacer_4" "network_rx"];
+            }
           ];
         };
 
@@ -236,6 +285,16 @@ _: {
             hide_when_empty = true;
             show_count = true;
           };
+          network_tx = {
+            visualization = "none";
+          };
+          network_rx = {
+            visualization = "none";
+          };
+          spacer_1 = {type = "spacer";};
+          spacer_2 = {type = "spacer";};
+          spacer_3 = {type = "spacer";};
+          spacer_4 = {type = "spacer";};
         };
 
         plugin_settings = {

@@ -57,6 +57,11 @@ _: {
       "L+ /etc/systemd/resolved.conf.d/nextdns.conf - - - - ${config.sops.templates."resolved-nextdns.conf".path}"
     ];
 
+    systemd.services.systemd-resolved = {
+      wants = ["sops-install-secrets.service"];
+      after = ["sops-install-secrets.service"];
+    };
+
     services = {
       resolved = {
         enable = true;

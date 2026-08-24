@@ -10,6 +10,8 @@
           mod_key = "Super";
           show_cheatsheet = false;
           focus_on_activate = true;
+          xwayland = true;
+          honor_restored_maximize = false;
         };
 
         workspaces = {
@@ -52,15 +54,23 @@
           };
         };
 
+        include = {
+          files = ["noctalia.toml"];
+        };
+
         appearance = {
           prefer_no_csd = true;
           border_width = 2;
-     #    corner_radius = 12;
-          scratchpad_border_focused = "#e5c07bcc";
-          scratchpad_border_unfocused = "#3a302299";
-          insert_hint_color = "#9ecfd166";
-          backdrop_color = "#0c0c0f";
-          animation_ms = 240;
+          outer_border_width = 0;
+          corner_radius = 10;
+          border_focused = "#7AA3FFFF";
+          border_unfocused = "#292933FF";
+          scratchpad_border_focused = "#E5C07BFF";
+          scratchpad_border_unfocused = "#5C4A2AFF";
+          outer_border_color = "#1A1A1FFF";
+          insert_hint_color = "#7FC8FF80";
+          backdrop_color = "#000000FF";
+          animation_ms = 200;
           shadow = {
             enabled = true;
             softness = 45;
@@ -97,7 +107,6 @@
 
         overview = {
           zoom = 0.55;
-          workspace_background = "#0c0c0f66";
         };
 
         hot_corners = {
@@ -113,11 +122,26 @@
         # ---------------------------------------------------------------------------
         keybinds = {
           # Launchers & Applications
-          "Mod+Return" = "spawn:kitty";
-          "Mod+D" = "spawn:noctalia msg panel-toggle launcher";
-          "Mod+B" = "spawn:brave-origin --new-window";
-          "Mod+E" = "spawn:nautilus";
-          "XF86Calculator" = "spawn:noctalia msg panel-toggle yuuto/calculator:panel";
+          "Mod+Return" = {
+            action = "spawn:kitty";
+            repeat = false;
+          };
+          "Mod+D" = {
+            action = "spawn:noctalia msg panel-toggle launcher";
+            repeat = false;
+          };
+          "Mod+B" = {
+            action = "spawn:brave-origin --new-window";
+            repeat = false;
+          };
+          "Mod+E" = {
+            action = "spawn:nautilus";
+            repeat = false;
+          };
+          "XF86Calculator" = {
+            action = "spawn:noctalia msg panel-toggle yuuto/calculator:panel";
+            repeat = false;
+          };
 
           # Window actions
           "Mod+Q" = "window-close";
@@ -133,10 +157,19 @@
           "Mod+Period" = "window-expel-right";
 
           # Session & lock
-          "Mod+Alt+L" = "spawn:noctalia msg session lock";
-          "Mod+Shift+Q" = "spawn:noctalia msg panel-toggle session";
+          "Mod+Alt+L" = {
+            action = "spawn:noctalia msg session lock";
+            repeat = false;
+          };
+          "Mod+Shift+Q" = {
+            action = "spawn:noctalia msg panel-toggle session";
+            repeat = false;
+          };
           "Mod+Shift+Slash" = "cheatsheet-toggle";
-          "Mod+Shift+P" = "spawn:noctalia msg dpms-off";
+          "Mod+Shift+P" = {
+            action = "spawn:noctalia msg dpms-off";
+            repeat = false;
+          };
           "Ctrl+Alt+Delete" = "session-quit";
 
           # Overview & Navigation
@@ -206,24 +239,66 @@
           "Mod+grave" = "scratchpad-focus-next";
 
           # Screenshots (Noctalia)
-          "Print" = "spawn:noctalia msg screenshot-region";
-          "Ctrl+Print" = "spawn:noctalia msg screenshot-fullscreen";
-          "Shift+Print" = "spawn:noctalia msg screenshot-area";
+          "Print" = {
+            action = "spawn:noctalia msg screenshot-region";
+            repeat = false;
+          };
+          "Ctrl+Print" = {
+            action = "spawn:noctalia msg screenshot-fullscreen";
+            repeat = false;
+          };
+          "Shift+Print" = {
+            action = "spawn:noctalia msg screenshot-area";
+            repeat = false;
+          };
 
           # Noctalia extras
-          "Mod+Shift+Alt+P" = "spawn:noctalia msg toggle-privacy-mode";
+          "Mod+Shift+Alt+P" = {
+            action = "spawn:noctalia msg toggle-privacy-mode";
+            repeat = false;
+          };
 
           # Media keys
-          "XF86AudioRaiseVolume" = "spawn:noctalia msg volume-up";
-          "XF86AudioLowerVolume" = "spawn:noctalia msg volume-down";
-          "XF86AudioMute" = "spawn:noctalia msg volume-mute";
-          "XF86AudioMicMute" = "spawn:noctalia msg mic-mute";
-          "XF86AudioNext" = "spawn:noctalia msg media next";
-          "XF86AudioPrev" = "spawn:noctalia msg media previous";
-          "XF86AudioPlay" = "spawn:noctalia msg media toggle";
-          "XF86AudioPause" = "spawn:noctalia msg media toggle";
-          "XF86MonBrightnessUp" = "spawn:noctalia msg brightness-up";
-          "XF86MonBrightnessDown" = "spawn:noctalia msg brightness-down";
+          "XF86AudioRaiseVolume" = {
+            action = "spawn:noctalia msg volume-up";
+            repeat = false;
+          };
+          "XF86AudioLowerVolume" = {
+            action = "spawn:noctalia msg volume-down";
+            repeat = false;
+          };
+          "XF86AudioMute" = {
+            action = "spawn:noctalia msg volume-mute";
+            repeat = false;
+          };
+          "XF86AudioMicMute" = {
+            action = "spawn:noctalia msg mic-mute";
+            repeat = false;
+          };
+          "XF86AudioNext" = {
+            action = "spawn:noctalia msg media next";
+            repeat = false;
+          };
+          "XF86AudioPrev" = {
+            action = "spawn:noctalia msg media previous";
+            repeat = false;
+          };
+          "XF86AudioPlay" = {
+            action = "spawn:noctalia msg media toggle";
+            repeat = false;
+          };
+          "XF86AudioPause" = {
+            action = "spawn:noctalia msg media toggle";
+            repeat = false;
+          };
+          "XF86MonBrightnessUp" = {
+            action = "spawn:noctalia msg brightness-up";
+            repeat = false;
+          };
+          "XF86MonBrightnessDown" = {
+            action = "spawn:noctalia msg brightness-down";
+            repeat = false;
+          };
 
           # Scroll wheel navigation
           "Mod+WheelUp" = "window-focus-left";
@@ -271,6 +346,11 @@
           }
           {
             match.app_id = "^org\\.gnome\\.seahorse\\.Application$";
+            default_floating = true;
+          }
+          # XDG Portal dialogs & Share picker
+          {
+            match.app_id = "^(dev\\.noctalia\\.UmbrielSharePicker|xdg-desktop-portal-.*|org\\.freedesktop\\.impl\\.portal\\.desktop\\..*)$";
             default_floating = true;
           }
           # Brave / Chromium PiP + popups + dialogs
