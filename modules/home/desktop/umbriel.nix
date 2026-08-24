@@ -55,9 +55,7 @@
         appearance = {
           prefer_no_csd = true;
           border_width = 2;
-          corner_radius = 12;
-          border_focused = "#9ecfd1";
-          border_unfocused = "#24242d99";
+     #    corner_radius = 12;
           scratchpad_border_focused = "#e5c07bcc";
           scratchpad_border_unfocused = "#3a302299";
           insert_hint_color = "#9ecfd166";
@@ -145,7 +143,7 @@
           "Mod+O" = "overview-toggle";
           "Mod+Tab" = "workspace-set-layout:toggle";
 
-          # Window sizing & modifications (from Niri history)
+          # Window sizing & modifications
           "Mod+Minus" = "window-modify-width:-0.1";
           "Mod+Equal" = "window-modify-width:+0.1";
 
@@ -155,7 +153,7 @@
           "Mod+J" = "window-focus-down";
           "Mod+K" = "window-focus-up";
 
-          # Window & Column movement (vim-keys from Niri history)
+          # Window & Column movement (vim-keys)
           "Mod+Shift+H" = "column-move-left";
           "Mod+Shift+L" = "column-move-right";
           "Mod+Shift+J" = "window-move-down";
@@ -237,7 +235,7 @@
         };
 
         # ---------------------------------------------------------------------------
-        # Window rules — Identical matching to niri.nix
+        # Window rules
         # ---------------------------------------------------------------------------
         window_rule = [
           # Kitty — blur

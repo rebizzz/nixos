@@ -14,7 +14,7 @@
 </p>
 
 One flake, two machines, codenamed after Frieren's two steadiest travelers. `laptop` ("Frieren")
-is a NixOS desktop with [Niri][Niri] + [Noctalia][Noctalia] on a `tmpfs` root wiped every reboot.
+is a NixOS desktop with [Umbriel][Umbriel] + [Noctalia][Noctalia] on a `tmpfs` root wiped every reboot.
 `nixos-server` ("Fern") is a headless home server with a ZFS mirror, Podman, and Jellyfin, that
 self-upgrades weekly. See [modules/hosts](modules/hosts/README.md) for details of each host.
 
@@ -27,7 +27,7 @@ self-upgrades weekly. See [modules/hosts](modules/hosts/README.md) for details o
 
 | Category | Choice |
 | --- | --- |
-| **Window Manager** | [Niri][Niri] |
+| **Window Manager** | [Umbriel][Umbriel] |
 | **Shell / Bar** | [Noctalia][Noctalia] |
 | **Display Manager** | [noctalia-greeter][noctalia-greeter] |
 | **Terminal** | [foot][foot] + [Fish][Fish] (`zoxide`, `eza`, `bat`, `ripgrep`) |
@@ -130,7 +130,7 @@ Run `just --list` to see every recipe.
 
 [MIT licensed](LICENSE).
 
-[Niri]: https://github.com/YaLTeR/niri
+[Umbriel]: https://github.com/noctalia-dev/umbriel
 [Noctalia]: https://github.com/noctalia-dev/noctalia
 [noctalia-greeter]: https://github.com/noctalia-dev/noctalia-greeter
 [foot]: https://codeberg.org/dnkl/foot

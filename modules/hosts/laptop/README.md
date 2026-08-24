@@ -1,7 +1,7 @@
 # laptop
 
 Daily-driver desktop, codenamed "Frieren" (see [../README.md](../README.md#naming-conventions)).
-NixOS + preservation, `tmpfs` root wiped every reboot, LUKS + LVM + Btrfs on NVMe, Niri + Noctalia,
+NixOS + preservation, `tmpfs` root wiped every reboot, LUKS + LVM + Btrfs on NVMe, Umbriel + Noctalia,
 home-manager.
 
 Disk layout is declarative via [disko](./_disko.nix), device `/dev/nvme0n1`.

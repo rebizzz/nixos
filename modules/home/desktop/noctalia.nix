@@ -48,7 +48,6 @@ _: {
           clipboard_auto_paste = "ctrl_v";
           avatar_path = "${homeDir}/.face";
           launch_apps_as_systemd_services = true;
-          niri_overview_type_to_launch_enabled = true;
           font_family = "Inter";
           panel = {
             transparency_mode = "soft";
@@ -83,7 +82,7 @@ _: {
           pure_black_dark = true;
           templates = {
             enable_builtin_templates = true;
-            builtin_ids = ["kitty" "gtk3" "gtk4" "niri" "umbriel"];
+            builtin_ids = ["kitty" "gtk3" "gtk4" "umbriel"];
             enable_community_templates = true;
             community_ids = ["fastfetch" "bat"];
           };
