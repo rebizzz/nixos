@@ -341,9 +341,20 @@
             match.app_id = "^org\\.gnome\\.seahorse\\.Application$";
             default_floating = true;
           }
-          # XDG Portal dialogs & Share picker
+          # Noctalia Settings & Share picker
           {
-            match.app_id = "^(dev\\.noctalia\\.UmbrielSharePicker|xdg-desktop-portal-.*|org\\.freedesktop\\.impl\\.portal\\.desktop\\..*)$";
+            match.app_id = "^dev\\.noctalia\\.Noctalia$";
+            default_floating = true;
+            default_size = [1020 900];
+          }
+          {
+            match.app_id = "^dev\\.noctalia\\.UmbrielSharePicker$";
+            default_floating = true;
+            default_size = [800 600];
+          }
+          # XDG Portal dialogs
+          {
+            match.app_id = "^(xdg-desktop-portal-.*|org\\.freedesktop\\.impl\\.portal\\.desktop\\..*)$";
             default_floating = true;
           }
           # Brave / Chromium PiP + popups + dialogs
@@ -414,12 +425,14 @@
         ];
 
         # ---------------------------------------------------------------------------
-        # Layer rules — Noctalia shell surfaces blur exclusion
+        # Layer rules — Noctalia shell surfaces blur
         # ---------------------------------------------------------------------------
         layer_rule = [
           {
             match.namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$";
-            blur = false;
+            blur = true;
+            blur_ignore_alpha = 0.5;
+            blur_optimized = false;
           }
         ];
       };
