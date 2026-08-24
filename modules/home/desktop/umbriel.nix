@@ -135,14 +135,11 @@
           "Mod+Q" = "window-close";
           "Mod+T" = "window-toggle-floating";
           "Mod+F" = "window-toggle-fullscreen";
-          "Mod+M" = "window-toggle-maximize";
-          "Mod+Ctrl+M" = "window-toggle-maximize-to-edges";
+          "Mod+Shift+F" = "window-toggle-maximize";
           "Mod+R" = "window-cycle-width";
           "Mod+C" = "window-center";
-          "Mod+BracketLeft" = "window-consume-left";
-          "Mod+BracketRight" = "window-expel-right";
-          "Mod+Comma" = "window-consume-left";
-          "Mod+Period" = "window-expel-right";
+          "Mod+comma" = "window-consume-left";
+          "Mod+period" = "window-expel-right";
 
           "Mod+Alt+L" = {
             action = "spawn:noctalia msg session lock";
@@ -283,6 +280,14 @@
         };
 
         window_rule = [
+          {
+            match.app_id = "^(brave-browser|brave)$";
+            default_maximize = true;
+          }
+          {
+            match.app_id = "^(vesktop|Vesktop)$";
+            default_maximize = true;
+          }
           {
             match.app_id = "^kitty$";
             blur = true;

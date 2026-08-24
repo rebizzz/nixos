@@ -72,7 +72,7 @@
         smartmontools
         lm_sensors
         nh
-        fastfetch
+        microfetch
       ];
     })
   ];
