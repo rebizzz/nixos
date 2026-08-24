@@ -4,13 +4,8 @@
     config,
     ...
   }: {
-    imports = [inputs.umbriel.nixosModules.default];
-
     programs = {
-      umbriel = {
-        enable = true;
-        portalPackage = inputs.xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default;
-      };
+      niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable;
 
       nh = {
         enable = true;

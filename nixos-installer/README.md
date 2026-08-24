@@ -2,7 +2,7 @@
 
 A minimal flake for iterating on `laptop`'s disk layout and hardware config on real hardware,
 without evaluating the whole main flake, which takes ~30s per evaluation once fetched, and pulls
-in home-manager, umbriel, noctalia, and every other module along with it.
+in home-manager, niri, noctalia, and every other module along with it.
 
 This flake doesn't duplicate the disk layout, it imports the real
 [`_disko.nix`](../modules/hosts/laptop/_disko.nix) and

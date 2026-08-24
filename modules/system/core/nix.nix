@@ -38,6 +38,8 @@
           "https://cache.nixos.org"
           "https://nix-community.cachix.org"
           "https://noctalia.cachix.org"
+          "https://niri-epireyn.cachix.org"
+          "https://niri.cachix.org"
         ];
 
         trusted-users = ["root" "@wheel"];
@@ -46,6 +48,8 @@
           "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
           "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+          "niri-epireyn.cachix.org-1:tlVyFN7CtsDT+ZcLPS+ekFWeT1X6X4OqvWqbBMyIzFA="
+          "niri.cachix.org-1:Wv0mDh9FQ5eaSobfq25S971P7h17F53X7L4qfK07e0c="
         ];
 
         fallback = true;

@@ -1,5 +1,5 @@
 {
-  description = "NixOS - Umbriel + Noctalia (dendritic)";
+  description = "NixOS - Niri + Noctalia (dendritic)";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -42,14 +42,7 @@
 
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
     noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
-    umbriel = {
-      url = "git+https://github.com/noctalia-dev/umbriel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    xdg-desktop-portal-umbriel = {
-      url = "github:noctalia-dev/xdg-desktop-portal-umbriel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    niri.url = "github:epireyn/niri-flake";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";

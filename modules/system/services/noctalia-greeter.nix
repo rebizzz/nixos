@@ -9,7 +9,7 @@
     programs.noctalia-greeter = {
       enable = true;
       settings = {
-        session.default = "umbriel";
+        session.default = "niri";
         user.default = config.myConfig.user.name;
         keyboard.layout = "us";
         cursor = {
