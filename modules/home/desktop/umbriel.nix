@@ -110,11 +110,7 @@
           };
         };
 
-        # ---------------------------------------------------------------------------
-        # Keybinds
-        # ---------------------------------------------------------------------------
         keybinds = {
-          # Launchers & Applications
           "Mod+Return" = {
             action = "spawn:kitty";
             repeat = false;
@@ -136,7 +132,6 @@
             repeat = false;
           };
 
-          # Window actions
           "Mod+Q" = "window-close";
           "Mod+T" = "window-toggle-floating";
           "Mod+F" = "window-toggle-fullscreen";
@@ -149,7 +144,6 @@
           "Mod+Comma" = "window-consume-left";
           "Mod+Period" = "window-expel-right";
 
-          # Session & lock
           "Mod+Alt+L" = {
             action = "spawn:noctalia msg session lock";
             repeat = false;
@@ -165,21 +159,17 @@
           };
           "Ctrl+Alt+Delete" = "session-quit";
 
-          # Overview & Navigation
           "Mod+O" = "overview-toggle";
           "Mod+Tab" = "workspace-set-layout:toggle";
 
-          # Window sizing & modifications
           "Mod+Minus" = "window-modify-width:-0.1";
           "Mod+Equal" = "window-modify-width:+0.1";
 
-          # Focus navigation (vim-keys)
           "Mod+H" = "window-focus-left";
           "Mod+L" = "window-focus-right";
           "Mod+J" = "window-focus-down";
           "Mod+K" = "window-focus-up";
 
-          # Window & Column movement (vim-keys)
           "Mod+Shift+H" = "column-move-left";
           "Mod+Shift+L" = "column-move-right";
           "Mod+Shift+J" = "window-move-down";
@@ -187,19 +177,16 @@
           "Mod+Ctrl+J" = "window-move-to-workspace-next";
           "Mod+Ctrl+K" = "window-move-to-workspace-previous";
 
-          # Multi-Monitor output focus
           "Mod+Shift+Left" = "output-focus-left";
           "Mod+Shift+Right" = "output-focus-right";
           "Mod+Shift+Up" = "output-focus-up";
           "Mod+Shift+Down" = "output-focus-down";
 
-          # Move window / column across monitors
           "Mod+Ctrl+Shift+Left" = "window-move-to-output-left";
           "Mod+Ctrl+Shift+Right" = "window-move-to-output-right";
           "Mod+Ctrl+Shift+Up" = "window-move-to-output-up";
           "Mod+Ctrl+Shift+Down" = "window-move-to-output-down";
 
-          # Workspace focus (1-9)
           "Mod+1" = "workspace-switch:1";
           "Mod+2" = "workspace-switch:2";
           "Mod+3" = "workspace-switch:3";
@@ -210,7 +197,6 @@
           "Mod+8" = "workspace-switch:8";
           "Mod+9" = "workspace-switch:9";
 
-          # Move window to workspace (1-9)
           "Mod+Ctrl+1" = "window-move-to-workspace:1";
           "Mod+Ctrl+2" = "window-move-to-workspace:2";
           "Mod+Ctrl+3" = "window-move-to-workspace:3";
@@ -221,17 +207,14 @@
           "Mod+Ctrl+8" = "window-move-to-workspace:8";
           "Mod+Ctrl+9" = "window-move-to-workspace:9";
 
-          # Move window across workspaces (adjacent)
           "Mod+Ctrl+Down" = "window-move-to-workspace-next";
           "Mod+Ctrl+Up" = "window-move-to-workspace-previous";
 
-          # Scratchpad
           "Mod+Shift+Space" = "window-move-to-scratchpad";
           "Mod+Space" = "scratchpad-toggle";
           "Mod+Ctrl+Space" = "window-restore-from-scratchpad";
           "Mod+grave" = "scratchpad-focus-next";
 
-          # Screenshots (Noctalia)
           "Print" = {
             action = "spawn:noctalia msg screenshot-region";
             repeat = false;
@@ -245,13 +228,11 @@
             repeat = false;
           };
 
-          # Noctalia extras
           "Mod+Shift+Alt+P" = {
             action = "spawn:noctalia msg toggle-privacy-mode";
             repeat = false;
           };
 
-          # Media keys
           "XF86AudioRaiseVolume" = {
             action = "spawn:noctalia msg volume-up";
             repeat = false;
@@ -293,7 +274,6 @@
             repeat = false;
           };
 
-          # Scroll wheel navigation
           "Mod+WheelUp" = "window-focus-left";
           "Mod+WheelDown" = "window-focus-right";
           "Mod+Shift+WheelUp" = "column-move-left";
@@ -302,21 +282,15 @@
           "Mod+Ctrl+WheelDown" = "window-move-to-workspace-next";
         };
 
-        # ---------------------------------------------------------------------------
-        # Window rules
-        # ---------------------------------------------------------------------------
         window_rule = [
-          # Kitty — blur
           {
             match.app_id = "^kitty$";
             blur = true;
           }
-          # Screenshot annotation tool
           {
             match.app_id = "^(com\\.gabm\\.satty|satty)$";
             default_floating = true;
           }
-          # Auth / Polkit / Keyring dialogs
           {
             match.app_id = "^lxqt-policykit.*";
             default_floating = true;
@@ -341,7 +315,6 @@
             match.app_id = "^org\\.gnome\\.seahorse\\.Application$";
             default_floating = true;
           }
-          # Noctalia Settings & Share picker
           {
             match.app_id = "^dev\\.noctalia\\.Noctalia$";
             default_floating = true;
@@ -352,12 +325,10 @@
             default_floating = true;
             default_size = [800 600];
           }
-          # XDG Portal dialogs
           {
             match.app_id = "^(xdg-desktop-portal-.*|org\\.freedesktop\\.impl\\.portal\\.desktop\\..*)$";
             default_floating = true;
           }
-          # Brave / Chromium PiP + popups + dialogs
           {
             match = {
               app_id = "^brave.*";
@@ -400,12 +371,10 @@
             };
             default_floating = true;
           }
-          # Bitwarden
           {
             match.app_id = "^[bB]itwarden.*";
             default_floating = true;
           }
-          # System control tools
           {
             match.app_id = "^pavucontrol$";
             default_floating = true;
@@ -424,9 +393,6 @@
           }
         ];
 
-        # ---------------------------------------------------------------------------
-        # Layer rules — Noctalia shell surfaces blur
-        # ---------------------------------------------------------------------------
         layer_rule = [
           {
             match.namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$";

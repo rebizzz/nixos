@@ -33,8 +33,6 @@ _: {
       '';
     };
 
-    # `include themes/noctalia.conf` requires the file to exist.
-    # Noctalia writes this template on theme generation.
     home.activation.kittyNoctaliaTheme = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
             if [ ! -e "${themeFile}" ]; then
               run mkdir -p $VERBOSE_ARG "$(dirname "${themeFile}")"

@@ -35,7 +35,6 @@
       stateVersion = "26.11";
       packages = [
         pkgs.gpu-screen-recorder
-        # udiskie-info/-mount/-umount, shelled out to by the noctalia udiskie plugin
         pkgs.udiskie
         pkgs.pavucontrol
       ];
