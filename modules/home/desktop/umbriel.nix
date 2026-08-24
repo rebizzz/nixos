@@ -376,7 +376,7 @@
             default_floating = true;
           }
           {
-            match.app_id = "^pavucontrol$";
+            match.app_id = "^(pavucontrol|org\\.pulseaudio\\.pavucontrol)$";
             default_floating = true;
           }
           {
