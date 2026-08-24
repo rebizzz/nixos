@@ -124,6 +124,22 @@ _: {
           tint_intensity = 0.3;
         };
 
+        lockscreen_widgets = {
+          enabled = true;
+        };
+
+        desktop_widgets = {
+          enabled = true;
+        };
+
+        weather = {
+          enabled = true;
+        };
+
+        system.monitor = {
+          enabled = true;
+        };
+
         nightlight = {
           enabled = true;
           force = true;
