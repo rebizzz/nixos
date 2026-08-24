@@ -13,7 +13,11 @@
       serviceConfig = {
         Type = "oneshot";
         User = user.name;
-        Environment = "XDG_RUNTIME_DIR=/run/user/${toString (if user.uid != null then user.uid else 1000)}";
+        Environment = "XDG_RUNTIME_DIR=/run/user/${toString (
+          if user.uid != null
+          then user.uid
+          else 1000
+        )}";
         ExecStart = "${inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/noctalia msg session lock";
         TimeoutStartSec = "10s";
       };

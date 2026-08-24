@@ -45,9 +45,6 @@
             useUserPackages = true;
             users.${config.myConfig.user.name} = inputs.self.modules.homeManager.default;
             backupFileExtension = "bak";
-            sharedModules = [
-              inputs.noctalia.homeModules.default
-            ];
           };
         })
       ];

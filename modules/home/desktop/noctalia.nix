@@ -1,5 +1,10 @@
 _: {
-  flake.modules.homeManager.noctalia = {config, ...}: let
+  flake.modules.homeManager.noctalia = {
+    config,
+    pkgs,
+    inputs,
+    ...
+  }: let
     homeDir = config.home.homeDirectory;
     screenshotsDir = "${homeDir}/Pictures/Screenshots";
     wallpapersDir = "${homeDir}/Pictures/Wallpapers";
@@ -9,6 +14,7 @@ _: {
   in {
     programs.noctalia = {
       enable = true;
+      package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
       systemd.enable = true;
 
       settings = {
