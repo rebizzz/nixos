@@ -62,7 +62,7 @@
     {
       imports = [(inputs.import-tree ./modules)];
 
-      flake.nixosModules.default = {imports = builtins.attrValues inputs.self.modules.nixos;};
-      flake.homeManagerModules.default = {imports = builtins.attrValues inputs.self.modules.homeManager;};
+      flake.nixosModules = inputs.self.modules.nixos;
+      flake.homeManagerModules = inputs.self.modules.homeManager;
     };
 }

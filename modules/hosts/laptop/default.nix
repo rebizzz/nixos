@@ -23,7 +23,6 @@
         inputs.self.modules.nixos.power
         inputs.self.modules.nixos.services
         inputs.self.modules.nixos.tools
-        inputs.self.modules.nixos.virtualisation
         inputs.home-manager.nixosModules.home-manager
         ./_disko.nix
         ./_hardware.nix

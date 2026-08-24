@@ -63,8 +63,10 @@
       };
     };
 
-    services.sonarr.settings.auth.required = "DisabledForLocalAddresses";
-    services.radarr.settings.auth.required = "DisabledForLocalAddresses";
-    services.prowlarr.settings.auth.required = "DisabledForLocalAddresses";
+    services = {
+      sonarr.settings.auth.required = "DisabledForLocalAddresses";
+      radarr.settings.auth.required = "DisabledForLocalAddresses";
+      prowlarr.settings.auth.required = "DisabledForLocalAddresses";
+    };
   };
 }

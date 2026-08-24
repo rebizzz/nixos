@@ -8,13 +8,13 @@ _: {
     hardware.graphics = {
       enable = true;
       extraPackages = with pkgs; [
-        intel-vaapi-driver
-        libvdpau-va-gl
+        intel-media-driver
+        vpl-gpu-rt
+        intel-compute-runtime
       ];
     };
 
-    environment.sessionVariables.LIBVA_DRIVER_NAME = "i965";
-    systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "i965";
+    systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
 
     users.users.jellyfin.extraGroups = ["video" "render"];
 

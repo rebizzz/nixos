@@ -50,8 +50,8 @@ in {
 
   systemd.services.lenovo-conservation-mode = {
     description = "lenovo battery conservation mode";
-    after = ["multi-user.target"];
-    wantedBy = ["multi-user.target"];
+    after = ["multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target"];
+    wantedBy = ["multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target"];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = pkgs.writeShellScript "lenovo-conservation-mode" ''

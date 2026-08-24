@@ -133,6 +133,18 @@ _: {
         item = "nproc";
         value = "65536";
       }
+      {
+        domain = "*";
+        type = "soft";
+        item = "memlock";
+        value = "unlimited";
+      }
+      {
+        domain = "*";
+        type = "hard";
+        item = "memlock";
+        value = "unlimited";
+      }
     ];
 
     security.protectKernelImage = true;

@@ -85,7 +85,7 @@ in {
 
     deploy.nodes.${hostVars.hostName} = {
       hostname = "${hostVars.hostName}.local";
-      sshUser = hostVars.sshUser;
+      inherit (hostVars) sshUser;
       sshOpts = ["-o" "StrictHostKeyChecking=accept-new"];
       profiles.system = {
         user = "root";

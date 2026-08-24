@@ -19,7 +19,15 @@ _: {
           monospace = ["FiraCode Nerd Font" "JetBrainsMono Nerd Font Mono"];
           emoji = ["Noto Color Emoji"];
         };
-        subpixel.lcdfilter = "default";
+        antialias = true;
+        hinting = {
+          enable = true;
+          style = "slight";
+        };
+        subpixel = {
+          rgba = "rgb";
+          lcdfilter = "default";
+        };
       };
     };
   };

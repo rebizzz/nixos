@@ -6,7 +6,7 @@
       enable = true;
       settings = {
         general = {
-          autostart = ["noctalia" "dex --autostart --environment umbriel"];
+          autostart = ["dex --autostart --environment umbriel"];
           mod_key = "Super";
           show_cheatsheet = false;
           focus_on_activate = true;
@@ -135,7 +135,7 @@
           "Mod+Q" = "window-close";
           "Mod+T" = "window-toggle-floating";
           "Mod+F" = "window-toggle-fullscreen";
-          "Mod+Shift+F" = "window-toggle-maximize";
+          "Mod+M" = "window-toggle-maximize";
           "Mod+R" = "window-cycle-width";
           "Mod+C" = "window-center";
           "Mod+comma" = "window-consume-left";
@@ -297,10 +297,6 @@
             default_floating = true;
           }
           {
-            match.app_id = "^lxqt-policykit.*";
-            default_floating = true;
-          }
-          {
             match.app_id = "^udiskie$";
             default_floating = true;
           }
@@ -314,10 +310,6 @@
           }
           {
             match.title = "^(Enter|Re-enter) (passphrase|pin|password)";
-            default_floating = true;
-          }
-          {
-            match.app_id = "^org\\.gnome\\.seahorse\\.Application$";
             default_floating = true;
           }
           {

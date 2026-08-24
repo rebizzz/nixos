@@ -24,6 +24,11 @@
       value = mirrorDisk dev;
     })
     hostVars.disks.zfsMirror);
+  btrfsOpts = ["compress=zstd:3" "noatime" "space_cache=v2" "discard=async"];
+  subvol = mountpoint: {
+    inherit mountpoint;
+    mountOptions = btrfsOpts;
+  };
 in {
   disko.devices = {
     disk =
@@ -56,30 +61,12 @@ in {
                   extraArgs = ["-f"];
                   subvolumes = {
                     "@blank" = {};
-                    "@" = {
-                      mountpoint = "/";
-                      mountOptions = ["compress=zstd:3" "noatime" "discard=async"];
-                    };
-                    "@home" = {
-                      mountpoint = "/home";
-                      mountOptions = ["compress=zstd:3" "noatime" "discard=async"];
-                    };
-                    "@nix" = {
-                      mountpoint = "/nix";
-                      mountOptions = ["compress=zstd:3" "noatime" "discard=async"];
-                    };
-                    "@persistent" = {
-                      mountpoint = "/persistent";
-                      mountOptions = ["compress=zstd:3" "noatime" "discard=async"];
-                    };
-                    "@tmp" = {
-                      mountpoint = "/tmp";
-                      mountOptions = ["compress=zstd:3" "noatime" "discard=async"];
-                    };
-                    "@log" = {
-                      mountpoint = "/var/log";
-                      mountOptions = ["compress=zstd:3" "noatime" "discard=async"];
-                    };
+                    "@" = subvol "/";
+                    "@home" = subvol "/home";
+                    "@nix" = subvol "/nix";
+                    "@persistent" = subvol "/persistent";
+                    "@tmp" = subvol "/tmp";
+                    "@log" = subvol "/var/log";
                   };
                 };
               };
