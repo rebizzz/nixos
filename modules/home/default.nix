@@ -16,7 +16,7 @@
   in {
     imports = with inputs.self.modules.homeManager; [
       inputs.nix-index-database.homeModules.nix-index
-      niri
+      umbriel
       noctalia
       kitty
       fish

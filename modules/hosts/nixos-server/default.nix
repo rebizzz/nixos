@@ -10,7 +10,7 @@
     inherit system;
     overlays = [
       inputs.deploy-rs.overlays.default
-      (self: super: {
+      (_: super: {
         deploy-rs = {
           inherit (pkgs) deploy-rs;
           lib = super.deploy-rs.lib;

@@ -83,7 +83,7 @@ _: {
           pure_black_dark = true;
           templates = {
             enable_builtin_templates = true;
-            builtin_ids = ["kitty" "gtk3" "gtk4" "niri"];
+            builtin_ids = ["kitty" "gtk3" "gtk4" "niri" "umbriel"];
             enable_community_templates = true;
             community_ids = ["fastfetch" "bat"];
           };

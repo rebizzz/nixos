@@ -25,7 +25,6 @@
         inputs.self.modules.nixos.tools
         inputs.self.modules.nixos.virtualisation
         inputs.home-manager.nixosModules.home-manager
-        inputs.niri.nixosModules.niri
         ./_disko.nix
         ./_hardware.nix
         ({config, ...}: {

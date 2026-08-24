@@ -1,11 +1,5 @@
 _: {
-  flake.modules.nixos.cachyos-tuning = {
-    lib,
-    config,
-    ...
-  }: let
-    diskDevice = lib.removePrefix "/dev/" config.host.disk.device;
-  in {
+  flake.modules.nixos.cachyos-tuning = {...}: {
     boot = {
       blacklistedKernelModules = [
         "iTCO_wdt"
