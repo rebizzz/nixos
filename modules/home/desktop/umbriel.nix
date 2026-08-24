@@ -281,6 +281,13 @@
 
         window_rule = [
           {
+            default_position = {
+              x = 0;
+              y = 0;
+              anchor = "center";
+            };
+          }
+          {
             match.app_id = "^(brave-browser|brave)$";
             default_maximize = true;
           }
