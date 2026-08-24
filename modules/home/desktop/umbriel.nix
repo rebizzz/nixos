@@ -63,13 +63,6 @@
           border_width = 2;
           outer_border_width = 0;
           corner_radius = 10;
-          border_focused = "#7AA3FFFF";
-          border_unfocused = "#292933FF";
-          scratchpad_border_focused = "#E5C07BFF";
-          scratchpad_border_unfocused = "#5C4A2AFF";
-          outer_border_color = "#1A1A1FFF";
-          insert_hint_color = "#7FC8FF80";
-          backdrop_color = "#000000FF";
           animation_ms = 200;
           shadow = {
             enabled = true;
