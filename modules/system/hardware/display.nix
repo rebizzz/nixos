@@ -17,11 +17,12 @@ _: {
         common = {
           default = ["gtk"];
         };
-        niri = {
-          default = ["gnome" "gtk"];
-          "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
-          "org.freedesktop.impl.portal.Screenshot" = ["gnome"];
+        hyprland = {
+          default = ["hyprland" "gtk"];
+          "org.freedesktop.impl.portal.ScreenCast" = ["hyprland"];
+          "org.freedesktop.impl.portal.Screenshot" = ["hyprland"];
           "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
+          "org.freedesktop.impl.portal.Settings" = ["gtk"];
         };
       };
     };

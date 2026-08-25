@@ -24,7 +24,7 @@
         inputs.self.modules.nixos.services
         inputs.self.modules.nixos.tools
         inputs.home-manager.nixosModules.home-manager
-        inputs.niri.nixosModules.niri
+        inputs.hyprland.nixosModules.default
         ./_disko.nix
         ./_hardware.nix
         ({config, ...}: {

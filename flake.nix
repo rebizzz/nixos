@@ -1,5 +1,5 @@
 {
-  description = "NixOS - Niri + Noctalia (dendritic)";
+  description = "NixOS - Hyprland + Noctalia (dendritic)";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -42,7 +42,9 @@
 
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
     noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
-    niri.url = "github:epireyn/niri-flake";
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";

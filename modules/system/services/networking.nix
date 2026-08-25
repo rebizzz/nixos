@@ -42,7 +42,6 @@ _: {
         enable = true;
         allowedTCPPorts = [22 9090 5173];
         allowedUDPPorts = [5353];
-        trustedInterfaces = ["tailscale0"];
         checkReversePath = "loose";
       };
     };
