@@ -33,24 +33,32 @@ stays `nixos` and `nixos-server`, so remote reachability over mDNS doesn't depen
 
 Both hosts import `inputs.self.modules.nixos.base` (defined in `../base.nix`), which only carries
 what's genuinely common: disko/preservation/sops-nix, direnv, and the shared `nix`/`secrets`/`user`
-modules. Everything else is host-class-specific and listed explicitly in each host's `default.nix`:
+modules, plus the `myConfig.hostClass` option (`"desktop"` or `"server"`) that a handful of shared
+modules (`power`, `services`, `persistence`, see [../system/README.md](../system/README.md)) branch
+on internally.
 
-- `laptop/default.nix` lists every desktop module by name (`audio`, `boot`, `desktop`, `gpu`,
-  `services`, and so on), plus home-manager and umbriel.
-- `nixos-server/default.nix` lists its own set (`autoupgrade`, `zfs`, `containers`, `motd`,
-  `networking`, `security`, `persistence-server`, `power-server`, `services-server`, plus the
-  opt-in `media` for Jellyfin). GUI/desktop modules would either be meaningless or fail to evaluate
-  on a headless box, since several read `hostVars`, a specialArg only `nixos-server` receives.
+Everything else, host-class-specific by inclusion rather than by branching, is aggregated into one
+named module per host rather than listed individually in `default.nix`:
+
+- `laptop/profile.nix` defines `laptop-profile`, importing every desktop module (`audio`, `boot`,
+  `desktop`, `gpu`, and so on) plus `base`.
+- `nixos-server/profile.nix` defines `server-profile`, importing its own set (`autoupgrade`, `zfs`,
+  `containers`, `motd`, `networking`, `security`) plus `base`, with `media` (Jellyfin) and `nixarr`
+  left commented out as opt-in.
+
+Each host's `default.nix` then references just its one profile module (plus home-manager on
+`laptop`, and `_disko.nix`/`_hardware.nix` on both). This grouping follows the dendritic pattern's
+own documented guidance against "lower-level module name proliferation" — see
+[github.com/mightyiam/dendritic](https://github.com/mightyiam/dendritic#lower-level-module-name-proliferation).
 
 Neither host auto-picks-up new modules. A new `.nix` file under `modules/system/` registers itself
 (dendritic pattern, see [../system/README.md](../system/README.md)), but a host only gets it once
-you add it to that host's `modules` list by name. This is more typing than an exclude list, but it
-means you can diff a host's `default.nix` and see exactly what's on it, no separate exclusion list
-to keep in sync.
+you add it to that host's `profile.nix` aggregator by name. This is more typing than an exclude
+list, but it means you can diff a host's aggregator and see exactly what's on it, no separate
+exclusion list to keep in sync.
 
-This split exists because a handful of module names are legitimately different per host class:
-`power` vs `power-server`, `services` vs `services-server`, `persistence` vs `persistence-server`.
-See [../system/README.md](../system/README.md) for why.
+GUI/desktop modules would either be meaningless or fail to evaluate on the headless server, since
+several `nixos-server`-only modules read `hostVars`, a specialArg only `nixos-server` receives.
 
 ## Adding a New Host
 
@@ -62,7 +70,9 @@ See [../system/README.md](../system/README.md) for why.
    disks, wifi SSID, LAN IP, timezone.
 3. Regenerate `_hardware.nix` from `nixos-generate-config` run on the target, and adapt `_disko.nix`
    to the target's actual disks.
-4. Update `default.nix`'s module list for the new host's role (server-class vs desktop-class).
+4. Create a `profile.nix` aggregator for the new host (copy `laptop/profile.nix` or
+   `nixos-server/profile.nix` as a starting point) listing the modules it needs, and reference it
+   from `default.nix`.
 5. Add the new host's age/ssh public key to `.sops.yaml` and run
    `sops updatekeys secrets/secrets.yaml`.
 6. Install with [nixos-anywhere](https://github.com/nix-community/nixos-anywhere) or the standard

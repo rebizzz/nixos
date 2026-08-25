@@ -20,22 +20,7 @@
   };
 
   modules = [
-    inputs.self.modules.nixos.base
-    inputs.self.modules.nixos.autoupgrade
-    inputs.self.modules.nixos.zfs
-    inputs.self.modules.nixos.containers
-    inputs.self.modules.nixos.motd
-    inputs.self.modules.nixos.networking
-    inputs.self.modules.nixos.security
-    inputs.self.modules.nixos.persistence-server
-    inputs.self.modules.nixos.power-server
-    inputs.self.modules.nixos.services-server
-    # Jellyfin is opt-in: uncomment to enable media serving on this host.
-    # inputs.self.modules.nixos.media
-    # Media/arr stack (nixarr: Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr,
-    # Transmission, Recyclarr) is opt-in: uncomment to enable, then add
-    # indexers in Prowlarr (ports 8096/8989/7878/9696/9091).
-    # inputs.self.modules.nixos.nixarr
+    inputs.self.modules.nixos.server-profile
     ./_disko.nix
     ./_hardware.nix
     ({
@@ -43,6 +28,8 @@
       pkgs,
       ...
     }: {
+      myConfig.hostClass = "server";
+
       boot.loader = {
         systemd-boot = {
           enable = true;
