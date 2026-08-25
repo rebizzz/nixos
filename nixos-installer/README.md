@@ -26,7 +26,7 @@ one source of truth and no drift between "what I tested" and "what actually depl
    ```
 4. Install:
    ```bash
-   sudo nixos-install --root /mnt --flake .#laptop --no-root-password
+   sudo nixos-install --root /mnt --flake .#laptop --no-root-passwd
    ```
 5. Copy the backup `age` key into the new system before rebooting:
    ```bash
