@@ -30,7 +30,7 @@ self-upgrades weekly. See [modules/hosts](modules/hosts/README.md) for details o
 | **Window Manager** | [Umbriel][Umbriel] |
 | **Shell / Bar** | [Noctalia][Noctalia] |
 | **Display Manager** | [noctalia-greeter][noctalia-greeter] |
-| **Terminal** | [foot][foot] + [Fish][Fish] (`zoxide`, `eza`, `bat`, `ripgrep`) |
+| **Terminal** | [kitty][kitty] + [Fish][Fish] (`zoxide`, `eza`, `bat`, `ripgrep`) |
 | **Browser** | Brave Origin, debloated and locked down via policy |
 | **Filesystem** | Btrfs + LUKS + LVM (`laptop`), Btrfs system disk + ZFS mirror (`nixos-server`) |
 | **Secrets** | [sops-nix][sops-nix] + `age` |
@@ -133,7 +133,7 @@ Run `just --list` to see every recipe.
 [Umbriel]: https://github.com/noctalia-dev/umbriel
 [Noctalia]: https://github.com/noctalia-dev/noctalia
 [noctalia-greeter]: https://github.com/noctalia-dev/noctalia-greeter
-[foot]: https://codeberg.org/dnkl/foot
+[kitty]: https://sw.kovidgoyal.net/kitty/
 [Fish]: https://fishshell.com/
 [sops-nix]: https://github.com/Mic92/sops-nix
 [deploy-rs]: https://github.com/serokell/deploy-rs
