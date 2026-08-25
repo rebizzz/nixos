@@ -11,7 +11,7 @@ plus its own hardware/disk layout.
 | [`laptop`](laptop/README.md)           | NixOS    | Intel laptop, NVMe (LUKS + LVM + Btrfs)   | Daily-driver desktop   | ✅ Active |
 | [`nixos-server`](nixos-server/README.md) | NixOS    | Intel box, Btrfs SSD + 2x HDD ZFS mirror  | Headless home server   | ✅ Active |
 
-- **`laptop`**: `tmpfs` root wiped on every reboot, Niri + Noctalia desktop, home-manager.
+- **`laptop`**: `tmpfs` root wiped on every reboot, Umbriel + Noctalia desktop, home-manager.
 - **`nixos-server`**: Btrfs root, also wiped every reboot (rolled back to a blank snapshot in
   initrd, see `_hardware.nix`'s `rollback-root` service, not tmpfs since it's a real disk). ZFS
   mirror for media/backup/storage, Docker, Cockpit, Tailscale, weekly self-upgrade. Administered
@@ -36,7 +36,7 @@ what's genuinely common: disko/preservation/sops-nix, direnv, and the shared `ni
 modules. Everything else is host-class-specific and listed explicitly in each host's `default.nix`:
 
 - `laptop/default.nix` lists every desktop module by name (`audio`, `boot`, `desktop`, `gpu`,
-  `services`, and so on), plus home-manager and niri.
+  `services`, and so on), plus home-manager and umbriel.
 - `nixos-server/default.nix` lists its own set (`autoupgrade`, `zfs`, `containers`, `motd`,
   `networking`, `security`, `persistence-server`, `power-server`, `services-server`, plus the
   opt-in `media` for Jellyfin). GUI/desktop modules would either be meaningless or fail to evaluate

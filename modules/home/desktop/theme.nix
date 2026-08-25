@@ -28,6 +28,7 @@ _: {
 
     dconf.settings."org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
+      gtk-theme = "Adwaita-dark";
       font-name = "Inter 11";
       document-font-name = "Inter 11";
       monospace-font-name = "FiraCode Nerd Font Mono 11";

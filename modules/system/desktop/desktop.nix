@@ -1,13 +1,15 @@
-_: {
+{inputs, ...}: {
   flake.modules.nixos.desktop = {
     pkgs,
     config,
     ...
   }: {
+    imports = [inputs.umbriel.nixosModules.default];
+
     programs = {
-      hyprland = {
+      umbriel = {
         enable = true;
-        xwayland.enable = true;
+        portalPackage = inputs.xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default;
       };
 
       nh = {

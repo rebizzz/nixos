@@ -96,7 +96,7 @@ _: {
           wallpaper_scheme = "m3-content";
           templates = {
             enable_builtin_templates = true;
-            builtin_ids = ["kitty" "gtk3" "gtk4" "hyprland"];
+            builtin_ids = ["kitty" "gtk3" "gtk4" "umbriel"];
             enable_community_templates = true;
             community_ids = ["fastfetch" "bat"];
           };

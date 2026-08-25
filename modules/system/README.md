@@ -11,9 +11,9 @@ always match the filename.
 system/
 ├── apps/         # small standalone tool configs (nano)
 ├── core/         # nix settings, users, secrets, boot, auto-upgrade, mostly shared
-├── desktop/      # laptop-only: fonts, gaming, persistence, tools
+├── desktop/      # laptop-only: fonts, gaming, tools
 ├── hardware/     # audio/display/gpu/power/network tuning, per host class
-└── services/     # networking, containers, media, security, mostly server-only
+└── services/     # networking, containers, media, security, persistence, mostly server-only
 ```
 
 ## Shared vs Host-Class-Specific
@@ -27,7 +27,7 @@ profiles vs `nixos-server`'s static `ondemand` governor:
 | ----------- | ---------------------------------------- | ---------------------------------------------------- |
 | Power       | `power` (hardware/power.nix)             | `power-server` (hardware/power-server.nix)           |
 | Services    | `services` (services/services.nix)       | `services-server` (services/services-server.nix)     |
-| Persistence | `persistence` (desktop/persistence.nix)  | `persistence-server` (services/persistence-server.nix) |
+| Persistence | `persistence` (services/persistence.nix) | `persistence-server` (services/persistence-server.nix) |
 
 Everything else in `core/` (`nix`, `secrets`, `user`) is genuinely shared and pulled into both
 hosts via `../hosts/base.nix`. Everything in `desktop/` and most of `hardware/` only makes sense on
