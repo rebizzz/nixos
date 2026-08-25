@@ -1,56 +1,80 @@
 _: {
   flake.modules.nixos.power = {
+    config,
     pkgs,
     lib,
     ...
-  }: {
-    services = {
-      thermald.enable = true;
-      ananicy = {
-        enable = true;
-        package = pkgs.ananicy-cpp;
-        rulesProvider = pkgs.ananicy-rules-cachyos;
-        settings = {
-          cgroup_load = false;
-          apply_cgroup = false;
-          cgroup_realtime_workaround = lib.mkForce false;
-        };
-      };
-      logind.settings.Login = {
-        HandleLidSwitch = "ignore";
-        HandleLidSwitchExternalPower = "ignore";
-        IdleAction = "ignore";
-      };
-      auto-cpufreq = {
-        enable = true;
-        settings = {
-          charger = {
-            governor = "performance";
-            energy_performance_preference = "performance";
-            turbo = "auto";
+  }:
+    lib.mkMerge [
+      (lib.mkIf (config.myConfig.hostClass == "desktop") {
+        services = {
+          thermald.enable = true;
+          ananicy = {
+            enable = true;
+            package = pkgs.ananicy-cpp;
+            rulesProvider = pkgs.ananicy-rules-cachyos;
+            settings = {
+              cgroup_load = false;
+              apply_cgroup = false;
+              cgroup_realtime_workaround = lib.mkForce false;
+            };
           };
-          battery = {
-            governor = "powersave";
-            energy_performance_preference = "power";
-            turbo = "auto";
-            enable_thresholds = true;
-            start_threshold = 20;
-            stop_threshold = 80;
+          logind.settings.Login = {
+            HandleLidSwitch = "ignore";
+            HandleLidSwitchExternalPower = "ignore";
+            IdleAction = "ignore";
+          };
+          auto-cpufreq = {
+            enable = true;
+            settings = {
+              charger = {
+                governor = "performance";
+                energy_performance_preference = "performance";
+                turbo = "auto";
+              };
+              battery = {
+                governor = "powersave";
+                energy_performance_preference = "power";
+                turbo = "auto";
+                enable_thresholds = true;
+                start_threshold = 20;
+                stop_threshold = 80;
+              };
+            };
           };
         };
-      };
-    };
-    zramSwap = {
-      enable = true;
-      algorithm = "zstd";
-      memoryPercent = 100;
-      memoryMax = 8 * 1024 * 1024 * 1024;
-      priority = 100;
-    };
-
-    systemd.oomd = {
-      enable = true;
-      enableUserSlices = true;
-    };
-  };
+        zramSwap = {
+          enable = true;
+          algorithm = "zstd";
+          memoryPercent = 100;
+          memoryMax = 8 * 1024 * 1024 * 1024;
+          priority = 100;
+        };
+        systemd.oomd = {
+          enable = true;
+          enableUserSlices = true;
+        };
+      })
+      (lib.mkIf (config.myConfig.hostClass == "server") {
+        zramSwap = {
+          enable = true;
+          algorithm = "zstd";
+          memoryPercent = 100;
+          priority = 100;
+        };
+        systemd.oomd = {
+          enable = true;
+          enableUserSlices = true;
+          enableSystemSlice = false;
+        };
+        powerManagement.cpuFreqGovernor = "powersave";
+        systemd.settings.Manager = {
+          RuntimeWatchdogSec = "30s";
+          RebootWatchdogSec = "5m";
+          KExecWatchdogSec = "5m";
+          DefaultTimeoutStopSec = "15s";
+          DefaultTimeoutStartSec = "30s";
+        };
+      })
+    ];
 }
