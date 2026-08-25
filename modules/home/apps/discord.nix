@@ -1,4 +1,6 @@
-{inputs, ...}: {
+{inputs, ...}: let
+  amoledCordTheme = "https://raw.githubusercontent.com/LuckFire/amoled-cord/343808e7d5297223e43868b3955da4cbbd01ceef/clients/amoled-cord.theme.css";
+in {
   flake.modules.homeManager.discord = {...}: {
     imports = [inputs.nixcord.homeModules.nixcord];
 
@@ -11,12 +13,8 @@
         useQuickCss = true;
         disableMinSize = true;
         frameless = true;
-        themeLinks = [
-          "https://raw.githubusercontent.com/LuckFire/amoled-cord/343808e7d5297223e43868b3955da4cbbd01ceef/clients/amoled-cord.theme.css"
-        ];
-        enabledThemeLinks = [
-          "https://raw.githubusercontent.com/LuckFire/amoled-cord/343808e7d5297223e43868b3955da4cbbd01ceef/clients/amoled-cord.theme.css"
-        ];
+        themeLinks = [amoledCordTheme];
+        enabledThemeLinks = [amoledCordTheme];
 
         plugins = {
           accountPanelServerProfile.enable = true;

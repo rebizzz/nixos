@@ -14,7 +14,7 @@ _: {
 
     decoration = {
       rounding = 12;
-      rounding_power = 2;
+      rounding_power = 3;
       active_opacity = 1.0;
       inactive_opacity = 1.0;
       dim_inactive = true;
@@ -26,6 +26,7 @@ _: {
         enabled = true;
         range = 30;
         render_power = 3;
+        offset = "0 3";
         color = "rgba(00000066)";
       };
 

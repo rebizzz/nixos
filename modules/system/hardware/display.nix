@@ -22,7 +22,6 @@ _: {
           "org.freedesktop.impl.portal.ScreenCast" = ["hyprland"];
           "org.freedesktop.impl.portal.Screenshot" = ["hyprland"];
           "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
-          "org.freedesktop.impl.portal.Settings" = ["gtk"];
         };
       };
     };
