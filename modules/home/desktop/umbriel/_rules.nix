@@ -1,7 +1,13 @@
 _: {
   programs.umbriel.settings = {
     window_rule = [
-      {default_position.anchor = "center";}
+      {
+        default_position = {
+          anchor = "center";
+          x = 0;
+          y = 0;
+        };
+      }
 
       {
         match.app_id = "^kitty$";
@@ -26,7 +32,11 @@ _: {
       {
         match.title = "^Vesktop Updater$";
         default_floating = true;
-        default_position.anchor = "center";
+        default_position = {
+          anchor = "center";
+          x = 0;
+          y = 0;
+        };
       }
       {
         match.app_id = "^(brave-browser|brave)$";
@@ -67,7 +77,11 @@ _: {
           title = "^Steam$";
         };
         default_floating = true;
-        default_position.anchor = "center";
+        default_position = {
+          anchor = "center";
+          x = 0;
+          y = 0;
+        };
         default_size = [1100 700];
       }
       {
@@ -85,7 +99,11 @@ _: {
       {
         match.title = "^Select what to share$";
         default_floating = true;
-        default_position.anchor = "center";
+        default_position = {
+          anchor = "center";
+          x = 0;
+          y = 0;
+        };
       }
     ];
 
