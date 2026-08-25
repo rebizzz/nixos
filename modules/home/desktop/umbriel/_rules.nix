@@ -38,19 +38,18 @@ _: {
       }
       {
         match = {
-          app_id = "^(vesktop|Vesktop)$";
-          title = "^(?!.*Vesktop Updater).*$";
+          app_id = "^(equibop|Equibop)$";
         };
         default_maximize = true;
+        blur = true;
+        opacity = 0.90;
       }
       {
-        match.title = ".*Vesktop Updater.*";
-        default_floating = true;
-        default_position = {
-          anchor = "center";
-          x = 0;
-          y = 0;
+        match = {
+          app_id = "^(equibop|Equibop)$";
+          title = "^Equibop Updater$";
         };
+        default_maximize = false;
       }
       {
         match.app_id = "^(brave-browser|brave)$";
