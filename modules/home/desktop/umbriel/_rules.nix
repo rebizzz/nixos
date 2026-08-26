@@ -3,7 +3,7 @@ _: {
     window_rule = [
       {
         blur = true;
-        blur_optimized = true;
+        blur_optimized = false;
       }
       {
         default_position = {
@@ -21,11 +21,21 @@ _: {
       {
         match.app_id = "^(com\\.gabm\\.satty|satty)$";
         default_floating = true;
+        default_pinned = true;
+        default_size = [1344 756];
         default_position = {
           anchor = "center";
           x = 0;
           y = 0;
         };
+      }
+      {
+        match.app_id = "^(code|org\\.gnome\\.Nautilus)$";
+        opacity = 0.97;
+      }
+      {
+        match.title = "^(Open File|Select|Choose a wallpaper|Open Folder|Save As|Library|Choose Where to Download|File Operation Progress|Rename|Copy Files|Move Files|Search Files)";
+        default_floating = true;
       }
       {
         match.app_id = "^(lxqt-policykit.*|udiskie|org\\.gnome\\.seahorse\\.Application)$";
@@ -61,19 +71,20 @@ _: {
           x = 0;
           y = 0;
         };
+        blur_popups = false;
       }
       {
         match.app_id = "^dev\\.noctalia\\.UmbrielSharePicker$";
         default_floating = true;
         default_size = [800 600];
         default_position = {
-          anchor = "center";
-          x = 0;
-          y = 0;
+          anchor = "bottom_right";
+          x = 32;
+          y = 32;
         };
       }
       {
-        match.app_id = "^(pavucontrol|org\\.pulseaudio\\.pavucontrol|nm-connection-editor|blueman-manager|org\\.gnome\\.Nm-connection-editor)$";
+        match.app_id = "^(pavucontrol|org\\.pulseaudio\\.pavucontrol|nm-connection-editor|blueman-manager|org\\.gnome\\.Nm-connection-editor|Emulator|zenity|qalculate-gtk)$";
         default_floating = true;
         default_position = {
           anchor = "center";
@@ -94,7 +105,7 @@ _: {
         };
       }
       {
-        match.app_id = "^(xdg-desktop-portal-.*|org\\.freedesktop\\.impl\\.portal\\.desktop\\..*)$";
+        match.app_id = "^(xdg-desktop-portal(-.*)?|org\\.freedesktop\\.impl\\.portal\\.desktop\\..*)$";
         default_floating = true;
         default_position = {
           anchor = "center";
@@ -149,10 +160,11 @@ _: {
 
     layer_rule = [
       {
-        match.namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd|window-switcher)$";
+        match.namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd|window-switcher|desktop-widget-[^\"]*)$";
         blur = true;
         blur_ignore_alpha = 0.5;
         blur_optimized = false;
+        blur_popups = true;
       }
     ];
   };

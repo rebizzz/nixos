@@ -37,7 +37,7 @@
         action = "spawn:noctalia msg dpms-off";
         repeat = false;
       };
-      "Mod+Shift+Slash" = "cheatsheet-toggle";
+      "Mod+Slash" = "cheatsheet-toggle";
       "Ctrl+Alt+Delete" = "session-quit";
 
       # Window state
@@ -45,6 +45,7 @@
       "Mod+F" = "window-toggle-fullscreen";
       "Mod+M" = "window-toggle-maximize";
       "Mod+C" = "window-center";
+      "Mod+Shift+C" = "column-center";
       "Mod+R" = "window-cycle-width";
       "Mod+Comma" = "window-consume-left";
       "Mod+Period" = "window-expel-right";
@@ -79,9 +80,8 @@
       "Mod+Ctrl+Shift+Down" = "window-move-to-output-down";
 
       # Scratchpad
-      "Mod+Shift+Space" = "window-move-to-scratchpad";
+      "Mod+Shift+Space" = "window-toggle-scratchpad";
       "Mod+Space" = "scratchpad-toggle";
-      "Mod+Ctrl+Space" = "window-restore-from-scratchpad";
       "Mod+Grave" = "scratchpad-focus-next";
 
       # Screenshots

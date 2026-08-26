@@ -335,7 +335,6 @@ _: {
     };
 
     home.file = {
-      ".config/wallpaper.jpg".source = wallpaperAsset;
       "Pictures/Wallpapers/default.jpg".source = wallpaperAsset;
       "Pictures/Screenshots/.keep".text = "";
       "Videos/Screencasts/.keep".text = "";
