@@ -110,6 +110,11 @@ in {
             mountpoint = "/mnt/data/storage";
             mountOptions = ["nofail"];
           };
+          "shared" = {
+            type = "zfs_fs";
+            mountpoint = "/mnt/data/shared";
+            mountOptions = ["nofail"];
+          };
         };
       };
     };

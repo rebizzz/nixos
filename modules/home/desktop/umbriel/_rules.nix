@@ -3,7 +3,7 @@ _: {
     window_rule = [
       {
         blur = true;
-        blur_optimized = false;
+        blur_optimized = true;
       }
       {
         default_position = {

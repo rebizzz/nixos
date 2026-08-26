@@ -12,7 +12,7 @@ _: {
     };
 
     mouse = {
-      accel_profile = "flat";
+      accel_profile = "adaptive";
       natural_scroll = false;
     };
 

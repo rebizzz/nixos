@@ -11,6 +11,7 @@
       persistence
       power
       services
+      nfs
       # Jellyfin is opt-in: add `media` to this list to enable media serving
       # on this host.
       # Media/arr stack (nixarr: Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr,
