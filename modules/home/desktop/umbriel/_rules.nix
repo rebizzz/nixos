@@ -37,19 +37,16 @@ _: {
         };
       }
       {
+        # Only the real Discord window, not Equibop's splash/setup/updater windows
+        # (those show up under the same app_id with an unrelated title and would
+        # otherwise get force-maximized to the top-left corner before they resize).
         match = {
           app_id = "^(equibop|Equibop)$";
+          title = "Discord";
         };
         default_maximize = true;
         blur = true;
         opacity = 0.90;
-      }
-      {
-        match = {
-          app_id = "^(equibop|Equibop)$";
-          title = "^Equibop Updater$";
-        };
-        default_maximize = false;
       }
       {
         match.app_id = "^(brave-browser|brave)$";
