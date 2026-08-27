@@ -6,7 +6,7 @@ _: {
       show_cheatsheet = false;
       focus_on_activate = true;
       xwayland = true;
-      honor_restored_maximize = false;
+      honor_restored_maximize = true;
     };
 
     workspaces.back_and_forth = true;

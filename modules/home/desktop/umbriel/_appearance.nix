@@ -6,7 +6,6 @@ _: {
     border_width = 2;
     outer_border_width = 0;
     corner_radius = 12;
-    animation_ms = 200;
 
     shadow = {
       enabled = true;
