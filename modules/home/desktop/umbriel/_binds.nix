@@ -135,7 +135,10 @@
       "Mod+Shift+WheelDown" = "column-move-right";
       "Mod+Ctrl+WheelUp" = "window-move-to-workspace-previous";
       "Mod+Ctrl+WheelDown" = "window-move-to-workspace-next";
+      "Mod+Ctrl+Page_Up" = "column-move-to-workspace-previous";
+      "Mod+Ctrl+Page_Down" = "column-move-to-workspace-next";
     }
     // lib.listToAttrs (map (i: lib.nameValuePair "Mod+${toString i}" "workspace-switch:${toString i}") (lib.range 1 9))
-    // lib.listToAttrs (map (i: lib.nameValuePair "Mod+Ctrl+${toString i}" "window-move-to-workspace:${toString i}") (lib.range 1 9));
+    // lib.listToAttrs (map (i: lib.nameValuePair "Mod+Ctrl+${toString i}" "window-move-to-workspace:${toString i}") (lib.range 1 9))
+    // lib.listToAttrs (map (i: lib.nameValuePair "Mod+Ctrl+Shift+${toString i}" "column-move-to-workspace:${toString i}") (lib.range 1 9));
 }

@@ -11,7 +11,9 @@ _: {
       center_underfull_strip = false;
     };
 
-    # dwindle has no sub-options
+    dwindle = {
+      preserve_split = false;
+    };
 
     master = {
       position = "left"; # "left" or "right"

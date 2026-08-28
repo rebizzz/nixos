@@ -84,7 +84,7 @@ _: {
       dim = 0.5;
       blur = true;
       scale = 0.0;
-      maximize = true;
+      maximize = false;
       fullscreen = false;
     };
 

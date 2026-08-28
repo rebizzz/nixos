@@ -19,11 +19,29 @@ in {
       defaultSearchProviderSearchURL = "https://search.brave.com/search?q={searchTerms}";
       defaultSearchProviderSuggestURL = "https://search.brave.com/api/suggest?q={searchTerms}";
       extraOpts = {
+        # Brave Feature / Bloat Disabling
+        BraveRewardsDisabled = true;
+        BraveWalletDisabled = true;
+        TorDisabled = true;
+        BraveAIChatEnabled = false;
+        BraveVPNDisabled = true;
+        BraveNewsDisabled = true;
+        BraveTalkDisabled = true;
+        BraveSpeedreaderEnabled = false;
+        BraveWebDiscoveryEnabled = 0;
+        BraveP3AEnabled = false;
+        BraveStatsPingEnabled = 0;
+
+        # Privacy & Security
+        SendDoNotTrackEnabled = true;
+        SpeechRecognitionEnabled = false;
+        PromotionalTabsEnabled = false;
         PasswordManagerEnabled = false;
         BrowserSignin = 0;
         DnsOverHttpsMode = "secure";
         SyncDisabled = true;
         EnableMediaRouter = false;
+        MediaRouterEnabled = false;
         AudioCaptureAllowed = true;
         VideoCaptureAllowed = true;
         AutofillAddressEnabled = false;
