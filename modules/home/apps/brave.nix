@@ -22,8 +22,6 @@ in {
         "--enable-zero-copy"
         "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,CanvasOopRasterization"
         "--disable-features=UseChromeOSDirectVideoDecoder"
-        "--disable-speech-api"
-        "--disable-voice-input"
       ];
     };
   };
