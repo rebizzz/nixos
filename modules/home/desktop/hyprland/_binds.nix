@@ -11,7 +11,7 @@ _: let
     ''
   ) 9);
 in {
-  wayland.windowManager.hyprland.extraConfig = ''
+  desktop.hyprland.extraConfig = ''
     # Apps / launcher
     bind = ${mainMod}, Return, exec, kitty
     bind = ${mainMod}, D, exec, noctalia msg panel-toggle launcher

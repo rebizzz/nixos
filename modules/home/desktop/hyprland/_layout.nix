@@ -1,5 +1,6 @@
 _: {
-  wayland.windowManager.hyprland.extraConfig = ''
+  desktop.hyprland.extraConfig = ''
+    # Layouts
     scrolling {
         column_width = 0.5
         direction = right
@@ -13,7 +14,6 @@ _: {
     }
 
     dwindle {
-        pseudotile = true
         preserve_split = false
     }
 

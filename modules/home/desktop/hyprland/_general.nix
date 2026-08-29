@@ -1,5 +1,5 @@
 _: {
-  wayland.windowManager.hyprland.extraConfig = ''
+  desktop.hyprland.extraConfig = ''
     $mainMod = SUPER
 
     # Autostart
@@ -29,8 +29,5 @@ _: {
         layout = scrolling
         allow_tearing = false
     }
-
-    # Theme palette from Noctalia
-    source = ~/.config/hypr/noctalia.conf
   '';
 }

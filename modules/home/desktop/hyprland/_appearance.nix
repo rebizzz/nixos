@@ -1,5 +1,6 @@
 _: {
-  wayland.windowManager.hyprland.extraConfig = ''
+  desktop.hyprland.extraConfig = ''
+    # Decoration
     decoration {
         rounding = 12
         active_opacity = 1.0
@@ -25,6 +26,7 @@ _: {
         }
     }
 
+    # Window Group & Tabs
     group {
         col.border_active = rgba(7aa2f7ee)
         col.border_inactive = rgba(565f89aa)

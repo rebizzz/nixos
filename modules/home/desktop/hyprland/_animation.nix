@@ -1,5 +1,6 @@
 _: {
-  wayland.windowManager.hyprland.extraConfig = ''
+  desktop.hyprland.extraConfig = ''
+    # Animations
     animations {
         enabled = true
 

@@ -1,129 +1,116 @@
-{inputs, ...}: {
+_: {
   flake.modules.homeManager.hyprland = {
+    config,
     pkgs,
+    lib,
     ...
   }: let
     cycle-layout = pkgs.writeShellScriptBin "cycle-layout" ''
-      LAYOUTS=(scrolling dwindle master monocle)
-
-      INFO=$(hyprctl activeworkspace -j)
-
-      LAYOUT=$(printf '%s' "$INFO" | jq -r '.tiledLayout // empty')
-      WORKSPACE_ID=$(printf '%s' "$INFO" | jq -r '.id')
-      WORKSPACE_NAME=$(printf '%s' "$INFO" | jq -r '.name')
-
-      CURRENT=0
+      LAYOUTS=("scrolling" "dwindle" "master" "monocle")
+      STATE_FILE="/tmp/hypr_active_layout"
+      if [ ! -f "$STATE_FILE" ]; then
+        echo "scrolling" > "$STATE_FILE"
+      fi
+      CURRENT=$(cat "$STATE_FILE")
+      NEXT=""
       for i in "''${!LAYOUTS[@]}"; do
-        if [ "''${LAYOUTS[i]}" = "$LAYOUT" ]; then
-          CURRENT=$i
+        if [ "''${LAYOUTS[$i]}" = "$CURRENT" ]; then
+          NEXT_INDEX=$(( (i + 1) % ''${#LAYOUTS[@]} ))
+          NEXT="''${LAYOUTS[$NEXT_INDEX]}"
           break
         fi
       done
-
-      if [[ "$1" == "--prev" ]]; then
-        TARGET=$(( (CURRENT - 1 + ''${#LAYOUTS[@]}) % ''${#LAYOUTS[@]} ))
-      else
-        TARGET=$(( (CURRENT + 1) % ''${#LAYOUTS[@]} ))
+      if [ -z "$NEXT" ]; then
+        NEXT="scrolling"
       fi
+      echo "$NEXT" > "$STATE_FILE"
 
-      NEXT_LAYOUT="''${LAYOUTS[$TARGET]}"
-      hyprctl keyword general:layout "$NEXT_LAYOUT" > /dev/null
-
-      notify-send --icon state-information \
-                  --app-name cycle-layout \
-                  -h "string:x-canonical-private-synchronous:cycle-layout" \
-                  "Layout changed" "Current layout: $NEXT_LAYOUT (workspace $WORKSPACE_NAME)"
+      if [ "$NEXT" = "monocle" ]; then
+        ${pkgs.hyprland}/bin/hyprctl keyword general:layout "dwindle"
+        ${pkgs.hyprland}/bin/hyprctl dispatch fullscreen 1
+        ${pkgs.libnotify}/bin/notify-send -u low -t 1500 -a "Hyprland" "Layout Switched" "Mode: Monocle (Fullscreen)"
+      else
+        ${pkgs.hyprland}/bin/hyprctl dispatch fullscreen 0
+        ${pkgs.hyprland}/bin/hyprctl keyword general:layout "$NEXT"
+        ${pkgs.libnotify}/bin/notify-send -u low -t 1500 -a "Hyprland" "Layout Switched" "Mode: ''${NEXT^}"
+      fi
     '';
 
     toggle-scratchpad = pkgs.writeShellScriptBin "toggle-scratchpad" ''
-      NAME="''${1:-scratchpad}"
-      CMD="''${2:-}"
+      NAME="$1"
+      LAUNCH_CMD="$2"
+      WORKSPACE="special:$NAME"
 
-      if [ -n "$CMD" ]; then
-        CLIENTS=$(hyprctl clients -j | jq -r --arg ws "special:$NAME" '.[] | select(.workspace.name == $ws) | .address')
-        if [ -z "$CLIENTS" ]; then
-          ANY_CLIENT=$(hyprctl clients -j | jq -r --arg cls "$NAME" '.[] | select(.class | test($cls; "i")) | .address' | head -n 1)
-          if [ -n "$ANY_CLIENT" ]; then
-            hyprctl dispatch movetoworkspacesilent "special:$NAME,address:$ANY_CLIENT"
-          else
-            hyprctl dispatch exec "[workspace special:$NAME silent] $CMD"
-          fi
+      HAS_WINDOWS=$(${pkgs.hyprland}/bin/hyprctl clients -j | ${pkgs.jq}/bin/jq -r ".[] | select(.workspace.name == \"$WORKSPACE\") | .address" | head -n 1)
+
+      if [ -z "$HAS_WINDOWS" ]; then
+        if [ -n "$LAUNCH_CMD" ]; then
+          ${pkgs.hyprland}/bin/hyprctl dispatch exec "[workspace $WORKSPACE silent] $LAUNCH_CMD"
+          sleep 0.3
         fi
       fi
 
-      hyprctl dispatch togglespecialworkspace "$NAME"
+      ${pkgs.hyprland}/bin/hyprctl dispatch togglespecialworkspace "$NAME"
     '';
 
     hyprland-cheatsheet = pkgs.writeShellScriptBin "hyprland-cheatsheet" ''
-      cat << 'EOF' | ${pkgs.kitty}/bin/kitty --class hyprland-cheatsheet -o initial_window_width=920 -o initial_window_height=680 -o font_size=11 sh -c "cat; read -n 1"
+      ${pkgs.kitty}/bin/kitty --class hyprland-cheatsheet -e ${pkgs.bash}/bin/bash -c '${pkgs.coreutils}/bin/cat << "EOF" | ${pkgs.less}/bin/less -R
 ================================================================================
-                         HYPRLAND KEYBINDINGS CHEATSHEET
+                    HYPRLAND KEYBINDINGS CHEATSHEET
 ================================================================================
 
-  APPS & LAUNCHERS
-    Super + Return              Open Terminal (Kitty)
-    Super + D                   App Launcher (Noctalia)
-    Super + B                   Brave Browser
-    Super + E                   File Manager (Thunar)
-    Super + /                   This Cheatsheet
-    XF86Calculator              Calculator Panel
+[ SYSTEM & LAUNCHER ]
+  Super + Return             Open Terminal (Kitty)
+  Super + D                  App Launcher (Noctalia)
+  Super + B                  Web Browser (Brave)
+  Super + E                  File Manager (Thunar)
+  Super + Q                  Close / Kill Active Window
+  Super + Alt + L            Lock Screen (Noctalia)
+  Super + Shift + Q          Session / Power Menu
+  Super + /                  Open this Cheatsheet
+  Ctrl + Alt + Delete        Exit Hyprland Session
 
-  LAYOUT & WORKSPACES
-    Super + Tab                 Cycle Layout (Scrolling -> Dwindle -> Master -> Monocle)
-    Super + O                   Noctalia Overview / Panel
-    Super + 1..9                Switch to Workspace 1..9
-    Super + Ctrl + 1..9         Move Window to Workspace 1..9
-    Super + Ctrl + Shift + 1..9 Move Window to Workspace Silently
-    Super + Ctrl + Down/Up      Next / Previous Workspace
+[ WINDOW STATES & LAYOUTS ]
+  Super + T                  Toggle Floating
+  Super + F                  Toggle Fullscreen
+  Super + M                  Toggle Maximize (Monocle)
+  Super + C                  Center Floating Window
+  Super + Tab                Cycle Layouts (Scrolling -> Dwindle -> Master -> Monocle)
+  Super + R                  Cycle Column Width Preset (Scrolling)
+  Super + Shift + C          Fit Column Into View (Scrolling)
+  Super + , / .              Swap Column Left / Right (Scrolling)
+  Super + - / =              Shrink / Expand Column Width (Scrolling)
 
-  WINDOW MANAGEMENT & SCROLLING
-    Super + Q                   Close Window
-    Super + T                   Toggle Floating
-    Super + F                   Fullscreen
-    Super + M                   Maximize
-    Super + C                   Center Window
-    Super + Shift + C           Fit Column into View
-    Super + R                   Cycle Column Width (0.25 -> 0.33 -> 0.5 -> 0.67 -> 0.75 -> 1.0)
-    Super + , / .               Swap Column Left / Right
-    Super + - / =               Shrink / Expand Column Width
+[ WINDOW GROUPING & TABS ]
+  Super + W                  Toggle Group (Tabbed Window Container)
+  Super + Shift + W          Lock / Unlock Group
+  Super + Alt + J / L        Next Tab in Group
+  Super + Alt + K / H        Previous Tab in Group
+  Super + Ctrl + H/J/K/L     Move Window into Adjacent Group
+  Super + Ctrl + E           Eject Window from Group
 
-  NAVIGATION & FOCUS
-    Super + H / J / K / L       Focus Left / Down / Up / Right
-    Super + Shift + H/J/K/L     Move Window Left / Down / Up / Right
+[ NAVIGATION & WORKSPACES ]
+  Super + H / J / K / L      Focus Left / Down / Up / Right
+  Super + Shift + H/J/K/L    Move Window Left / Down / Up / Right
+  Super + [1-9]              Switch to Workspace 1..9
+  Super + Ctrl + [1-9]       Move Window to Workspace 1..9
+  Super + Ctrl + Shift + [1-9] Move Window Silently to Workspace 1..9
+  Super + Ctrl + Down / Up   Next / Previous Workspace (Vertical)
+  Super + O                  Toggle Workspace Overview
 
-  WINDOW GROUPING & TABS
-    Super + W                   Toggle Group (Tabbed Container)
-    Super + Shift + W           Lock / Unlock Group
-    Super + Alt + J / L         Next Tab in Group
-    Super + Alt + K / H         Previous Tab in Group
-    Super + Ctrl + H/J/K/L      Move Window into Group (Left/Down/Up/Right)
-    Super + Ctrl + E            Eject Window out of Group
+[ SCRATCHPADS & TOOLS ]
+  Super + Space (or `)       Toggle General Scratchpad
+  Super + Shift + Space      Send Focused Window to General Scratchpad
+  Super + Ctrl + D           Toggle Discord Scratchpad (Auto-launches)
+  Super + Ctrl + B           Toggle Brave Scratchpad (Auto-launches)
+  Super + Z / Shift + Z      Zoom In (1.5x) / Reset Zoom (1.0x)
+  Print                      Region Screenshot (Noctalia)
+  Ctrl + Print               Fullscreen Screenshot
+  Shift + Print              Annotated Screenshot (Satty)
 
-  SCRATCHPADS (SPECIAL WORKSPACES)
-    Super + Space               Toggle Scratchpad (Manual)
-    Super + Shift + Space       Send Window to Scratchpad
-    Super + `                   Toggle Scratchpad
-    Super + Ctrl + D            Toggle Discord Scratchpad
-    Super + Ctrl + B            Toggle Brave Scratchpad
-    Super + Shift + D / B       Send Window to Discord / Brave Scratchpad
-
-  SCREEN ZOOM & MAGNIFIER
-    Super + Z                   Zoom In (1.5x)
-    Super + Shift + Z           Reset Zoom (1.0x)
-    Super + Ctrl + = / -        Zoom In (2.0x) / Reset Zoom
-
-  SCREENSHOTS & SYSTEM
-    Print                       Screenshot Region
-    Ctrl + Print                Screenshot Fullscreen
-    Shift + Print               Screenshot Window / Area
-    Super + Alt + L             Lock Screen
-    Super + Shift + Q           Session / Power Menu
-    Ctrl + Alt + Delete         Quit Hyprland Session
-
-================================================================================
-                   Press any key or close window to exit
 ================================================================================
 EOF
+'
     '';
   in {
     imports = [
@@ -135,18 +122,25 @@ EOF
       ./_output.nix
       ./_rules.nix
       ./_binds.nix
+      ./_misc.nix
     ];
 
-    wayland.windowManager.hyprland = {
-      enable = true;
+    options.desktop.hyprland.extraConfig = lib.mkOption {
+      type = lib.types.lines;
+      default = "";
+      description = "Extra configuration lines for Hyprland";
     };
 
-    home.packages = [
-      cycle-layout
-      toggle-scratchpad
-      hyprland-cheatsheet
-      pkgs.jq
-      pkgs.libnotify
-    ];
+    config = {
+      xdg.configFile."hypr/hyprland.conf".text = config.desktop.hyprland.extraConfig;
+
+      home.packages = [
+        cycle-layout
+        toggle-scratchpad
+        hyprland-cheatsheet
+        pkgs.jq
+        pkgs.libnotify
+      ];
+    };
   };
 }

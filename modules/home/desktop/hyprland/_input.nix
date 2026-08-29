@@ -1,10 +1,10 @@
 _: {
-  wayland.windowManager.hyprland.extraConfig = ''
+  desktop.hyprland.extraConfig = ''
+    # Input
     input {
         kb_layout = us
         repeat_delay = 300
         repeat_rate = 40
-
         follow_mouse = 1
         sensitivity = 0
 
@@ -16,19 +16,13 @@ _: {
         }
     }
 
-    gestures {
-        workspace_swipe = true
-        workspace_swipe_fingers = 3
-        workspace_swipe_distance = 300
-        workspace_swipe_invert = true
-        workspace_swipe_min_speed_to_force = 30
-        workspace_swipe_cancel_ratio = 0.5
-        workspace_swipe_create_new = true
-        workspace_swipe_direction_lock = false
-        workspace_swipe_forever = true
-        workspace_swipe_use_r = true
-    }
+    # Gestures
+    gesture = 3, up, workspace, +1
+    gesture = 3, down, workspace, -1
+    gesture = 3, left, workspace, -1
+    gesture = 3, right, workspace, +1
 
+    # Cursor
     cursor {
         no_hardware_cursors = false
         hide_on_key_press = true
