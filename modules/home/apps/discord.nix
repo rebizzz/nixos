@@ -6,8 +6,12 @@ in {
 
     programs.nixcord = {
       enable = true;
-      discord.enable = false;
-      equibop.enable = true;
+      discord = {
+        branches = ["canary"];
+        equicord.enable = true;
+        krisp.enable = true;
+        openASAR.enable = true;
+      };
 
       config = {
         useQuickCss = true;

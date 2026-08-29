@@ -47,11 +47,9 @@ _: {
         };
       }
       {
-        # Only the real Discord window, not Equibop's splash/setup/updater windows
-        # (those show up under the same app_id with an unrelated title and would
-        # otherwise get force-maximized to the top-left corner before they resize).
+        # Only the real Discord window, not splash/setup/updater windows
         match = {
-          app_id = "^(equibop|Equibop)$";
+          app_id = "^(discord|discord-canary|Discord|DiscordCanary|equibop|Equibop)$";
           title = "Discord";
         };
         default_maximize = true;
@@ -78,9 +76,9 @@ _: {
         default_floating = true;
         default_size = [800 600];
         default_position = {
-          anchor = "bottom_right";
-          x = 32;
-          y = 32;
+          anchor = "center";
+          x = 0;
+          y = 0;
         };
       }
       {
