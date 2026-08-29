@@ -47,7 +47,7 @@ _: {
         "rcutree.enable_rcu_lazy=1"
       ];
       consoleLogLevel = 3;
-      supportedFilesystems = ["ntfs" "udf"];
+      supportedFilesystems = ["ntfs" "udf" "nfs"];
       tmp.cleanOnBoot = true;
 
       initrd.systemd.enable = true;

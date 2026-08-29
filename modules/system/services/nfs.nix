@@ -14,7 +14,7 @@ _: {
         statdPort = 4046;
         mountdPort = 4047;
         exports = ''
-          /mnt/data/shared ${hostVars.network.lanIp}/24(rw,sync,no_subtree_check,no_root_squash)
+          /mnt/data/shared 10.0.0.0/8(rw,sync,no_subtree_check,no_root_squash) 192.168.0.0/16(rw,sync,no_subtree_check,no_root_squash) 172.16.0.0/12(rw,sync,no_subtree_check,no_root_squash)
         '';
       };
 
