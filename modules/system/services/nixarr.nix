@@ -49,6 +49,7 @@
           ratio-limit-enabled = true;
           idle-seeding-limit = 0;
           idle-seeding-limit-enabled = true;
+          trash-original-torrent-files = true;
         };
       };
 
@@ -195,6 +196,32 @@
       sonarr.settings.auth.required = "DisabledForLocalAddresses";
       radarr.settings.auth.required = "DisabledForLocalAddresses";
       prowlarr.settings.auth.required = "DisabledForLocalAddresses";
+
+      unpackerr = {
+        enable = true;
+        settings = {
+          sonarr = [
+            {
+              url = "http://localhost:${toString config.nixarr.sonarr.port}";
+              api_key = "";
+              paths = ["/mnt/data/media/torrents/tv-sonarr" "/mnt/data/media/torrents/sonarr"];
+              protocols = "torrent";
+              delete_delay = "5m";
+              delete_orig = true;
+            }
+          ];
+          radarr = [
+            {
+              url = "http://localhost:${toString config.nixarr.radarr.port}";
+              api_key = "";
+              paths = ["/mnt/data/media/torrents/movies-radarr" "/mnt/data/media/torrents/radarr"];
+              protocols = "torrent";
+              delete_delay = "5m";
+              delete_orig = true;
+            }
+          ];
+        };
+      };
     };
   };
 }
