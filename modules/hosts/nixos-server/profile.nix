@@ -12,11 +12,9 @@
       power
       services
       nfs
+      nixarr
       # Jellyfin is opt-in: add `media` to this list to enable media serving
-      # on this host.
-      # Media/arr stack (nixarr: Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr,
-      # Transmission, Recyclarr) is opt-in: add `nixarr` to this list to
-      # enable, then add indexers in Prowlarr (ports 8096/8989/7878/9696/9091).
+      # on this host (nixarr includes Jellyfin).
     ];
   };
 }
