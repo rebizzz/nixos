@@ -8,6 +8,7 @@ _: {
       extraPackages = with pkgs; [
         intel-vaapi-driver
         intel-media-driver
+        intel-compute-runtime
         libvdpau-va-gl
       ];
     };
