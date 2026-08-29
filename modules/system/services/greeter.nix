@@ -7,7 +7,7 @@ _: {
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --time-format '%H:%M %a, %b %d' --remember --remember-session --asterisks --user-menu --cmd Hyprland";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --time-format '%H:%M %a, %b %d' --remember --remember-session --asterisks --user-menu --cmd start-hyprland";
           user = "greeter";
         };
       };
