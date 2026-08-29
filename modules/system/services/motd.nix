@@ -102,10 +102,27 @@ _: {
       disk_root_size=$(df -h / 2>/dev/null | awk 'NR==2{print $2}')
       [ -n "$disk_root_pct" ] || disk_root_pct=0
 
-      disk_data_pct=$(df /mnt/data 2>/dev/null | awk 'NR==2{sub(/%/,"",$5); print $5}')
-      disk_data_used=$(df -h /mnt/data 2>/dev/null | awk 'NR==2{print $3}')
-      disk_data_size=$(df -h /mnt/data 2>/dev/null | awk 'NR==2{print $2}')
-      [ -n "$disk_data_pct" ] || disk_data_pct=0
+      zpool_data_alloc=$(zpool list -H -p -o alloc data 2>/dev/null)
+      zpool_data_size=$(zpool list -H -p -o size data 2>/dev/null)
+      if [ -n "$zpool_data_alloc" ] && [ -n "$zpool_data_size" ] && [ "$zpool_data_size" -gt 0 ]; then
+        disk_data_pct=$(( (zpool_data_alloc * 100) / zpool_data_size ))
+        fmt_bytes() {
+          local b=$1
+          if [ "$b" -ge 1099511627776 ]; then
+            awk "BEGIN{printf \"%.1fT\", $b/1099511627776}"
+          elif [ "$b" -ge 1073741824 ]; then
+            awk "BEGIN{printf \"%.1fG\", $b/1073741824}"
+          else
+            awk "BEGIN{printf \"%.0fM\", $b/1048576}"
+          fi
+        }
+        disk_data_used=$(fmt_bytes "$zpool_data_alloc")
+        disk_data_size=$(fmt_bytes "$zpool_data_size")
+      else
+        disk_data_pct=0
+        disk_data_used=""
+        disk_data_size=""
+      fi
 
       docker_count=0
       if command -v docker >/dev/null 2>&1; then
