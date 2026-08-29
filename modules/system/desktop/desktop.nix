@@ -25,7 +25,10 @@
       };
     };
 
-    services.flatpak.enable = true;
+    services = {
+      flatpak.enable = true;
+      gnome.sushi.enable = true;
+    };
 
     environment.systemPackages = [
       pkgs.nautilus

@@ -2,10 +2,6 @@ _: {
   programs.umbriel.settings = {
     window_rule = [
       {
-        blur = true;
-        blur_optimized = true;
-      }
-      {
         default_position = {
           anchor = "center";
           x = 0;
@@ -30,7 +26,7 @@ _: {
         };
       }
       {
-        match.app_id = "^(code|org\\.gnome\\.Nautilus)$";
+        match.app_id = "^code$";
         opacity = 0.97;
       }
       {

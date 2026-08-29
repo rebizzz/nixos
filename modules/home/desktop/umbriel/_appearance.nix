@@ -2,7 +2,7 @@ _: {
   # colours intentionally omitted here: noctalia.toml (see _general.nix) supplies
   # the live wallpaper-driven accent/border colours instead of hardcoding them
   programs.umbriel.settings.appearance = {
-    prefer_no_csd = true;
+    prefer_no_csd = false;
     border_width = 2;
     outer_border_width = 0;
     corner_radius = 12;

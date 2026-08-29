@@ -22,7 +22,7 @@ _: {
       networking.firewall = {
         allowedTCPPorts = [
           2049 # NFS
-          111  # portmapper / rpcbind
+          111 # portmapper / rpcbind
           4045 # lockd
           4046 # statd
           4047 # mountd
