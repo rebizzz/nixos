@@ -48,7 +48,8 @@ _: {
               }
 
               # Server portal (only on exact root /)
-              handle =/ {
+              @portal path /
+              handle @portal {
                 respond <<HTML
                 <!DOCTYPE html>
                 <html lang="en">
