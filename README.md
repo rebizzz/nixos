@@ -35,7 +35,7 @@ self-upgrades weekly. See [modules/hosts](modules/hosts/README.md) for details o
 | **Filesystem** | Btrfs + LUKS + LVM (`laptop`), Btrfs system disk + ZFS mirror (`nixos-server`) |
 | **Secrets** | [sops-nix][sops-nix] + `age` |
 | **Remote Deploy** | [deploy-rs][deploy-rs], for pushing to `nixos-server` |
-| **Containers / Media** | Podman, [Jellyfin][Jellyfin] (opt-in), Cockpit, [Tailscale][Tailscale] |
+| **Containers / Media** | Podman, [Nixarr Media Stack](docs/nixarr.md) (Jellyfin, Sonarr, Radarr, Prowlarr, FlareSolverr, Transmission, Bazarr, Recyclarr), Cockpit, [Tailscale][Tailscale] |
 | **Modules** | dendritic pattern via [flake-parts][flake-parts] + [import-tree][import-tree] |
 
 ## Directory Structure
@@ -104,7 +104,8 @@ nixos-rebuild switch --flake .#nixos-server --target-host rebiz@nixos-server.loc
 ```
 
 For a from-scratch install, see [modules/hosts/README.md](modules/hosts/README.md). For how
-secrets are shared between both hosts, see [secrets/README.md](secrets/README.md).
+secrets are shared between both hosts, see [secrets/README.md](secrets/README.md). For the complete
+media automation setup and architecture, see the [Nixarr Stack Guide](docs/nixarr.md).
 
 ## Development
 
