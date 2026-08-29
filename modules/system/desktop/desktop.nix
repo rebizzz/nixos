@@ -26,6 +26,7 @@
           thunar-archive-plugin
           thunar-volman
           thunar-media-tags-plugin
+          thunar-shares-plugin
         ];
       };
 
