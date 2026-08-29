@@ -85,7 +85,7 @@ in {
           ashift = "12";
         };
         rootFsOptions = {
-          compression = "zstd";
+          compression = "zstd-3";
           acltype = "posixacl";
           xattr = "sa";
           dnodesize = "auto";
