@@ -27,9 +27,9 @@ self-upgrades weekly. See [modules/hosts](modules/hosts/README.md) for details o
 
 | Category | Choice |
 | --- | --- |
-| **Window Manager** | [Umbriel][Umbriel] |
+| **Window Manager** | [Hyprland][Hyprland] |
 | **Shell / Bar** | [Noctalia][Noctalia] |
-| **Display Manager** | [noctalia-greeter][noctalia-greeter] |
+| **Display Manager** | [greetd (tuigreet)][greetd] |
 | **Terminal** | [kitty][kitty] + [Fish][Fish] (`zoxide`, `eza`, `bat`, `ripgrep`) |
 | **Browser** | Brave Origin, debloated and locked down via policy |
 | **Filesystem** | Btrfs + LUKS + LVM (`laptop`), Btrfs system disk + ZFS mirror (`nixos-server`) |
@@ -131,9 +131,9 @@ Run `just --list` to see every recipe.
 
 [MIT licensed](LICENSE).
 
-[Umbriel]: https://github.com/noctalia-dev/umbriel
+[Hyprland]: https://hyprland.org
 [Noctalia]: https://github.com/noctalia-dev/noctalia
-[noctalia-greeter]: https://github.com/noctalia-dev/noctalia-greeter
+[greetd]: https://github.com/apognu/tuigreet
 [kitty]: https://sw.kovidgoyal.net/kitty/
 [Fish]: https://fishshell.com/
 [sops-nix]: https://github.com/Mic92/sops-nix
