@@ -15,75 +15,10 @@ _: {
               redir /radarr /radarr/
               redir /prowlarr /prowlarr/
               redir /bazarr /bazarr/
-              redir /jellyfin /web/index.html
               redir /transmission /transmission/web/
+              redir /jellyfin /web/index.html
 
-              # Service reverse proxies
-              handle_path /jellyfin* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              # Jellyfin - web, sockets, and API routes
-              handle /web* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /socket* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /System* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /Users* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /Items* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /Images* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /Videos* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /Audio* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /Branding* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /Sessions* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /LiveTv* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /DisplayPreferences* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /PlaybackInfo* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /QuickConnect* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
-              handle /Auth* {
-                reverse_proxy 127.0.0.1:8096
-              }
-
+              # Dedicated application subpaths
               handle /sonarr* {
                 reverse_proxy 127.0.0.1:8989
               }
@@ -112,8 +47,8 @@ _: {
                 }
               }
 
-              # Default dashboard
-              handle {
+              # Server portal (only on exact root /)
+              handle =/ {
                 respond <<HTML
                 <!DOCTYPE html>
                 <html lang="en">
@@ -187,7 +122,7 @@ _: {
                     <h1>Server Portal</h1>
                     <p class="sub">nixos-server.local &bull; All services online</p>
                     <div class="grid">
-                      <a class="card" href="/jellyfin">
+                      <a class="card" href="/web/index.html">
                         <span class="title">🎬 Jellyfin</span>
                         <span class="desc">Media streaming server for movies & TV</span>
                       </a>
@@ -220,6 +155,11 @@ _: {
                 </body>
                 </html>
                 HTML 200
+              }
+
+              # Everything else routes directly to Jellyfin
+              handle {
+                reverse_proxy 127.0.0.1:8096
               }
             '';
           };
