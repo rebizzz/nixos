@@ -10,7 +10,7 @@ file, self-registering as `flake.modules.homeManager.<name>`, aggregated by `def
 home/
 ├── default.nix   # aggregates everything below into one module
 ├── apps/         # per-application configs (brave, discord, git, nano)
-├── desktop/      # umbriel, noctalia, mime associations, gtk/qt theme
+├── desktop/      # hyprland, noctalia, mime associations, gtk/qt theme
 ├── terminal/     # fish, foot
 └── services/     # user-level services (sound effects)
 ```

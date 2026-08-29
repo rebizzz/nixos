@@ -61,22 +61,6 @@
           radarr.enable = true;
         };
       };
-
-      recyclarr = {
-        enable = true;
-        configuration = {
-          sonarr.series = {
-            base_url = "http://localhost:${toString config.nixarr.sonarr.port}";
-            api_key = "!env_var SONARR_API_KEY";
-            quality_definition.type = "series";
-          };
-          radarr.movies = {
-            base_url = "http://localhost:${toString config.nixarr.radarr.port}";
-            api_key = "!env_var RADARR_API_KEY";
-            quality_definition.type = "movie";
-          };
-        };
-      };
     };
 
     networking.firewall = {

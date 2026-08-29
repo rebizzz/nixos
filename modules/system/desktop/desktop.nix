@@ -4,12 +4,11 @@
     config,
     ...
   }: {
-    imports = [inputs.umbriel.nixosModules.default];
-
     programs = {
-      umbriel = {
+      hyprland = {
         enable = true;
-        portalPackage = inputs.xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default;
+        package = inputs.hyprnix.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        portalPackage = inputs.hyprnix.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
       };
 
       nh = {
@@ -54,6 +53,9 @@
       pkgs.satty
       pkgs.libnotify
       pkgs.pear-desktop
+      inputs.hyprland-contrib.packages.${pkgs.stdenv.hostPlatform.system}.grimblast
+      inputs.hyprnix.packages.${pkgs.stdenv.hostPlatform.system}.hyprpicker
+      inputs.hyprnix.packages.${pkgs.stdenv.hostPlatform.system}.hyprcursor
     ];
   };
 }

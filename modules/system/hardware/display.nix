@@ -17,10 +17,10 @@ _: {
         common = {
           default = ["gtk"];
         };
-        umbriel = {
-          default = ["umbriel" "gtk"];
-          "org.freedesktop.impl.portal.ScreenCast" = ["umbriel"];
-          "org.freedesktop.impl.portal.Screenshot" = ["umbriel"];
+        hyprland = {
+          default = ["hyprland" "gtk"];
+          "org.freedesktop.impl.portal.ScreenCast" = ["hyprland"];
+          "org.freedesktop.impl.portal.Screenshot" = ["hyprland"];
           "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
         };
       };
