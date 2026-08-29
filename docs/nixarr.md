@@ -9,43 +9,51 @@ A fully declarative, zero-touch media automation stack deployed on `nixos-server
 The stack runs entirely on `nixos-server` behind a unified reverse proxy with automated indexer synchronization, download management, metadata scraping, subtitle fetching, Cloudflare challenge bypassing, and instant Jellyfin media indexing.
 
 ```mermaid
-graph TD
-    Client["User Devices (Browser / TV / Phone)"] -->|Port 80 / 443| Caddy["Caddy Reverse Proxy"]
-    Client -->|Port 8096 (Direct)| Jellyfin["Jellyfin Media Server"]
+flowchart TD
+    Client["User Devices (Browser / TV / Phone)"] --> Caddy["Caddy Reverse Proxy (:80)"]
+    Client --> Jellyfin["Jellyfin Media Server (:8096)"]
 
-    subgraph Management ["Automation & Indexers"]
-        Caddy -->|/sonarr/| Sonarr["Sonarr (TV Shows)"]
-        Caddy -->|/radarr/| Radarr["Radarr (Movies)"]
-        Caddy -->|/prowlarr/| Prowlarr["Prowlarr (Indexer Hub)"]
-        Caddy -->|/bazarr/| Bazarr["Bazarr (Subtitles)"]
-        Caddy -->|/transmission/| Transmission["Transmission (BitTorrent)"]
-        Caddy -->|/cockpit/| Cockpit["Cockpit (Server Dashboard)"]
-        Caddy -->|/ (Default)| Portal["Server Portal"]
-        Caddy -->|All Other Routes| Jellyfin
+    subgraph Apps ["Arr Stack & Services"]
+        Portal["Server Portal (/)"]
+        Sonarr["Sonarr (TV Shows /sonarr/)"]
+        Radarr["Radarr (Movies /radarr/)"]
+        Prowlarr["Prowlarr (Indexers /prowlarr/)"]
+        Bazarr["Bazarr (Subtitles /bazarr/)"]
+        Transmission["Transmission (BitTorrent /transmission/)"]
+        Cockpit["Cockpit (Server Dashboard /cockpit/)"]
     end
 
-    subgraph CloudflareBypass ["Cloudflare Solving"]
-        Prowlarr -->|Port 8191| FlareSolverr["FlareSolverr (Headless Chromium)"]
+    subgraph Solvers ["Cloudflare Solving"]
+        FlareSolverr["FlareSolverr (:8191)"]
     end
 
-    subgraph SyncEngine ["Automated Inter-Service Sync"]
-        Prowlarr -.->|Auto-sync Indexers| Sonarr
-        Prowlarr -.->|Auto-sync Indexers| Radarr
-        Sonarr -.->|Send Torrents| Transmission
-        Radarr -.->|Send Torrents| Transmission
-        Sonarr -.->|Link TV| Bazarr
-        Radarr -.->|Link Movies| Bazarr
-        Recyclarr["Recyclarr"] -.->|Sync TRaSH Guides| Sonarr
-        Recyclarr -.->|Sync TRaSH Guides| Radarr
+    subgraph Storage ["ZFS Storage Pool (/mnt/data)"]
+        Torrents["Torrents (/mnt/data/media/torrents/)"]
+        Library["Media Library (/mnt/data/media/library/)"]
     end
 
-    subgraph Storage ["ZFS Pool (/mnt/data)"]
-        Transmission -->|Downloads| Torrents["/mnt/data/media/torrents/"]
-        Sonarr -->|Import & Auto-Clean| Shows["/mnt/data/media/library/shows/"]
-        Radarr -->|Import & Auto-Clean| Movies["/mnt/data/media/library/movies/"]
-        Jellyfin -->|Stream & Inotify Watch| Shows
-        Jellyfin -->|Stream & Inotify Watch| Movies
-    end
+    Caddy --> Portal
+    Caddy --> Sonarr
+    Caddy --> Radarr
+    Caddy --> Prowlarr
+    Caddy --> Bazarr
+    Caddy --> Transmission
+    Caddy --> Cockpit
+    Caddy --> Jellyfin
+
+    Prowlarr --> FlareSolverr
+    Prowlarr --> Sonarr
+    Prowlarr --> Radarr
+
+    Sonarr --> Transmission
+    Radarr --> Transmission
+    Sonarr --> Bazarr
+    Radarr --> Bazarr
+
+    Transmission --> Torrents
+    Sonarr --> Library
+    Radarr --> Library
+    Jellyfin --> Library
 ```
 
 ---

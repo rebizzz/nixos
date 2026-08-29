@@ -11,8 +11,7 @@ _: {
     gtk = {
       enable = true;
       theme = {
-        name = "adw-gtk3-dark";
-        package = pkgs.adw-gtk3;
+        name = "Adwaita-dark";
       };
       iconTheme = {
         name = "MoreWaita";
@@ -28,7 +27,7 @@ _: {
 
     dconf.settings."org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      gtk-theme = "adw-gtk3-dark";
+      gtk-theme = "Adwaita-dark";
       icon-theme = "MoreWaita";
       font-name = "Inter 11";
       document-font-name = "Inter 11";
