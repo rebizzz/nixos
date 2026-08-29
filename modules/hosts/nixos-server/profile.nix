@@ -14,6 +14,7 @@
       nfs
       nixarr
       caddy
+      gpu
       # Jellyfin is opt-in: add `media` to this list to enable media serving
       # on this host (nixarr includes Jellyfin).
     ];
