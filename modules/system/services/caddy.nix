@@ -23,11 +23,64 @@ _: {
                 reverse_proxy 127.0.0.1:8096
               }
 
+              # Jellyfin - web, sockets, and API routes
               handle /web* {
                 reverse_proxy 127.0.0.1:8096
               }
 
               handle /socket* {
+                reverse_proxy 127.0.0.1:8096
+              }
+
+              handle /System* {
+                reverse_proxy 127.0.0.1:8096
+              }
+
+              handle /Users* {
+                reverse_proxy 127.0.0.1:8096
+              }
+
+              handle /Items* {
+                reverse_proxy 127.0.0.1:8096
+              }
+
+              handle /Images* {
+                reverse_proxy 127.0.0.1:8096
+              }
+
+              handle /Videos* {
+                reverse_proxy 127.0.0.1:8096
+              }
+
+              handle /Audio* {
+                reverse_proxy 127.0.0.1:8096
+              }
+
+              handle /Branding* {
+                reverse_proxy 127.0.0.1:8096
+              }
+
+              handle /Sessions* {
+                reverse_proxy 127.0.0.1:8096
+              }
+
+              handle /LiveTv* {
+                reverse_proxy 127.0.0.1:8096
+              }
+
+              handle /DisplayPreferences* {
+                reverse_proxy 127.0.0.1:8096
+              }
+
+              handle /PlaybackInfo* {
+                reverse_proxy 127.0.0.1:8096
+              }
+
+              handle /QuickConnect* {
+                reverse_proxy 127.0.0.1:8096
+              }
+
+              handle /Auth* {
                 reverse_proxy 127.0.0.1:8096
               }
 
