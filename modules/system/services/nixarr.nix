@@ -43,6 +43,8 @@
         peerPort = 51413;
         extraSettings = {
           umask = 2;
+          rpc-host-whitelist-enabled = false;
+          rpc-whitelist-enabled = false;
         };
       };
 
