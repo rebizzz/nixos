@@ -10,6 +10,14 @@ _: {
         virtualHosts = {
           "http://nixos-server.local, http://localhost, :80" = {
             extraConfig = ''
+              # Clean redirects
+              redir /sonarr /sonarr/
+              redir /radarr /radarr/
+              redir /prowlarr /prowlarr/
+              redir /bazarr /bazarr/
+              redir /jellyfin /web/index.html
+              redir /transmission /transmission/web/
+
               # Service reverse proxies
               handle_path /jellyfin* {
                 reverse_proxy 127.0.0.1:8096
@@ -130,15 +138,15 @@ _: {
                         <span class="title">🎬 Jellyfin</span>
                         <span class="desc">Media streaming server for movies & TV</span>
                       </a>
-                      <a class="card" href="/sonarr">
+                      <a class="card" href="/sonarr/">
                         <span class="title">📺 Sonarr</span>
                         <span class="desc">TV series collection manager</span>
                       </a>
-                      <a class="card" href="/radarr">
+                      <a class="card" href="/radarr/">
                         <span class="title">🍿 Radarr</span>
                         <span class="desc">Movie collection manager</span>
                       </a>
-                      <a class="card" href="/prowlarr">
+                      <a class="card" href="/prowlarr/">
                         <span class="title">🔍 Prowlarr</span>
                         <span class="desc">Indexer and tracker management</span>
                       </a>
@@ -146,11 +154,11 @@ _: {
                         <span class="title">⚡ Transmission</span>
                         <span class="desc">BitTorrent download client</span>
                       </a>
-                      <a class="card" href="/bazarr">
+                      <a class="card" href="/bazarr/">
                         <span class="title">💬 Bazarr</span>
                         <span class="desc">Subtitles manager</span>
                       </a>
-                      <a class="card" href="/cockpit">
+                      <a class="card" href="/cockpit/">
                         <span class="title">🛠 Cockpit</span>
                         <span class="desc">Linux server administration</span>
                       </a>
