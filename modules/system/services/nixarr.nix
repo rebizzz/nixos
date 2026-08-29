@@ -45,6 +45,10 @@
           umask = 2;
           rpc-host-whitelist-enabled = false;
           rpc-whitelist-enabled = false;
+          ratio-limit = 0;
+          ratio-limit-enabled = true;
+          idle-seeding-limit = 0;
+          idle-seeding-limit-enabled = true;
         };
       };
 
