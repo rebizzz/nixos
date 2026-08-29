@@ -51,7 +51,6 @@
       pkgs.satty
       pkgs.libnotify
       pkgs.pear-desktop
-      pkgs.grimblast
       pkgs.hyprpicker
       pkgs.hyprcursor
     ];
