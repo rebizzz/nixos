@@ -40,7 +40,7 @@ _: {
       };
       firewall = {
         enable = true;
-        allowedTCPPorts = [22 9090 5173];
+        allowedTCPPorts = [22];
         allowedUDPPorts = [5353];
         checkReversePath = "loose";
       };

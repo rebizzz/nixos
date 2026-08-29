@@ -11,35 +11,36 @@
 
       jellyfin = {
         enable = true;
-        openFirewall = true;
+        openFirewall = false;
       };
 
       sonarr = {
         enable = true;
-        openFirewall = true;
+        openFirewall = false;
         settings-sync.transmission.enable = true;
       };
 
       radarr = {
         enable = true;
-        openFirewall = true;
+        openFirewall = false;
         settings-sync.transmission.enable = true;
       };
 
       prowlarr = {
         enable = true;
-        openFirewall = true;
+        openFirewall = false;
         settings-sync.enable-nixarr-apps = true;
       };
 
       transmission = {
         enable = true;
-        openFirewall = true;
+        openFirewall = false;
+        peerPort = 51413;
       };
 
       bazarr = {
         enable = true;
-        openFirewall = true;
+        openFirewall = false;
         settings-sync = {
           sonarr.enable = true;
           radarr.enable = true;
@@ -61,6 +62,11 @@
           };
         };
       };
+    };
+
+    networking.firewall = {
+      allowedTCPPorts = [config.nixarr.transmission.peerPort];
+      allowedUDPPorts = [config.nixarr.transmission.peerPort];
     };
 
     services = {
