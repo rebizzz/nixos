@@ -133,7 +133,7 @@ Run `just --list` to see every recipe.
 
 [Hyprland]: https://hyprland.org
 [Noctalia]: https://github.com/noctalia-dev/noctalia
-[greetd]: https://github.com/apognu/tuigreet
+[greetd]: https://github.com/tuigreet/tuigreet
 [kitty]: https://sw.kovidgoyal.net/kitty/
 [Fish]: https://fishshell.com/
 [sops-nix]: https://github.com/Mic92/sops-nix
