@@ -181,6 +181,11 @@
     };
 
     services = {
+      flaresolverr = {
+        enable = true;
+        port = 8191;
+        openFirewall = false;
+      };
       sonarr.settings.auth.required = "DisabledForLocalAddresses";
       radarr.settings.auth.required = "DisabledForLocalAddresses";
       prowlarr.settings.auth.required = "DisabledForLocalAddresses";
