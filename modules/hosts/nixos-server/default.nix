@@ -75,6 +75,7 @@ in {
       hostname = "${hostVars.hostName}.local";
       inherit (hostVars) sshUser;
       sshOpts = ["-o" "StrictHostKeyChecking=accept-new"];
+      remoteBuild = true; # build on the server instead of locally
       profiles.system = {
         user = "root";
         path = deployPkgs.deploy-rs.lib.activate.nixos inputs.self.nixosConfigurations.${hostVars.hostName};
