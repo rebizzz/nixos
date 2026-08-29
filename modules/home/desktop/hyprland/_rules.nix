@@ -13,6 +13,10 @@ _: {
       # Editor
       "opacity 0.97 0.97, class:^(code)$"
 
+      # Brave Browser
+      "opacity 1.0 1.0, class:^(brave-browser|Brave-browser|brave)$"
+      "idleinhibit fullscreen, class:^(brave-browser|Brave-browser|brave)$"
+
       # File pickers & dialogs
       "float, title:^(Open File|Select|Choose a wallpaper|Open Folder|Save As|Library|Choose Where to Download|File Operation Progress|Rename|Copy Files|Move Files|Search Files)$"
       "center, title:^(Open File|Select|Choose a wallpaper|Open Folder|Save As|Library|Choose Where to Download|File Operation Progress|Rename|Copy Files|Move Files|Search Files)$"
@@ -41,6 +45,7 @@ _: {
       # Picture-in-Picture
       "float, title:^(Picture-in-Picture)$"
       "pin, title:^(Picture-in-Picture)$"
+      "size 640 360, title:^(Picture-in-Picture)$"
       "center, title:^(Picture-in-Picture)$"
 
       # Desktop Portals
@@ -49,6 +54,7 @@ _: {
 
       # MPV
       "opacity 1.0 1.0, class:^(mpv)$"
+      "idleinhibit fullscreen, class:^(mpv)$"
 
       # Steam
       "float, class:^(steam)$, title:^(Steam)$"
