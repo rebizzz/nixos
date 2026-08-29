@@ -15,7 +15,7 @@
         repeat = false;
       };
       "Mod+E" = {
-        action = "spawn:nautilus";
+        action = "spawn:thunar";
         repeat = false;
       };
       "XF86Calculator" = {

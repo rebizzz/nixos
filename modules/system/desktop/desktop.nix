@@ -18,6 +18,16 @@
       };
 
       dconf.enable = true;
+      xfconf.enable = true;
+
+      thunar = {
+        enable = true;
+        plugins = with pkgs.xfce; [
+          thunar-archive-plugin
+          thunar-volman
+          thunar-media-tags-plugin
+        ];
+      };
 
       appimage = {
         enable = true;
@@ -27,11 +37,10 @@
 
     services = {
       flatpak.enable = true;
-      gnome.sushi.enable = true;
+      tumbler.enable = true;
     };
 
     environment.systemPackages = [
-      pkgs.nautilus
       pkgs.ffmpegthumbnailer
       pkgs.file-roller
       pkgs.gnome-disk-utility
