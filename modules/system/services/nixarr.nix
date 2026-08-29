@@ -36,6 +36,9 @@
         enable = true;
         openFirewall = false;
         peerPort = 51413;
+        extraSettings = {
+          umask = 2;
+        };
       };
 
       bazarr = {
