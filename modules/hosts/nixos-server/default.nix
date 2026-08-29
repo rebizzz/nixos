@@ -60,6 +60,7 @@
         lm_sensors
         nh
         microfetch
+        kitty.terminfo # fix "unknown terminal type" for xterm-kitty SSH sessions
       ];
     })
   ];
