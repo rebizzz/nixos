@@ -71,7 +71,7 @@ modules/home/desktop/hyprland/
 ### Layout & Workspaces
 | Keybinding | Action |
 |---|---|
-| `Super + Tab` | **Cycle Layout** (`Scrolling` $\rightarrow$ `Dwindle` $\rightarrow$ `Master`) with notification |
+| `Super + Tab` | **Cycle Layout** (`Scrolling` $\rightarrow$ `Dwindle` $\rightarrow$ `Master` $\rightarrow$ `Monocle`) with notification |
 | `Super + O` | Noctalia Overview / Workspace Panel |
 | `Super + 1..9` | Switch to Workspace `1` through `9` |
 | `Super + Ctrl + 1..9` | Move Focused Window to Workspace `1` through `9` |

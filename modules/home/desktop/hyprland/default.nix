@@ -4,7 +4,7 @@
     ...
   }: let
     cycle-layout = pkgs.writeShellScriptBin "cycle-layout" ''
-      LAYOUTS=(scrolling dwindle master)
+      LAYOUTS=(scrolling dwindle master monocle)
 
       INFO=$(hyprctl activeworkspace -j)
 
@@ -69,7 +69,7 @@
     XF86Calculator              Calculator Panel
 
   LAYOUT & WORKSPACES
-    Super + Tab                 Cycle Layout (Scrolling -> Dwindle -> Master)
+    Super + Tab                 Cycle Layout (Scrolling -> Dwindle -> Master -> Monocle)
     Super + O                   Noctalia Overview / Panel
     Super + 1..9                Switch to Workspace 1..9
     Super + Ctrl + 1..9         Move Window to Workspace 1..9
