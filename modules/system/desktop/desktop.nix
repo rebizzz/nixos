@@ -51,7 +51,7 @@
       pkgs.satty
       pkgs.libnotify
       pkgs.pear-desktop
-      inputs.hyprland-contrib.packages.${pkgs.stdenv.hostPlatform.system}.grimblast
+      pkgs.grimblast
       pkgs.hyprpicker
       pkgs.hyprcursor
     ];
