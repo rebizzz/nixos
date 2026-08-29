@@ -36,13 +36,26 @@ _: {
             port = 9090;
             settings.WebService = {
               AllowUnencrypted = true;
+              ProtocolHeader = "X-Forwarded-Proto";
+              ForwardedForHeader = "X-Forwarded-For";
+              UrlRoot = "/cockpit";
               Origins = lib.mkForce (lib.concatStringsSep " " [
-                "https://localhost:9090"
-                "http://localhost:9090"
+                "http://${hostVars.hostName}.local"
+                "https://${hostVars.hostName}.local"
                 "http://${hostVars.hostName}.local:9090"
                 "https://${hostVars.hostName}.local:9090"
+                "http://${hostVars.network.lanIp}"
+                "https://${hostVars.network.lanIp}"
                 "http://${hostVars.network.lanIp}:9090"
                 "https://${hostVars.network.lanIp}:9090"
+                "http://localhost"
+                "https://localhost"
+                "http://localhost:9090"
+                "https://localhost:9090"
+                "http://127.0.0.1"
+                "https://127.0.0.1"
+                "http://127.0.0.1:9090"
+                "https://127.0.0.1:9090"
               ]);
             };
           };
