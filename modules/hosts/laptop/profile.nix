@@ -16,7 +16,7 @@
       lock-before-sleep
       nano
       network
-      greeter
+      noctalia-greeter
       persistence
       power
       services

@@ -21,6 +21,7 @@ _: {
               "/var/lib/bluetooth"
               "/var/lib/smartmontools"
               "/var/cache/plocate"
+              "/var/lib/noctalia-greeter"
               "/etc/NetworkManager/system-connections"
               "/var/lib/NetworkManager"
               "/var/lib/iwd"

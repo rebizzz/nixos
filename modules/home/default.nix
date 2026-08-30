@@ -16,7 +16,7 @@
   in {
     imports = with inputs.self.modules.homeManager; [
       inputs.nix-index-database.homeModules.nix-index
-      hyprland
+      umbriel
       noctalia
       kitty
       fish

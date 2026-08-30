@@ -4,9 +4,12 @@
     config,
     ...
   }: {
+    imports = [inputs.umbriel.nixosModules.default];
+
     programs = {
-      hyprland = {
+      umbriel = {
         enable = true;
+        portalPackage = inputs.xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default;
       };
 
       nh = {
@@ -15,17 +18,6 @@
       };
 
       dconf.enable = true;
-      xfconf.enable = true;
-
-      thunar = {
-        enable = true;
-        plugins = with pkgs; [
-          thunar-archive-plugin
-          thunar-volman
-          thunar-media-tags-plugin
-          thunar-shares-plugin
-        ];
-      };
 
       appimage = {
         enable = true;
@@ -33,12 +25,10 @@
       };
     };
 
-    services = {
-      flatpak.enable = true;
-      tumbler.enable = true;
-    };
+    services.flatpak.enable = true;
 
     environment.systemPackages = [
+      pkgs.nautilus
       pkgs.ffmpegthumbnailer
       pkgs.file-roller
       pkgs.gnome-disk-utility
@@ -51,8 +41,6 @@
       pkgs.satty
       pkgs.libnotify
       pkgs.pear-desktop
-      pkgs.hyprpicker
-      pkgs.hyprcursor
     ];
   };
 }

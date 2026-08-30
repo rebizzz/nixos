@@ -4,7 +4,7 @@ _: let
   av = "mpv.desktop";
   doc = "org.gnome.Papers.desktop";
   archive = "org.gnome.FileRoller.desktop";
-  files = "thunar.desktop";
+  files = "org.gnome.Nautilus.desktop";
   text = "nano-text-editor.desktop";
 in {
   flake.modules.homeManager.mime = _: {
