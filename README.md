@@ -29,7 +29,7 @@ self-upgrades weekly. See [modules/hosts](modules/hosts/README.md) for details o
 | --- | --- |
 | **Window Manager** | [Hyprland][Hyprland] |
 | **Shell / Bar** | [Noctalia][Noctalia] |
-| **Display Manager** | [greetd (tuigreet)][greetd] |
+| **Display Manager** | [ly][ly] |
 | **Terminal** | [kitty][kitty] + [Fish][Fish] (`zoxide`, `eza`, `bat`, `ripgrep`) |
 | **Browser** | Brave Origin, debloated and locked down via policy |
 | **Filesystem** | Btrfs + LUKS + LVM (`laptop`), Btrfs system disk + ZFS mirror (`nixos-server`) |
@@ -133,7 +133,7 @@ Run `just --list` to see every recipe.
 
 [Hyprland]: https://hyprland.org
 [Noctalia]: https://github.com/noctalia-dev/noctalia
-[greetd]: https://github.com/tuigreet/tuigreet
+[ly]: https://github.com/fairyglade/ly
 [kitty]: https://sw.kovidgoyal.net/kitty/
 [Fish]: https://fishshell.com/
 [sops-nix]: https://github.com/Mic92/sops-nix

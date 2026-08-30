@@ -57,63 +57,63 @@ _: {
     '';
 
     hyprland-cheatsheet = pkgs.writeShellScriptBin "hyprland-cheatsheet" ''
-      ${pkgs.kitty}/bin/kitty --class hyprland-cheatsheet -e ${pkgs.bash}/bin/bash -c '${pkgs.coreutils}/bin/cat <<"EOF" | ${pkgs.less}/bin/less -R
-================================================================================
-                    HYPRLAND KEYBINDINGS CHEATSHEET
-================================================================================
+            ${pkgs.kitty}/bin/kitty --class hyprland-cheatsheet -e ${pkgs.bash}/bin/bash -c '${pkgs.coreutils}/bin/cat <<"EOF" | ${pkgs.less}/bin/less -R
+      ================================================================================
+                          HYPRLAND KEYBINDINGS CHEATSHEET
+      ================================================================================
 
-[ SYSTEM & LAUNCHER ]
-  Super + Return             Open Terminal (Kitty)
-  Super + D                  App Launcher (Noctalia)
-  Super + B                  Web Browser (Brave)
-  Super + E                  File Manager (Thunar)
-  Super + Q                  Close / Kill Active Window
-  Super + Alt + L            Lock Screen (Noctalia)
-  Super + Shift + Q          Session / Power Menu
-  Super + /                  Open this Cheatsheet
-  Ctrl + Alt + Delete        Exit Hyprland Session
+      [ SYSTEM & LAUNCHER ]
+        Super + Return             Open Terminal (Kitty)
+        Super + D                  App Launcher (Noctalia)
+        Super + B                  Web Browser (Brave)
+        Super + E                  File Manager (Thunar)
+        Super + Q                  Close / Kill Active Window
+        Super + Alt + L            Lock Screen (Noctalia)
+        Super + Shift + Q          Session / Power Menu
+        Super + /                  Open this Cheatsheet
+        Ctrl + Alt + Delete        Exit Hyprland Session
 
-[ WINDOW STATES & LAYOUTS ]
-  Super + T                  Toggle Floating
-  Super + F                  Toggle Fullscreen
-  Super + M                  Toggle Maximize (Monocle)
-  Super + C                  Center Floating Window
-  Super + Tab                Cycle Layouts (Scrolling -> Dwindle -> Master -> Monocle)
-  Super + R                  Cycle Column Width Preset (Scrolling)
-  Super + Shift + C          Fit Column Into View (Scrolling)
-  Super + , / .              Swap Column Left / Right (Scrolling)
-  Super + - / =              Shrink / Expand Column Width (Scrolling)
+      [ WINDOW STATES & LAYOUTS ]
+        Super + T                  Toggle Floating
+        Super + F                  Toggle Fullscreen
+        Super + M                  Toggle Maximize (Monocle)
+        Super + C                  Center Floating Window
+        Super + Tab                Cycle Layouts (Scrolling -> Dwindle -> Master -> Monocle)
+        Super + R                  Cycle Column Width Preset (Scrolling)
+        Super + Shift + C          Fit Column Into View (Scrolling)
+        Super + , / .              Swap Column Left / Right (Scrolling)
+        Super + - / =              Shrink / Expand Column Width (Scrolling)
 
-[ WINDOW GROUPING & TABS ]
-  Super + W                  Toggle Group (Tabbed Window Container)
-  Super + Shift + W          Lock / Unlock Group
-  Super + Alt + J / L        Next Tab in Group
-  Super + Alt + K / H        Previous Tab in Group
-  Super + Ctrl + H/J/K/L     Move Window into Adjacent Group
-  Super + Ctrl + E           Eject Window from Group
+      [ WINDOW GROUPING & TABS ]
+        Super + W                  Toggle Group (Tabbed Window Container)
+        Super + Shift + W          Lock / Unlock Group
+        Super + Alt + J / L        Next Tab in Group
+        Super + Alt + K / H        Previous Tab in Group
+        Super + Ctrl + H/J/K/L     Move Window into Adjacent Group
+        Super + Ctrl + E           Eject Window from Group
 
-[ NAVIGATION & WORKSPACES ]
-  Super + H / J / K / L      Focus Left / Down / Up / Right
-  Super + Shift + H/J/K/L    Move Window Left / Down / Up / Right
-  Super + [1-9]              Switch to Workspace 1..9
-  Super + Ctrl + [1-9]       Move Window to Workspace 1..9
-  Super + Ctrl + Shift + [1-9] Move Window Silently to Workspace 1..9
-  Super + Ctrl + Down / Up   Next / Previous Workspace (Vertical)
-  Super + O                  Toggle Workspace Overview
+      [ NAVIGATION & WORKSPACES ]
+        Super + H / J / K / L      Focus Left / Down / Up / Right
+        Super + Shift + H/J/K/L    Move Window Left / Down / Up / Right
+        Super + [1-9]              Switch to Workspace 1..9
+        Super + Ctrl + [1-9]       Move Window to Workspace 1..9
+        Super + Ctrl + Shift + [1-9] Move Window Silently to Workspace 1..9
+        Super + Ctrl + Down / Up   Next / Previous Workspace (Vertical)
+        Super + O                  Toggle Workspace Overview
 
-[ SCRATCHPADS & TOOLS ]
-  Super + Space (or `)       Toggle General Scratchpad
-  Super + Shift + Space      Send Focused Window to General Scratchpad
-  Super + Ctrl + D           Toggle Discord Scratchpad (Auto-launches)
-  Super + Ctrl + B           Toggle Brave Scratchpad (Auto-launches)
-  Super + Z / Shift + Z      Zoom In (1.5x) / Reset Zoom (1.0x)
-  Print                      Region Screenshot (Noctalia)
-  Ctrl + Print               Fullscreen Screenshot
-  Shift + Print              Annotated Screenshot (Satty)
+      [ SCRATCHPADS & TOOLS ]
+        Super + Space (or `)       Toggle General Scratchpad
+        Super + Shift + Space      Send Focused Window to General Scratchpad
+        Super + Ctrl + D           Toggle Discord Scratchpad (Auto-launches)
+        Super + Ctrl + B           Toggle Brave Scratchpad (Auto-launches)
+        Super + Z / Shift + Z      Zoom In (1.5x) / Reset Zoom (1.0x)
+        Print                      Region Screenshot (Noctalia)
+        Ctrl + Print               Fullscreen Screenshot
+        Shift + Print              Annotated Screenshot (Satty)
 
-================================================================================
-EOF
-'
+      ================================================================================
+      EOF
+      '
     '';
 
     # ---------------------------------------------------------------------------
@@ -122,9 +122,29 @@ EOF
     # Converts the merged desktop.hyprland.settings attrset into a valid
     # hyprland.lua file. Handles all types Hyprland Lua accepts.
     # ---------------------------------------------------------------------------
+    # Helper to check if a string is a valid Lua identifier
+    isLuaIdentifier = s: builtins.match "[a-zA-Z_][a-zA-Z0-9_]*" s != null;
+
+    # Keys in table literals: { foo = 1, ["foo.bar"] = 2 }
+    toLuaTableKey = k:
+      if isLuaIdentifier k
+      then k
+      else ''["${k}"]'';
+
+    # Access expression on a base table: base.foo or base["foo-bar"]
+    toLuaAccess = base: k:
+      if isLuaIdentifier k
+      then "${base}.${k}"
+      else ''${base}["${k}"]'';
+
     toLuaValue = v:
       if builtins.isBool v
-      then (if v then "true" else "false")
+      then
+        (
+          if v
+          then "true"
+          else "false"
+        )
       else if builtins.isInt v || builtins.isFloat v
       then builtins.toString v
       else if builtins.isString v
@@ -133,45 +153,40 @@ EOF
       then "{ ${lib.concatMapStringsSep ", " toLuaValue v} }"
       else if builtins.isAttrs v
       then let
-        pairs = lib.mapAttrsToList (k: val: "${toLuaKey k} = ${toLuaValue val}") v;
+        pairs = lib.mapAttrsToList (k: val: "${toLuaTableKey k} = ${toLuaValue val}") v;
       in "{\n    ${lib.concatStringsSep ",\n    " pairs},\n  }"
       else builtins.toString v;
 
-    # Keys with dots OR hyphens need bracket notation in Lua
-    toLuaKey = k:
-      if builtins.match ".*[\\.-].*" k != null
-      then ''["${k}"]''
-      else k;
-
-    # Emit repeated directive lines for list values (bind, monitor, windowrule…)
-    mkRepeatDirectives = section: key: values:
-      lib.concatMapStringsSep "\n" (v: "${section}.${key}(${toLuaValue v})") values;
-
     # Sections that are emitted as repeated function calls rather than table assignments
-    repeatSections = ["bind" "bindm" "binde" "bindr" "bindl" "monitor" "windowrule" "layerrule" "workspace" "exec-once" "exec" "env" "gesture" "animation" "bezier"];
+    repeatSections = ["bind" "bindm" "binde" "bindr" "bindl" "monitor" "windowrule" "layerrule" "workspace" "exec-once" "exec" "env" "gesture" "animation" "bezier" "source"];
 
     isRepeat = key: builtins.elem key repeatSections;
 
     # Emit one top-level key from the settings attrset
-    mkLuaSection = key: value: let
-      luaKey = toLuaKey key;
-    in
+    mkLuaSection = key: value:
       if isRepeat key
-      then
-        # Lists of strings → repeated hl.keyword("value") calls
-        lib.concatMapStringsSep "\n" (v:
-          if builtins.isString v
-          then "hl.${key}(${toLuaValue v})"
-          else "hl.${key}(${toLuaValue v})"
-        ) (if builtins.isList value then value else [value])
+      then let
+        fn = toLuaAccess "hl" key;
+      in
+        # Lists of strings → repeated hl.keyword("value") / hl["keyword"]("value") calls
+        lib.concatMapStringsSep "\n" (
+          v: "${fn}(${toLuaValue v})"
+        ) (
+          if builtins.isList value
+          then value
+          else [value]
+        )
       else if builtins.isAttrs value
       then let
-        pairs = lib.mapAttrsToList (k: v: "  ${toLuaKey k} = ${toLuaValue v},") value;
+        target = toLuaAccess "hl.config" key;
+        pairs = lib.mapAttrsToList (k: v: "  ${toLuaTableKey k} = ${toLuaValue v},") value;
       in ''
-        hl.config.${luaKey}({
+        ${target}({
         ${lib.concatStringsSep "\n" pairs}
         })''
-      else "hl.config.${luaKey} = ${toLuaValue value}";
+      else let
+        target = toLuaAccess "hl.config" key;
+      in "${target} = ${toLuaValue value}";
 
     # Build the full hyprland.lua text from the merged settings attrset
     hyprlandLua = let
@@ -185,7 +200,6 @@ EOF
 
       ${config.desktop.hyprland.extraLua}
     '';
-
   in {
     imports = [
       ./_general.nix

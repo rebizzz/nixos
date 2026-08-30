@@ -1,12 +1,15 @@
 _: let
   # Workspace binds generated in Nix – no raw strings, just typed list construction
-  workspaceBinds = builtins.concatLists (builtins.genList (i:
-    let ws = builtins.toString (i + 1); in [
-      "SUPER, ${ws}, workspace, ${ws}"
-      "SUPER CTRL, ${ws}, movetoworkspace, ${ws}"
-      "SUPER CTRL SHIFT, ${ws}, movetoworkspacesilent, ${ws}"
-    ]
-  ) 9);
+  workspaceBinds = builtins.concatLists (builtins.genList (
+      i: let
+        ws = builtins.toString (i + 1);
+      in [
+        "SUPER, ${ws}, workspace, ${ws}"
+        "SUPER CTRL, ${ws}, movetoworkspace, ${ws}"
+        "SUPER CTRL SHIFT, ${ws}, movetoworkspacesilent, ${ws}"
+      ]
+    )
+    9);
 in {
   desktop.hyprland.settings = {
     bind =

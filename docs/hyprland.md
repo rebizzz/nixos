@@ -10,7 +10,7 @@ The desktop stack runs on `laptop` ("Rebiz") using upstream Hyprland packages ma
 
 ```mermaid
 flowchart TD
-    DisplayManager["Noctalia Greeter / Greetd"] --> Hyprland["Hyprland Wayland Compositor"]
+    DisplayManager["Ly Display Manager"] --> Hyprland["Hyprland Wayland Compositor"]
 
     subgraph Core ["Hyprland Architecture"]
         Layout["Layout Engine (Default: Scrolling)"]
