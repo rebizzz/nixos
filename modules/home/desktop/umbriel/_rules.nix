@@ -30,7 +30,7 @@ _: {
         };
       }
       {
-        match.app_id = "^(code|org\\.gnome\\.Nautilus)$";
+        match.app_id = "^(code|thunar|Thunar)$";
         opacity = 0.97;
       }
       {

@@ -15,7 +15,7 @@
         repeat = false;
       };
       "Mod+E" = {
-        action = "spawn:nautilus";
+        action = "spawn:thunar";
         repeat = false;
       };
       "XF86Calculator" = {
@@ -47,10 +47,17 @@
       "Mod+C" = "window-center";
       "Mod+Shift+C" = "column-center";
       "Mod+R" = "window-cycle-width";
+      "Mod+Shift+R" = "window-cycle-width-back";
+      "Mod+Alt+R" = "window-cycle-height";
+      "Mod+Alt+Shift+R" = "window-cycle-height-back";
       "Mod+Comma" = "window-consume-left";
       "Mod+Period" = "window-expel-right";
       "Mod+Minus" = "window-modify-width:-0.1";
       "Mod+Equal" = "window-modify-width:+0.1";
+      "Mod+Shift+Minus" = "window-modify-height:-0.1";
+      "Mod+Shift+Equal" = "window-modify-height:+0.1";
+      "Mod+Shift+Underscore" = "window-modify-height:-0.1";
+      "Mod+Shift+Plus" = "window-modify-height:+0.1";
 
       # Focus / move — native to both scrolling and dwindle, no per-layout scripting needed
       "Mod+H" = "window-focus-left";

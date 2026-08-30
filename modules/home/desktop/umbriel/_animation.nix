@@ -73,11 +73,11 @@ _: {
     };
 
     scratchpad = {
-      enabled = true;
-      duration_ms = 350;
-      curve = "expressiveFastSpatial";
+      enabled = false;
+      duration_ms = 250;
+      curve = "easeout";
       dim = 0.5;
-      blur = true;
+      blur = false;
       scale = 0.0;
       maximize = false;
       fullscreen = false;

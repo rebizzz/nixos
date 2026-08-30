@@ -1,8 +1,20 @@
 _: {
   programs.umbriel.settings.output = {
-    "eDP-1".vrr = "fullscreen";
-    "DP-1".vrr = "fullscreen";
-    "DP-2".vrr = "fullscreen";
-    "HDMI-A-1".vrr = "fullscreen";
+    "eDP-1" = {
+      vrr = "fullscreen";
+      workspaces = "dynamic";
+    };
+    "DP-1" = {
+      vrr = "fullscreen";
+      workspaces = "dynamic";
+    };
+    "DP-2" = {
+      vrr = "fullscreen";
+      workspaces = "dynamic";
+    };
+    "HDMI-A-1" = {
+      vrr = "fullscreen";
+      workspaces = "dynamic";
+    };
   };
 }

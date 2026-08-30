@@ -17,7 +17,15 @@
         flake = "${config.users.users.${config.myConfig.user.name}.home}/opt/nixos-config";
       };
 
-      dconf.enable = true;
+      thunar = {
+        enable = true;
+        plugins = with pkgs; [
+          thunar-archive-plugin
+          thunar-volman
+          thunar-media-tags-plugin
+          thunar-shares-plugin
+        ];
+      };
 
       appimage = {
         enable = true;
@@ -25,10 +33,12 @@
       };
     };
 
-    services.flatpak.enable = true;
+    services = {
+      flatpak.enable = true;
+      tumbler.enable = true;
+    };
 
     environment.systemPackages = [
-      pkgs.nautilus
       pkgs.ffmpegthumbnailer
       pkgs.file-roller
       pkgs.gnome-disk-utility
