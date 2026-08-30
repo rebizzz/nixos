@@ -73,6 +73,7 @@ in {
       "rtw88_usb"
       "btusb"
       "iTCO_wdt"
+      "drivetemp"
     ];
     extraModulePackages = [];
 

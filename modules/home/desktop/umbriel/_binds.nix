@@ -50,8 +50,8 @@
       "Mod+Shift+R" = "window-cycle-width-back";
       "Mod+Alt+R" = "window-cycle-height";
       "Mod+Alt+Shift+R" = "window-cycle-height-back";
-      "Mod+Comma" = "window-consume-left";
-      "Mod+Period" = "window-expel-right";
+      "Mod+Comma" = "window-consume-or-expel-left";
+      "Mod+Period" = "window-consume-or-expel-right";
       "Mod+Minus" = "window-modify-width:-0.1";
       "Mod+Equal" = "window-modify-width:+0.1";
       "Mod+Shift+Minus" = "window-modify-height:-0.1";
