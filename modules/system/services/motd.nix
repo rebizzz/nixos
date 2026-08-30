@@ -137,7 +137,8 @@ _: {
           coretemp|k10temp|zenpower|cpu_thermal|soc_thermal|cpu-thermal)
             for t in "$h"/temp*_input; do
               [ -f "$t" ] || continue
-              label=$(cat "''${t%_input}_label" 2>/dev/null)
+              t_base="''${t%_input}"
+              label=$(cat "''${t_base}_label" 2>/dev/null)
               case "$label" in
                 "Package id 0"|"Tctl"|"Tdie"|"CPU"|"")
                   val=$(cat "$t" 2>/dev/null)
@@ -228,6 +229,7 @@ _: {
         [ -e "$b" ] || continue
         dev_name=$(basename "$b")
         rot=$(cat "$b/queue/rotational" 2>/dev/null)
+        b_dev_link=$(readlink -f "$b/device" 2>/dev/null)
 
         d_type="SSD"
         [ "$rot" = "1" ] && d_type="HDD"
@@ -270,13 +272,13 @@ _: {
             done
           fi
 
-          # drivetemp hwmon for SATA drives
+          # drivetemp hwmon for SATA drives (match SCSI target or device link)
           if [ -z "$d_temp" ] && [[ "$dev_name" =~ sd[a-z] ]]; then
             for h in /sys/class/hwmon/hwmon*; do
               [ -d "$h" ] || continue
               if [ "$(cat "$h/name" 2>/dev/null)" = "drivetemp" ]; then
-                d_link=$(readlink -f "$h/device" 2>/dev/null)
-                if [[ "$d_link" =~ $dev_name ]]; then
+                h_dev_link=$(readlink -f "$h/device" 2>/dev/null)
+                if [ -n "$b_dev_link" ] && [ "$b_dev_link" = "$h_dev_link" ] || [ -d "$h/device/$dev_name" ] || [ -d "$h/device/block/$dev_name" ]; then
                   v=$(cat "$h/temp1_input" 2>/dev/null)
                   [ -n "$v" ] && d_temp=$(( v / 1000 ))
                   break
