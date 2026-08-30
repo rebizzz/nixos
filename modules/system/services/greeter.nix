@@ -1,7 +1,6 @@
 _: {
   flake.modules.nixos.greeter = {
     pkgs,
-    config,
     lib,
     ...
   }: {
@@ -9,9 +8,8 @@ _: {
       enable = true;
       settings = {
         default_session = {
-          # Use the wayland-sessions directory populated by programs.hyprland.enable.
-          # This makes tuigreet show the session list and launch start-hyprland
-          # via its own desktop entry (which has the correct PATH baked in).
+          # Use the full Nix store path to start-hyprland so the greeter user
+          # doesn't need it in PATH. tuigreet --cmd forks exactly this binary.
           command = lib.concatStringsSep " " [
             "${lib.getExe pkgs.tuigreet}"
             "--time"
@@ -20,7 +18,7 @@ _: {
             "--remember-session"
             "--asterisks"
             "--user-menu"
-            "--sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions"
+            "--cmd ${pkgs.hyprland}/bin/start-hyprland"
           ];
           user = "greeter";
         };
