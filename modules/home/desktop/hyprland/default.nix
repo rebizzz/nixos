@@ -137,9 +137,9 @@ EOF
       in "{\n    ${lib.concatStringsSep ",\n    " pairs},\n  }"
       else builtins.toString v;
 
-    # Keys with dots (col.active_border) need bracket notation in Lua
+    # Keys with dots OR hyphens need bracket notation in Lua
     toLuaKey = k:
-      if builtins.match ".*\\..*" k != null
+      if builtins.match ".*[\\.-].*" k != null
       then ''["${k}"]''
       else k;
 

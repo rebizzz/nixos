@@ -13,7 +13,7 @@ _: {
           # This makes tuigreet show the session list and launch start-hyprland
           # via its own desktop entry (which has the correct PATH baked in).
           command = lib.concatStringsSep " " [
-            "${lib.getExe pkgs.greetd.tuigreet}"
+            "${lib.getExe pkgs.tuigreet}"
             "--time"
             "--time-format '%H:%M %a, %b %d'"
             "--remember"
