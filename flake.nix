@@ -1,5 +1,5 @@
 {
-  description = "NixOS - Hyprland + Noctalia (dendritic)";
+  description = "NixOS - Umbriel + Noctalia (dendritic)";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

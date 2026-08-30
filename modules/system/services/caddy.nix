@@ -11,6 +11,7 @@ _: {
           "http://nixos-server.local, http://localhost, :80" = {
             extraConfig = ''
               # Clean redirects
+              redir /cockpit /cockpit/
               redir /sonarr /sonarr/
               redir /radarr /radarr/
               redir /prowlarr /prowlarr/
