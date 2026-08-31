@@ -17,11 +17,6 @@ _: {
         autodetect = true;
       };
 
-      locate = {
-        enable = true;
-        package = pkgs.plocate;
-      };
-
       udev.packages = [pkgs.libmtp];
     };
 
