@@ -29,6 +29,8 @@
 
     };
 
+    services.oo7.enable = true;
+
     environment.systemPackages = [
       pkgs.ffmpegthumbnailer
       pkgs.file-roller
