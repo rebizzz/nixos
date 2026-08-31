@@ -37,7 +37,6 @@ _: {
       };
 
       nftables.enable = true;
-      firewall.enable = false;
     };
 
     sops.templates."resolved-nextdns.conf" = {
