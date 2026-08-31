@@ -37,11 +37,7 @@ _: {
       };
 
       nftables.enable = true;
-
-      firewall = {
-        enable = true;
-        extraInputRules = "ip6 daddr fe80::/64 udp dport 546 accept"; # dhcpv6-client
-      };
+      firewall.enable = false;
     };
 
     sops.templates."resolved-nextdns.conf" = {
@@ -68,6 +64,57 @@ _: {
     };
 
     services = {
+      firewalld = {
+        enable = true;
+        settings = {
+          DefaultZone = "FedoraWorkstation";
+          FirewallBackend = "nftables";
+          IPv6_rpfilter = "yes";
+          LogDenied = "off";
+          NftablesCounters = "yes";
+          NftablesTableOwner = "yes";
+        };
+        zones = {
+          FedoraWorkstation = {
+            short = "Fedora Workstation";
+            description = "Fedora Workstation default firewall zone with mDNS, DHCPv6 client, and desktop port ranges.";
+            target = "default";
+            services = [
+              "dhcpv6-client"
+              "mdns"
+              "samba-client"
+              "ssh"
+            ];
+            ports = [
+              {
+                port = {
+                  from = 1025;
+                  to = 65535;
+                };
+                protocol = "udp";
+              }
+              {
+                port = {
+                  from = 1025;
+                  to = 65535;
+                };
+                protocol = "tcp";
+              }
+            ];
+          };
+          public = {
+            short = "Public";
+            description = "Hardened public zone accepting only essential discovery and DHCP.";
+            target = "default";
+            services = [
+              "dhcpv6-client"
+              "mdns"
+              "ssh"
+            ];
+          };
+        };
+      };
+
       resolved = {
         enable = true;
         settings.Resolve = {

@@ -45,7 +45,6 @@
     environment.systemPackages = [
       pkgs.ffmpegthumbnailer
       pkgs.file-roller
-      pkgs.gparted
       pkgs.oo7
 
       pkgs.loupe
@@ -53,6 +52,7 @@
       pkgs.xdg-utils
       pkgs.dex
       pkgs.satty
+      pkgs.wl-clipboard
       pkgs.pear-desktop
     ];
   };
