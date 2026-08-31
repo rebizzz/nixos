@@ -1,12 +1,10 @@
 _: {
   flake.modules.nixos.power = {
-    config,
     pkgs,
     lib,
     ...
-  }:
-    lib.mkIf (config.myConfig.hostClass == "desktop") {
-      services = {
+  }: {
+    services = {
         thermald.enable = true;
         ananicy = {
           enable = true;

@@ -1,13 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos.base = {
-    pkgs,
-    lib,
-    ...
-  }: {
-    options.myConfig.hostClass = lib.mkOption {
-      type = lib.types.enum ["desktop" "server"];
-      description = "Whether this host is a desktop or a headless server. Selects the per-class branch of shared modules that intentionally differ by host class (power, services, persistence).";
-    };
+  flake.modules.nixos.base = {pkgs, ...}: {
 
     imports = [
       inputs.disko.nixosModules.disko

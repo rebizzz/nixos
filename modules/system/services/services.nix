@@ -1,12 +1,6 @@
 _: {
-  flake.modules.nixos.services = {
-    config,
-    pkgs,
-    lib,
-    ...
-  }:
-    lib.mkIf (config.myConfig.hostClass == "desktop") {
-      services = {
+  flake.modules.nixos.services = {pkgs, ...}: {
+    services = {
         gvfs.enable = true;
         dbus.implementation = "broker";
 

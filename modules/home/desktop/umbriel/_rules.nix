@@ -114,7 +114,7 @@ _: {
         };
       }
       {
-        match.app_id = "^mpv$";
+        match.app_id = "^(mpv|org\\.kde\\.haruna|haruna)$";
         opacity = 1.0;
       }
       {

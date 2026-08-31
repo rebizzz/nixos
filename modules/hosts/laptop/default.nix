@@ -8,8 +8,6 @@
         ./_disko.nix
         ./_hardware.nix
         ({config, ...}: {
-          myConfig.hostClass = "desktop";
-
           networking.hostName = "nixos";
           environment.etc."nixos-profile".text = "laptop";
 

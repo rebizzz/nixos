@@ -1,11 +1,6 @@
 _: {
-  flake.modules.nixos.persistence = {
-    config,
-    lib,
-    ...
-  }:
-    lib.mkIf (config.myConfig.hostClass == "desktop") {
-      preservation = {
+  flake.modules.nixos.persistence = _: {
+    preservation = {
         enable = true;
         preserveAt."/persistent" = {
           commonMountOptions = ["x-gvfs-hide"];

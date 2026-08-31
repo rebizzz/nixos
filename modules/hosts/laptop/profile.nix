@@ -6,7 +6,7 @@
       boot
       brave-policy
       cachyos-tuning
-      containers
+      podman
       desktop
       display
       fonts
