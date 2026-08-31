@@ -9,7 +9,7 @@ _: {
       config.safe.directory = ["${config.myConfig.user.home}/opt/nixos-config"];
     };
     environment.systemPackages = [
-      pkgs.microfetch
+      pkgs.fastfetch
       pkgs.age
       pkgs.sops
     ];

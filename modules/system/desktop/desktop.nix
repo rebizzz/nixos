@@ -36,7 +36,6 @@
     services = {
       flatpak.enable = true;
       tumbler.enable = true;
-      gnome.gnome-keyring.enable = true;
       kmscon = {
         enable = true;
         config.hwaccel = true;
@@ -46,8 +45,7 @@
     environment.systemPackages = [
       pkgs.ffmpegthumbnailer
       pkgs.file-roller
-      pkgs.gnome-disk-utility
-      pkgs.libsecret
+      pkgs.gparted
       pkgs.oo7
 
       pkgs.loupe
