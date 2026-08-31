@@ -10,7 +10,6 @@ _: {
     };
     environment.systemPackages = [
       pkgs.fastfetch
-      pkgs.age
       pkgs.sops
     ];
   };
