@@ -12,6 +12,7 @@ _: {
             connection = {
               id = "ReBiz";
               type = "wifi";
+              autoconnect = true;
             };
             wifi = {
               mode = "infrastructure";
