@@ -323,7 +323,7 @@ _: {
           "aristides/udiskie" = {
             enable_notifications = true;
             auto_open_filemanager = false;
-            file_manager_cmd = "nautilus";
+            file_manager_cmd = "thunar";
           };
 
           "yuuto/calculator" = {

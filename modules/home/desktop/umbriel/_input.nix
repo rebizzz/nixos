@@ -24,6 +24,5 @@ _: {
     };
 
     focus.follows_mouse = true;
-    
   };
 }

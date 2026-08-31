@@ -14,7 +14,10 @@ _: {
       ];
     };
 
-    systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
+    systemd.services.jellyfin.serviceConfig = {
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
 
     users.users.jellyfin.extraGroups = ["video" "render"];
 

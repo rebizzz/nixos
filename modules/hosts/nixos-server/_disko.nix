@@ -90,6 +90,7 @@ in {
           xattr = "sa";
           dnodesize = "auto";
           atime = "off";
+          canmount = "noauto";
         };
         datasets = {
           "media" = {
@@ -98,22 +99,32 @@ in {
             mountOptions = ["nofail"];
             options = {
               recordsize = "1M";
+              canmount = "noauto";
             };
           };
           "backup" = {
             type = "zfs_fs";
             mountpoint = "/mnt/data/backup";
             mountOptions = ["nofail"];
+            options = {
+              canmount = "noauto";
+            };
           };
           "storage" = {
             type = "zfs_fs";
             mountpoint = "/mnt/data/storage";
             mountOptions = ["nofail"];
+            options = {
+              canmount = "noauto";
+            };
           };
           "shared" = {
             type = "zfs_fs";
             mountpoint = "/mnt/data/shared";
             mountOptions = ["nofail"];
+            options = {
+              canmount = "noauto";
+            };
           };
         };
       };

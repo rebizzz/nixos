@@ -2,7 +2,6 @@ _: {
   flake.modules.nixos.nfs = {
     config,
     lib,
-    hostVars,
     ...
   }:
     lib.mkIf (config.myConfig.hostClass == "server") {
