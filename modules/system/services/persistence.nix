@@ -19,7 +19,6 @@ _: {
             "/etc/NetworkManager/system-connections"
             "/var/lib/NetworkManager"
             "/var/lib/iwd"
-            "/var/lib/AccountsService"
             "/var/log/journal"
             "/var/lib/tailscale"
             {
