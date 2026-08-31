@@ -4,7 +4,6 @@ _: {
       networkmanager = {
         enable = true;
         dns = "systemd-resolved";
-        wifi.backend = "iwd";
         wifi.macAddress = "random";
 
         ensureProfiles = {

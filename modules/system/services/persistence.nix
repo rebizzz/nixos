@@ -17,7 +17,6 @@ _: {
             "/var/lib/noctalia-greeter"
             "/etc/NetworkManager/system-connections"
             "/var/lib/NetworkManager"
-            "/var/lib/iwd"
             "/var/log/journal"
             "/var/lib/tailscale"
             {
