@@ -36,6 +36,7 @@
     services = {
       flatpak.enable = true;
       tumbler.enable = true;
+      gnome.gnome-keyring.enable = true;
       kmscon = {
         enable = true;
         config.hwaccel = true;
@@ -46,14 +47,14 @@
       pkgs.ffmpegthumbnailer
       pkgs.file-roller
       pkgs.gnome-disk-utility
+      pkgs.libsecret
+      pkgs.oo7
 
       pkgs.loupe
       pkgs.papers
       pkgs.xdg-utils
       pkgs.dex
-      pkgs.wl-clipboard
       pkgs.satty
-      pkgs.libnotify
       pkgs.pear-desktop
     ];
   };
