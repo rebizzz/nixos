@@ -21,13 +21,6 @@ _: {
       "jffs2"
       "hfs"
       "hfsplus"
-
-      # Fedora 45 / modern kernel security hardening: Disable in-kernel Crypto Userspace API (CRYPTO_USER_API)
-      "af_alg"
-      "algif_hash"
-      "algif_skcipher"
-      "algif_rng"
-      "algif_aead"
     ];
   in {
     boot = {
