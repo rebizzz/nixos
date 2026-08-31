@@ -67,17 +67,12 @@ _: {
         enable = true;
         settings = {
           DefaultZone = "FedoraWorkstation";
-          FirewallBackend = "nftables";
-          IPv6_rpfilter = "yes";
-          LogDenied = "off";
-          NftablesCounters = "yes";
-          NftablesTableOwner = "yes";
+          NftablesCounters = true;
         };
         zones = {
           FedoraWorkstation = {
             short = "Fedora Workstation";
             description = "Fedora Workstation default firewall zone with mDNS, DHCPv6 client, and desktop port ranges.";
-            target = "default";
             services = [
               "dhcpv6-client"
               "mdns"
@@ -104,7 +99,6 @@ _: {
           public = {
             short = "Public";
             description = "Hardened public zone accepting only essential discovery and DHCP.";
-            target = "default";
             services = [
               "dhcpv6-client"
               "mdns"

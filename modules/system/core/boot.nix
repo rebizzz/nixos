@@ -80,8 +80,6 @@ _: {
         "net.ipv4.tcp_congestion_control" = "bbr";
         "net.ipv4.tcp_fastopen" = 3;
         "net.ipv4.tcp_mtu_probing" = 1;
-        "net.ipv4.conf.all.rp_filter" = 1;
-        "net.ipv4.conf.default.rp_filter" = 1;
         "net.ipv4.conf.all.accept_redirects" = 0;
         "net.ipv4.conf.default.accept_redirects" = 0;
         "net.ipv4.tcp_syncookies" = 1;
