@@ -7,12 +7,7 @@
       nix-ld.enable = true;
     };
 
-    documentation = {
-      enable = false;
-      nixos.enable = false;
-      man.enable = false;
-      info.enable = false;
-    };
+    documentation.enable = false;
     environment.defaultPackages = [];
 
     nix = {
