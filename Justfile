@@ -40,12 +40,6 @@ build:
 boot:
     nh os boot
 
-server-build:
-    nix build .#nixosConfigurations.nixos-server.config.system.build.toplevel
-
-server-apply:
-    deploy .#nixos-server
-
 gc:
     sudo nix-collect-garbage --delete-older-than 7d
     nix-collect-garbage --delete-older-than 7d

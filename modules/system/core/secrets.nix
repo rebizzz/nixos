@@ -8,7 +8,6 @@ _: {
 
       secrets = {
         user_password_laptop.neededForUsers = true;
-        user_password_server.neededForUsers = true;
         wifi_psk = {};
         nextdns_profile_id = {};
       };

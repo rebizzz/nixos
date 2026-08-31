@@ -22,10 +22,14 @@ _: {
               key-mgmt = "wpa-psk";
               psk = "$WIFI_PSK";
             };
-            ipv4.method = "auto";
+            ipv4 = {
+              method = "auto";
+              ignore-auto-dns = true;
+            };
             ipv6 = {
               addr-gen-mode = "stable-privacy";
               method = "auto";
+              ignore-auto-dns = true;
             };
           };
         };

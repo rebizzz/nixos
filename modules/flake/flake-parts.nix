@@ -6,10 +6,8 @@
   perSystem = {pkgs, ...}: {
     devShells.default = pkgs.mkShell {
       packages = [
-        pkgs.deploy-rs
         pkgs.sops
         pkgs.age
-        pkgs.nixos-anywhere
         pkgs.just
       ];
     };
