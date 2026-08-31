@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos.noctalia-greeter = {
+  flake.modules.nixos.greeter = {
     pkgs,
     config,
     ...

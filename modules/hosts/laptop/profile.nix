@@ -2,24 +2,21 @@
   flake.modules.nixos.laptop-profile = {
     imports = with inputs.self.modules.nixos; [
       base
-      audio
       boot
-      brave-policy
-      cachyos-tuning
-      podman
-      desktop
+      power
+      audio
       display
+      gpu
+      network
+      firewall
+      system-services
+      containers
+      desktop
+      brave
       fonts
       gaming
-      gpu
-      hibernate
-      lock-before-sleep
-      nano
-      network
-      noctalia-greeter
+      greeter
       persistence
-      power
-      services
       tools
     ];
   };

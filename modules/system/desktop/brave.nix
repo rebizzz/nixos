@@ -1,7 +1,7 @@
 let
   darkReader = "eimadpbcbfnmbkopoojfekhnkhdbieeh";
 in {
-  flake.modules.nixos.brave-policy = {config, ...}: {
+  flake.modules.nixos.brave = {config, ...}: {
     sops.templates."brave-dns-policy.json" = {
       content = builtins.toJSON {
         DnsOverHttpsTemplates = "https://dns.nextdns.io/${config.sops.placeholder.nextdns_profile_id}/Brave";
