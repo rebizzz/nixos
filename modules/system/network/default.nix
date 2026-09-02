@@ -19,7 +19,7 @@ _: {
               ssid = "ReBiz";
             };
             wifi-security = {
-              key-mgmt = "wpa-psk";
+              key-mgmt = "sae";
               psk = "$WIFI_PSK";
             };
             ipv4 = {
@@ -56,8 +56,8 @@ _: {
     ];
 
     systemd.services.systemd-resolved = {
-      wants = ["sops-install-secrets.service"];
-      after = ["sops-install-secrets.service"];
+      wants = ["sops-install-secrets.service" "systemd-tmpfiles-setup.service"];
+      after = ["sops-install-secrets.service" "systemd-tmpfiles-setup.service"];
     };
 
     services = {
