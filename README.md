@@ -13,10 +13,9 @@
   <em>"Since I have unlimited time, I thought I could get to know you slowly."</em>, Frieren
 </p>
 
-One flake, two machines, codenamed after Frieren's two steadiest travelers. `laptop` ("Frieren")
-is a NixOS desktop with [Umbriel][Umbriel] + [Noctalia][Noctalia] on a `tmpfs` root wiped every reboot.
-`nixos-server` ("Fern") is a headless home server with a ZFS mirror, Podman, and Jellyfin, that
-self-upgrades weekly. See [modules/hosts](modules/hosts/README.md) for details of each host.
+`laptop` ("Frieren", codenamed after the steadiest of Frieren's travelers) is a NixOS desktop with
+[Umbriel][Umbriel] + [Noctalia][Noctalia] on a `tmpfs` root wiped every reboot. See
+[modules/hosts](modules/hosts/README.md) for details.
 
 > :red_circle: **IMPORTANT**: **Don't deploy this flake directly on your own machine, it will not
 > succeed.** It contains my hardware configuration (disk layout, LUKS device paths, `hostId`s) and
@@ -29,13 +28,12 @@ self-upgrades weekly. See [modules/hosts](modules/hosts/README.md) for details o
 | --- | --- |
 | **Window Manager** | [Hyprland][Hyprland] |
 | **Shell / Bar** | [Noctalia][Noctalia] |
-| **Display Manager** | [ly][ly] |
+| **Display Manager** | [noctalia-greeter][noctalia-greeter] |
 | **Terminal** | [kitty][kitty] + [Fish][Fish] (`zoxide`, `eza`, `bat`, `ripgrep`) |
 | **Browser** | Brave Origin, debloated and locked down via policy |
-| **Filesystem** | Btrfs + LUKS + LVM (`laptop`), Btrfs system disk + ZFS mirror (`nixos-server`) |
+| **Filesystem** | Btrfs + LUKS + LVM |
 | **Secrets** | [sops-nix][sops-nix] + `age` |
-| **Remote Deploy** | [deploy-rs][deploy-rs], for pushing to `nixos-server` |
-| **Containers / Media** | Podman, [Nixarr Media Stack](docs/nixarr.md) (Jellyfin, Sonarr, Radarr, Prowlarr, FlareSolverr, Transmission, Bazarr, Recyclarr), Cockpit, [Tailscale][Tailscale] |
+| **Containers** | Podman |
 | **Modules** | dendritic pattern via [flake-parts][flake-parts] + [import-tree][import-tree] |
 
 ## Directory Structure
@@ -85,33 +83,14 @@ why that's explicit rather than automatic.
 
 Day to day: `just switch`.
 
-## Deploying to the Server
-
-`nixos-server` is administered remotely, there's no keyboard on it.
-
-```bash
-nix build .#nixosConfigurations.nixos-server.config.system.build.toplevel   # build only, good for a quick sanity check
-deploy .#nixos-server   # build and deploy over SSH
-```
-
-The `nixos-server` deploy-rs node (in `modules/hosts/nixos-server/default.nix`) connects as
-`rebiz@nixos-server.local` and escalates via passwordless `sudo`.
-
-Fallback without deploy-rs:
-
-```bash
-nixos-rebuild switch --flake .#nixos-server --target-host rebiz@nixos-server.local --use-remote-sudo
-```
-
 For a from-scratch install, see [modules/hosts/README.md](modules/hosts/README.md). For how
-secrets are shared between both hosts, see [secrets/README.md](secrets/README.md). For the complete
-media automation setup and architecture, see the [Nixarr Stack Guide](docs/nixarr.md).
+secrets are managed, see [secrets/README.md](secrets/README.md).
 
 ## Development
 
-[direnv][direnv] is enabled on both hosts. Approve it once with `direnv allow`, and from then on
-`cd`-ing into the repo loads `deploy-rs`, `sops`, `age`, and `just` automatically, no `nix develop`
-needed. The `Justfile` wraps formatting, linting, and the deploy commands above:
+[direnv][direnv] is enabled. Approve it once with `direnv allow`, and from then on `cd`-ing into
+the repo loads `sops`, `age`, and `just` automatically, no `nix develop` needed. The `Justfile`
+wraps formatting, linting, and switching:
 
 ```bash
 just fmt      # alejandra
@@ -133,13 +112,10 @@ Run `just --list` to see every recipe.
 
 [Hyprland]: https://hyprland.org
 [Noctalia]: https://github.com/noctalia-dev/noctalia
-[ly]: https://github.com/fairyglade/ly
+[noctalia-greeter]: https://github.com/noctalia-dev/noctalia-greeter
 [kitty]: https://sw.kovidgoyal.net/kitty/
 [Fish]: https://fishshell.com/
 [sops-nix]: https://github.com/Mic92/sops-nix
-[deploy-rs]: https://github.com/serokell/deploy-rs
-[Jellyfin]: https://jellyfin.org/
-[Tailscale]: https://tailscale.com/
 [flake-parts]: https://flake.parts/
 [import-tree]: https://github.com/vic/import-tree
 [direnv]: https://direnv.net/

@@ -1,7 +1,7 @@
 # Home Manager Modules
 
-Home Manager configuration, `laptop` only, `nixos-server` has no user session. One module per
-file, self-registering as `flake.modules.homeManager.<name>`, aggregated by `default.nix` into
+Home Manager configuration for `laptop`. One module per file, self-registering as
+`flake.modules.homeManager.<name>`, aggregated by `default.nix` into
 `flake.modules.homeManager.default`, the one module `laptop/default.nix` hands to home-manager.
 
 ## Current Structure
@@ -10,8 +10,8 @@ file, self-registering as `flake.modules.homeManager.<name>`, aggregated by `def
 home/
 ├── default.nix   # aggregates everything below into one module
 ├── apps/         # per-application configs (brave, discord, git, nano)
-├── desktop/      # hyprland, noctalia, mime associations, gtk/qt theme
-├── terminal/     # fish, foot
+├── desktop/      # Umbriel, Noctalia, mime associations, gtk/qt theme
+├── terminal/     # fish, kitty
 └── services/     # user-level services (sound effects)
 ```
 

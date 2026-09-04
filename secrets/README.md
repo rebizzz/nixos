@@ -1,21 +1,15 @@
 # Secrets Management (sops-nix)
 
-Secrets in this repo are encrypted using `sops-nix` and `age`, and shared between both hosts.
-`secrets/secrets.yaml` is a single file, decryptable by any recipient listed in `.sops.yaml`.
+Secrets in this repo are encrypted using `sops-nix` and `age`. `secrets/secrets.yaml` is a single
+file, decryptable by any recipient listed in `.sops.yaml`.
 
 Key location: `/persistent/etc/sops/age/keys.txt`
-
-`nixos-server` additionally decrypts via its own SSH host key (`age.sshKeyPaths` in
-`modules/system/core/secrets.nix`), so it doesn't need a separate `keys.txt` copied onto it before
-first boot. Its `ssh_host_ed25519_key` (persisted at `/persistent/etc/ssh/`) doubles as its sops
-identity.
 
 > Back up `/persistent/etc/sops/age/keys.txt` to an external USB drive. Losing this key makes encrypted secrets unrecoverable.
 
 ## Changing User Password
 
-Each host has its own password secret, `user_password_laptop` and `user_password_server`, so you
-can change one without touching the other. Passwords are not stored in plaintext:
+Passwords are not stored in plaintext:
 
 1. Generate a SHA-512 hash:
    ```bash
@@ -27,16 +21,14 @@ can change one without touching the other. Passwords are not stored in plaintext
    cd ~/opt/nixos-config
    sops secrets/secrets.yaml
    ```
-3. Replace `user_password_laptop` and/or `user_password_server` with the new hash.
+3. Replace `user_password_laptop` with the new hash.
 4. Rebuild the system:
    ```bash
    sudo nixos-rebuild switch --flake .#laptop
-   # or, for the server:
-   deploy .#nixos-server
    ```
 
-`root` has no password on either host (`hashedPassword = "!"` in
-`modules/system/core/user.nix`). Use `sudo` via the `wheel` group instead.
+`root` has no password (`hashedPassword = "!"` in `modules/system/core/user.nix`). Use `sudo` via
+the `wheel` group instead.
 
 ## Editing Secrets
 
@@ -75,5 +67,5 @@ points at the wrong path. Export it in the current shell before running `sops`, 
 forgot to run `sops updatekeys secrets/secrets.yaml`, the data key is still wrapped only for the
 old recipient set.
 
-**Locked out because `keys.txt` is gone**: without it or `nixos-server`'s SSH host key, the secrets
-in `secrets.yaml` are unrecoverable. This is why the backup copy on a USB drive matters.
+**Locked out because `keys.txt` is gone**: without it, the secrets in `secrets.yaml` are
+unrecoverable. This is why the backup copy on a USB drive matters.
