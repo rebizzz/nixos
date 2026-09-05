@@ -7,10 +7,13 @@ in {
     programs.nixcord = {
       enable = true;
       discord = {
-        branches = ["canary"];
+        branches = ["stable"];
         equicord.enable = true;
         krisp.enable = true;
         openASAR.enable = true;
+        settings = {
+          DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING = true;
+        };
       };
 
       config = {
