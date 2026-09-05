@@ -39,8 +39,8 @@ _: {
 
       services = {
         journald = {
-          storage = "persistent";
           settings.Journal = {
+            Storage = "persistent";
             SystemMaxFiles = 5;
             SystemMaxUse = "50M";
           };
