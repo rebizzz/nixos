@@ -12,6 +12,9 @@
       ./_binds.nix
     ];
 
-    programs.umbriel.enable = true;
+    programs.umbriel = {
+      enable = true;
+      validateConfig = false;
+    };
   };
 }
