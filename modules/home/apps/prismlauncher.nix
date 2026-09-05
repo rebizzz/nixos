@@ -6,6 +6,7 @@ _: {
         gamemodeSupport = true;
         controllerSupport = true;
         additionalPrograms = [pkgs.gamemode];
+        jdks = [pkgs.jdk21];
       };
       settings = {
         ApplicationTheme = "dark";
