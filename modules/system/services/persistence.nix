@@ -40,10 +40,10 @@ _: {
       services = {
         journald = {
           storage = "persistent";
-          extraConfig = ''
-            SystemMaxFiles=5
-            SystemMaxUse=50M
-          '';
+          settings.Journal = {
+            SystemMaxFiles = 5;
+            SystemMaxUse = "50M";
+          };
         };
 
         fstrim = {
