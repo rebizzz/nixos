@@ -5,8 +5,7 @@ _: {
       package = pkgs.prismlauncher.override {
         gamemodeSupport = true;
         controllerSupport = true;
-        additionalPrograms = [pkgs.gamemode];
-        jdks = [pkgs.jdk21];
+        jdks = [pkgs.temurin-bin-25];
       };
       settings = {
         ApplicationTheme = "dark";
