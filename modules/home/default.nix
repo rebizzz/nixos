@@ -27,6 +27,7 @@
       discord
       theme
       mime
+      prismlauncher
     ];
 
     home = {
