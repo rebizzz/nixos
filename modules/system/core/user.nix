@@ -40,9 +40,6 @@ in {
           extraGroups = ["wheel" "networkmanager" "video" "audio" "input" "storage" "render"];
           shell = pkgs.fish;
         };
-
-        # locked out, not just passwordless: use sudo via the wheel group instead
-        users.root.hashedPassword = "!";
       };
 
       security.sudo-rs = {
