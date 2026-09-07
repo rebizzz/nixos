@@ -1,5 +1,5 @@
 _: let
-  web = "brave-browser.desktop";
+  web = "brave-origin.desktop";
   image = "org.gnome.Loupe.desktop";
   av = "org.kde.haruna.desktop";
   doc = "org.gnome.Papers.desktop";

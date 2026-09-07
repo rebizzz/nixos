@@ -13,6 +13,7 @@ _: {
               id = "ReBiz";
               type = "wifi";
               autoconnect = true;
+              zone = "FedoraWorkstation";
             };
             wifi = {
               mode = "infrastructure";

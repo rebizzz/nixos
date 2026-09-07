@@ -39,10 +39,6 @@ in {
           home = config.myConfig.user.home;
           extraGroups = ["wheel" "networkmanager" "video" "audio" "input" "storage" "render"];
           shell = pkgs.fish;
-          openssh.authorizedKeys.keys = [
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID9CvwTALuQuiHJlkXTs2U5SKMhiu/lag3jQsbBIyHCl guardiansofspartax@gmail.com"
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINVKdJ2d/APmJOYmjZtggs39BmS1sF96wJnwoEc0ErQQ guardiansofspartax@gmail.com"
-          ];
         };
 
         # locked out, not just passwordless: use sudo via the wheel group instead

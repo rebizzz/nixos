@@ -53,8 +53,5 @@
     inputs.flake-parts.lib.mkFlake {inherit inputs;}
     {
       imports = [(inputs.import-tree ./modules)];
-
-      flake.nixosModules = inputs.self.modules.nixos;
-      flake.homeManagerModules = inputs.self.modules.homeManager;
     };
 }

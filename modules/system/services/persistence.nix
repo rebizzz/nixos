@@ -3,7 +3,7 @@ _: {
     preservation = {
         enable = true;
         preserveAt."/persistent" = {
-          commonMountOptions = ["x-gvfs-hide"];
+          commonMountOptions = ["x-gvfs-hide" "x-gdu.hide"];
           directories = [
             {
               directory = "/var/lib/nixos";
@@ -13,6 +13,7 @@ _: {
             "/var/lib/systemd/backlight"
             "/var/lib/systemd/rfkill"
             "/var/lib/bluetooth"
+            "/var/lib/AccountsService"
             "/var/lib/smartmontools"
             "/var/lib/noctalia-greeter"
             "/etc/NetworkManager/system-connections"

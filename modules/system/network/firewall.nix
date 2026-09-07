@@ -5,7 +5,7 @@ _: {
     services.firewalld = {
       enable = true;
       settings = {
-        DefaultZone = "FedoraWorkstation";
+        DefaultZone = "public";
         NftablesCounters = true;
       };
       zones = {
@@ -16,7 +16,6 @@ _: {
             "dhcpv6-client"
             "mdns"
             "samba-client"
-            "ssh"
           ];
           ports = [
             {
@@ -41,7 +40,6 @@ _: {
           services = [
             "dhcpv6-client"
             "mdns"
-            "ssh"
           ];
         };
       };

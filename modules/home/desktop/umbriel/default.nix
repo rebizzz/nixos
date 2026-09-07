@@ -14,7 +14,6 @@
 
     programs.umbriel = {
       enable = true;
-      validateConfig = false;
     };
   };
 }
