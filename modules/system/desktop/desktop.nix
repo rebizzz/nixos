@@ -32,7 +32,7 @@
     environment.systemPackages = [
       pkgs.ffmpegthumbnailer
       pkgs.file-roller
-
+      
       pkgs.loupe
       pkgs.papers
       pkgs.xdg-utils

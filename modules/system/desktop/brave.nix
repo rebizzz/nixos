@@ -30,18 +30,14 @@ in {
         BraveSpeedreaderEnabled = false;
         BraveWebDiscoveryEnabled = 0;
         BraveP3AEnabled = false;
-        BraveStatsPingEnabled = 0;
+        BraveStatsPingEnabled = false;
 
         # Privacy & Security
-        SendDoNotTrackEnabled = true;
-        SpeechRecognitionEnabled = false;
-        PromotionalTabsEnabled = false;
         PasswordManagerEnabled = false;
         BrowserSignin = 0;
         DnsOverHttpsMode = "secure";
         SyncDisabled = true;
         EnableMediaRouter = false;
-        MediaRouterEnabled = false;
         AudioCaptureAllowed = true;
         VideoCaptureAllowed = true;
         AutofillAddressEnabled = false;
