@@ -26,7 +26,7 @@ _: {
             ipv4 = {
               method = "auto";
               ignore-auto-dns = true;
-              dhcp-ipv6-only-preferred = true; # RFC 8925 IPv6-mostly support (Fedora 45 default)
+              dhcp-ipv6-only-preferred = 1; # RFC 8925 IPv6-mostly support (Fedora 45 default)
             };
             ipv6 = {
               addr-gen-mode = "stable-privacy";
