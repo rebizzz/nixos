@@ -26,7 +26,7 @@
 
 | Category | Choice |
 | --- | --- |
-| **Window Manager** | [Hyprland][Hyprland] |
+| **Compositor** | [Umbriel][Umbriel] |
 | **Shell / Bar** | [Noctalia][Noctalia] |
 | **Display Manager** | [noctalia-greeter][noctalia-greeter] |
 | **Terminal** | [kitty][kitty] + [Fish][Fish] (`zoxide`, `eza`, `bat`, `ripgrep`) |
@@ -43,7 +43,7 @@
 ├── flake.nix    # Flake entrypoint (flake-parts + import-tree)
 ├── Justfile     # just --list for build/lint/deploy shortcuts
 ├── assets/      # Wallpapers and avatar image
-├── secrets/     # sops-nix encrypted secrets, shared by both hosts
+├── secrets/     # sops-nix encrypted secrets, shared across hosts
 └── modules/     # see modules/README.md
     ├── flake/   # flake-parts wiring: devShell
     ├── hosts/   # One directory per machine
@@ -110,7 +110,7 @@ Run `just --list` to see every recipe.
 
 [MIT licensed](LICENSE).
 
-[Hyprland]: https://hyprland.org
+[Umbriel]: https://github.com/noctalia-dev/umbriel
 [Noctalia]: https://github.com/noctalia-dev/noctalia
 [noctalia-greeter]: https://github.com/noctalia-dev/noctalia-greeter
 [kitty]: https://sw.kovidgoyal.net/kitty/
