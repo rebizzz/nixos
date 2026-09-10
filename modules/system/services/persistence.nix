@@ -1,9 +1,9 @@
 _: {
-  flake.modules.nixos.persistence = _: {
+  flake.modules.nixos.persistence = {pkgs, ...}: {
     preservation = {
         enable = true;
         preserveAt."/persistent" = {
-          commonMountOptions = ["x-gvfs-hide" "x-gdu.hide"];
+          commonMountOptions = ["x-gvfs-hide"];
           directories = [
             {
               directory = "/var/lib/nixos";
@@ -15,7 +15,12 @@ _: {
             "/var/lib/bluetooth"
             "/var/lib/AccountsService"
             "/var/lib/smartmontools"
-            "/var/lib/noctalia-greeter"
+            {
+              directory = "/var/lib/noctalia-greeter";
+              user = "greeter";
+              group = "greeter";
+              mode = "0750";
+            }
             "/etc/NetworkManager/system-connections"
             "/var/lib/NetworkManager"
             "/var/log/journal"
@@ -56,6 +61,27 @@ _: {
           enable = true;
           interval = "monthly";
           fileSystems = ["/persistent"];
+        };
+      };
+
+      # nixpkgs' btrfs module only ships autoScrub, no equivalent for balance
+      systemd.services.btrfs-balance-persistent = {
+        description = "Btrfs balance on /persistent";
+        serviceConfig = {
+          Type = "oneshot";
+          Nice = 19;
+          IOSchedulingClass = "idle";
+          ExecStart = "${pkgs.btrfs-progs}/bin/btrfs balance start -dusage=20 -musage=20 /persistent";
+        };
+      };
+
+      systemd.timers.btrfs-balance-persistent = {
+        description = "Quarterly btrfs balance on /persistent";
+        wantedBy = ["timers.target"];
+        timerConfig = {
+          OnCalendar = "quarterly";
+          Persistent = true;
+          RandomizedDelaySec = "1h";
         };
       };
     };

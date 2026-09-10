@@ -37,7 +37,6 @@ _: {
       action = "overview-open";
     };
 
-    # live colour-scheme handoff, mirrors the old require("noctalia").apply_theme() setup
-    include.files = ["noctalia.toml"];
+    include.optional.files = ["noctalia.toml"];
   };
 }

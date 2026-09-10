@@ -9,6 +9,7 @@
       gpu
       network
       firewall
+      tailscale
       system-services
       containers
       desktop

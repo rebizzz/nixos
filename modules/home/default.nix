@@ -24,6 +24,7 @@
       nano
       brave
       sounds
+      tailscale
       discord
       theme
       mime
@@ -55,6 +56,12 @@
       manpages.enable = false;
     };
     news.display = "show";
+
+    services.home-manager.autoExpire = {
+      enable = true;
+      timestamp = "-30 days";
+      frequency = "monthly";
+    };
 
     programs = {
       nix-index = {
