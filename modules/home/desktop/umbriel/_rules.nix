@@ -19,17 +19,6 @@ _: {
         opacity = 0.95;
       }
       {
-        match.app_id = "^(com\\.gabm\\.satty|satty)$";
-        default_floating = true;
-        default_pinned = true;
-        default_size = [1344 756];
-        default_position = {
-          anchor = "center";
-          x = 0;
-          y = 0;
-        };
-      }
-      {
         match.app_id = "^(code|thunar|Thunar)$";
         opacity = 0.97;
       }
@@ -55,8 +44,8 @@ _: {
           title = "Discord";
         };
         default_maximize = true;
-        blur = true;
-        opacity = 0.90;
+        #blur = true;
+        #opacity = 0.90;
       }
       {
         match.app_id = "^(brave-browser|brave)$";

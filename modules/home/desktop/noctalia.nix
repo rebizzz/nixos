@@ -71,11 +71,9 @@ _: {
             directory = screenshotsDir;
             freeze_screen = true;
             save_to_file = false;
-            copy_to_clipboard = false;
-            pipe_to_command = true;
-            pipe_command = ''
-              sh -c "satty --filename - --copy-command wl-copy --early-exit --output-filename \"${screenshotsDir}/Screenshot_$(date +%Y-%m-%d_%H-%M-%S).png\""
-            '';
+            copy_to_clipboard = true;
+            annotate = true;
+            filename_pattern = "Screenshot_%Y-%m-%d_%H-%M-%S";
           };
         };
 

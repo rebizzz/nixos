@@ -101,7 +101,7 @@
         repeat = false;
       };
       "Shift+Print" = {
-        action = "spawn:noctalia msg screenshot-area";
+        action = "spawn:noctalia msg screenshot-annotate";
         repeat = false;
       };
 

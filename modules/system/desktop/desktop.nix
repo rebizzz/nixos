@@ -26,18 +26,16 @@
           thunar-shares-plugin
         ];
       };
-
     };
 
     environment.systemPackages = [
       pkgs.ffmpegthumbnailer
       pkgs.file-roller
-      
+
       pkgs.loupe
       pkgs.papers
       pkgs.xdg-utils
       pkgs.dex
-      pkgs.satty
       pkgs.wl-clipboard
       pkgs.pear-desktop
     ];
