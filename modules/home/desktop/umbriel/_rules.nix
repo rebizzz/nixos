@@ -66,11 +66,6 @@ _: {
         match.app_id = "^dev\\.noctalia\\.UmbrielSharePicker$";
         default_floating = true;
         default_size = [800 600];
-        default_position = {
-          anchor = "bottom_right";
-          x = 32;
-          y = 32;
-        };
       }
       {
         match.app_id = "^(pavucontrol|org\\.pulseaudio\\.pavucontrol|nm-connection-editor|blueman-manager|org\\.gnome\\.Nm-connection-editor|Emulator|zenity|qalculate-gtk)$";
@@ -81,16 +76,15 @@ _: {
           y = 0;
         };
       }
+      # Browsers expose no semantic PiP role or global position control.
       {
-        match = {
-          app_id = "^(brave|chromium).*";
-          title = "^Picture-in-Picture$";
-        };
+        match.title = "^(Picture-in-Picture|Picture in picture)$";
         default_floating = true;
+        default_maximize = false;
         default_position = {
-          anchor = "center";
-          x = 0;
-          y = 0;
+          anchor = "bottom_right";
+          x = 20;
+          y = 20;
         };
       }
       {
@@ -144,6 +138,18 @@ _: {
           x = 0;
           y = 0;
         };
+      }
+      # Keep Steam notification toasts in the bottom-right corner without stealing
+      # focus, and pin them so workspace switches do not hide them.
+      {
+        match.title = "^notificationtoasts_.+_desktop";
+        default_position = {
+          anchor = "bottom_right";
+          x = 0;
+          y = 0;
+        };
+        default_focused = false;
+        default_pinned = true;
       }
     ];
 
