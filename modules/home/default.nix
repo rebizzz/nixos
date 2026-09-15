@@ -38,7 +38,7 @@
       packages = [
         pkgs.gpu-screen-recorder
         pkgs.udiskie
-        pkgs.pavucontrol
+        pkgs.pwvucontrol
       ];
       file = {
         ".face".source = ../../assets/avatar.jpeg;

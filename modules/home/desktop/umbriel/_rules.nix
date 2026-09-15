@@ -68,7 +68,7 @@ _: {
         default_size = [800 600];
       }
       {
-        match.app_id = "^(pavucontrol|org\\.pulseaudio\\.pavucontrol|nm-connection-editor|blueman-manager|org\\.gnome\\.Nm-connection-editor|Emulator|zenity|qalculate-gtk)$";
+        match.app_id = "^(pavucontrol|org\\.pulseaudio\\.pavucontrol|nm-connection-editor|blueman-manager|org\\.gnome\\.Nm-connection-editor|Emulator|zenity|qalculate-gtk|com\\.saivert\\.pwvucontrol)$";
         default_floating = true;
         default_position = {
           anchor = "center";
