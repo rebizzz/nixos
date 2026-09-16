@@ -10,6 +10,7 @@
     };
 
     preservation.url = "github:nix-community/preservation";
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,6 +38,7 @@
       url = "git+https://github.com/noctalia-dev/umbriel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     xdg-desktop-portal-umbriel = {
       url = "github:noctalia-dev/xdg-desktop-portal-umbriel";
       inputs.nixpkgs.follows = "nixpkgs";
