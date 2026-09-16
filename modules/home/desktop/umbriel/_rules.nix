@@ -54,7 +54,10 @@ _: {
       {
         match.app_id = "^dev\\.noctalia\\.Noctalia$";
         default_floating = true;
-        default_size = [1020 900];
+        default_floating_size_px = {
+          width = 1020;
+          height = 900;
+        };
         default_position = {
           anchor = "center";
           x = 0;
@@ -65,7 +68,10 @@ _: {
       {
         match.app_id = "^dev\\.noctalia\\.UmbrielSharePicker$";
         default_floating = true;
-        default_size = [800 600];
+        default_floating_size_px = {
+          width = 800;
+          height = 600;
+        };
       }
       {
         match.app_id = "^(pavucontrol|org\\.pulseaudio\\.pavucontrol|nm-connection-editor|blueman-manager|org\\.gnome\\.Nm-connection-editor|Emulator|zenity|qalculate-gtk|com\\.saivert\\.pwvucontrol)$";
@@ -111,7 +117,10 @@ _: {
           x = 0;
           y = 0;
         };
-        default_size = [1100 700];
+        default_floating_size_px = {
+          width = 1100;
+          height = 700;
+        };
       }
       {
         match = {
@@ -119,7 +128,10 @@ _: {
           title = "^Friends List$";
         };
         default_floating = true;
-        default_size = [460 800];
+        default_floating_size_px = {
+          width = 460;
+          height = 800;
+        };
         default_position = {
           anchor = "center";
           x = 0;
