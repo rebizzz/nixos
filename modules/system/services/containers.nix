@@ -14,6 +14,7 @@ _: {
 
     environment.systemPackages = [
       pkgs.podman-compose
+      pkgs.distrobox
     ];
   };
 }
