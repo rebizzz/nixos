@@ -44,7 +44,7 @@ _: {
           greeter_sync.auto_sync = true;
           telemetry_enabled = true;
           screen_time_enabled = true;
-          settings_show_advanced = true;
+          settings_show_advanced = false;
           password_style = "random";
           clipboard_history_max_entries = 200;
           clipboard_auto_paste = "ctrl_v";
@@ -104,9 +104,9 @@ _: {
           enabled = true;
           transition_on_startup = true;
           directory = wallpapersDir;
-          default.path = "${wallpapersDir}/default.jpg";
-          last.path = "${wallpapersDir}/default.jpg";
-          monitors."eDP-1".path = "${wallpapersDir}/default.jpg";
+          default.path = "${wallpapersDir}/nature/waterfall-bridge.png";
+          last.path = "${wallpapersDir}/nature/waterfall-bridge.png";
+          monitors."eDP-1".path = "${wallpapersDir}/nature/waterfall-bridge.png";
         };
 
         backdrop = {
@@ -128,6 +128,11 @@ _: {
 
         desktop_widgets = {
           enabled = true;
+        };
+
+        hot_corners = {
+          enabled = false;
+          top_left.action = "launcher";
         };
 
         weather = {
@@ -218,7 +223,7 @@ _: {
         bar.default = {
           capsule = true;
           background_opacity = 0.6;
-          start = ["workspaces" "privacy"];
+          start = ["workspaces" "privacy" "active_window"];
           center = ["media" "clock"];
           end = [
             "tray"
@@ -249,7 +254,7 @@ _: {
               fill = "surface_variant";
               opacity = 1.0;
               padding = 6.0;
-              members = ["volume" "spacer_1" "brightness"];
+              members = ["volume" "spacer_3" "brightness"];
             }
             {
               id = "g3";
@@ -259,7 +264,7 @@ _: {
               fill = "surface_variant";
               opacity = 1.0;
               padding = 6.0;
-              members = ["session" "control-center" "spacer_2"];
+              members = ["session" "control-center" "spacer_4"];
             }
             {
               id = "g4";
@@ -269,7 +274,7 @@ _: {
               fill = "surface_variant";
               opacity = 1.0;
               padding = 6.0;
-              members = ["network" "spacer_3" "network_tx" "spacer_4" "network_rx"];
+              members = ["network" "spacer_1" "network_tx" "spacer_2" "network_rx"];
             }
           ];
         };
@@ -304,6 +309,9 @@ _: {
           };
           network_rx = {
             visualization = "none";
+          };
+          taskbar = {
+            group_by_workspace = true;
           };
           spacer_1 = {type = "spacer";};
           spacer_2 = {type = "spacer";};
