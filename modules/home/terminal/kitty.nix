@@ -13,7 +13,7 @@ _: {
         input_delay = 1;
         sync_to_monitor = "yes";
         linux_display_server = "wayland";
-        background_opacity = "0.85";
+        background_opacity = "0.9";
         window_padding_width = 8;
         cursor_shape = "block";
         cursor_blink_interval = 0;

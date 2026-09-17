@@ -39,18 +39,18 @@ _: {
 
     windows_in = {
       enabled = true;
-      duration_ms = 500;
-      curve = "emphasizedDecel";
-      style = "popin";
-      scale = 0.8;
+      duration_ms = 600;
+      curve = "linear";
+      style = "none";
+      shader = "shaders/windows-in.glsl";
     };
 
     windows_out = {
       enabled = true;
-      duration_ms = 300;
-      curve = "emphasizedAccel";
+      duration_ms = 600;
+      curve = "linear";
       style = "fade";
-      shader = "shaders/popin.glsl";
+      shader = "shaders/windows-out.glsl";
     };
 
     windows_move = {
@@ -74,8 +74,8 @@ _: {
     scratchpad = {
       enabled = true;
       duration_ms = 400;
-      curve = "emphasizedDecel";
-      shader = "shaders/slidefadevert.glsl";
+      curve = "standard";
+      shader = "shaders/scratchpad.glsl";
       dim = 0.2;
       blur = false;
       scale = 0.0;
