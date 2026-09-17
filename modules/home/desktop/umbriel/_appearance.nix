@@ -1,32 +1,30 @@
 _: {
-  # colours intentionally omitted here: noctalia.toml (see _general.nix) supplies
-  # the live wallpaper-driven accent/border colours instead of hardcoding them
   programs.umbriel.settings = {
     appearance = {
       prefer_no_csd = true;
-      border_width = 2;
+      border_width = 1;
       outer_border_width = 0;
-      corner_radius = 12;
+      corner_radius = 15;
 
       shadow = {
         enabled = true;
-        softness = 45;
+        softness = 8;
         offset_x = 0;
-        offset_y = 10;
+        offset_y = 0;
       };
 
       blur = {
         enabled = true;
-        optimized = true;
-        passes = 3;
-        radius = 6;
-        noise = 0.02;
-        brightness = 0.95;
-        contrast = 0.95;
-        saturation = 1.25;
+        optimized = false;
+        passes = 2;
+        radius = 8;
+        noise = 0.0117;
+        brightness = 0.8172;
+        contrast = 0.8916;
+        saturation = 1.17;
       };
     };
 
-    colors.shadow = "#00000088";
+    colors.shadow = "#00000010";
   };
 }

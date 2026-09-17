@@ -1,7 +1,7 @@
 _: {
   programs.umbriel.settings.output = {
     "eDP-1" = {
-      vrr = "fullscreen";
+      vrr = "disabled";
       workspaces = "dynamic";
     };
     "DP-1" = {

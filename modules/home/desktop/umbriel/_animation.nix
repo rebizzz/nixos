@@ -4,8 +4,6 @@ _: {
     duration_ms = 400;
     curve = "standard";
 
-    # umbriel beziers are a single cubic segment, so caelestia's two-segment
-    # "emphasized" spline has no exact equivalent; only its accel/decel halves are used.
     beziers = {
       standard = [0.2 0.0 0.0 1.0];
       standardAccel = [0.3 0.0 1.0 1.0];
@@ -42,41 +40,43 @@ _: {
     windows_in = {
       enabled = true;
       duration_ms = 500;
-      curve = "expressiveDefaultSpatial";
+      curve = "emphasizedDecel";
       style = "popin";
-      scale = 0.87;
+      scale = 0.8;
     };
 
     windows_out = {
       enabled = true;
-      duration_ms = 150;
-      curve = "expressiveFastEffects";
+      duration_ms = 300;
+      curve = "emphasizedAccel";
       style = "fade";
+      shader = "shaders/popin.glsl";
     };
 
     windows_move = {
       enabled = true;
-      duration_ms = 500;
-      curve = "expressiveDefaultSpatial";
+      duration_ms = 600;
+      curve = "standard";
     };
 
     workspaces = {
       enabled = true;
-      duration_ms = 650;
-      curve = "expressiveSlowSpatial";
+      duration_ms = 500;
+      curve = "standard";
     };
 
     overview = {
       enabled = true;
-      duration_ms = 650;
-      curve = "expressiveSlowSpatial";
+      duration_ms = 500;
+      curve = "standard";
     };
 
     scratchpad = {
-      enabled = false;
-      duration_ms = 250;
-      curve = "easeout";
-      dim = 0.5;
+      enabled = true;
+      duration_ms = 400;
+      curve = "emphasizedDecel";
+      shader = "shaders/slidefadevert.glsl";
+      dim = 0.2;
       blur = false;
       scale = 0.0;
       maximize = false;
@@ -85,21 +85,21 @@ _: {
 
     border = {
       enabled = true;
-      duration_ms = 300;
-      curve = "expressiveSlowEffects";
+      duration_ms = 600;
+      curve = "standard";
     };
 
     dim_unfocused = {
       enabled = false;
-      duration_ms = 200;
-      curve = "expressiveDefaultEffects";
+      duration_ms = 600;
+      curve = "standard";
       dim = 0.0;
     };
 
     layers = {
       enabled = true;
-      duration_ms = 200;
-      curve = "expressiveDefaultEffects";
+      duration_ms = 500;
+      curve = "standard";
     };
   };
 }

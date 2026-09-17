@@ -87,9 +87,13 @@
       "Mod+Ctrl+Shift+Down" = "window-move-to-output-down";
 
       # Scratchpad
-      "Mod+Shift+Space" = "window-toggle-scratchpad";
-      "Mod+Space" = "scratchpad-toggle";
-      "Mod+Grave" = "scratchpad-focus-next";
+      "Mod+Shift+Space" = "window-toggle-scratchpad:special";
+      "Mod+Space" = "scratchpad-toggle:special";
+      "Mod+Grave" = "scratchpad-focus-next:special";
+      "Mod+Alt+D" = "scratchpad-toggle:communication";
+      "Mod+Alt+M" = "scratchpad-toggle:music";
+      "Mod+Alt+T" = "scratchpad-toggle:todo";
+      "Ctrl+Shift+Escape" = "scratchpad-toggle:sysmon";
 
       # Screenshots
       "Print" = {

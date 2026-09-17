@@ -1,14 +1,19 @@
 _: {
   programs.umbriel.settings.input = {
+    middle_click_paste = false;
+
     keyboard = {
       layout = "us";
-      repeat_delay = 300;
-      repeat_rate = 40;
+      repeat_delay = 250;
+      repeat_rate = 35;
+      numlock_toggle = false;
     };
 
     touchpad = {
       tap = true;
       natural_scroll = true;
+      disable_while_typing = true;
+      scroll_factor = 0.5;
     };
 
     mouse = {

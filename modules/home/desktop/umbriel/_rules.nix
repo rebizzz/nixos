@@ -3,7 +3,8 @@ _: {
     window_rule = [
       {
         blur = true;
-        blur_optimized = true;
+        blur_optimized = false;
+        opacity = 0.95;
       }
       {
         default_position = {
@@ -12,18 +13,26 @@ _: {
           y = 0;
         };
       }
+      {
+        match.is_alone = true;
+        default_maximize = true;
+      }
 
       {
-        match.app_id = "^kitty$";
-        blur = true;
-        opacity = 0.95;
+        match.app_id = "^(kitty|equibop|Equibop|org\\.quickshell|feh|imv|swappy|org\\.kde\\.krita|krita|gimp.*|org\\.inkscape\\.Inkscape|darktable|resolve|org\\.kde\\.kdenlive|shotcut|blender|godot|mpv|org\\.kde\\.haruna|haruna|steam_app_[0-9]+|steam_app_default|gamescope|brave-origin|brave-browser|brave|firefox|zen|zen-browser|chromium|google-chrome)$";
+        opacity = 1.0;
+        blur = false;
       }
       {
-        match.app_id = "^(code|thunar|Thunar)$";
-        opacity = 0.97;
+        match.title = "^(Open File|Open Folder|(Select|Open)( a)? (File|Folder)s?|Select|Choose a wallpaper|Save As|Library|Choose Where to Download|(Save|Export) Image)";
+        default_floating = true;
+        default_floating_size = {
+          width = 0.6;
+          height = 0.7;
+        };
       }
       {
-        match.title = "^(Open File|Select|Choose a wallpaper|Open Folder|Save As|Library|Choose Where to Download|File Operation Progress|Rename|Copy Files|Move Files|Search Files)";
+        match.title = "^(File (Operation|Upload)( Progress)?|.* Properties|Rename|Copy Files|Move Files|Search Files)";
         default_floating = true;
       }
       {
@@ -36,19 +45,50 @@ _: {
         };
       }
       {
-        # Only the real Discord window, not Equibop's splash/setup/updater windows
-        # (those show up under the same app_id with an unrelated title and would
-        # otherwise get force-maximized to the top-left corner before they resize).
         match = {
           app_id = "^(equibop|Equibop)$";
           title = "Discord";
         };
-        default_maximize = true;
-        #blur = true;
-        #opacity = 0.90;
+        default_scratchpad = "communication";
+        default_floating_size = {
+          width = 0.8;
+          height = 0.85;
+        };
       }
       {
-        match.app_id = "^(brave-browser|brave)$";
+        match.app_id = "^(discord|vesktop|whatsapp.*)$";
+        default_scratchpad = "communication";
+        default_floating_size = {
+          width = 0.8;
+          height = 0.85;
+        };
+      }
+      {
+        match.app_id = "^(spotify|Spotify|feishin|Supersonic|Plexamp|Cider|com\\.github\\.th-ch\\.youtube-music|com-maxrave-simpmusic-MainKt)$";
+        default_scratchpad = "music";
+        default_floating_size = {
+          width = 0.8;
+          height = 0.85;
+        };
+      }
+      {
+        match.app_id = "^btop$";
+        default_scratchpad = "sysmon";
+        default_floating_size = {
+          width = 0.8;
+          height = 0.85;
+        };
+      }
+      {
+        match.app_id = "^(todoist|Todoist)$";
+        default_scratchpad = "todo";
+        default_floating_size = {
+          width = 0.8;
+          height = 0.85;
+        };
+      }
+      {
+        match.app_id = "^(brave-origin|brave-browser|brave)$";
         default_maximize = true;
       }
       {
@@ -74,7 +114,15 @@ _: {
         };
       }
       {
-        match.app_id = "^(pavucontrol|org\\.pulseaudio\\.pavucontrol|nm-connection-editor|blueman-manager|org\\.gnome\\.Nm-connection-editor|Emulator|zenity|qalculate-gtk|com\\.saivert\\.pwvucontrol)$";
+        match.app_id = "^(pavucontrol|org\\.pulseaudio\\.pavucontrol|com\\.saivert\\.pwvucontrol|yad-icon-browser)$";
+        default_floating = true;
+        default_floating_size = {
+          width = 0.6;
+          height = 0.7;
+        };
+      }
+      {
+        match.app_id = "^(nm-connection-editor|blueman-manager|org\\.gnome\\.Nm-connection-editor|Emulator|zenity|yad|qalculate-gtk|guifetch|wev|org\\.gnome\\.FileRoller|file-roller|feh|imv|swappy|org\\.quickshell)$";
         default_floating = true;
         default_position = {
           anchor = "center";
@@ -82,11 +130,28 @@ _: {
           y = 0;
         };
       }
+      {
+        match.app_id = "^(nwg-look|system-config-printer)$";
+        default_floating = true;
+        default_floating_size = {
+          width = 0.5;
+          height = 0.6;
+        };
+      }
+      {
+        match.app_id = "^org\\.gnome\\.Settings$";
+        default_floating = true;
+        default_floating_size = {
+          width = 0.7;
+          height = 0.8;
+        };
+      }
       # Browsers expose no semantic PiP role or global position control.
       {
         match.title = "^(Picture-in-Picture|Picture in picture)$";
         default_floating = true;
         default_maximize = false;
+        default_pinned = true;
         default_position = {
           anchor = "bottom_right";
           x = 20;
@@ -101,10 +166,6 @@ _: {
           x = 0;
           y = 0;
         };
-      }
-      {
-        match.app_id = "^(mpv|org\\.kde\\.haruna|haruna)$";
-        opacity = 1.0;
       }
       {
         match = {

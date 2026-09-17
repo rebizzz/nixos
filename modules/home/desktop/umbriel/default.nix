@@ -15,5 +15,7 @@
     programs.umbriel = {
       enable = true;
     };
+
+    xdg.configFile."umbriel/shaders".source = ./_shaders;
   };
 }

@@ -2,8 +2,8 @@ _: {
   programs.umbriel.settings.layout = {
     # Switch between "scrolling", "dwindle", or "master"
     mode = "scrolling";
-    gap = 4;
-    width_presets = [0.25 0.33333 0.5 0.66667 0.75 1.0];
+    gap = 10;
+    width_presets = [0.35 0.5 0.65 1.0];
 
     scrolling = {
       default_extent_fraction = 0.5;
@@ -11,7 +11,7 @@ _: {
     };
 
     dwindle = {
-      preserve_split = false;
+      preserve_split = true;
     };
 
     master = {
