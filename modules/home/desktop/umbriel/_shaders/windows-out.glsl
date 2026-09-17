@@ -3,19 +3,25 @@ float bezierAxis(float t, float p1, float p2) {
     return 3.0 * u * u * t * p1 + 3.0 * u * t * t * p2 + t * t * t;
 }
 
+float bezierSlope(float t, float p1, float p2) {
+    float u = 1.0 - t;
+    return 3.0 * u * u * p1 + 6.0 * u * t * (p2 - p1) + 3.0 * t * t * (1.0 - p2);
+}
+
+float newtonStep(vec4 points, float x, float t) {
+    float slope = max(bezierSlope(t, points.x, points.z), 1e-3);
+    return clamp(t - (bezierAxis(t, points.x, points.z) - x) / slope, 0.0, 1.0);
+}
+
 float cubicBezier(vec4 points, float x) {
     x = clamp(x, 0.0, 1.0);
-    float low = 0.0;
-    float high = 1.0;
     float t = x;
-    for (int i = 0; i < 24; i++) {
-        if (bezierAxis(t, points.x, points.z) < x) {
-            low = t;
-        } else {
-            high = t;
-        }
-        t = 0.5 * (low + high);
-    }
+    t = newtonStep(points, x, t);
+    t = newtonStep(points, x, t);
+    t = newtonStep(points, x, t);
+    t = newtonStep(points, x, t);
+    t = newtonStep(points, x, t);
+    t = newtonStep(points, x, t);
     return bezierAxis(t, points.y, points.w);
 }
 
