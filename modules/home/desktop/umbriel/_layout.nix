@@ -3,7 +3,7 @@ _: {
     # Switch between "scrolling", "dwindle", or "master"
     mode = "scrolling";
     gap = 10;
-    width_presets = [0.35 0.5 0.65 1.0];
+    extent_presets = [0.35 0.5 0.65 1.0];
 
     scrolling = {
       default_extent_fraction = 0.5;

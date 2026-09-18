@@ -46,18 +46,18 @@
       "Mod+M" = "window-toggle-maximize";
       "Mod+C" = "window-center";
       "Mod+Shift+C" = "column-center";
-      "Mod+R" = "window-cycle-width";
-      "Mod+Shift+R" = "window-cycle-width-back";
-      "Mod+Alt+R" = "window-cycle-height";
-      "Mod+Alt+Shift+R" = "window-cycle-height-back";
+      "Mod+R" = "window-cycle-primary-extent";
+      "Mod+Shift+R" = "window-cycle-primary-extent-back";
+      "Mod+Alt+R" = "window-cycle-secondary-extent";
+      "Mod+Alt+Shift+R" = "window-cycle-secondary-extent-back";
       "Mod+Comma" = "window-consume-or-expel-left";
       "Mod+Period" = "window-consume-or-expel-right";
-      "Mod+Minus" = "window-modify-width:-0.1";
-      "Mod+Equal" = "window-modify-width:+0.1";
-      "Mod+Shift+Minus" = "window-modify-height:-0.1";
-      "Mod+Shift+Equal" = "window-modify-height:+0.1";
-      "Mod+Shift+Underscore" = "window-modify-height:-0.1";
-      "Mod+Shift+Plus" = "window-modify-height:+0.1";
+      "Mod+Minus" = "window-modify-primary-extent:-0.1";
+      "Mod+Equal" = "window-modify-primary-extent:+0.1";
+      "Mod+Shift+Minus" = "window-modify-secondary-extent:-0.1";
+      "Mod+Shift+Equal" = "window-modify-secondary-extent:+0.1";
+      "Mod+Shift+Underscore" = "window-modify-secondary-extent:-0.1";
+      "Mod+Shift+Plus" = "window-modify-secondary-extent:+0.1";
 
       # Focus / move — native to both scrolling and dwindle, no per-layout scripting needed
       "Mod+H" = "window-focus-left";
