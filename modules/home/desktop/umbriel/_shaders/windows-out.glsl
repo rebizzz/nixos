@@ -25,14 +25,13 @@ float cubicBezier(vec4 points, float x) {
     return bezierAxis(t, points.y, points.w);
 }
 
+// Must match animation.windows_out.duration_ms; alpha uses its curve via umbriel_progress.
 const float durationMs = 600.0;
 const vec4 emphasizedAccel = vec4(0.3, 0.0, 0.8, 0.15);
-const vec4 standard = vec4(0.2, 0.0, 0.0, 1.0);
 
 vec4 animation(vec2 uv) {
     float elapsedMs = umbriel_linear_progress * durationMs;
     float shrink = cubicBezier(emphasizedAccel, elapsedMs / 300.0);
-    float alpha = 1.0 - cubicBezier(standard, elapsedMs / 600.0);
     vec2 scale = max(mix(umbriel_size, vec2(5.0), shrink), vec2(5.0)) / umbriel_size;
-    return umbriel_sample((uv - 0.5) / scale + 0.5) * alpha;
+    return umbriel_sample((uv - 0.5) / scale + 0.5) * (1.0 - umbriel_clamped_progress);
 }

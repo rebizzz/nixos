@@ -51,40 +51,32 @@ _: {
         };
         default_scratchpad = "communication";
         default_floating_size = {
-          width = 0.8;
-          height = 0.85;
+          width = 0.9;
+          height = 0.95;
         };
       }
       {
         match.app_id = "^(discord|vesktop|whatsapp.*)$";
         default_scratchpad = "communication";
         default_floating_size = {
-          width = 0.8;
-          height = 0.85;
+          width = 0.9;
+          height = 0.95;
         };
       }
       {
         match.app_id = "^(spotify|Spotify|feishin|Supersonic|Plexamp|Cider|com\\.github\\.th-ch\\.youtube-music|com-maxrave-simpmusic-MainKt)$";
         default_scratchpad = "music";
         default_floating_size = {
-          width = 0.8;
-          height = 0.85;
+          width = 0.9;
+          height = 0.95;
         };
       }
       {
         match.app_id = "^btop$";
         default_scratchpad = "sysmon";
         default_floating_size = {
-          width = 0.8;
-          height = 0.85;
-        };
-      }
-      {
-        match.app_id = "^(todoist|Todoist)$";
-        default_scratchpad = "todo";
-        default_floating_size = {
-          width = 0.8;
-          height = 0.85;
+          width = 0.9;
+          height = 0.9;
         };
       }
       {

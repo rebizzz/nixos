@@ -10,6 +10,7 @@ _: {
       standardDecel = [0.0 0.0 0.0 1.0];
       emphasizedAccel = [0.3 0.0 0.8 0.15];
       emphasizedDecel = [0.05 0.7 0.1 1.0];
+      specialWorkSwitch = [0.05 0.7 0.1 1.0];
       expressiveFastSpatial = [0.42 1.67 0.21 0.9];
       expressiveDefaultSpatial = [0.38 1.21 0.22 1.0];
       expressiveSlowSpatial = [0.39 1.29 0.35 0.98];
@@ -40,7 +41,7 @@ _: {
     windows_in = {
       enabled = true;
       duration_ms = 600;
-      curve = "linear";
+      curve = "standard";
       style = "none";
       shader = "shaders/windows-in.glsl";
     };
@@ -48,7 +49,7 @@ _: {
     windows_out = {
       enabled = true;
       duration_ms = 600;
-      curve = "linear";
+      curve = "standard";
       style = "fade";
       shader = "shaders/windows-out.glsl";
     };
@@ -74,7 +75,7 @@ _: {
     scratchpad = {
       enabled = true;
       duration_ms = 400;
-      curve = "standard";
+      curve = "specialWorkSwitch";
       shader = "shaders/scratchpad.glsl";
       dim = 0.2;
       blur = false;
