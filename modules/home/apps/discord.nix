@@ -1,14 +1,24 @@
 {inputs, ...}: let
   amoledCordTheme = "https://raw.githubusercontent.com/LuckFire/amoled-cord/343808e7d5297223e43868b3955da4cbbd01ceef/clients/amoled-cord.theme.css";
 in {
-  flake.modules.homeManager.discord = {...}: {
+  flake.modules.homeManager.discord = {options, ...}: {
     imports = [inputs.nixcord.homeModules.nixcord];
 
     programs.nixcord = {
       enable = true;
       discord = {
         enable = false;
-        equicord.enable = true;
+        equicord = {
+          enable = true;
+          # --dev build includes dev-only plugins like userpluginInstaller
+          package = options.programs.nixcord.discord.equicord.package.default.overrideAttrs {
+            buildPhase = ''
+              runHook preBuild
+              pnpm run build -- --standalone --disable-updater --dev
+              runHook postBuild
+            '';
+          };
+        };
       };
 
       equibop = {
@@ -109,6 +119,7 @@ in {
           typingTweaks.enable = true;
           universalMention.enable = true;
           unlockedAvatarZoom.enable = true;
+          userpluginInstaller.enable = true;
           userVoiceShow = {
             enable = true;
             showInMemberList = false;
