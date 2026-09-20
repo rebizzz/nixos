@@ -4,7 +4,9 @@ _: {
       networkmanager = {
         enable = true;
         dns = "systemd-resolved";
-        wifi.macAddress = "random";
+        # still per-SSID random, just not re-rolled on every connect — that churned
+        # DHCP and flushed the resolved cache each reconnect.
+        wifi.macAddress = "stable";
 
         ensureProfiles = {
           environmentFiles = [config.sops.templates."network-manager.env".path];
@@ -65,9 +67,14 @@ _: {
       resolved = {
         enable = true;
         settings.Resolve = {
-          DNSSEC = "allow-downgrade";
+          # nextdns already validates. doing it twice cost round trips and 180 bogus
+          # failures. only safe because DoT is strict below.
+          DNSSEC = "no";
           Domains = "~.";
-          DNSOverTLS = "opportunistic";
+          DNSOverTLS = "true";
+          # serve expired records if upstream dies. upstream is still tried first,
+          # so this is resilience, not speed.
+          StaleRetentionSec = "4h";
         };
       };
 

@@ -6,6 +6,9 @@ _: {
     services.tailscale = {
       enable = true;
       useRoutingFeatures = "client";
+      # tailscaled re-pushes DNS on every link change, which flushes all of
+      # resolved's cache, not just tailnet entries. no magicdns here anyway.
+      extraSetFlags = ["--accept-dns=false"];
       # Opens 41641/udp via networking.firewall; harmless with firewalld
       # (real rule below), kept so a plain-iptables host still works.
       openFirewall = true;
