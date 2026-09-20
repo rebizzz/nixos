@@ -62,7 +62,7 @@ in {
         HighEfficiencyModeEnabled = true;
         MemorySaverModeSavings = 0; # moderate — discards tabs late, not early
 
-        DefaultNotificationsSetting = 2;
+        # DefaultNotificationsSetting = 2;
         DefaultGeolocationSetting = 2;
 
         ExtensionSettings = {
