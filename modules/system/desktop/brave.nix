@@ -19,22 +19,25 @@ in {
       defaultSearchProviderSearchURL = "https://search.brave.com/search?q={searchTerms}";
       defaultSearchProviderSuggestURL = "https://search.brave.com/api/suggest?q={searchTerms}";
       extraOpts = {
-        # Brave Feature / Bloat Disabling
-        BraveRewardsDisabled = true;
-        BraveWalletDisabled = true;
-        TorDisabled = true;
-        BraveAIChatEnabled = false;
-        BraveVPNDisabled = true;
-        BraveNewsDisabled = true;
-        BraveTalkDisabled = true;
-        BraveSpeedreaderEnabled = false;
-        BraveWebDiscoveryEnabled = 0;
-        BraveP3AEnabled = false;
-        BraveStatsPingEnabled = false;
+        # brave-origin compiles all of these out. kept in case we ever go back
+        # to upstream brave.
+        #   BraveRewardsDisabled = true;
+        #   BraveWalletDisabled = true;
+        #   TorDisabled = true;
+        #   BraveAIChatEnabled = false;
+        #   BraveVPNDisabled = true;
+        #   BraveNewsDisabled = true;
+        #   BraveTalkDisabled = true;
+        #   BraveSpeedreaderEnabled = false;
+        #   BraveWebDiscoveryEnabled = 0;
+        #   BraveP3AEnabled = false;
+        #   BraveStatsPingEnabled = false;
 
         # Privacy & Security
         PasswordManagerEnabled = false;
         BrowserSignin = 0;
+        # ECH needs chromium's own DoH; without it SNI goes out in plaintext.
+        # costs a cold DoH handshake once per launch, hence AsyncDns above.
         DnsOverHttpsMode = "secure";
         SyncDisabled = true;
         EnableMediaRouter = false;
@@ -51,12 +54,13 @@ in {
 
         DefaultBraveFingerprintingV2Setting = 3;
 
-        NetworkPredictionOptions = 2;
+        # 0 = prefetch, preconnect and prerender on any connection
+        NetworkPredictionOptions = 0;
         SearchSuggestEnabled = true;
         AlternateErrorPagesEnabled = false;
         MetricsReportingEnabled = false;
         HighEfficiencyModeEnabled = true;
-        MemorySaverModeSavings = 1;
+        MemorySaverModeSavings = 0; # moderate — discards tabs late, not early
 
         DefaultNotificationsSetting = 2;
         DefaultGeolocationSetting = 2;
