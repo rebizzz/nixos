@@ -1,7 +1,12 @@
 {inputs, ...}: let
   amoledCordTheme = "https://raw.githubusercontent.com/LuckFire/amoled-cord/343808e7d5297223e43868b3955da4cbbd01ceef/clients/amoled-cord.theme.css";
 in {
-  flake.modules.homeManager.discord = {options, ...}: {
+  flake.modules.homeManager.discord = {
+    options,
+    pkgs,
+    lib,
+    ...
+  }: {
     imports = [inputs.nixcord.homeModules.nixcord];
 
     programs.nixcord = {
@@ -24,6 +29,28 @@ in {
       equibop = {
         enable = true;
         useSystemEquicord = true;
+        # did this for git
+        package = pkgs.equibop.overrideAttrs (old: {
+          nativeBuildInputs = (old.nativeBuildInputs or []) ++ [pkgs.makeWrapper];
+          postFixup =
+            (old.postFixup or "")
+            + ''
+              wrapProgram $out/bin/equibop \
+                --prefix PATH : ${lib.makeBinPath [pkgs.git]}
+            '';
+        });
+      };
+
+      userPlugins = {
+        OrionQuests = inputs.discord-quest-completer;
+      };
+
+      extraConfig = {
+        plugins = {
+          OrionQuests = {
+            enabled = true;
+          };
+        };
       };
 
       config = {

@@ -49,6 +49,11 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
+
+    discord-quest-completer = {
+      url = "github:nyxxbit/discord-quest-completer";
+      flake = false;
+    };
   };
 
   outputs = inputs:
