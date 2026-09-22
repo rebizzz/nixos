@@ -95,10 +95,12 @@ _: {
       plymouth.enable = true;
     };
 
-    systemd.settings.Manager.DefaultTimeoutStopSec = "45s";
+    systemd = {
+      settings.Manager.DefaultTimeoutStopSec = "45s";
 
-    # fix plymouth breaking emergency/rescue units (nixpkgs #141801)
-    systemd.services.emergency.overrideStrategy = "asDropin";
-    systemd.services.rescue.overrideStrategy = "asDropin";
+      # fix plymouth breaking emergency/rescue units (nixpkgs #141801)
+      services.emergency.overrideStrategy = "asDropin";
+      services.rescue.overrideStrategy = "asDropin";
+    };
   };
 }

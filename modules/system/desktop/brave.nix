@@ -1,8 +1,7 @@
 let
   darkReader = "eimadpbcbfnmbkopoojfekhnkhdbieeh";
 in {
-  flake.modules.nixos.brave = {config, ...}: {
-
+  flake.modules.nixos.brave = _: {
     programs.chromium = {
       enable = true;
       defaultSearchProviderEnabled = true;

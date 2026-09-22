@@ -10,7 +10,8 @@ _: {
 
       kmscon = {
         enable = true;
-        config.hwaccel = true;
+        hwRender = true;
+        useXkbConfig = true;
       };
 
       smartd = {

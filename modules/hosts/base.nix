@@ -1,6 +1,5 @@
 {inputs, ...}: {
   flake.modules.nixos.base = {pkgs, ...}: {
-
     imports = [
       inputs.disko.nixosModules.disko
       inputs.preservation.nixosModules.default
