@@ -1,37 +1,25 @@
-float bezierAxis(float t, float p1, float p2) {
-    float u = 1.0 - t;
-    return 3.0 * u * u * t * p1 + 3.0 * u * t * t * p2 + t * t * t;
-}
-
-float bezierSlope(float t, float p1, float p2) {
-    float u = 1.0 - t;
-    return 3.0 * u * u * p1 + 6.0 * u * t * (p2 - p1) + 3.0 * t * t * (1.0 - p2);
-}
-
-float newtonStep(vec4 points, float x, float t) {
-    float slope = max(bezierSlope(t, points.x, points.z), 1e-3);
-    return clamp(t - (bezierAxis(t, points.x, points.z) - x) / slope, 0.0, 1.0);
-}
-
-float cubicBezier(vec4 points, float x) {
-    x = clamp(x, 0.0, 1.0);
-    float t = x;
-    t = newtonStep(points, x, t);
-    t = newtonStep(points, x, t);
-    t = newtonStep(points, x, t);
-    t = newtonStep(points, x, t);
-    t = newtonStep(points, x, t);
-    t = newtonStep(points, x, t);
-    return bezierAxis(t, points.y, points.w);
-}
-
-// Must match animation.windows_in.duration_ms; alpha uses its curve via umbriel_progress.
-const float durationMs = 600.0;
-const vec4 emphasizedDecel = vec4(0.05, 0.7, 0.1, 1.0);
+// Instant Fluid Pop-in with Hyprshade-inspired selective vibrance sheen
+// Highly optimized: 1 texture sample, zero loops, zero memory buffers.
 
 vec4 animation(vec2 uv) {
-    float elapsedMs = umbriel_linear_progress * durationMs;
-    float grow = cubicBezier(emphasizedDecel, elapsedMs / 500.0);
-    vec2 scale = max(umbriel_size * grow, vec2(5.0)) / umbriel_size;
-    return umbriel_sample((uv - 0.5) / scale + 0.5) * umbriel_clamped_progress;
+    float progress = umbriel_clamped_progress;
+
+    // Fast tight scale (0.95 -> 1.0) so window is instantly clear and readable
+    float scale = max(mix(0.95, 1.0, umbriel_progress), 0.05);
+
+    // Centered coordinates
+    vec2 centeredUv = (uv - vec2(0.5)) / scale + vec2(0.5);
+    vec4 color = umbriel_sample(centeredUv);
+
+    // Hyprshade-style selective vibrance enhancement on entry:
+    float maxC = max(color.r, max(color.g, color.b));
+    float minC = min(color.r, min(color.g, color.b));
+    float sat = maxC - minC;
+    float sheen = 0.15 * sin(3.14159265 * progress) * (1.0 - progress);
+
+    vec3 enrichedRgb = mix(color.rgb, color.rgb * (1.0 + (1.0 - sat) * 0.35), sheen);
+
+    // Fast-onset alpha ramp so content is immediately readable from frame 1
+    float alpha = mix(0.35, 1.0, progress);
+    return vec4(enrichedRgb, color.a) * alpha;
 }

@@ -40,15 +40,15 @@ _: {
 
     windows_in = {
       enabled = true;
-      duration_ms = 600;
-      curve = "standard";
+      duration_ms = 180;
+      curve = "standardDecel";
       style = "none";
       shader = "shaders/windows-in.glsl";
     };
 
     windows_out = {
       enabled = true;
-      duration_ms = 600;
+      duration_ms = 180;
       curve = "standard";
       style = "fade";
       shader = "shaders/windows-out.glsl";
@@ -56,25 +56,25 @@ _: {
 
     windows_move = {
       enabled = true;
-      duration_ms = 600;
+      duration_ms = 120;
       curve = "standard";
     };
 
     workspaces = {
       enabled = true;
-      duration_ms = 500;
+      duration_ms = 220;
       curve = "standard";
     };
 
     overview = {
       enabled = true;
-      duration_ms = 500;
+      duration_ms = 350;
       curve = "standard";
     };
 
     scratchpad = {
       enabled = true;
-      duration_ms = 400;
+      duration_ms = 300;
       curve = "specialWorkSwitch";
       shader = "shaders/scratchpad.glsl";
       dim = 0.2;
@@ -86,20 +86,20 @@ _: {
 
     border = {
       enabled = true;
-      duration_ms = 600;
+      duration_ms = 130;
       curve = "standard";
     };
 
     dim_unfocused = {
       enabled = false;
-      duration_ms = 600;
+      duration_ms = 300;
       curve = "standard";
       dim = 0.0;
     };
 
     layers = {
       enabled = true;
-      duration_ms = 500;
+      duration_ms = 400;
       curve = "standard";
     };
   };
