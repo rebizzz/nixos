@@ -9,9 +9,9 @@ _: {
       };
 
       settings = {
-        repaint_delay = 6;
+        repaint_delay = 2;
         input_delay = 1;
-        sync_to_monitor = "yes";
+        sync_to_monitor = "no";
         linux_display_server = "wayland";
         background_opacity = "0.9";
         window_padding_width = 8;
@@ -20,6 +20,9 @@ _: {
         confirm_os_window_close = 0;
         enable_audio_bell = false;
         scrollback_lines = 10000;
+        shell_integration = "enabled";
+        allow_remote_control = true;
+        listen_on = "unix:/tmp/kitty";
       };
 
       extraConfig = ''

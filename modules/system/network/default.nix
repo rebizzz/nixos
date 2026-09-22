@@ -67,14 +67,13 @@ _: {
       resolved = {
         enable = true;
         settings.Resolve = {
-          # nextdns already validates. doing it twice cost round trips and 180 bogus
-          # failures. only safe because DoT is strict below.
           DNSSEC = "no";
           Domains = "~.";
           DNSOverTLS = "true";
-          # serve expired records if upstream dies. upstream is still tried first,
-          # so this is resilience, not speed.
           StaleRetentionSec = "4h";
+          CacheFromLocalhost = "yes";
+          LLMNR = "no";
+          MulticastDNS = "no";
         };
       };
 

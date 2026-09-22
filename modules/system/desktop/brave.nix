@@ -2,16 +2,6 @@ let
   darkReader = "eimadpbcbfnmbkopoojfekhnkhdbieeh";
 in {
   flake.modules.nixos.brave = {config, ...}: {
-    sops.templates."brave-dns-policy.json" = {
-      content = builtins.toJSON {
-        DnsOverHttpsTemplates = "https://dns.nextdns.io/${config.sops.placeholder.nextdns_profile_id}/Brave";
-      };
-      mode = "0444";
-    };
-
-    systemd.tmpfiles.rules = [
-      "L+ /etc/brave/policies/managed/nextdns.json - - - - ${config.sops.templates."brave-dns-policy.json".path}"
-    ];
 
     programs.chromium = {
       enable = true;
@@ -36,9 +26,7 @@ in {
         # Privacy & Security
         PasswordManagerEnabled = false;
         BrowserSignin = 0;
-        # ECH needs chromium's own DoH; without it SNI goes out in plaintext.
-        # costs a cold DoH handshake once per launch, hence AsyncDns above.
-        DnsOverHttpsMode = "secure";
+        DnsOverHttpsMode = "off";
         SyncDisabled = true;
         EnableMediaRouter = false;
         AudioCaptureAllowed = true;
@@ -54,13 +42,12 @@ in {
 
         DefaultBraveFingerprintingV2Setting = 3;
 
-        # 0 = prefetch, preconnect and prerender on any connection
         NetworkPredictionOptions = 0;
         SearchSuggestEnabled = true;
         AlternateErrorPagesEnabled = false;
         MetricsReportingEnabled = false;
         HighEfficiencyModeEnabled = true;
-        MemorySaverModeSavings = 0; # moderate — discards tabs late, not early
+        MemorySaverModeSavings = 2;
 
         # DefaultNotificationsSetting = 2;
         DefaultGeolocationSetting = 2;

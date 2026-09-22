@@ -3,7 +3,7 @@
     {
       # Apps / launcher
       "Mod+Return" = {
-        action = "spawn:kitty";
+        action = "spawn:kitty --single-instance --instance-group=1";
         repeat = false;
       };
       "Mod+D" = {
