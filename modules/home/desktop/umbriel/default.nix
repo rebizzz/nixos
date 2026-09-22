@@ -4,7 +4,6 @@
       inputs.umbriel.homeModules.default
       ./_general.nix
       ./_appearance.nix
-      ./_animation.nix
       ./_input.nix
       ./_layout.nix
       ./_output.nix
@@ -15,7 +14,5 @@
     programs.umbriel = {
       enable = true;
     };
-
-    xdg.configFile."umbriel/shaders".source = ./_shaders;
   };
 }
