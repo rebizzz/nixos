@@ -9,14 +9,13 @@ _: {
         noto-fonts-cjk-serif
         noto-fonts-color-emoji
         liberation_ttf
-        nerd-fonts.fira-code
         nerd-fonts.jetbrains-mono
       ];
       fontconfig = {
         defaultFonts = {
           serif = ["Noto Serif"];
           sansSerif = ["Inter" "Noto Sans"];
-          monospace = ["FiraCode Nerd Font" "JetBrainsMono Nerd Font Mono"];
+          monospace = ["JetBrainsMono Nerd Font" "JetBrainsMono Nerd Font Mono"];
           emoji = ["Noto Color Emoji"];
         };
         antialias = true;
