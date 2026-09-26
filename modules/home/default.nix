@@ -29,6 +29,7 @@
       theme
       mime
       prismlauncher
+      aria2
     ];
 
     home = {
