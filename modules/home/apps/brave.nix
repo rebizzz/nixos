@@ -3,6 +3,7 @@ let
   darkReader = "eimadpbcbfnmbkopoojfekhnkhdbieeh";
   sponsorBlock = "mnjggcdmjocbbbhaepdhchncahnbgone";
   blackHoleTheme = "faeadnfmdfamenfhaipofoffijhlnkif";
+  vimiumC = "hfjbmagddngcpeloejdejnfgbamkjaeg";
 in {
   flake.modules.homeManager.brave = {pkgs, ...}: {
     programs.brave = {
@@ -13,6 +14,7 @@ in {
         {id = darkReader;}
         {id = sponsorBlock;}
         {id = blackHoleTheme;}
+        {id = vimiumC;}
       ];
       commandLineArgs = [
         "--ozone-platform-hint=auto"
