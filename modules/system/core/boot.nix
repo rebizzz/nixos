@@ -22,7 +22,6 @@ _: {
       "hfs"
       "hfsplus"
 
-      # Fedora 45 / modern kernel security hardening: Disable in-kernel Crypto Userspace API (CRYPTO_USER_API)
       "af_alg"
       "algif_hash"
       "algif_skcipher"
@@ -41,8 +40,8 @@ _: {
         timeout = 3;
       };
 
-      kernelPackages = pkgs.linuxPackages_latest;
-      kernelModules = ["ntsync" "tcp_bbr"];
+      kernelPackages = pkgs.linuxPackages_zen;
+      kernelModules = ["tcp_bbr"];
       kernelParams = [
         "quiet"
         "splash"
@@ -98,7 +97,6 @@ _: {
     systemd = {
       settings.Manager.DefaultTimeoutStopSec = "45s";
 
-      # fix plymouth breaking emergency/rescue units (nixpkgs #141801)
       services.emergency.overrideStrategy = "asDropin";
       services.rescue.overrideStrategy = "asDropin";
     };

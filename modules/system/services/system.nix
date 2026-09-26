@@ -1,6 +1,5 @@
 _: {
   flake.modules.nixos.system-services = {pkgs, ...}: {
-    # Modern D-Bus & Core System Services
     services = {
       oo7.enable = true;
       dbus.implementation = "broker";

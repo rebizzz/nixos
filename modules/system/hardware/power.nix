@@ -7,7 +7,6 @@
   }: let
     user = config.users.users.${config.myConfig.user.name};
   in {
-    # Power Management & Dynamic Frequency Scaling
     services = {
       thermald.enable = true;
 
@@ -47,7 +46,6 @@
         IdleAction = "ignore";
       };
 
-      # I/O Scheduler & Latency Optimization Rules
       udev.extraRules = ''
         DEVPATH=="/devices/virtual/misc/cpu_dma_latency", OWNER="root", GROUP="audio", MODE="0660"
         ACTION=="add|change", KERNEL=="nvme[0-9]*n[0-9]*", ATTR{queue/scheduler}="none"
@@ -56,7 +54,6 @@
       '';
     };
 
-    # Memory Compression (zRAM) & Userspace OOM Prevention
     zramSwap = {
       enable = true;
       algorithm = "zstd";
@@ -70,7 +67,6 @@
       enableUserSlices = true;
     };
 
-    # Kernel & Memory Tuning (CachyOS sysctls)
     boot = {
       blacklistedKernelModules = ["iTCO_wdt"];
 
@@ -85,7 +81,6 @@
       };
     };
 
-    # Systemd Performance & Sleep/Lock Configuration
     systemd = {
       tmpfiles.rules = [
         "w /sys/module/zswap/parameters/enabled - - - - 0"
