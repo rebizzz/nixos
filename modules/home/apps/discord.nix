@@ -26,6 +26,18 @@ in {
         useSystemEquicord = true;
       };
 
+      userPlugins = {
+        OrionQuests = "github:nyxxbit/discord-quest-completer/6b20a3c396ef1bf0b7ddd72770cc4eb9fc51ed4b";
+      };
+
+      extraConfig = {
+        plugins = {
+          OrionQuests = {
+            enabled = true;
+          };
+        };
+      };
+
       config = {
         useQuickCss = true;
         disableMinSize = true;
@@ -55,6 +67,7 @@ in {
           biggerStreamPreview.enable = true;
           bypassPinPrompt.enable = true;
           callTimer.enable = true;
+          channelTabs.enable = true;
           clickableRoles.enable = true;
           clipsEnhancements.enable = true;
           clipUpload.enable = true;
@@ -113,9 +126,10 @@ in {
             enable = true;
             showIcon = true;
           };
-          sortFriends.enable = true;
-          summaries.enable = true;
-          timezones.enable = true;
+          scheduledMessages = {
+            enable = true;
+            showPhantomMessages = true;
+          };
           typingTweaks.enable = true;
           universalMention.enable = true;
           unlockedAvatarZoom.enable = true;
