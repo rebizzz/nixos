@@ -11,7 +11,16 @@ _: {
 
     workspaces.back_and_forth = true;
 
-    scratchpad = map (name: {inherit name;}) ["special" "communication" "music" "sysmon" "todo"];
+    scratchpad = [
+      {name = "special";}
+      {
+        name = "communication";
+        spawn_when_empty = "equibop";
+      }
+      {name = "music";}
+      {name = "sysmon";}
+      {name = "todo";}
+    ];
 
     overview = {
       zoom = 0.55;
