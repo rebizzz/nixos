@@ -5,7 +5,6 @@ _: {
       systemd.enable = false;
 
       settings = {
-        dir = "${config.home.homeDirectory}/Downloads";
         continue = true;
         max-concurrent-downloads = 3;
         split = 4;
