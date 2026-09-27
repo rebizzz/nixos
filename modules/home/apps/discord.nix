@@ -8,15 +8,8 @@ in {
       enable = true;
       discord.enable = false;
 
-      legcord = {
+      equibop = {
         enable = true;
-        equicord.enable = true;
-        settings = {
-          channel = "stable";
-          tray = "dynamic";
-          minimizeToTray = true;
-          doneSetup = true;
-        };
       };
 
       userPlugins = {
