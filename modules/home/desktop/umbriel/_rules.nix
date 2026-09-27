@@ -38,11 +38,6 @@ _: {
       {
         match.app_id = "^(lxqt-policykit.*|udiskie|org\\.gnome\\.seahorse\\.Application)$";
         default_floating = true;
-        default_position = {
-          anchor = "center";
-          x = 0;
-          y = 0;
-        };
       }
       {
         match.app_id = "^(equibop|Equibop|discord|vesktop|whatsapp.*)$";
@@ -79,11 +74,6 @@ _: {
           width = 1020;
           height = 900;
         };
-        default_position = {
-          anchor = "center";
-          x = 0;
-          y = 0;
-        };
         blur_popups = false;
       }
       {
@@ -105,11 +95,6 @@ _: {
       {
         match.app_id = "^(nm-connection-editor|blueman-manager|org\\.gnome\\.Nm-connection-editor|Emulator|zenity|yad|qalculate-gtk|guifetch|wev|org\\.gnome\\.FileRoller|file-roller|feh|imv|swappy|org\\.quickshell)$";
         default_floating = true;
-        default_position = {
-          anchor = "center";
-          x = 0;
-          y = 0;
-        };
       }
       {
         match.app_id = "^(nwg-look|system-config-printer)$";
@@ -142,11 +127,6 @@ _: {
       {
         match.app_id = "^(xdg-desktop-portal(-.*)?|org\\.freedesktop\\.impl\\.portal\\.desktop\\..*)$";
         default_floating = true;
-        default_position = {
-          anchor = "center";
-          x = 0;
-          y = 0;
-        };
       }
       {
         match = {
@@ -154,11 +134,6 @@ _: {
           title = "^Steam$";
         };
         default_floating = true;
-        default_position = {
-          anchor = "center";
-          x = 0;
-          y = 0;
-        };
         default_floating_size_px = {
           width = 1100;
           height = 700;
@@ -174,11 +149,6 @@ _: {
           width = 460;
           height = 800;
         };
-        default_position = {
-          anchor = "center";
-          x = 0;
-          y = 0;
-        };
       }
       {
         match.app_id = "^steam_app_[0-9]+$";
@@ -187,11 +157,6 @@ _: {
       {
         match.title = "^Select what to share$";
         default_floating = true;
-        default_position = {
-          anchor = "center";
-          x = 0;
-          y = 0;
-        };
       }
       # Keep Steam notification toasts in the bottom-right corner without stealing
       # focus, and pin them so workspace switches do not hide them.
