@@ -8,34 +8,16 @@ in {
       enable = true;
       discord.enable = false;
 
-      dorion = {
+      legcord = {
         enable = true;
-        clientMods = ["Shelter" "Equicord"];
-        sysTray = true;
-        trayIconEnabled = true;
-        startupMinimized = true;
-        updateNotify = false;
-        desktopNotifications = true;
-        unreadBadge = true;
-        cacheCss = true;
-        autoClearCache = true;
-        rpcServer = true;
-        themes = ["frameless.css"];
+        equicord.enable = true;
+        settings = {
+          channel = "stable";
+          tray = "dynamic";
+          minimizeToTray = true;
+          doneSetup = true;
+        };
       };
-
-      quickCss = ''
-        [class*="dorion_topbar"],
-        [class*="typeWindows_"],
-        [class*="titleBar_"],
-        [class*="winButton_"] {
-          display: none !important;
-          height: 0px !important;
-          min-height: 0px !important;
-          max-height: 0px !important;
-          visibility: hidden !important;
-          pointer-events: none !important;
-        }
-      '';
 
       userPlugins = {
         OrionQuests = "github:nyxxbit/discord-quest-completer/6b20a3c396ef1bf0b7ddd72770cc4eb9fc51ed4b";
@@ -50,7 +32,6 @@ in {
       };
 
       config = {
-        useQuickCss = true;
         disableMinSize = true;
         frameless = true;
         themeLinks = [amoledCordTheme];

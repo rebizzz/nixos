@@ -19,7 +19,7 @@ _: {
       }
 
       {
-        match.app_id = "^(kitty|dorion|Dorion|org\\.quickshell|feh|imv|swappy|org\\.kde\\.krita|krita|gimp.*|org\\.inkscape\\.Inkscape|darktable|resolve|org\\.kde\\.kdenlive|shotcut|blender|godot|mpv|org\\.kde\\.haruna|haruna|steam_app_[0-9]+|steam_app_default|gamescope|brave-origin|brave-browser|brave|firefox|zen|zen-browser|chromium|google-chrome|org\\.gnome\\.Boxes)$";
+        match.app_id = "^(kitty|legcord|Legcord|org\\.quickshell|feh|imv|swappy|org\\.kde\\.krita|krita|gimp.*|org\\.inkscape\\.Inkscape|darktable|resolve|org\\.kde\\.kdenlive|shotcut|blender|godot|mpv|org\\.kde\\.haruna|haruna|steam_app_[0-9]+|steam_app_default|gamescope|brave-origin|brave-browser|brave|firefox|zen|zen-browser|chromium|google-chrome|org\\.gnome\\.Boxes)$";
         opacity = 1.0;
         blur = false;
       }
@@ -46,7 +46,7 @@ _: {
       }
       {
         match = {
-          app_id = "^(dorion|Dorion)$";
+          app_id = "^(legcord|Legcord)$";
         };
         default_scratchpad = "communication";
         default_floating_size = {
