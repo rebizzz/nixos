@@ -40,6 +40,24 @@
         "type": "github"
       }
     },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -98,6 +116,27 @@
         "type": "github"
       }
     },
+    "lazyvim": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788971242,
+        "narHash": "sha256-XGWQ4CtmuRH+4NijKC5OlMMd32Au7plsIaiaCWuM4to=",
+        "owner": "pfassina",
+        "repo": "lazyvim-nix",
+        "rev": "21893371738a6734c2a8ca455d92d57cc8accf83",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pfassina",
+        "repo": "lazyvim-nix",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -127,11 +166,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789892076,
-        "narHash": "sha256-Dkg4VKPmDPqTwaiw2WH5br73tXoL1qrOO0xJnR4TlcA=",
+        "lastModified": 1790499302,
+        "narHash": "sha256-Gbf/U9ptJhQh0qnDnJ/+a8MAcq1HXunbArUTHR2wNYk=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "9ad722673ab3b3f91f02135e53775825b240b869",
+        "rev": "161d7c91accd93034bb3c295224d9d895a778573",
         "type": "github"
       },
       "original": {
@@ -263,11 +302,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1790475997,
-        "narHash": "sha256-z96D866QPXhUBRkCaCF4nDPHV56Zriyg5UcqdWzluxw=",
+        "lastModified": 1790518002,
+        "narHash": "sha256-agpHRmhsUL4ZNFseCNilGSiC/cc0S2tC1ZvC5rXmgtY=",
         "owner": "noctalia-dev",
         "repo": "noctalia-greeter",
-        "rev": "9152426e12d87956f7ec6227c4bd235a1e3aa678",
+        "rev": "44337ecba043749c29de6f3d563315b91987a908",
         "type": "github"
       },
       "original": {
@@ -297,6 +336,7 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
+        "lazyvim": "lazyvim",
         "nix-index-database": "nix-index-database",
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs",
@@ -315,16 +355,31 @@
         ]
       },
       "locked": {
-        "lastModified": 1790247521,
-        "narHash": "sha256-TNfgoHsqsYYvaJImlWctfRkh4PseTagzegU1Dgdbehw=",
+        "lastModified": 1790498116,
+        "narHash": "sha256-rs9meAYxW3zzrh43yaW7htrqCD+X9+pupDPHN86fumI=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "2bd00bd9bb35fe6d114888c8f1c2e946c541dd8f",
+        "rev": "5efb5a6f4f5ab192817d28557dd4d650fa14d866",
         "type": "github"
       },
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     },
@@ -357,11 +412,11 @@
         "xdg-desktop-portal-umbriel": "xdg-desktop-portal-umbriel"
       },
       "locked": {
-        "lastModified": 1790484553,
-        "narHash": "sha256-L2ENvB1YAexEV0lrSfCAdJyP/XK4X0vSJvOgVtkwCDI=",
+        "lastModified": 1790513534,
+        "narHash": "sha256-AZWmJEDbNnZHo0CMYbD8XrFvNTHuGftwOkdrpOGlgC8=",
         "ref": "refs/heads/main",
-        "rev": "301f39c74415ca923507814975522e93a90d88de",
-        "revCount": 1095,
+        "rev": "e0248d0e3e148bdbec463ad5bc96a5135b6a90d5",
+        "revCount": 1097,
         "type": "git",
         "url": "https://github.com/noctalia-dev/umbriel"
       },

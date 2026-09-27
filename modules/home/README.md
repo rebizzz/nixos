@@ -9,7 +9,7 @@ Home Manager configuration for `laptop`. One module per file, self-registering a
 ```
 home/
 ├── default.nix   # aggregates everything below into one module
-├── apps/         # per-application configs (brave, discord, git, nano)
+├── apps/         # per-application configs (brave, discord, git, lazyvim)
 ├── desktop/      # Umbriel, Noctalia, mime associations, gtk/qt theme
 ├── terminal/     # fish, kitty
 └── services/     # user-level services (sound effects)

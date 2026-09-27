@@ -31,6 +31,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lazyvim = {
+      url = "github:pfassina/lazyvim-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
     noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
 

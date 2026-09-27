@@ -5,7 +5,7 @@ _: let
   doc = "org.gnome.Papers.desktop";
   archive = "org.gnome.FileRoller.desktop";
   files = "thunar.desktop";
-  text = "nano-text-editor.desktop";
+  text = "nvim-text-editor.desktop";
 in {
   flake.modules.homeManager.mime = _: {
     xdg = {
@@ -14,9 +14,9 @@ in {
         createDirectories = true;
       };
       mime.enable = true;
-      desktopEntries.nano-text-editor = {
-        name = "Nano (Kitty)";
-        exec = "kitty -- nano %F";
+      desktopEntries.nvim-text-editor = {
+        name = "Neovim (Kitty)";
+        exec = "kitty -- nvim %F";
         terminal = false;
         type = "Application";
         mimeType = ["text/plain" "text/markdown" "application/json"];

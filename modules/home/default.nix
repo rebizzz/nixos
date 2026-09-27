@@ -21,7 +21,7 @@
       kitty
       fish
       git
-      nano
+      lazyvim
       brave
       sounds
       tailscale
