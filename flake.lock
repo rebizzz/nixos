@@ -191,11 +191,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1790489349,
-        "narHash": "sha256-ec+QBlI8opZGOo+DT5IFdGwq1FMPH2G27Wtn8swx2Rc=",
+        "lastModified": 1790566950,
+        "narHash": "sha256-StEhU3FQBi8QY1haravpQEvxEVKOwtus+D4MkjjbtdM=",
         "owner": "4evy",
         "repo": "nixcord",
-        "rev": "6a96f605b9cc515d2029b61336415696df31674e",
+        "rev": "91592e9f2abda5f8f06cb2834d533f1a385d45b7",
         "type": "github"
       },
       "original": {
@@ -412,11 +412,11 @@
         "xdg-desktop-portal-umbriel": "xdg-desktop-portal-umbriel"
       },
       "locked": {
-        "lastModified": 1790524796,
-        "narHash": "sha256-TYKQmt0PViiUk0rHL9DYYhSag6WtUROF08SbteyX3T4=",
+        "lastModified": 1790564528,
+        "narHash": "sha256-E+QW8j4B5qWJd74q9oYcFzaS2MBD0q+gVeiW1C+USXA=",
         "ref": "refs/heads/main",
-        "rev": "6bf03a0a7dde8d46e1efc729eb2303e9d245a2ae",
-        "revCount": 1098,
+        "rev": "2c683caf4bccc1850c57dfa8b9eaf16e4b3d3fa3",
+        "revCount": 1109,
         "type": "git",
         "url": "https://github.com/noctalia-dev/umbriel"
       },
