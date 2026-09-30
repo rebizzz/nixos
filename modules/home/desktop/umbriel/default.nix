@@ -4,7 +4,7 @@
       inputs.umbriel.homeModules.default
       ./_general.nix
       ./_appearance.nix
-      ./_animation.nix
+#      ./_animation.nix
       ./_input.nix
       ./_layout.nix
       ./_output.nix
