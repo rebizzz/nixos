@@ -74,6 +74,7 @@
       "Mod+Ctrl+Up" = "window-move-to-workspace-previous";
 
       "Mod+Tab" = "workspace-set-layout:toggle";
+      "Alt+Tab" = "spawn:noctalia msg window-switcher";
       "Mod+O" = "overview-toggle";
 
       # Outputs
