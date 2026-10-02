@@ -22,7 +22,7 @@ in {
         "--ignore-gpu-blocklist"
         "--enable-gpu-rasterization"
         "--disk-cache-size=2147483648"
-        "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder,ParallelDownloading,AsyncDns"
+        "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder,ParallelDownloading,AsyncDns,BackForwardCache,Prerender2"
         "--disable-features=OutdatedBuildDetector,UseChromeOSDirectVideoDecoder"
       ];
     };
