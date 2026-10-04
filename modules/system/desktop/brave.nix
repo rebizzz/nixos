@@ -5,8 +5,8 @@ in {
     programs.chromium = {
       enable = true;
       defaultSearchProviderEnabled = true;
-      defaultSearchProviderSearchURL = "https://search.brave.com/search?q={searchTerms}";
-      defaultSearchProviderSuggestURL = "https://search.brave.com/api/suggest?q={searchTerms}";
+      defaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}";
+      defaultSearchProviderSuggestURL = "https://duckduckgo.com/ac/?q={searchTerms}&type=list";
       extraOpts = {
         PasswordManagerEnabled = false;
         BrowserSignin = 0;
