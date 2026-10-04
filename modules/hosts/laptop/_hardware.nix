@@ -3,9 +3,7 @@
   pkgs,
   modulesPath,
   ...
-}: let
-  conservationMode = "/sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode";
-in {
+}: {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   boot = {
@@ -47,19 +45,6 @@ in {
     vpl-gpu-rt
     intel-compute-runtime
   ];
-
-  systemd.services.lenovo-conservation-mode = {
-    description = "lenovo battery conservation mode";
-    after = ["multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target"];
-    wantedBy = ["multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target"];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = pkgs.writeShellScript "lenovo-conservation-mode" ''
-        [ -f ${conservationMode} ] && echo 1 > ${conservationMode}
-      '';
-      RemainAfterExit = true;
-    };
-  };
 
   fileSystems."/nix".neededForBoot = true;
   fileSystems."/persistent".neededForBoot = true;

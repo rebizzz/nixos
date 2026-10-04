@@ -33,9 +33,6 @@
             governor = "powersave";
             energy_performance_preference = "power";
             turbo = "auto";
-            enable_thresholds = true;
-            start_threshold = 20;
-            stop_threshold = 80;
           };
         };
       };
