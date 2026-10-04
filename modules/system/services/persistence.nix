@@ -15,6 +15,7 @@ _: {
           "/var/lib/bluetooth"
           "/var/lib/AccountsService"
           "/var/lib/smartmontools"
+          "/var/lib/upower"
           {
             directory = "/var/lib/noctalia-greeter";
             user = "greeter";
