@@ -37,7 +37,6 @@
       pkgs.xdg-utils
       pkgs.dex
       pkgs.wl-clipboard
-      pkgs.pear-desktop
     ];
   };
 }

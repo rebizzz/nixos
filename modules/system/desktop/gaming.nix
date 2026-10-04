@@ -1,12 +1,5 @@
 _: {
   flake.modules.nixos.gaming = {pkgs, ...}: {
-    programs.steam = {
-      enable = true;
-      package = pkgs.steam.override {
-        extraArgs = "-cef-disable-gpu-compositing";
-      };
-    };
-
     programs.gamemode = {
       enable = true;
       enableRenice = true;
