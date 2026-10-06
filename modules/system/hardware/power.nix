@@ -10,6 +10,12 @@
     services = {
       thermald.enable = true;
 
+      earlyoom = {
+        enable = true;
+        freeMemThreshold = 5;
+        freeSwapThreshold = 10;
+      };
+
       ananicy = {
         enable = true;
         package = pkgs.ananicy-cpp;

@@ -1,6 +1,8 @@
 # just is a command runner, run `just` to list all recipes.
 # https://github.com/casey/just
 
+export NH_FLAKE := justfile_directory()
+
 default:
     @just --list
 
@@ -31,14 +33,14 @@ verify-store:
 repair-store *paths:
     nix store repair {{paths}}
 
-switch:
-    nh os switch
+switch *args:
+    nh os switch {{args}}
 
-build:
-    nh os build
+build *args:
+    nh os build {{args}}
 
-boot:
-    nh os boot
+boot *args:
+    nh os boot {{args}}
 
 gc:
     sudo nix-collect-garbage --delete-older-than 7d

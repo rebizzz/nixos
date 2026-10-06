@@ -60,13 +60,17 @@ _: {
       initrd.verbose = false;
 
       kernel.sysctl = {
-        "vm.swappiness" = 150;
+        "vm.swappiness" = 100;
         "vm.page-cluster" = 0;
         "vm.watermark_boost_factor" = 0;
         "vm.watermark_scale_factor" = 125;
-        "vm.dirty_ratio" = 10;
-        "vm.dirty_background_ratio" = 5;
+        "vm.dirty_bytes" = 268435456;
+        "vm.dirty_background_bytes" = 67108864;
         "vm.dirty_expire_centisecs" = 1500;
+
+        "kernel.nmi_watchdog" = 0;
+        "kernel.unprivileged_userns_clone" = 1;
+        "kernel.sysrq" = 1;
 
         "kernel.kptr_restrict" = 2;
         "kernel.dmesg_restrict" = 1;

@@ -14,7 +14,7 @@
 
       nh = {
         enable = true;
-        flake = "${config.users.users.${config.myConfig.user.name}.home}/opt/nixos-config";
+        flake = "${config.users.users.${config.myConfig.user.name}.home}/opt/nixos";
       };
 
       thunar = {

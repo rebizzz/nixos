@@ -37,8 +37,8 @@ one source of truth and no drift between "what I tested" and "what actually depl
 6. `reboot`, log in as `rebiz` with the `changeme` initial password, then switch over to the real
    config:
    ```bash
-   git clone https://github.com/rebizzz/nixos ~/opt/nixos-config
-   cd ~/opt/nixos-config
+   git clone https://github.com/rebizzz/nixos ~/opt/nixos
+   cd ~/opt/nixos
    sudo nixos-rebuild switch --flake .#laptop
    ```
 

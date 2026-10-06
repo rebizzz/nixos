@@ -18,7 +18,7 @@ Passwords are not stored in plaintext:
 2. Open `secrets/secrets.yaml`:
    ```bash
    export SOPS_AGE_KEY_FILE=/etc/sops/age/keys.txt
-   cd ~/opt/nixos-config
+   cd ~/opt/nixos
    sops secrets/secrets.yaml
    ```
 3. Replace `user_password_laptop` with the new hash.

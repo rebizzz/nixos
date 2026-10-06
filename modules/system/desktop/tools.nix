@@ -7,7 +7,7 @@ _: {
     programs = {
       git = {
         enable = true;
-        config.safe.directory = ["${config.myConfig.user.home}/opt/nixos-config"];
+        config.safe.directory = ["${config.myConfig.user.home}/opt/nixos"];
       };
 
       nano.enable = false;
