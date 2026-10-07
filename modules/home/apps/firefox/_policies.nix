@@ -18,7 +18,12 @@
     PasswordManagerEnabled = false;
     AutofillAddressEnabled = false;
     AutofillCreditCardEnabled = false;
-    DefaultGeolocationSetting = 2;
+    Permissions = {
+      Location = {
+        BlockNewRequests = true;
+        Locked = true;
+      };
+    };
     SearchEngines = {
       Default = "DuckDuckGo";
       Remove = ["Amazon.com" "eBay" "Perplexity"];
