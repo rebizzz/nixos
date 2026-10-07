@@ -1,18 +1,22 @@
 {
   programs.firefox.profiles.rebiz = {
     settings = {
-      # speed
+      # speed (chrome-standard balanced prefetching)
       "browser.cache.disk.enable" = true;
       "browser.places.speculativeConnect.enabled" = true;
       "browser.urlbar.speculativeConnect.enabled" = true;
       "dom.prefetch_dns_for_anchor_http_document" = true;
       "dom.prefetch_dns_for_anchor_https_document" = true;
+      "dom.speculation_rules.enabled" = true;
       "network.dns.disablePrefetch" = false;
       "network.dns.disablePrefetchFromHTTPS" = false;
-      "network.http.speculative-parallel-limit" = 20;
+      "network.http.speculative-parallel-limit" = 10;
       "network.predictor.enable-hover-on-ssl" = true;
       "network.predictor.enable-prefetch" = true;
       "network.predictor.enabled" = true;
+      "network.predictor.preconnect-min-confidence" = 60;
+      "network.predictor.prefetch-min-confidence" = 80;
+      "network.predictor.preresolve-min-confidence" = 40;
       "network.prefetch-next" = true;
       "network.trr.mode" = 5;
 
