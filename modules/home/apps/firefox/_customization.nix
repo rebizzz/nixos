@@ -34,9 +34,11 @@
       "media.gmp-widevinecdm.enabled" = true;
       "media.gmp-widevinecdm.visible" = true;
 
-      # dark mode
-      "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
-      "extensions.alpenglow.color-darkness" = 40;
+      # dark mode & system theme
+      "layout.css.prefers-color-scheme.content-override" = 0;
+      "browser.theme.content-theme" = 0;
+      "browser.theme.toolbar-theme" = 0;
+      "widget.use-xdg-desktop-portal.settings" = 1;
 
       "permissions.default.desktop-notification" = 0;
       "privacy.clearOnShutdown_v2.cache" = false;

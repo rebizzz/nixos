@@ -118,7 +118,6 @@
     "full-screen-api.transition-duration.enter" = "0 0";
     "full-screen-api.transition-duration.leave" = "0 0";
     "full-screen-api.warning.timeout" = 0;
-    "layout.css.prefers-color-scheme.content-override" = 2;
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
   };
 }
