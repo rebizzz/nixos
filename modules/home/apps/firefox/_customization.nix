@@ -5,12 +5,16 @@
       "browser.cache.disk.enable" = true;
       "browser.places.speculativeConnect.enabled" = true;
       "browser.urlbar.speculativeConnect.enabled" = true;
+      "dom.prefetch_dns_for_anchor_http_document" = true;
+      "dom.prefetch_dns_for_anchor_https_document" = true;
       "network.dns.disablePrefetch" = false;
       "network.dns.disablePrefetchFromHTTPS" = false;
-      "network.http.speculative-parallel-limit" = 10;
+      "network.http.speculative-parallel-limit" = 20;
+      "network.predictor.enable-hover-on-ssl" = true;
       "network.predictor.enable-prefetch" = true;
       "network.predictor.enabled" = true;
       "network.prefetch-next" = true;
+      "network.trr.mode" = 5;
 
       # usability
       "browser.download.useDownloadDir" = true;
@@ -35,6 +39,7 @@
       "media.gmp-widevinecdm.visible" = true;
 
       # dark mode & system theme
+      "extensions.activeThemeID" = "{22b0eca1-8c02-4c0d-a5d7-6604ddd9836e}";
       "layout.css.prefers-color-scheme.content-override" = 0;
       "browser.theme.content-theme" = 0;
       "browser.theme.toolbar-theme" = 0;
