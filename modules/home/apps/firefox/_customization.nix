@@ -33,6 +33,11 @@
       "media.gmp-provider.enabled" = true;
       "media.gmp-widevinecdm.enabled" = true;
       "media.gmp-widevinecdm.visible" = true;
+
+      # dark mode
+      "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+      "extensions.alpenglow.color-darkness" = 40;
+
       "permissions.default.desktop-notification" = 0;
       "privacy.clearOnShutdown_v2.cache" = false;
       "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
