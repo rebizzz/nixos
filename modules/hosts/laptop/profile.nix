@@ -13,7 +13,6 @@
       system-services
       containers
       desktop
-      brave
       fonts
       gaming
       greeter

@@ -22,7 +22,7 @@
       fish
       git
       lazyvim
-      brave
+      firefox
       sounds
       tailscale
       discord
@@ -47,7 +47,7 @@
         ".config/gtk-3.0/bookmarks".text = bookmarks;
       };
       sessionVariables = {
-        BROWSER = "brave-origin";
+        BROWSER = "firefox";
       };
     };
 
