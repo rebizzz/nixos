@@ -55,6 +55,33 @@
       "privacy.clearOnShutdown_v2.formdata" = false;
       "privacy.resistFingerprinting" = true;
       "privacy.sanitize.sanitizeOnShutdown" = false;
+
+      # privacy & tracking protection
+      "browser.send_pings" = false;
+      "dom.private-attribution.submission.enabled" = false;
+      "extensions.pocket.enabled" = false;
+      "privacy.globalprivacycontrol.functionality.enabled" = true;
+      "privacy.query_stripping.enabled" = true;
+      "privacy.query_stripping.enabled.pbmode" = true;
+      "privacy.query_stripping.strip_list" = "__hsfp __hssc __hstc __s _hsenc _openstat dclid fbclid gbraid gclid hsCtaTracking igshid mc_eid ml_subscriber ml_subscriber_hash msclkid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id rb_clickid s_cid twclid vero_conv vero_id wbraid wickedid yclid";
+      "privacy.usercontext.about_newtab_segregation.enabled" = true;
+
+      # device sensors
+      "device.sensors.enabled" = false;
+      "device.sensors.ambientLight.enabled" = false;
+      "device.sensors.motion.enabled" = false;
+      "device.sensors.orientation.enabled" = false;
+      "device.sensors.proximity.enabled" = false;
+
+      # safe browsing (disable google lookups & checks - modern alternatives to deprecated master switch)
+      "browser.safebrowsing.malware.enabled" = false;
+      "browser.safebrowsing.phishing.enabled" = false;
+      "browser.safebrowsing.downloads.enabled" = false;
+      "browser.safebrowsing.downloads.remote.enabled" = false;
+      "browser.safebrowsing.downloads.remote.block_potentially_unwanted" = false;
+      "browser.safebrowsing.downloads.remote.block_uncommon" = false;
+      "browser.safebrowsing.downloads.remote.url" = "";
+      "browser.safebrowsing.provider.google4.dataSharing.enabled" = false;
     };
   };
 }

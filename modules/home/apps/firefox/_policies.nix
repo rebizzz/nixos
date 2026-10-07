@@ -7,7 +7,10 @@
     DontCheckDefaultBrowser = true;
     SkipTermsOfUse = true;
     DNSOverHTTPS.Enabled = false;
+    DisablePocket = true;
     FirefoxHome = {
+      Pocket = false;
+      SponsoredPocket = false;
       SponsoredStories = false;
       SponsoredTopSites = false;
       Stories = false;
