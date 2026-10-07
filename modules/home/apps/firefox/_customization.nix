@@ -29,6 +29,10 @@
 
       # your choice
       "media.autoplay.default" = 5;
+      "media.eme.enabled" = true;
+      "media.gmp-provider.enabled" = true;
+      "media.gmp-widevinecdm.enabled" = true;
+      "media.gmp-widevinecdm.visible" = true;
       "permissions.default.desktop-notification" = 0;
       "privacy.clearOnShutdown_v2.cache" = false;
       "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
