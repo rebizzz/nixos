@@ -8,8 +8,19 @@ in {
       enable = true;
       discord.enable = false;
 
-      equibop = {
+      dorion = {
         enable = true;
+        clientMods = ["Shelter" "Equicord"];
+        sysTray = true;
+        trayIconEnabled = true;
+        startupMinimized = true;
+        updateNotify = false;
+        desktopNotifications = true;
+        unreadBadge = true;
+        cacheCss = true;
+        autoClearCache = true;
+        rpcServer = true;
+        themes = ["frameless.css"];
       };
 
       userPlugins = {

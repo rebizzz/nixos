@@ -11,7 +11,7 @@
         repeat = false;
       };
       "Mod+B" = {
-        action = "spawn:firefox --new-window";
+        action = "spawn:brave-origin --new-window";
         repeat = false;
       };
       "Mod+E" = {

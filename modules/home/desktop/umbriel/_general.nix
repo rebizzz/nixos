@@ -15,7 +15,7 @@ _: {
       {name = "special";}
       {
         name = "communication";
-        spawn_when_empty = "equibop";
+        spawn_when_empty = "dorion";
       }
       {name = "music";}
       {name = "sysmon";}

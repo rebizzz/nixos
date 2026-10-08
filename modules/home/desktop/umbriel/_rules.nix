@@ -19,7 +19,7 @@ _: {
       }
 
       {
-        match.app_id = "^(kitty|equibop|Equibop|org\\.quickshell|feh|imv|swappy|org\\.kde\\.krita|krita|gimp.*|org\\.inkscape\\.Inkscape|darktable|resolve|org\\.kde\\.kdenlive|shotcut|blender|godot|mpv|org\\.kde\\.haruna|haruna|steam_app_[0-9]+|steam_app_default|gamescope|firefox|zen|zen-browser|chromium|google-chrome|org\\.gnome\\.Boxes)$";
+        match.app_id = "^(kitty|dorion|Dorion|org\\.quickshell|feh|imv|swappy|org\\.kde\\.krita|krita|gimp.*|org\\.inkscape\\.Inkscape|darktable|resolve|org\\.kde\\.kdenlive|shotcut|blender|godot|mpv|org\\.kde\\.haruna|haruna|steam_app_[0-9]+|steam_app_default|gamescope|brave-origin|brave-browser|brave|firefox|zen|zen-browser|chromium|google-chrome|org\\.gnome\\.Boxes)$";
         opacity = 1.0;
         blur = false;
       }
@@ -40,7 +40,7 @@ _: {
         default_floating = true;
       }
       {
-        match.app_id = "^(equibop|Equibop|discord|vesktop|whatsapp.*)$";
+        match.app_id = "^(dorion|Dorion|discord|vesktop|whatsapp.*)$";
         default_scratchpad = "communication";
         default_floating_size = {
           width = 0.9;
@@ -64,7 +64,7 @@ _: {
         };
       }
       {
-        match.app_id = "^(firefox|org\\.gnome\\.Boxes)$";
+        match.app_id = "^(brave-origin|brave-browser|brave|firefox|org\\.gnome\\.Boxes)$";
         default_maximize = true;
       }
       {
