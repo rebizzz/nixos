@@ -18,6 +18,7 @@
       greeter
       persistence
       tools
+      brave
     ];
   };
 }
