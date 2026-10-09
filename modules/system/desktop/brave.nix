@@ -111,6 +111,10 @@ _: {
         DefaultBrowserSettingEnabled = false;
         HardwareAccelerationModeEnabled = true;
 
+        # Performance & Memory Saver
+        HighEfficiencyModeEnabled = true;
+        MemorySaverModeSavings = 1; # 0 = Moderate, 1 = Balanced, 2 = Maximum
+
         ExtensionSettings = {
           "eimadpbcbfnmbkopoojfekhnkhdbieeh" = {
             toolbar_pin = "force_pinned";
