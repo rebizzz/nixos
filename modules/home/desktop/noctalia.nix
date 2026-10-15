@@ -96,7 +96,7 @@ _: {
             enable_builtin_templates = true;
             builtin_ids = ["kitty" "gtk3" "gtk4" "umbriel"];
             enable_community_templates = true;
-            community_ids = ["fastfetch" "bat"];
+            community_ids = ["fastfetch" "bat" "neovim"];
           };
         };
 
@@ -340,7 +340,7 @@ _: {
               fill = "surface_variant";
               opacity = 1.0;
               padding = 6.0;
-              members = ["network" "spacer_1" "network_tx" "spacer_2" "network_rx"];
+              members = ["network" "network_tx" "network_rx"];
             }
           ];
         };
