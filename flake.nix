@@ -38,10 +38,7 @@
 
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
     noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
-
-    umbriel = {
-      url = "github:noctalia-dev/umbriel/cachix";
-    };
+    umbriel.url = "github:noctalia-dev/umbriel/cachix";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
