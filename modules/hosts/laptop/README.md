@@ -8,8 +8,6 @@ Disk layout is declarative via [disko](./_disko.nix), device `/dev/nvme0n1`.
 
 Related:
 
-- [../../../nixos-installer](../../../nixos-installer/README.md), iterate on disk layout without
-  evaluating the full flake
 - [_disko.nix](./_disko.nix)
 - [_hardware.nix](./_hardware.nix)
 

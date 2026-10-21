@@ -14,8 +14,6 @@
           host.disk.device = "/dev/nvme0n1";
           boot.resumeDevice = "/dev/pool/swap";
 
-          system.stateVersion = "26.11";
-
           users.users.${config.myConfig.user.name}.hashedPasswordFile = config.sops.secrets.user_password_laptop.path;
 
           home-manager = {
