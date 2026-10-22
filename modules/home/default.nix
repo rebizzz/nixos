@@ -30,6 +30,7 @@
       mime
       prismlauncher
       aria2
+      mpv
     ];
 
     home = {
