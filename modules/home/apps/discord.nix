@@ -13,7 +13,7 @@ in {
       };
 
       userPlugins = {
-        OrionQuests = "github:nyxxbit/discord-quest-completer/38b6f84b1faeb597032bef3129b28b0a42bce728";
+        OrionQuests = "github:nyxxbit/discord-quest-completer/7b21ac365dd38686d25933dc84d46e2bdb2c2b2a";
       };
 
       extraConfig = {
@@ -63,7 +63,7 @@ in {
           copyUserMention.enable = true;
           crashHandler.enable = true;
           downloadAllAttachments.enable = true;
-          expressionCloner.enable = true;
+          expressionManager.enable = true;
           fakeNitro.enable = true;
           findReply.enable = true;
           fixImagesQuality.enable = true;

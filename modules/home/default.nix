@@ -34,9 +34,9 @@
     ];
 
     home = {
+      stateVersion = "26.11";
       username = osConfig.myConfig.user.name;
       homeDirectory = osConfig.myConfig.user.home;
-      stateVersion = "26.11";
       packages = [
         pkgs.gpu-screen-recorder
         pkgs.udiskie

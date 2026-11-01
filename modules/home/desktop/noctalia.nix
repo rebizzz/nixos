@@ -146,7 +146,7 @@ _: {
               rotation = 0.0;
               type = "login_box";
               settings = {
-                background_color = "surface_variant";
+                background_color = "surface_container";
                 background_opacity = 0.88;
                 background_radius = 12.0;
                 center_password_text = false;
@@ -173,7 +173,7 @@ _: {
               rotation = 0.0;
               type = "login_box";
               settings = {
-                background_color = "surface_variant";
+                background_color = "surface_container";
                 background_opacity = 0.88;
                 background_radius = 12.0;
                 center_password_text = false;
@@ -289,16 +289,18 @@ _: {
         bar.default = {
           capsule = true;
           background_opacity = 0.6;
-          start = ["workspaces" "privacy" "active_window"];
+          start = ["workspaces" "privacy" "active_window" "group:g5"];
           center = ["media" "clock"];
           end = [
+            "lock_keys"
             "tray"
             "notifications"
             "clipboard"
+            "screen_recorder"
             "group:g4"
             "group:g1"
-            "group:g2"
             "battery"
+            "group:g2"
             "group:g3"
           ];
           capsule_group = [
@@ -307,40 +309,55 @@ _: {
               enabled = true;
               accordion = false;
               accordion_direction = "end";
-              fill = "surface_variant";
+              border_width = 1.0;
+              fill = "surface_container";
               opacity = 1.0;
               padding = 6.0;
-              members = ["bluetooth" "screen_recorder" "udiskie"];
+              members = ["bluetooth" "udiskie"];
             }
             {
               id = "g2";
               enabled = true;
               accordion = true;
-              accordion_direction = "end";
-              fill = "surface_variant";
+              accordion_direction = "start";
+              border_width = 1.0;
+              fill = "surface_container";
               opacity = 1.0;
               padding = 6.0;
-              members = ["volume" "spacer_3" "brightness"];
+              members = ["volume" "brightness" "spacer_1"];
             }
             {
               id = "g3";
               enabled = true;
               accordion = true;
               accordion_direction = "start";
-              fill = "surface_variant";
+              border_width = 1.0;
+              fill = "surface_container";
               opacity = 1.0;
               padding = 6.0;
-              members = ["session" "control-center" "spacer_4"];
+              members = ["session" "control-center" "spacer_1"];
             }
             {
               id = "g4";
               enabled = true;
               accordion = true;
               accordion_direction = "start";
-              fill = "surface_variant";
+              border_width = 1.0;
+              fill = "surface_container";
               opacity = 1.0;
               padding = 6.0;
               members = ["network" "network_tx" "network_rx"];
+            }
+            {
+              id = "g5";
+              enabled = true;
+              accordion = false;
+              accordion_direction = "end";
+              border_width = 1.0;
+              fill = "surface_container";
+              opacity = 1.0;
+              padding = 6.0;
+              members = ["cpu" "ram" "temp"];
             }
           ];
         };
@@ -376,13 +393,23 @@ _: {
           network_rx = {
             visualization = "none";
           };
+          cpu = {
+            visualization = "none";
+          };
+          ram = {
+            visualization = "none";
+          };
+          temp = {
+            visualization = "none";
+          };
+          lock_keys = {
+            display = "full";
+            hide_when_off = true;
+          };
           taskbar = {
             group_by_workspace = true;
           };
           spacer_1 = {type = "spacer";};
-          spacer_2 = {type = "spacer";};
-          spacer_3 = {type = "spacer";};
-          spacer_4 = {type = "spacer";};
         };
 
         plugin_settings = {

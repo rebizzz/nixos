@@ -4,7 +4,6 @@ _: {
       oo7.enable = true;
       dbus.implementation = "broker";
       gvfs.enable = true;
-      flatpak.enable = true;
       tumbler.enable = true;
 
       kmscon = {

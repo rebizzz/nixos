@@ -12,6 +12,7 @@
       tailscale
       system-services
       containers
+      virtualisation
       desktop
       fonts
       gaming

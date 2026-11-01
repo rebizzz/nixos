@@ -10,11 +10,7 @@
     services = {
       thermald.enable = true;
 
-      earlyoom = {
-        enable = true;
-        freeMemThreshold = 5;
-        freeSwapThreshold = 10;
-      };
+      earlyoom.enable = false;
 
       ananicy = {
         enable = true;
@@ -31,8 +27,8 @@
         enable = true;
         settings = {
           charger = {
-            governor = "performance";
-            energy_performance_preference = "performance";
+            governor = "powersave";
+            energy_performance_preference = "balance_performance";
             turbo = "auto";
           };
           battery = {
@@ -65,9 +61,22 @@
       priority = 100;
     };
 
-    systemd.oomd = {
-      enable = true;
-      enableUserSlices = true;
+    systemd = {
+      oomd = {
+        enable = true;
+        enableUserSlices = true;
+        settings = {
+          OOM = {
+            SwapUsedLimit = "90%";
+            DefaultMemoryPressureLimit = "60%";
+            DefaultMemoryPressureDurationSec = "20s";
+          };
+        };
+      };
+      slices."user".sliceConfig = {
+        ManagedOOMMemoryPressure = "kill";
+        ManagedOOMMemoryPressureLimit = "50%";
+      };
     };
 
     boot = {

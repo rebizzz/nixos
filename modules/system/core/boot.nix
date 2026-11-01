@@ -56,11 +56,8 @@ _: {
       supportedFilesystems = ["udf" "nfs"];
       tmp.cleanOnBoot = true;
 
-      initrd.systemd.enable = true;
-      initrd.verbose = false;
-
       kernel.sysctl = {
-        "vm.swappiness" = 100;
+        "vm.swappiness" = 60;
         "vm.page-cluster" = 0;
         "vm.watermark_boost_factor" = 0;
         "vm.watermark_scale_factor" = 125;

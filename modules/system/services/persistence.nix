@@ -32,6 +32,7 @@ _: {
             group = "chrony";
             mode = "0750";
           }
+          "/var/lib/libvirt"
         ];
         files = [
           {
