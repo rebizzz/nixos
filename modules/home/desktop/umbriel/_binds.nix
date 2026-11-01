@@ -3,38 +3,38 @@
     {
       # Apps / launcher
       "Mod+Return" = {
-        action = "spawn:kitty --single-instance --instance-group=1";
+        action = "spawn kitty --single-instance --instance-group=1";
         repeat = false;
       };
       "Mod+D" = {
-        action = "spawn:noctalia msg panel-toggle launcher";
+        action = "spawn noctalia msg panel-toggle launcher";
         repeat = false;
       };
       "Mod+B" = {
-        action = "spawn:brave-origin --new-window";
+        action = "spawn brave-origin --new-window";
         repeat = false;
       };
       "Mod+E" = {
-        action = "spawn:thunar";
+        action = "spawn thunar";
         repeat = false;
       };
       "XF86Calculator" = {
-        action = "spawn:noctalia msg panel-toggle yuuto/calculator:panel";
+        action = "spawn noctalia msg panel-toggle yuuto/calculator:panel";
         repeat = false;
       };
 
       # Session / misc
       "Mod+Q" = "window-close";
       "Mod+Alt+L" = {
-        action = "spawn:noctalia msg session lock";
+        action = "spawn noctalia msg session lock";
         repeat = false;
       };
       "Mod+Shift+Q" = {
-        action = "spawn:noctalia msg panel-toggle session";
+        action = "spawn noctalia msg panel-toggle session";
         repeat = false;
       };
       "Mod+Shift+P" = {
-        action = "spawn:noctalia msg dpms-off";
+        action = "spawn noctalia msg dpms-off";
         repeat = false;
       };
       "Mod+Slash" = "cheatsheet-toggle";
@@ -52,12 +52,12 @@
       "Mod+Alt+Shift+R" = "window-cycle-secondary-extent-back";
       "Mod+Comma" = "window-consume-or-expel-left";
       "Mod+Period" = "window-consume-or-expel-right";
-      "Mod+Minus" = "window-modify-primary-extent:-0.1";
-      "Mod+Equal" = "window-modify-primary-extent:+0.1";
-      "Mod+Shift+Minus" = "window-modify-secondary-extent:-0.1";
-      "Mod+Shift+Equal" = "window-modify-secondary-extent:+0.1";
-      "Mod+Shift+Underscore" = "window-modify-secondary-extent:-0.1";
-      "Mod+Shift+Plus" = "window-modify-secondary-extent:+0.1";
+      "Mod+Minus" = "window-modify-primary-extent -0.1";
+      "Mod+Equal" = "window-modify-primary-extent +0.1";
+      "Mod+Shift+Minus" = "window-modify-secondary-extent -0.1";
+      "Mod+Shift+Equal" = "window-modify-secondary-extent +0.1";
+      "Mod+Shift+Underscore" = "window-modify-secondary-extent -0.1";
+      "Mod+Shift+Plus" = "window-modify-secondary-extent +0.1";
 
       # Focus / move — native to both scrolling and dwindle, no per-layout scripting needed
       "Mod+H" = "window-focus-left";
@@ -73,8 +73,8 @@
       "Mod+Ctrl+Down" = "window-move-to-workspace-next";
       "Mod+Ctrl+Up" = "window-move-to-workspace-previous";
 
-      "Mod+Tab" = "workspace-set-layout:toggle";
-      "Alt+Tab" = "spawn:noctalia msg window-switcher";
+      "Mod+Tab" = "workspace-set-layout toggle";
+      "Alt+Tab" = "spawn noctalia msg window-switcher";
       "Mod+O" = "overview-toggle";
 
       # Outputs
@@ -88,57 +88,57 @@
       "Mod+Ctrl+Shift+Down" = "window-move-to-output-down";
 
       # Scratchpad
-      "Mod+Shift+Space" = "window-toggle-scratchpad:special";
-      "Mod+Space" = "scratchpad-toggle:special";
-      "Mod+Grave" = "scratchpad-focus-next:special";
-      "Mod+Alt+D" = "scratchpad-toggle:communication";
-      "Mod+Alt+M" = "scratchpad-toggle:music";
-      "Mod+Alt+T" = "scratchpad-toggle:todo";
-      "Ctrl+Shift+Escape" = "scratchpad-toggle:sysmon";
+      "Mod+Shift+Space" = "window-toggle-scratchpad special";
+      "Mod+Space" = "scratchpad-toggle special";
+      "Mod+Grave" = "scratchpad-focus-next special";
+      "Mod+Alt+D" = "scratchpad-toggle communication";
+      "Mod+Alt+M" = "scratchpad-toggle music";
+      "Mod+Alt+T" = "scratchpad-toggle todo";
+      "Ctrl+Shift+Escape" = "scratchpad-toggle sysmon";
 
       # Screenshots
       "Print" = {
-        action = "spawn:noctalia msg screenshot-region";
+        action = "spawn noctalia msg screenshot-region";
         repeat = false;
       };
       "Ctrl+Print" = {
-        action = "spawn:noctalia msg screenshot-fullscreen";
+        action = "spawn noctalia msg screenshot-fullscreen";
         repeat = false;
       };
       "Shift+Print" = {
-        action = "spawn:noctalia msg screenshot-annotate";
+        action = "spawn noctalia msg screenshot-annotate";
         repeat = false;
       };
 
       # Media / volume / brightness
-      "XF86AudioRaiseVolume" = "spawn:noctalia msg volume-up";
-      "XF86AudioLowerVolume" = "spawn:noctalia msg volume-down";
+      "XF86AudioRaiseVolume" = "spawn noctalia msg volume-up";
+      "XF86AudioLowerVolume" = "spawn noctalia msg volume-down";
       "XF86AudioMute" = {
-        action = "spawn:noctalia msg volume-mute";
+        action = "spawn noctalia msg volume-mute";
         repeat = false;
       };
       "XF86AudioMicMute" = {
-        action = "spawn:noctalia msg mic-mute";
+        action = "spawn noctalia msg mic-mute";
         repeat = false;
       };
       "XF86AudioNext" = {
-        action = "spawn:noctalia msg media next";
+        action = "spawn noctalia msg media next";
         repeat = false;
       };
       "XF86AudioPrev" = {
-        action = "spawn:noctalia msg media previous";
+        action = "spawn noctalia msg media previous";
         repeat = false;
       };
       "XF86AudioPlay" = {
-        action = "spawn:noctalia msg media toggle";
+        action = "spawn noctalia msg media toggle";
         repeat = false;
       };
       "XF86AudioPause" = {
-        action = "spawn:noctalia msg media toggle";
+        action = "spawn noctalia msg media toggle";
         repeat = false;
       };
-      "XF86MonBrightnessUp" = "spawn:noctalia msg brightness-up";
-      "XF86MonBrightnessDown" = "spawn:noctalia msg brightness-down";
+      "XF86MonBrightnessUp" = "spawn noctalia msg brightness-up";
+      "XF86MonBrightnessDown" = "spawn noctalia msg brightness-down";
 
       # Scroll wheel focus
       "Mod+WheelUp" = "window-focus-left";
@@ -150,7 +150,7 @@
       "Mod+Ctrl+Page_Up" = "column-move-to-workspace-previous";
       "Mod+Ctrl+Page_Down" = "column-move-to-workspace-next";
     }
-    // lib.listToAttrs (map (i: lib.nameValuePair "Mod+${toString i}" "workspace-switch:${toString i}") (lib.range 1 9))
-    // lib.listToAttrs (map (i: lib.nameValuePair "Mod+Ctrl+${toString i}" "window-move-to-workspace:${toString i}") (lib.range 1 9))
-    // lib.listToAttrs (map (i: lib.nameValuePair "Mod+Ctrl+Shift+${toString i}" "column-move-to-workspace:${toString i}") (lib.range 1 9));
+    // lib.listToAttrs (map (i: lib.nameValuePair "Mod+${toString i}" "workspace-switch ${toString i}") (lib.range 1 9))
+    // lib.listToAttrs (map (i: lib.nameValuePair "Mod+Ctrl+${toString i}" "window-move-to-workspace ${toString i}") (lib.range 1 9))
+    // lib.listToAttrs (map (i: lib.nameValuePair "Mod+Ctrl+Shift+${toString i}" "column-move-to-workspace ${toString i}") (lib.range 1 9));
 }
