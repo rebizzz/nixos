@@ -31,13 +31,46 @@ _: {
   in {
     boot = {
       loader = {
-        systemd-boot = {
+        grub = {
           enable = true;
+          efiSupport = true;
+          device = "nodev";
           configurationLimit = 10;
-          editor = false;
+          extraEntries = ''
+            submenu 'Brunch' {
+            menuentry 'Brunch' --class 'brunch' {
+            	unset theme
+            	img_path="/chromeos.img"
+            	img_uuid="a000f02a-85d9-4c42-b0f3-ab5539fdd4c0"
+            	search --no-floppy --set=root --file ''${img_path}
+            	loopback loop ''${img_path}
+            	source (loop,12)/efi/boot/settings.cfg
+            	if [ -z ''${verbose} ] -o [ ''${verbose} -eq 0 ]; then
+            		linux (loop,7)''${kernel} boot=local noresume noswap loglevel=7 options=''${options} chromeos_bootsplash=''${chromeos_bootsplash} ''${cmdline_params} \
+            			cros_secure cros_debug img_uuid=''${img_uuid} img_path=''${img_path} \
+            			console= vt.global_cursor_default=0 brunch_bootsplash=''${brunch_bootsplash} quiet
+            	else
+            		linux (loop,7)''${kernel} boot=local noresume noswap loglevel=7 options=''${options} chromeos_bootsplash=''${chromeos_bootsplash} ''${cmdline_params} \
+            			cros_secure cros_debug img_uuid=''${img_uuid} img_path=''${img_path}
+            	fi
+            	initrd (loop,7)/lib/firmware/amd-ucode.img (loop,7)/lib/firmware/intel-ucode.img (loop,7)/initramfs.img
+            }
+            menuentry 'Brunch settings' --class 'brunch-settings' {
+            	unset theme
+            	img_path="/chromeos.img"
+            	img_uuid="a000f02a-85d9-4c42-b0f3-ab5539fdd4c0"
+            	search --no-floppy --set=root --file ''${img_path}
+            	loopback loop ''${img_path}
+            	source (loop,12)/efi/boot/settings.cfg
+            	linux (loop,7)/kernel boot=local noresume noswap loglevel=7 options= chromeos_bootsplash= edit_brunch_config=1 \
+            		cros_secure cros_debug img_uuid=''${img_uuid} img_path=''${img_path}
+            	initrd (loop,7)/lib/firmware/amd-ucode.img (loop,7)/lib/firmware/intel-ucode.img (loop,7)/initramfs.img
+            }
+            }
+          '';
         };
         efi.canTouchEfiVariables = true;
-        timeout = 3;
+        timeout = 5;
       };
 
       kernelPackages = pkgs.linuxPackages_zen;
