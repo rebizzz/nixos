@@ -13,7 +13,7 @@ in {
       };
 
       userPlugins = {
-        OrionQuests = "github:nyxxbit/discord-quest-completer/7b21ac365dd38686d25933dc84d46e2bdb2c2b2a";
+        OrionQuests = "github:nyxxbit/discord-quest-completer/b27f0802d1c62e50db97212dae3b3641fd55a91e";
       };
 
       extraConfig = {
