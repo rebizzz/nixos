@@ -38,7 +38,7 @@
       packages = [
         pkgs.gpu-screen-recorder
         pkgs.udiskie
-        pkgs.pwvucontrol
+        pkgs.pavucontrol
         pkgs.sound-theme-freedesktop
       ];
       file = {

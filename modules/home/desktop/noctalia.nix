@@ -217,7 +217,7 @@ _: {
           enable_volume_sounds = true;
           enable_overdrive = true;
           sound_theme = "freedesktop";
-          sound_volume = 0.5;
+          sound_volume = 1.0;
         };
 
         location.auto_locate = true;

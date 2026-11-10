@@ -4,7 +4,7 @@ _: {
     pkgs,
     ...
   }: {
-    programs.virt-manager.enable = true;
+    environment.systemPackages = [pkgs.gnome-boxes];
 
     virtualisation = {
       libvirtd = {
@@ -13,10 +13,8 @@ _: {
         onShutdown = "shutdown";
         qemu = {
           package = pkgs.qemu_kvm;
-          swtpm.enable = true;
         };
       };
-      spiceUSBRedirection.enable = true;
     };
 
     users.users.${config.myConfig.user.name}.extraGroups = [
