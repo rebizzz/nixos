@@ -126,42 +126,14 @@ _: {
           enabled = true;
           schema_version = 2;
           widget_order = [
-            "lockscreen-login-box@WL-1"
             "lockscreen-login-box@eDP-1"
           ];
           grid = {
             cell_size = 16;
             major_interval = 4;
-            visible = true;
+            visible = false;
           };
           widget = {
-            "lockscreen-login-box@WL-1" = {
-              box_height = 196.0;
-              box_width = 810.0;
-              cx = 961.01800537109375;
-              cy = 888.046875;
-              output = "WL-1";
-              placement_height = 1080.0;
-              placement_width = 1920.0;
-              rotation = 0.0;
-              type = "login_box";
-              settings = {
-                background_color = "surface_container";
-                background_opacity = 0.88;
-                background_radius = 12.0;
-                center_password_text = false;
-                input_opacity = 1.0;
-                input_radius = 6.0;
-                layout = "regular";
-                show_caps_lock = true;
-                show_keyboard_layout = true;
-                show_login_button = true;
-                show_media = true;
-                show_session_buttons = true;
-                show_unlock_hint = true;
-                show_weather = true;
-              };
-            };
             "lockscreen-login-box@eDP-1" = {
               box_height = 196.0;
               box_width = 810.0;
@@ -239,7 +211,13 @@ _: {
 
         audio = {
           enable_sounds = true;
+          enable_power_sounds = true;
+          enable_notification_sounds = true;
+          enable_screenshot_sounds = true;
+          enable_volume_sounds = true;
           enable_overdrive = true;
+          sound_theme = "freedesktop";
+          sound_volume = 0.5;
         };
 
         location.auto_locate = true;
@@ -283,7 +261,7 @@ _: {
           {type = "caffeine";}
           {type = "notification";}
           {type = "nightlight";}
-          {type = "mic_mute";}
+          {type = "power_profile";}
         ];
 
         bar.default = {
@@ -299,7 +277,7 @@ _: {
             "screen_recorder"
             "group:g4"
             "group:g1"
-            "battery"
+            "group:g6"
             "group:g2"
             "group:g3"
           ];
@@ -358,6 +336,17 @@ _: {
               opacity = 1.0;
               padding = 6.0;
               members = ["cpu" "ram" "temp"];
+            }
+            {
+              id = "g6";
+              enabled = true;
+              accordion = true;
+              accordion_direction = "start";
+              border_width = 1.0;
+              fill = "surface_container";
+              opacity = 1.0;
+              padding = 6.0;
+              members = ["battery" "power_profile" "spacer_1"];
             }
           ];
         };
@@ -428,6 +417,7 @@ _: {
           "yuuto/calculator" = {
             precision = 8;
             angle_unit = "deg";
+            panel_layer = "overlay";
           };
         };
       };

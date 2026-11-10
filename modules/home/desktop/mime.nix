@@ -1,7 +1,7 @@
 _: let
   web = "brave-origin.desktop";
   image = "org.gnome.Loupe.desktop";
-  av = "org.kde.haruna.desktop";
+  av = "mpv.desktop";
   doc = "org.gnome.Papers.desktop";
   archive = "org.gnome.FileRoller.desktop";
   files = "thunar.desktop";

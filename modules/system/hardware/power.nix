@@ -23,20 +23,9 @@
         };
       };
 
-      auto-cpufreq = {
+      tuned = {
         enable = true;
-        settings = {
-          charger = {
-            governor = "powersave";
-            energy_performance_preference = "balance_performance";
-            turbo = "auto";
-          };
-          battery = {
-            governor = "powersave";
-            energy_performance_preference = "power";
-            turbo = "auto";
-          };
-        };
+        ppdSupport = true;
       };
 
       logind.settings.Login = {
@@ -55,7 +44,7 @@
 
     zramSwap = {
       enable = true;
-      algorithm = "zstd";
+      algorithm = "lz4";
       memoryPercent = 100;
       memoryMax = 8 * 1024 * 1024 * 1024;
       priority = 100;

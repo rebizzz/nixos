@@ -23,8 +23,6 @@
       git
       lazyvim
       brave
-      sounds
-      tailscale
       discord
       theme
       mime
@@ -41,6 +39,7 @@
         pkgs.gpu-screen-recorder
         pkgs.udiskie
         pkgs.pwvucontrol
+        pkgs.sound-theme-freedesktop
       ];
       file = {
         ".face".source = ../../assets/avatar.jpeg;

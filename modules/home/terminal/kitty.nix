@@ -21,8 +21,6 @@ _: {
         enable_audio_bell = false;
         scrollback_lines = 10000;
         shell_integration = "enabled";
-        allow_remote_control = true;
-        listen_on = "unix:/tmp/kitty";
       };
 
       extraConfig = ''

@@ -59,7 +59,7 @@ _: {
       tmp.cleanOnBoot = true;
 
       kernel.sysctl = {
-        "vm.swappiness" = 60;
+        "vm.swappiness" = 180;
         "vm.page-cluster" = 0;
         "vm.watermark_boost_factor" = 0;
         "vm.watermark_scale_factor" = 125;
@@ -90,7 +90,7 @@ _: {
 
       blacklistedKernelModules = blockedModules;
       extraModprobeConfig = ''
-        options snd_hda_intel power_save=1 power_save_controller=Y
+        options snd_hda_intel power_save=10 power_save_controller=Y
         ${lib.concatMapStringsSep "\n" (m: "install ${m} ${pkgs.coreutils}/bin/false") blockedModules}
       '';
 
