@@ -5,7 +5,6 @@ _: let
   doc = "org.gnome.Papers.desktop";
   archive = "org.gnome.FileRoller.desktop";
   files = "thunar.desktop";
-  text = "nvim-text-editor.desktop";
 in {
   flake.modules.homeManager.mime = _: {
     xdg = {
@@ -14,20 +13,10 @@ in {
         createDirectories = true;
       };
       mime.enable = true;
-      desktopEntries.nvim-text-editor = {
-        name = "Neovim (Kitty)";
-        exec = "kitty -- nvim %F";
-        terminal = false;
-        type = "Application";
-        mimeType = ["text/plain" "text/markdown" "application/json"];
-      };
       mimeApps = {
         enable = true;
         defaultApplications = {
           "inode/directory" = files;
-          "text/plain" = text;
-          "text/markdown" = text;
-          "application/json" = text;
           "text/html" = web;
           "application/xhtml+xml" = web;
           "x-scheme-handler/http" = web;

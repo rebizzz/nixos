@@ -21,7 +21,7 @@
       kitty
       fish
       git
-      lazyvim
+      micro
       brave
       discord
       theme

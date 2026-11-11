@@ -17,7 +17,7 @@ _: {
         rebase.autoStash = true;
         merge.conflictstyle = "zdiff3";
         init.defaultBranch = "main";
-        core.editor = "nvim";
+        core.editor = "micro";
         diff.colorMoved = "zebra";
         push.autoSetupRemote = true;
         fetch.prune = true;
