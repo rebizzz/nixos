@@ -26,6 +26,22 @@
       tuned = {
         enable = true;
         ppdSupport = true;
+        ppdSettings = {
+          main = {
+            battery_detection = true;
+            default = "balanced";
+          };
+          profiles = {
+            power-saver = "laptop-ac-powersave";
+            balanced = "balanced";
+            performance = "throughput-performance";
+          };
+          battery = {
+            power-saver = "laptop-battery-powersave";
+            balanced = "balanced-battery";
+            performance = "balanced-battery";
+          };
+        };
       };
 
       logind.settings.Login = {

@@ -86,8 +86,8 @@ _: {
         ShowGeminiIntroScreenEnabled = false;
 
         # Privacy, Security & Network Hardening
-        WebRtcIPHandling = "disable_non_proxied_udp";
-        EncryptedClientHelloEnabled = true;
+        WebRtcIPHandling = "default_public_interface_only";
+        EncryptedClientHelloEnabled = false;
         PostQuantumKeyAgreementEnabled = true;
         DevicePostQuantumKeyAgreementEnabled = true;
         HttpsOnlyMode = "force_enabled";

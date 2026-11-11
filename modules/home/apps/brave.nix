@@ -21,8 +21,9 @@ in {
         "--enable-wayland-ime"
         "--ignore-gpu-blocklist"
         "--enable-gpu-rasterization"
+        "--disable-quic"
         "--disk-cache-size=1073741824"
-        "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder,ParallelDownloading,AsyncDns,BackForwardCache,Prerender2,SpeculativeServiceWorkerWarmUp,TabHoverCardImages"
+        "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder,ParallelDownloading,BackForwardCache,Prerender2,SpeculativeServiceWorkerWarmUp,TabHoverCardImages"
         "--disable-features=OutdatedBuildDetector,UseChromeOSDirectVideoDecoder"
       ];
     };

@@ -19,13 +19,5 @@
         };
       };
     };
-
-    services.greetd = {
-      restart = false;
-      settings.initial_session = {
-        command = "${inputs.umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/start-umbriel";
-        user = config.myConfig.user.name;
-      };
-    };
   };
 }
