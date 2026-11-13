@@ -27,8 +27,6 @@ _: {
 
         # Bookmarks & UI Cleanup
         BookmarkBarEnabled = false;
-        EditBookmarksEnabled = false;
-        ImportBookmarks = false;
         ShowCastIconInToolbar = false;
         EnableMediaRouter = false;
 
@@ -87,7 +85,7 @@ _: {
 
         # Privacy, Security & Network Hardening
         WebRtcIPHandling = "default_public_interface_only";
-        EncryptedClientHelloEnabled = false;
+        EncryptedClientHelloEnabled = true;
         PostQuantumKeyAgreementEnabled = true;
         DevicePostQuantumKeyAgreementEnabled = true;
         HttpsOnlyMode = "force_enabled";

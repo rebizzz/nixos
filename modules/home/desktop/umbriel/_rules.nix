@@ -19,7 +19,7 @@ _: {
       }
 
       {
-        match.app_id = "^(kitty|equibop|Equibop|org\\.quickshell|feh|imv|swappy|org\\.kde\\.krita|krita|gimp.*|org\\.inkscape\\.Inkscape|darktable|resolve|org\\.kde\\.kdenlive|shotcut|blender|godot|mpv|org\\.kde\\.haruna|haruna|steam_app_[0-9]+|steam_app_default|gamescope|brave-origin|brave-browser|brave|firefox|zen|zen-browser|chromium|google-chrome|gnome-boxes|org\\.gnome\\.Boxes|qemu.*)$";
+        match.app_id = "^(kitty|serein|Serein|cz\\.viceverse\\.serein|equibop|Equibop|org\\.quickshell|feh|imv|swappy|org\\.kde\\.krita|krita|gimp.*|org\\.inkscape\\.Inkscape|darktable|resolve|org\\.kde\\.kdenlive|shotcut|blender|godot|mpv|org\\.kde\\.haruna|haruna|steam_app_[0-9]+|steam_app_default|gamescope|brave-origin|brave-browser|brave|firefox|zen|zen-browser|chromium|google-chrome|gnome-boxes|org\\.gnome\\.Boxes|qemu.*)$";
         opacity = 1.0;
         blur = false;
       }
@@ -45,7 +45,7 @@ _: {
         default_floating = true;
       }
       {
-        match.app_id = "^(equibop|Equibop|discord|vesktop|whatsapp.*)$";
+        match.app_id = "^(serein|Serein|cz\\.viceverse\\.serein|equibop|Equibop|discord|vesktop|whatsapp.*)$";
         default_scratchpad = "communication";
         default_floating_size = {
           width = 0.9;

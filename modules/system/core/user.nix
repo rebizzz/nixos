@@ -37,7 +37,7 @@ in {
         users.${userName} = {
           isNormalUser = true;
           home = config.myConfig.user.home;
-          extraGroups = ["wheel" "networkmanager" "video" "audio" "input" "storage" "render"];
+          extraGroups = ["wheel" "networkmanager" "video" "audio" "render"];
           shell = pkgs.fish;
         };
       };

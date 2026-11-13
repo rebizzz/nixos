@@ -10,8 +10,6 @@
     ];
 
     config = {
-      systemd.enableEmergencyMode = false;
-
       programs.direnv = {
         enable = true;
         nix-direnv.enable = true;

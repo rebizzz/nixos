@@ -8,6 +8,7 @@
 
     services.displayManager.noctalia-greeter = {
       enable = true;
+      passwordless-sync-users = [config.myConfig.user.name];
       settings = {
         session.default = "umbriel";
         user.default = config.myConfig.user.name;

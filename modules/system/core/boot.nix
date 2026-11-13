@@ -21,12 +21,6 @@ _: {
       "jffs2"
       "hfs"
       "hfsplus"
-
-      "af_alg"
-      "algif_hash"
-      "algif_skcipher"
-      "algif_rng"
-      "algif_aead"
     ];
   in {
     boot = {
@@ -42,7 +36,7 @@ _: {
         timeout = 5;
       };
 
-      kernelPackages = pkgs.linuxPackages_zen;
+      kernelPackages = pkgs.linuxPackages;
       kernelModules = ["tcp_bbr"];
       kernelParams = [
         "quiet"
@@ -51,15 +45,13 @@ _: {
         "rd.udev.log_level=3"
         "udev.log_level=0"
         "rd.systemd.show_status=auto"
-
-        "rcutree.enable_rcu_lazy=1"
       ];
       consoleLogLevel = 3;
       supportedFilesystems = ["udf" "nfs"];
       tmp.cleanOnBoot = true;
 
       kernel.sysctl = {
-        "vm.swappiness" = 180;
+        "vm.swappiness" = 100;
         "vm.page-cluster" = 0;
         "vm.watermark_boost_factor" = 0;
         "vm.watermark_scale_factor" = 125;
@@ -73,8 +65,7 @@ _: {
 
         "kernel.kptr_restrict" = 2;
         "kernel.dmesg_restrict" = 1;
-        "kernel.unprivileged_bpf_disabled" = 1;
-        "kernel.yama.ptrace_scope" = 2;
+        "kernel.yama.ptrace_scope" = 1;
         "fs.protected_fifos" = 2;
         "fs.protected_regular" = 2;
 

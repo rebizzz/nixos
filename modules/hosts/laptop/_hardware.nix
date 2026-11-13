@@ -23,7 +23,6 @@
       "iommu=pt"
 
       "i915.enable_guc=3"
-      "i915.enable_psr=2"
       "i915.enable_fbc=1"
     ];
     blacklistedKernelModules = [

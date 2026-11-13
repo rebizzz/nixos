@@ -104,9 +104,9 @@ _: {
           enabled = true;
           transition_on_startup = true;
           directory = wallpapersDir;
-          default.path = "${wallpapersDir}/nature/waterfall-bridge.png";
-          last.path = "${wallpapersDir}/nature/waterfall-bridge.png";
-          monitors."eDP-1".path = "${wallpapersDir}/nature/waterfall-bridge.png";
+          default.path = "${wallpapersDir}/default.jpg";
+          last.path = "${wallpapersDir}/default.jpg";
+          monitors."eDP-1".path = "${wallpapersDir}/default.jpg";
         };
 
         backdrop = {

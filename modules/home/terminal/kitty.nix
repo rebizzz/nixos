@@ -9,9 +9,9 @@ _: {
       };
 
       settings = {
-        repaint_delay = 2;
-        input_delay = 1;
-        sync_to_monitor = "no";
+        repaint_delay = 10;
+        input_delay = 3;
+        sync_to_monitor = "yes";
         linux_display_server = "wayland";
         background_opacity = "0.9";
         window_padding_width = 8;

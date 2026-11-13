@@ -53,13 +53,13 @@
 
         fallback = true;
 
-        min-free = 1073741824;
-        max-free = 3221225472;
+        min-free = 16106127360;
+        max-free = 26843545600;
       };
 
       optimise = {
         automatic = true;
-        dates = ["daily"];
+        dates = ["weekly"];
       };
 
       gc = {

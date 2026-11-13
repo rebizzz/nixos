@@ -65,27 +65,6 @@ _: {
 
     systemd = {
       suppressedSystemUnits = ["systemd-machine-id-commit.service"];
-
-      # nixpkgs' btrfs module only ships autoScrub, no equivalent for balance
-      services.btrfs-balance-persistent = {
-        description = "Btrfs balance on /persistent";
-        serviceConfig = {
-          Type = "oneshot";
-          Nice = 19;
-          IOSchedulingClass = "idle";
-          ExecStart = "${pkgs.btrfs-progs}/bin/btrfs balance start -dusage=20 -musage=20 /persistent";
-        };
-      };
-
-      timers.btrfs-balance-persistent = {
-        description = "Quarterly btrfs balance on /persistent";
-        wantedBy = ["timers.target"];
-        timerConfig = {
-          OnCalendar = "quarterly";
-          Persistent = true;
-          RandomizedDelaySec = "1h";
-        };
-      };
     };
   };
 }

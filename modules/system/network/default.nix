@@ -49,7 +49,7 @@ _: {
         DNS=45.90.28.0#${label}.dns.nextdns.io 2a07:a8c0::#${label}.dns.nextdns.io 45.90.30.0#${label}.dns.nextdns.io 2a07:a8c1::#${label}.dns.nextdns.io
         Domains=~.
       '';
-      mode = "0444";
+      mode = "0400";
       restartUnits = ["systemd-resolved.service"];
     };
 
@@ -69,7 +69,7 @@ _: {
         settings.Resolve = {
           DNSSEC = "no";
           Domains = "~.";
-          DNSOverTLS = "true";
+          DNSOverTLS = "opportunistic";
           StaleRetentionSec = "4h";
           CacheFromLocalhost = "yes";
           LLMNR = "no";

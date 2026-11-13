@@ -29,19 +29,12 @@ _: {
     };
 
     environment = {
-      PROTON_ENABLE_WAYLAND = "1";
-      DXVK_HDR = "1";
-      GTK_THEME = "Adwaita:dark";
-      QT_QPA_PLATFORMTHEME = "qt5ct";
       QT_QPA_PLATFORM = "wayland;xcb";
-      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       GDK_BACKEND = "wayland,x11";
       NIXOS_OZONE_WL = "1";
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
-      MOZ_ENABLE_WAYLAND = "1";
-      SDL_VIDEODRIVER = "wayland";
+      SDL_VIDEODRIVER = "wayland,x11";
       _JAVA_AWT_WM_NONREPARENTING = "1";
-      CLUTTER_BACKEND = "wayland";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     };
 

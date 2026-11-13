@@ -12,17 +12,6 @@
 
       earlyoom.enable = false;
 
-      ananicy = {
-        enable = true;
-        package = pkgs.ananicy-cpp;
-        rulesProvider = pkgs.ananicy-rules-cachyos;
-        settings = {
-          cgroup_load = false;
-          apply_cgroup = false;
-          cgroup_realtime_workaround = lib.mkForce false;
-        };
-      };
-
       tuned = {
         enable = true;
         ppdSupport = true;
@@ -39,7 +28,7 @@
           battery = {
             power-saver = "laptop-battery-powersave";
             balanced = "balanced-battery";
-            performance = "balanced-battery";
+            performance = "throughput-performance";
           };
         };
       };
@@ -77,10 +66,6 @@
             DefaultMemoryPressureDurationSec = "20s";
           };
         };
-      };
-      slices."user".sliceConfig = {
-        ManagedOOMMemoryPressure = "kill";
-        ManagedOOMMemoryPressureLimit = "50%";
       };
     };
 
@@ -121,23 +106,6 @@
       sleep.settings.Sleep = {
         HibernateMode = "platform shutdown";
         HibernateDelaySec = "30min";
-      };
-
-      services.lock-before-sleep = {
-        description = "Lock the session before suspend/hibernate";
-        before = ["sleep.target" "suspend.target" "hibernate.target" "hybrid-sleep.target"];
-        wantedBy = ["sleep.target" "suspend.target" "hibernate.target" "hybrid-sleep.target"];
-        serviceConfig = {
-          Type = "oneshot";
-          User = user.name;
-          Environment = "XDG_RUNTIME_DIR=/run/user/${toString (
-            if user.uid != null
-            then user.uid
-            else 1000
-          )}";
-          ExecStart = "${inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/noctalia msg session lock";
-          TimeoutStartSec = "10s";
-        };
       };
     };
   };

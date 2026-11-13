@@ -23,8 +23,8 @@ in {
         "--enable-gpu-rasterization"
         "--disable-quic"
         "--disk-cache-size=1073741824"
-        "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder,ParallelDownloading,BackForwardCache,Prerender2,SpeculativeServiceWorkerWarmUp,TabHoverCardImages"
-        "--disable-features=OutdatedBuildDetector,UseChromeOSDirectVideoDecoder"
+        "--enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder,ParallelDownloading,BackForwardCache,Prerender2,SpeculativeServiceWorkerWarmUp,TabHoverCardImages"
+        "--disable-features=OutdatedBuildDetector"
       ];
     };
   };

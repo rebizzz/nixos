@@ -21,6 +21,8 @@ _: {
       };
     };
 
+    xdg.configFile."micro/settings.json".force = true;
+
     home.sessionVariables = {
       EDITOR = "micro";
       VISUAL = "micro";
