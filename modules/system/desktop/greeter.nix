@@ -1,22 +1,16 @@
-{inputs, ...}: {
+_: {
   flake.modules.nixos.greeter = {
-    pkgs,
-    config,
-    ...
-  }: {
-    imports = [inputs.noctalia-greeter.nixosModules.default];
-
-    services.displayManager.noctalia-greeter = {
-      enable = true;
-      passwordless-sync-users = [config.myConfig.user.name];
-      settings = {
-        session.default = "umbriel";
-        user.default = config.myConfig.user.name;
-        keyboard.layout = "us";
-        cursor = {
-          theme = "Bibata-Modern-Classic";
-          size = 24;
-          path = "${pkgs.bibata-cursors}/share/icons";
+    services.displayManager = {
+      defaultSession = "umbriel";
+      ly = {
+        enable = true;
+        settings = {
+          default_input = "password";
+          save_file_dir = null;
+          animation = "none";
+          clock = null;
+          battery_id = null;
+          clear_password = true;
         };
       };
     };

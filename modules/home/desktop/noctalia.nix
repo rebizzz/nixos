@@ -41,7 +41,6 @@ _: {
 
         shell = {
           polkit_agent = true;
-          greeter_sync.auto_sync = true;
           telemetry_enabled = true;
           screen_time_enabled = true;
           settings_show_advanced = false;
