@@ -2,11 +2,6 @@ _: {
   programs.umbriel.settings = {
     window_rule = [
       {
-        blur = true;
-        blur_optimized = false;
-        opacity = 0.95;
-      }
-      {
         default_position = {
           anchor = "center";
           x = 0;
@@ -16,17 +11,6 @@ _: {
       {
         match.is_alone = true;
         default_maximize = true;
-      }
-
-      {
-        match.app_id = "^(kitty|serein|Serein|cz\\.viceverse\\.serein|equibop|Equibop|org\\.quickshell|feh|imv|swappy|org\\.kde\\.krita|krita|gimp.*|org\\.inkscape\\.Inkscape|darktable|resolve|org\\.kde\\.kdenlive|shotcut|blender|godot|mpv|org\\.kde\\.haruna|haruna|steam_app_[0-9]+|steam_app_default|gamescope|brave-origin|brave-browser|brave|firefox|zen|zen-browser|chromium|google-chrome|gnome-boxes|org\\.gnome\\.Boxes|qemu.*)$";
-        opacity = 1.0;
-        blur = false;
-      }
-      {
-        match.title = ".*(QEMU/KVM|QEMU).*";
-        opacity = 1.0;
-        blur = false;
       }
       {
         match.title = "^(Open File|Open Folder|(Select|Open)( a)? (File|Folder)s?|Select|Choose a wallpaper|Save As|Library|Choose Where to Download|(Save|Export) Image)";
