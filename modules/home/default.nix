@@ -29,6 +29,7 @@
       prismlauncher
       aria2
       mpv
+      flatpak
     ];
 
     home = {
